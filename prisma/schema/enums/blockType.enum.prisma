@@ -1,0 +1,13 @@
+// Enumération des types de blocs disponibles
+// (Enumeration of available block types)
+enum BlockType {
+  TEXT // Texte (Text)
+  IMAGE // Image (Image)
+  VIDEO // Vidéo (Video)
+  AUDIO // Audio (Audio)
+  CODE // Code (Code)
+  CITATION // Citation (Citation)
+  TITRE // Titre (Title)
+  LISTE // Liste (List)
+  PARAGRAPHE // Paragraphe (Paragraph)
+}

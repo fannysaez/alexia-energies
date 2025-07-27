@@ -1,0 +1,311 @@
+/* ===== SECTION 3 - PROCESS ===== */
+
+/* Container principal avec image de fond */
+.section {
+    position: relative;
+    width: 100%;
+    padding: var(--section-padding-desktop) 0;
+    background-image: url('/img/accueil/process/bg-overlay-section3.webp');
+    background-size: cover;
+    background-position: center;
+    background-color: var(--background);
+    color: var(--tiercery-color);
+}
+
+/* Overlay sombre sur l'image de fond */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+
+/* Conteneur de contenu centré */
+.container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* En-tête de section */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Titre principal */
+.header h2 {
+    font-family: 'SortsMillGoudy-Regular';
+    font-size: 40px;
+    font-weight: normal;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    line-height: 1.2;
+}
+
+/* Texte descriptif */
+.header p {
+    font-family: 'Work Sans';
+    font-size: 22px;
+    color: var(--p-color);
+    max-width: var(--text-max-width);
+    margin: 0 auto;
+    line-height: 32px;
+}
+
+/* Grille des cartes de services - 3 colonnes */
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    margin-top: 60px;
+    width: 100%;
+}
+
+/* Carte de service avec effets de transition */
+.serviceCard {
+    background: var(--secondary-color);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--text2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 8px 8px 16px 8px;
+    /* réduit le padding pour compacité */
+}
+
+/* Effet de survol des cartes */
+.serviceCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Conteneur d'image des cartes */
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+/* Titre des cartes */
+.cardContent {
+    padding: 18px 8px 0 8px;
+    /* réduit le padding interne */
+}
+
+.cardContent h3 {
+    font-family: 'SortsMillGoudy-Regular';
+    font-size: 1.35rem;
+    font-weight: normal;
+    color: var(--tiercery-color);
+    padding: 2px;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+/* Description des cartes */
+.cardContent p {
+    font-family: 'Work Sans';
+    font-size: 16px;
+    color: var(--paragraph-color);
+    line-height: 22px;
+    text-align: center;
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Ligne décorative */
+.decorativeLine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Responsive styles for decorative line image */
+.decorativeLine img,
+.decorativeLine :global(img) {
+    width: 100%;
+    max-width: 350px;
+}
+
+@media (max-width: 768px) {
+
+    .decorativeLine img,
+    .decorativeLine :global(img) {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .decorativeLine img,
+    .decorativeLine :global(img) {
+        max-width: 95vw;
+        min-width: 180px;
+    }
+}
+
+/* Groupe de boutons d'action */
+.buttonGroup {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 25px;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+
+/* Bouton principal */
+.primaryButton {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.primaryButton:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+/* Bouton secondaire */
+.secondaryButton {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.secondaryButton:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+
+/* ===== RESPONSIVE - TABLETTE & PETIT DESKTOP ===== */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .header h2 {
+        font-size: 2.5rem;
+    }
+
+    .header p {
+        font-size: 1.4rem;
+        line-height: 30px;
+    }
+
+    /* Grille 2 colonnes pour tablette */
+    .servicesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    /* Boutons en colonne */
+    .buttonGroup {
+        flex-direction: column;
+        gap: 15px;
+        white-space: nowrap;
+    }
+
+    .buttonGroup a {
+        justify-content: center;
+        white-space: nowrap;
+    }
+}
+
+/* ===== RESPONSIVE - MOBILE STANDARD ===== */
+@media (max-width: 768px) {
+    .section {
+        padding: 80px 0;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .header h2 {
+        font-size: 2.3rem;
+        margin-bottom: 15px;
+    }
+
+    .header p {
+        font-size: 1.3rem;
+        line-height: 28px;
+    }
+
+    /* Grille 1 colonne pour mobile */
+    .servicesGrid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .imageContainer {
+        height: 200px;
+    }
+
+    .cardContent {
+        padding: 25px;
+    }
+
+    .cardContent h3 {
+        font-size: 1.3rem;
+    }
+
+    .cardContent p {
+        font-size: 16px;
+        margin-bottom: 25px;
+        line-height: 26px;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* ===== RESPONSIVE - PETIT MOBILE ===== */
+@media (max-width: 480px) {
+    .section {
+        padding: 60px 0;
+    }
+
+    .header h2 {
+        font-size: 2rem;
+    }
+
+    .header p {
+        font-size: 16px;
+    }
+
+    .cardContent {
+        padding: 20px;
+    }
+
+    .imageContainer {
+        height: 180px;
+    }
+
+    .cardContent p {
+        font-size: 15px;
+        line-height: 24px;
+    }
+}

@@ -1,0 +1,234 @@
+/* Conteneur principal de la page */
+.container {
+    width: 100%;
+    margin: auto;
+    position: relative;
+    padding: 0px 20px;
+    padding-top: 30px;
+}
+
+/* Section principale */
+.heroSection {
+    padding: var(--section-padding-desktop) 0;
+    min-height: 80vh;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+/* Fil d'Ariane */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    color: var(--paragraph-color);
+}
+
+.breadcrumb a {
+    color: var(--paragraph-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+.breadcrumb span {
+    color: var(--text2);
+}
+
+/* Titre principal */
+.mainTitle {
+    font-family: 'SortsMillGoudy-Regular', serif;
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 80px;
+    font-weight: normal;
+    text-align: center;
+}
+
+/* Conteneur FAQ */
+.faqContainer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Item FAQ */
+.faqItem {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border: 1px solid var(--decorative-line-color);
+    transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+    border-color: var(--primary-color);
+}
+
+/* Bouton Question */
+.questionButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.questionButton:hover {
+    background-color: rgba(254, 209, 167, 0.05);
+}
+
+/* Texte de la question */
+.questionText {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-family: 'SortsMillGoudy-Regular', serif;
+    font-weight: normal;
+    margin: 0;
+    padding-right: 20px;
+    flex: 1;
+}
+
+/* Icône chevron */
+.chevronIcon {
+    color: var(--primary-color);
+    font-size: 20px;
+    min-width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+/* Contenu de la réponse */
+.answerContent {
+    padding: 0 24px 24px 24px;
+    border-top: 1px solid var(--decorative-line-color);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Texte de la réponse */
+.answerText {
+    color: var(--paragraph-color);
+    font-size: 16px;
+    line-height: 26px;
+    margin: 16px 0 0 0;
+    font-family: 'Work Sans', sans-serif;
+    text-align: justify;
+}
+
+/* Responsivité */
+@media (max-width: 1200px) {
+    .heroSection {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .faqContainer {
+        padding: 0 24px;
+    }
+    
+    .mainTitle {
+        font-size: 40px;
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroSection {
+        padding: 60px 0;
+    }
+    
+    .mainTitle {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+    
+    .faqContainer {
+        padding: 0 16px;
+    }
+    
+    .questionButton {
+        padding: 20px;
+    }
+    
+    .questionText {
+        font-size: 16px;
+        padding-right: 16px;
+    }
+    
+    .answerContent {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .answerText {
+        font-size: 15px;
+        line-height: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 8px;
+        padding-top: 20px;
+    }
+    
+    .heroSection {
+        padding: 40px 0;
+    }
+    
+    .mainTitle {
+        font-size: 28px;
+        margin-bottom: 32px;
+    }
+    
+    .faqContainer {
+        padding: 0 8px;
+    }
+    
+    .questionButton {
+        padding: 16px;
+    }
+    
+    .questionText {
+        font-size: 15px;
+        padding-right: 12px;
+    }
+    
+    .answerContent {
+        padding: 0 16px 16px 16px;
+    }
+    
+    .answerText {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    
+    .breadcrumb {
+        font-size: 14px;
+        gap: 15px;
+    }
+}

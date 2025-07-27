@@ -1,0 +1,1264 @@
+/* --- Pagination Steps Responsive --- */
+.paginationSteps {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    gap: 8px;
+}
+
+.paginationStep {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    border: 2px solid #FFD9A0;
+    background: #333;
+    color: #FFD9A0;
+    opacity: 1;
+    transition: all 0.2s;
+    font-size: 1em;
+}
+
+.paginationStep.active {
+    background: #FFD9A0;
+    color: #222;
+    border: 2px solid #FFD9A0;
+}
+
+.paginationStep.inactive {
+    opacity: 0.6;
+}
+
+@media (min-width: 1230px) {
+    .paginationSteps {
+        flex-direction: row !important;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .paginationSteps {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+    }
+
+    .paginationStep {
+        font-size: 1em;
+        padding: 12px 0;
+        min-width: 120px;
+        width: 90vw;
+        max-width: 340px;
+        text-align: center;
+        box-shadow: 0 2px 12px rgba(44, 37, 32, 0.18);
+        border-width: 2.5px;
+        border-radius: 24px;
+        margin: 0 auto;
+        margin-bottom: 0;
+        letter-spacing: 0.5px;
+        transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .paginationStep.active {
+        box-shadow: 0 4px 18px rgba(255, 217, 160, 0.18);
+        border-color: #FFD9A0;
+        background: #FFD9A0;
+        color: #222;
+    }
+
+    .paginationStep.inactive {
+        opacity: 0.7;
+        background: #333;
+        color: #FFD9A0;
+        border-color: #FFD9A0;
+    }
+
+    .paginationStep:active {
+        box-shadow: 0 2px 8px #FFD9A0;
+        background: #ffe3b8;
+        color: #222;
+    }
+}
+
+@media (max-width: 650px) {
+    .paginationStep {
+        font-size: 0.95em;
+        padding: 10px 0;
+        min-width: 90px;
+        width: 96vw;
+        max-width: 220px;
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 320px) {
+    .paginationStep {
+        font-size: 0.88em;
+        padding: 7px 0;
+        min-width: 70px;
+        width: 98vw;
+        max-width: 160px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 780px) {
+    .paginationStep {
+        font-size: 0.95em;
+        padding: 10px 0;
+        min-width: 100px;
+        width: 96vw;
+        max-width: 280px;
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    .paginationStep {
+        font-size: 0.9em;
+        padding: 8px 0;
+        min-width: 80px;
+        width: 98vw;
+        max-width: 220px;
+        border-radius: 14px;
+    }
+}
+
+.miniatureSection {
+    border: 2px dashed #FFD9A0;
+    background: #222;
+    padding: 18px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.miniatureTitle {
+    color: #FFD9A0;
+    margin-bottom: 8px;
+    font-size: 1.15em;
+    font-weight: bold;
+}
+
+.miniatureHelp {
+    color: #fff;
+    font-size: 0.95em;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+/* Pour que les inputs prennent toute la largeur dans la section miniature */
+.miniatureSection input[type="file"],
+.miniatureSection input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+}
+
+/* Responsive pour miniatureSection */
+@media (max-width: 900px) {
+    .miniatureSection {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 16px;
+    }
+
+    .miniatureTitle {
+        font-size: 1em;
+    }
+
+    .miniatureHelp {
+        font-size: 0.92em;
+    }
+
+    .miniatureSection input[type="file"],
+    .miniatureSection input[type="text"] {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+}
+
+/* Version bureau : affichage horizontal des catégories */
+.categoryListWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-left: 12px;
+    margin-top: 8px;
+    width: 100%;
+}
+
+/* Version bureau : alignement sur une ligne */
+.categoryAddWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.categoryAddRow {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+}
+
+.selectCategory {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+    width: 160px;
+    min-width: 120px;
+    max-width: 180px;
+}
+
+.inputNewCategory {
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+    width: 100%;
+    min-width: 220px;
+    max-width: 440px;
+}
+
+.addCategoryBtn {
+    background: #FFD9A0;
+    color: #2D2217;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    min-width: 100px;
+    font-size: 15px;
+}
+
+/* Miniature vidéo pour les blocs */
+.contentBlockVideoMiniature {
+    width: 120px;
+    height: 68px;
+    border-radius: 8px;
+    border: 1.5px solid #FFD9A0;
+    background: #222;
+    box-shadow: 0 2px 12px rgba(44, 37, 32, 0.12);
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style pour les citations dans ArticleForm */
+.contentBlockCitation {
+    margin-top: 6px;
+    font-style: italic;
+    border-left: 4px solid var(--paragraph-color);
+    padding-left: 12px;
+    color: var(--paragraph-color);
+    opacity: 0.85;
+    /* ou la couleur de ton choix */
+}
+
+/* Miniature principale pour ArticleForm */
+.mainImageMiniature {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1.5px solid #FFD9A0;
+    background: #1a1816;
+    display: block;
+    margin-bottom: 8px;
+    margin-left: 0;
+    margin-right: 0;
+    box-shadow: 0 2px 8px #0002;
+}
+
+/* Images de paragraphe côte à côte */
+.paragraphImagesRow {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.paragraphImagesRow img {
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    object-fit: cover;
+    background: #181512;
+    border: 1.5px solid #FFD9A0;
+    margin-left: 0;
+}
+
+/* Miniatures pour dashboard admin */
+.paragraphImagesMiniRow {
+    display: flex;
+    gap: 18px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.paragraphImagesMiniRow img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(44, 37, 32, 0.12);
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    background: #181512;
+    border: 1px solid #FFD9A0;
+    margin-left: 0;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 900px) {
+    .paragraphImagesRow {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .paragraphImagesRow img {
+        width: 100%;
+        max-width: 340px;
+        height: 180px;
+    }
+
+    .textareaContent {
+        width: 100% !important;
+        min-height: 60px !important;
+        max-height: 100px !important;
+        /* height: 80px !important; */
+        font-size: 13px !important;
+        padding: 2px 8px !important;
+        line-height: 1.1 !important;
+        box-sizing: border-box !important;
+    }
+
+    .imageInputRow {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .inputImageFile,
+    .inputImageName {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        margin-bottom: 0;
+    }
+
+    .categoryAddWrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .categoryAddRow {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .inputNewCategory {
+        width: 100% !important;
+        min-width: 0;
+    }
+
+    .addCategoryBtn {
+        min-width: 100px;
+        width: auto !important;
+    }
+
+    .categoryListWrapper {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-top: 8px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .selectCategory {
+        font-size: 8px;
+        padding: 4px;
+        width: 35%;
+        min-width: 0;
+    }
+
+    .inputNewCategory {
+        width: 50% !important;
+        min-width: 0;
+        font-size: 8px;
+        padding: 4px;
+    }
+
+    .addCategoryBtn {
+        min-width: 80px;
+        width: auto !important;
+        font-size: 15px;
+        padding: 4px 10px;
+    }
+
+
+
+}
+
+.paragraphsGrid {
+    margin-bottom: 8px;
+    width: 100%;
+    color: #2D2217;
+}
+
+/* --- Section Paragraphes --- */
+.paragraphsSection {
+    width: 100%;
+}
+
+.labelParagraphs {
+    font-weight: bold;
+    color: #FFD9A0;
+    margin-bottom: 16px;
+    display: block;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 18px;
+    border-top: 1px solid #FFD9A0;
+    padding-top: 10px;
+    width: 100%;
+
+}
+
+/* Centrage du bloc vidéo (iframe + lien)
+.videoBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 32px 0;
+}
+
+.videoBlock iframe {
+    margin: 0 auto;
+    display: block;
+    width: 50px;
+    max-width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(44, 37, 32, 0.12);
+}
+
+.videoBlock a {
+    margin-top: 8px;
+    color: #FFD9A0;
+    font-weight: bold;
+    text-align: center;
+} */
+
+/* --- Inputs de paragraphes --- */
+.inputParagraphText,
+.inputParagraphAlt {
+    grid-column: 1 / 3;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+    padding: 8px;
+    margin-bottom: 4px;
+    min-width: 180px;
+    font-family: inherit;
+}
+
+.inputParagraphImage,
+.inputParagraphImage2 {
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+    padding: 8px;
+    margin-bottom: 4px;
+    min-width: 180px;
+    font-family: inherit;
+}
+
+.addParagraphBtn {
+    background: #FFD9A0;
+    color: #2D2217;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 18px;
+    font-weight: bold;
+    min-width: 160px;
+    margin-left: auto;
+    margin-top: 18px;
+}
+
+/* Pour le wrapper du bouton */
+.paragraphsBtnWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+/* Pour l'édition rapide des paragraphes */
+.paragraphEditGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.inputParagraphEdit {
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--paragraph-color);
+    background: var(--background);
+    color: var(--paragraph-color);
+    padding: 8px;
+    margin-bottom: 4px;
+    min-width: 180px;
+    font-family: inherit;
+}
+
+.deleteParaImageBtn {
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    padding: 7px 18px;
+    font-weight: bold;
+    min-width: 160px;
+    margin-top: 4px;
+    cursor: pointer;
+}
+
+.paragraphActionBtn {
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    padding: 7px 18px;
+    font-weight: bold;
+    min-width: 50px;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+.paragraphItemTitle {
+    display: block;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 8px;
+    opacity: 0.85;
+}
+
+/* --- Wrapper général du formulaire --- */
+.formWrapper {
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 0 auto;
+}
+
+.formTitle {
+    color: #FFD9A0;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 20px 0;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.formContentWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.formFieldsColumn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.inputTitle {
+    font-size: 18px;
+    padding: 10px 8px;
+    border-radius: 5px;
+    margin-bottom: 4px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+}
+
+.inputAuthor,
+.inputSlug {
+    font-size: 16px;
+    padding: 10px 8px;
+    border-radius: 5px;
+    margin-bottom: 4px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+}
+
+.labelCategory {
+    font-weight: bold;
+    color: #FFD9A0;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 18px;
+    border-top: 1px solid #FFD9A0;
+    padding-top: 10px;
+    width: 100%;
+}
+
+.selectCategory {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+}
+
+.categoryAddWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.inputNewCategory {
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+}
+
+.addCategoryBtn {
+    background: #FFD9A0;
+    color: #2D2217;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    min-width: 100px;
+}
+
+.addCategoryBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+.categoryListWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin-left: 0;
+    margin-top: 12px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.categoryItem {
+    display: flex;
+    align-items: center;
+    background: #1a1816;
+    color: #FFD9A0;
+    border: 1px solid #FFD9A0;
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+.deleteCategoryBtn {
+    margin-left: 6px;
+    background: none;
+    color: #FFD9A0;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.errorMsg {
+    color: red;
+    font-size: 13px;
+}
+
+.successMsg {
+    color: green;
+    font-size: 13px;
+}
+
+/* --- Blocs de contenu --- */
+.contentBlocksSection {
+    margin-top: 10px;
+    border-top: 1px solid #FFD9A0;
+    padding-top: 10px;
+    width: 100%;
+
+}
+
+.labelContentBlocks {
+    font-weight: bold;
+    color: #FFD9A0;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.contentBlocksInputRow {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    padding-top: 2px;
+    margin: 8px 0 8px 0;
+    align-items: flex-start;
+    min-height: unset;
+}
+
+.selectBlockTitleLevel {
+    font-size: 16px;
+    border-radius: 5px;
+    flex: 0 0 140px;
+    width: 140px;
+    min-width: 20px;
+    max-width: 42px;
+    height: 35px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+}
+
+.selectBlockType {
+    font-size: 16px;
+    border-radius: 5px;
+    flex: 0 0 140px;
+    width: 140px;
+    min-width: 120px;
+    max-width: 180px;
+    height: 35px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+}
+
+
+.inputBlockText {
+    font-size: 15px;
+    border-radius: 5px;
+    flex: 2 1 220px;
+    min-width: 180px;
+    max-width: 340px;
+    height: 35px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: var(--paragraph-color);
+    font-family: 'Work Sans-SemiBold';
+    padding: 8px;
+}
+
+
+.textareaBlockList {
+    font-size: 15px;
+    border-radius: 5px;
+    flex: 1 1 120px;
+    height: 35px;
+    resize: none;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: var(--paragraph-color);
+    font-family: 'Work Sans-SemiBold';
+    padding: 8px;
+}
+
+.inputBlockTitle {
+    font-size: 15px;
+    border-radius: 5px;
+    flex: 2 1 220px;
+    min-width: 180px;
+    max-width: 340px;
+    height: 35px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: var(--paragraph-color);
+    font-family: 'SortsMillGoudy-Regular';
+    padding: 8px;
+}
+
+.textareaBlockTitle {
+    font-size: 15px;
+    border-radius: 5px;
+    flex: 1 1 120px;
+    height: 35px;
+    resize: none;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: var(--paragraph-color);
+    font-family: 'SortsMillGoudy-Regular';
+    padding: 8px;
+}
+
+.addBlockBtn {
+    background: #FFD9A0;
+    color: #2D2217;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 18px;
+    font-weight: bold;
+    display: block;
+    height: 35px;
+    cursor: pointer;
+}
+
+.contentBlocksListWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 0;
+}
+
+.contentBlockItem {
+    background: #1a1816;
+    border: 1.5px solid #FFD9A0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: var(--paragraph-color);
+    font-size: 16px;
+    position: relative;
+    line-height: 1.3rem;
+
+}
+
+.contentBlockItemTitle {
+    font-weight: bold;
+    font-size: 13px;
+    color: #FFD9A0;
+    opacity: 0.7;
+}
+
+.contentBlockText {
+    margin-top: 6px;
+    white-space: pre-line;
+}
+
+.contentBlockImage {
+    margin-top: 6px;
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 8px;
+    border: 1px solid #FFD9A0;
+    background: #222;
+    object-fit: cover;
+}
+
+.contentBlockVideoWrapper {
+    margin-top: 6px;
+}
+
+.contentBlockVideo {
+    width: 100%;
+    height: 180px;
+    border-radius: 6px;
+    border: 1px solid #FFD9A0;
+    background: #222;
+}
+
+.contentBlockCitation {
+    margin-top: 6px;
+    font-style: italic;
+    border-left: 3px solid #FFD9A0;
+    padding-left: 12px;
+    color: #FFD9A0;
+    opacity: 0.85;
+}
+
+.contentBlockTitle {
+    margin-top: 6px;
+    color: #FFD9A0;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.contentBlockList {
+    margin-top: 6px;
+    color: #FFD9A0;
+    padding-left: 18px;
+}
+
+.contentBlockListItem {
+    margin-bottom: 2px;
+}
+
+.contentBlockActions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 6px;
+}
+
+.contentBlockActionBtn {
+    background: none;
+    color: #FFD9A0;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.contentBlockEditRow {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    color: var(--paragraph-color);
+}
+
+.inputBlockEdit {
+    font-size: 15px;
+    border-radius: 5px;
+    width: 80%;
+    border: 1px solid var(--paragraph-color);
+    background: #1a1816;
+    color: var(--paragraph-color);
+    padding: 6px;
+
+}
+
+.textareaBlockEdit {
+    font-size: 14px;
+    width: 80%;
+    min-height: 40px;
+    border: 1px solid var(--paragraph-color);
+    background: #1a1816;
+    color: var(--paragraph-color);
+    padding: 6px;
+    font-family: 'Work Sans-SemiBold';
+
+}
+
+/* --- Section image --- */
+.imageSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 18px;
+}
+
+.labelImage {
+    font-weight: bold;
+    color: #FFD9A0;
+    align-self: flex-start;
+}
+
+.imagePreview {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1.5px solid #FFD9A0;
+    background: #1a1816;
+    margin-bottom: 6px;
+    display: block;
+    margin-left: 0;
+}
+
+.imageInputRow {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.inputImageFile {
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 5px;
+    flex: 2 1 44px;
+    color: #FFD9A0;
+    background: #1a1816;
+    border: 1px solid #FFD9A0;
+}
+
+.inputImageName {
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 5px;
+    flex: 1 1 44px;
+    min-width: 120px;
+    color: #FFD9A0;
+    background: #1a1816;
+    border: 1px solid #FFD9A0;
+}
+
+.imageSelectedMsg {
+    color: #FFD9A0;
+    font-size: 13px;
+    margin-bottom: 4px;
+    text-align: left;
+    width: 100%;
+}
+
+.textareaContent {
+    font-size: 17px;
+    padding: 10px 8px;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 8px;
+    min-height: 120px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+}
+
+.formActionsRow {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    border-top: 1px solid #FFD9A0;
+
+}
+
+.submitBtn {
+    background: #FFD9A0;
+    color: #2C2520;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 32px;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.cancelBtn {
+    background: none;
+    color: #FFD9A0;
+    border: 1.5px solid #FFD9A0;
+    border-radius: 7px;
+    padding: 12px 32px;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.deleteModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(44, 37, 32, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.deleteModalContent {
+    background: #1a1816;
+    border: 2px solid #FFD9A0;
+    border-radius: 12px;
+    padding: 32px 36px;
+    color: #FFD9A0;
+    min-width: 320px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.deleteModalTitle {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.deleteModalText {
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.deleteModalActions {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+}
+
+.deleteModalBtn {
+    background: #FFD9A0;
+    color: #2D2217;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 28px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* --- Affichage des paragraphes ajoutés --- */
+.paragraphItem {
+    background: var(--background);
+    border: 1.5px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: var(--primary-color);
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.paragraphText {
+    margin-bottom: 8px;
+    white-space: pre-line;
+    line-height: 1.6;
+    color: var(--paragraph-color);
+    border: 1px solid var(--paragraph-color);
+    background: var(--background);
+    padding: 18px 22px;
+    text-align: justify;
+    box-shadow: 0 2px 12px rgba(44, 37, 32, 0.12);
+}
+
+.paragraphImage {
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    background: #222;
+    object-fit: cover;
+}
+
+.paragraphVideoWrapper {
+    margin-top: 6px;
+}
+
+.paragraphVideo {
+    width: 100%;
+    height: 180px;
+    border-radius: 6px;
+    border: 1px solid var(--primary-color);
+    background: #222;
+}
+
+.paragraphCitation {
+    margin-top: 6px;
+    font-style: italic;
+    border-left: 3px solid var(--primary-color);
+    padding-left: 12px;
+    color: var(--primary-color);
+    opacity: 0.85;
+}
+
+.paragraphTitle {
+    margin-top: 6px;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.miniatureSection {
+    border: 2px dashed #FFD9A0;
+    background: #222;
+    padding: 18px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+}
+
+.miniatureTitle {
+    color: #FFD9A0;
+    margin-bottom: 8px;
+}
+
+.miniatureHelp {
+    color: #fff;
+    font-size: 0.95em;
+    margin-bottom: 12px;
+}
+
+.categoryHelp {
+    color: #FFD9A0;
+    font-size: 0.92em;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.miniatureSection .inputParagraphImage,
+.miniatureSection .inputParagraphImage2,
+.miniatureSection .inputImageName {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Forcer les div internes et leurs enfants à prendre toute la largeur dans la section miniature, même en flex */
+.miniatureSection>div {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+}
+
+.miniatureSection>div>input,
+.miniatureSection>div>.inputParagraphImage,
+.miniatureSection>div>.inputParagraphImage2,
+.miniatureSection>div>.inputImageName {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.contentBlockCitation {
+    margin-top: 6px;
+    font-style: italic;
+    font-weight: 600;
+    border-left: 5px solid var(--paragraph-color);
+    padding-left: 12px;
+    color: var(--paragraph-color);
+    opacity: 0.85;
+}

@@ -1,0 +1,11 @@
+/// Modèle Newsletter pour gérer les inscriptions à la newsletter
+model Newsletter {
+    /// Identifiant unique de la newsletter (Unique identifier for the newsletter)
+    id              String   @id @default(cuid())
+    /// Adresse e-mail de l'abonné (Subscriber's email address)
+    email           String   @unique
+    /// Date d'inscription à la newsletter (Subscription date)
+    dateInscription DateTime @default(now())
+
+    @@map("newsletters") // Mappe ce modèle à la table "newsletters" (Maps this model to the "newsletters" table)
+}

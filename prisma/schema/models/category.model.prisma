@@ -1,0 +1,7 @@
+model Category {
+    id       String    @id @default(cuid()) // Identifiant unique
+    name     String    @unique // Nom de la catégorie
+    articles Article[] // Articles associés à la catégorie
+
+    @@map("category") // Nom de la table dans la base de données
+}

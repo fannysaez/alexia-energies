@@ -1,0 +1,316 @@
+/* Page accueil | Section 1 */
+/* Ajoutez ceci dans votre style.module.css de section1 */
+.section {
+    position: relative;
+    /* padding: 200px 0px;
+    padding-top: 250px;                           */
+    width: 100%;
+    margin: auto;
+    background-image: url('/img/accueil/HeroSection/section1-accueil.webp');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* overlay noir transparent */
+    z-index: 1;
+    /* sous le contenu */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* overlay noir transparent */
+    z-index: 1;
+    /* sous le contenu */
+}
+
+.container {
+    position: relative;
+    /* pour passer au-dessus de l'overlay */
+    z-index: 2;
+    /* au-dessus de l'overlay */
+    position: relative;
+    /* pour passer au-dessus de l'overlay */
+    z-index: 2;
+    /* au-dessus de l'overlay */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    /* texte blanc pour contraster */
+    color: white;
+    /* texte blanc pour contraster */
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container h1 {
+    font-family: 'SortsMillGoudy-Regular', serif;
+    /* Utilise la police personnalisée */
+    font-weight: 300;
+    /* ou 200 pour encore plus fin */
+    font-family: 'SortsMillGoudy-Regular', serif;
+    /* Utilise la police personnalisée */
+    font-weight: 300;
+    /* ou 200 pour encore plus fin */
+    text-align: center;
+    color: var(--primary-color);
+    /* Utilise la couleur principale définie dans :root */
+    max-width: 850px;
+    /* Largeur maximale du titre */
+    margin: auto;
+    /* Centre le titre horizontalement */
+    margin-bottom: 10px;
+    /* Espace sous le titre */
+    font-size: 50px;
+    line-height: 1.2;
+    /* Taille du texte du titre */
+    color: var(--primary-color);
+    /* Utilise la couleur principale définie dans :root */
+    max-width: 850px;
+    /* Largeur maximale du titre */
+    margin: auto;
+    /* Centre le titre horizontalement */
+    margin-bottom: 10px;
+    /* Espace sous le titre */
+    font-size: 50px;
+    line-height: 1.2;
+    /* Taille du texte du titre */
+}
+
+
+.container p {
+    text-align: center;
+    margin: auto;
+    /* Centre le paragraphe horizontalement */
+    margin-bottom: 30px;
+    /* Espace sous le paragraphe */
+    color: var(--paragraph-color);
+    /* Utilise la couleur définie (#CAC3BC) */
+    font-family: 'Work Sans', sans-serif;
+    /* Police Work Sans */
+    line-height: 26px;
+    /* Hauteur de ligne de 26px */
+    font-size: 20px;
+    /* Taille de police (ajustez si nécessaire) */
+    max-width: 600px;
+    /* Limite la largeur pour une meilleure lisibilité */
+    font-weight: 400;
+    /* Poids normal de la police */
+}
+
+.buttons {
+    display: flex;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    /* Espace entre les boutons */
+    justify-content: center;
+    /* Centre les boutons horizontalement */
+    margin-top: 25px;
+    gap: 25px;
+    /* Espace entre les boutons */
+    justify-content: center;
+    /* Centre les boutons horizontalement */
+    margin-top: 25px;
+    font-size: 16px;
+}
+
+.buttons a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 250px;
+    height: auto;
+    font-family: 'Work Sans';
+    font-weight: 700;
+}
+
+.line {
+    display: inline-block;
+    /* Permet de définir une largeur */
+    width: 60px;
+    /* Largeur de l'espacement (ajustez selon vos besoins) */
+    height: 35px;
+    /* Hauteur pour visualisation (optionnel) */
+    background-color: var(--primary-color);
+    /* Couleur de l'élément d'espacement */
+    border-radius: 20px;
+    /* Coins arrondis pour un effet pilule */
+    vertical-align: middle;
+    /* Aligne verticalement avec le texte */
+}
+
+
+/* Tablettes (768px - 1024px) */
+@media (max-width: 1024px) {
+    .section {
+        /* padding: 50px 20px; */
+        min-height: 800px;
+    }
+
+
+    .container {
+        max-width: 700px;
+        padding: 15px;
+    }
+
+
+    .container h1 {
+        font-size: 42px;
+        max-width: 700px;
+        margin-bottom: 25px;
+    }
+
+
+    .container p {
+        max-width: 500px;
+        margin-bottom: 40px;
+        line-height: 24px;
+        font-size: 18px;
+    }
+
+
+    .buttons {
+        gap: 25px;
+        margin-top: 20px;
+        padding: 12px 25px;
+        font-size: 15px;
+    }
+}
+
+/* Tablettes portrait et petits ordinateurs portables (481px - 768px) */
+@media (max-width: 768px) {
+    .section {
+        /* padding: 120px 15px;
+        margin-top: 60px; */
+    }
+
+
+    .container {
+        max-width: 90%;
+        padding: 10px;
+    }
+
+
+    .container h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        line-height: 1.1;
+    }
+
+
+    .container p {
+        max-width: 100%;
+        margin-bottom: 35px;
+        line-height: 22px;
+    }
+
+
+    .buttons {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 15px;
+        padding: 10px 20px;
+    }
+
+    .decorativeLine img {
+        width: 100%;
+        height: auto;
+    }
+
+    .line {
+        width: 50px;
+        height: 30px;
+    }
+}
+
+/* Mobiles (320px - 480px) */
+@media (max-width: 480px) {
+    .section {
+        padding: 100px 10px;
+        margin-top: 40px;
+    }
+
+
+    .container {
+        max-width: 95%;
+        padding: 5px;
+    }
+
+
+    .container h1 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        line-height: 1.0;
+    }
+
+
+    .container p {
+        margin-bottom: 30px;
+        line-height: 24px;
+    }
+
+
+    .buttons {
+        gap: 15px;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+
+    .buttons a {
+        gap: 8px;
+    }
+
+
+    .line {
+        width: 40px;
+        height: 25px;
+    }
+}
+
+/* Très petits mobiles (max 320px) */
+@media (max-width: 320px) {
+    .section {
+        padding: 80px 5px;
+        margin-top: 30px;
+    }
+
+
+    .container h1 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+
+    .container p {
+        font-size: 13px;
+        line-height: 18px;
+        margin-bottom: 25px;
+    }
+
+
+    .buttons {
+        gap: 12px;
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+
+    .line {
+        width: 35px;
+        height: 20px;
+    }
+}

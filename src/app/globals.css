@@ -1,0 +1,125 @@
+:root {
+  --background: #181411;
+  --primary-color: #FED1A7;
+  --secondary-color: #2C2520;
+  --tiercery-color: #FFFFFF;
+  --quaternary-color: #23201D;
+  --paragraph-color: #CAC3BC;
+  --p-color: #FFFFFF;
+  --background-pattern: url('/img/patterns/points.png');
+  --decorative-line: url('/img/HeroSection/VectoFlecheAccueil.svg');
+  --footer-separator-vector: url('/img/footer/VectorFooterCopyright.svg');
+  --decorative-line-color: #776B62;
+  --lineround-color: #776B62;
+  --footer-decorative-line-color: #5C4228;
+  /* Variables pour les croix de navigation */
+  --navigation-cross-default: url('/img/accueil/testimonials/VectorCroixMarron.svg');
+  --navigation-cross-active: url('/img/accueil/testimonials/VectorCroixBeige.svg');
+  /* Variables pour le header mobile */
+  --text: #CAC3BC;
+  --title: #FED1A7;
+  /* Couleur des titres/hover */
+  --text2: #776B62;
+  /* Couleur des bordures */
+  --benefit-strong-color: var(--primary-color);
+  /* Tailles responsive pour les éléments décoratifs */
+  --line-width-desktop: 60px;
+  --line-height-desktop: 24px;
+  --linegrey-width-desktop: 50px;
+  --linegrey-height-desktop: 24px;
+  --lineround-size-desktop: 24px;
+  /* Tailles des vectors */
+  --vector-central-desktop: 140px;
+  --vector-decoratif-desktop: 350px;
+  /* Espacements */
+  --section-padding-desktop: 120px;
+  --container-max-width: 1350px;
+  --text-max-width: 1024px;
+  
+  
+}
+
+/* Déclaration de la police personnalisée */
+@font-face {
+  font-family: 'SortsMillGoudy-Regular';
+  src: url('/fonts/SortsMillGoudy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans-SemiBold';
+  src: url('/fonts/Work Sans-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Réinitialisation globale */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Masquer la scrollbar verticale mais permettre le scroll */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fond principal */
+body {
+  position: relative;
+  background-color: var(--background);
+  min-height: 100vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+}
+
+/* Motif d'arrière-plan avec opacité 6% */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--background-pattern);
+  background-repeat: repeat;
+  opacity: 0.06;
+  z-index: 0;
+  pointer-events: none;
+}
+
+a {
+  text-decoration: none;
+  /* Supprime le soulignement des liens */
+}
+
+p {
+  color: var(--paragraph-color);
+  font-family: 'Work Sans';
+  line-height: 26px;
+}
+
+/* Classe pour le lien actif */
+.active {
+  color: var(--primary-color) !important;
+}
+
+.active::after {
+  width: 80% !important;
+  opacity: 1 !important;
+}
+
+.activeBtn {
+    border: 2px solid var(--primary-color);
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}

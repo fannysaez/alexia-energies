@@ -1,0 +1,10 @@
+// Modèle représentant un utilisateur
+model User {
+    id        String @id @default(cuid()) // Unique identifier // Identifiant unique
+    email     String @unique // Unique email of the user // Email unique de l'utilisateur
+    firstname String // Prénom de l'utilisateur
+    password  String // Hashed password // Mot de passe hashé
+    role      String @default("user") // Rôle de l'utilisateur (user par défaut)
+
+    @@map("users") // Table name in the database // Nom de la table dans la base de données
+}

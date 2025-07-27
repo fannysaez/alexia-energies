@@ -1,0 +1,59 @@
+/* Style pour le bouton principal */
+.primary {
+    background-color: var(--secondary-color);
+    /* Couleur de fond secondaire */
+    color: var(--tiercery-color);
+    /* Couleur du texte (attention à l'orthographe de la variable) */
+    border-radius: 30px;
+    /* Bords arrondis */
+    text-transform: uppercase;
+    /* Texte en majuscules */
+    border: 1px solid #5C4228;
+    /* Bordure marron */
+    font-size: 14px;
+    /* Taille de police */
+    letter-spacing: 1px;
+    /* Espacement des lettres */
+    padding: 15px 17px;
+    /* Espacement interne */
+    display: flex;
+    /* Utilisation du flexbox */
+    align-items: center;
+    /* Centrage vertical */
+    justify-content: center;
+    /* Centrage horizontal */
+    white-space: nowrap;
+    /* Evite le retour a la ligne */
+}
+
+/* Style pour le bouton secondaire */
+.secondary {
+    background-color: var(--primary-color);
+    /* Couleur de fond principale */
+    color: var(--secondary-color);
+    /* Couleur du texte */
+    border-radius: 30px;
+    /* Bords arrondis */
+    text-transform: uppercase;
+    /* Texte en majuscules */
+    border: 1px solid white;
+    /* Bordure blanche */
+    font-size: 14px;
+    /* Taille de police */
+    font-weight: 600;
+    /* Texte en gras */
+    letter-spacing: 1px;
+    /* Espacement des lettres */
+    padding: 15px 17px;
+    /* Espacement interne */
+    display: flex;
+    /* Utilisation du flexbox */
+    align-items: center;
+    /* Centrage vertical */
+    justify-content: center;
+    /* Centrage horizontal */
+    gap: 10px;
+    /* Espace entre les éléments enfants (augmenté) */
+    white-space: nowrap;
+    /* Evite le retour a la ligne */
+}

@@ -1,0 +1,118 @@
+/* Style pour le select du rôle utilisateur/admin */
+.role-select {
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.role-select:focus {
+    border: 1.5px solid #FFD9A0;
+    box-shadow: 0 0 0 2px #FFD9A0, 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 120px auto 60px auto;
+    padding: 48px 32px 56px 32px;
+    background: linear-gradient(135deg, #23201D 80%, #2C2520 100%);
+    border-radius: 18px;
+    border: 2px solid #3A2B23;
+    color: var(--tiercery-color);
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 1.5px dashed #3A2B23;
+    opacity: 0.18;
+    pointer-events: none;
+}
+
+.form-container h2 {
+    margin-bottom: 32px;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.form-fields {
+    margin-bottom: 28px !important;
+}
+
+.form-input {
+    margin-bottom: 18px !important;
+    padding: 14px 12px;
+    border-radius: 8px;
+    border: 1.5px solid var(--primary-color);
+    font-size: 1rem;
+    background: #2c2520;
+    color: var(--tiercery-color);
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    width: 100%;
+    display: block;
+}
+
+.form-input:focus {
+    border: 1.5px solid var(--tiercery-color);
+    box-shadow: 0 0 0 2px var(--primary-color), 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.form-btn {
+    margin-top: 16px;
+    width: 100%;
+    padding: 14px 0;
+    border-radius: 8px;
+    border: none;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.form-btn:disabled {
+    background: #bfae9e;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.form-message {
+    margin-top: 16px;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.form-link-container {
+    margin-top: 32px;
+}
+
+.form-link-label {
+    color: var(--tiercery-color);
+    font-size: 1rem;
+}
+
+.register-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-left: 4px;
+    text-decoration: underline;
+    cursor: pointer;
+}

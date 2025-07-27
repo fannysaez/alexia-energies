@@ -1,0 +1,317 @@
+/* Message de succès */
+.statusSuccess {
+    color: #198754;
+    background: #eafaf1;
+    border: 1px solid #198754;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-top: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Message d'erreur */
+.statusError {
+    color: #dc3545;
+    background: #fbeaea;
+    border: 1px solid #dc3545;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-top: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Titre principal centré au-dessus du fil d’ariane */
+
+.contactHeader {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7rem;
+    margin-bottom: 2.5rem;
+}
+
+.contactTitle {
+    text-align: center;
+    font-family: 'SortsMillGoudy-Regular', serif;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+}
+
+/* Fil d'ariane style sombre */
+.heroBreadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    margin-bottom: 2rem;
+}
+
+.heroBreadcrumb a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+/* Responsive : mobile/tablette */
+@media (max-width: 768px) {
+    .contactHeader {
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .contactTitle{
+        font-size: 2.4rem;
+        margin-bottom: -2.3rem;
+        margin-top: 5.5rem;
+    }
+
+    .heroBreadcrumb {
+        font-size: 14px;
+        gap: 4px;
+        margin-bottom: 1rem;
+        margin-top: 3.5rem;
+
+    }
+
+    section.container,
+    .container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+
+    .left,
+    .right {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .form-container {
+        padding: 1.2rem 0.7rem;
+    }
+
+    .title {
+        font-size: 2rem;
+        text-align: justify;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        text-align: justify;
+    }
+
+    .socialLinks {
+        justify-content: justify;
+        gap: 10px;
+    }
+
+    .socialLink {
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contactHeader {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        padding: 0 0.5rem;
+    }
+
+
+    .heroBreadcrumb {
+        font-size: 14px;
+        flex-direction: row;
+        gap: 6px;
+        color: var(--primary-color);
+        padding: 6px 12px;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        margin-top: 3.5rem;
+    }
+
+    .heroBreadcrumb a {
+        color: var(--primary-color);
+    }
+
+    section.container,
+    .container {
+        padding: 1rem 0.2rem;
+        gap: 1rem;
+    }
+
+    .form-container {
+        padding: 0.7rem 0.2rem;
+        border-radius: 10px;
+    }
+
+    .title {
+        font-size: 1.3rem;
+        text-align: justify;
+    }
+
+    .form-btn {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+    }
+}
+
+.heroBreadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+.heroBreadcrumb span:last-child {
+    color: var(--primary-color);
+}
+
+.heroBreadcrumb span:not(:last-child) {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+section.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8rem;
+    padding: 4rem 2rem 4rem 2rem;
+    background: var(--background);
+    width: 100%;
+    box-sizing: border-box;
+    text-align: justify;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    background: var(--background);
+}
+
+.left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 550px;
+}
+
+.title {
+    font-family: 'SortsMillGoudy-Regular', serif;
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text2);
+}
+
+.text {
+    font-size: 1rem;
+    color: var(--paragraph-color);
+    margin-bottom: 2rem;
+}
+
+.socialLinks {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.socialLink {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--primary-color) !important;
+    font-size: 18px;
+    background: var(--secondary-color);
+}
+
+.socialLink:hover {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--background) !important;
+}
+
+.right {
+    flex: 1;
+    max-width: 550px;
+}
+
+.form-container {
+    background: var(--quaternary-color);
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(252, 209, 167, 0.10);
+    padding: 2.5rem 2rem;
+    border: 1.5px solid var(--decorative-line-color);
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-input {
+    border: 1px solid var(--decorative-line-color);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-family: 'Work Sans-SemiBold', sans-serif;
+    background: var(--secondary-color);
+    color: var(--p-color);
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(252, 209, 167, 0.04);
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.form-btn {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 0.9rem 1.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 2px 8px rgba(252, 209, 167, 0.08);
+}
+
+.form-btn:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.captcha {
+    margin: 1.2rem 0 0.5rem 0;
+    font-size: 1rem;
+    color: var(--text2);
+}

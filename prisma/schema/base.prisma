@@ -1,0 +1,12 @@
+// Générateur du client Prisma
+// (Prisma client generator)
+generator client {
+    provider = "prisma-client-js" // Utilise le client JavaScript de Prisma (Use Prisma JS client)
+}
+
+// Source de données : base de données PostgreSQL
+// (Datasource: PostgreSQL database)
+datasource db {
+    provider = "postgresql" // Spécifie PostgreSQL comme fournisseur (Specify PostgreSQL as provider)
+    url      = env("DATABASE_URL") // URL de connexion depuis la variable d'environnement (Connection URL from environment variable)
+}

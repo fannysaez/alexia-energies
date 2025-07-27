@@ -1,0 +1,571 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(24, 20, 17, 0.06);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(254, 209, 167, 0.2);
+    z-index: 1000;
+}
+
+/* Buttons*/
+.ButtonRdv {
+    display: none !important;
+}
+
+.ButtonConnexionMonProfil {
+    display: none !important;
+}
+
+/* .buttons .mobileFooterButtonRdv {
+    display: none;
+}
+
+.buttons .mobileFooterButtonConnexion {
+    display: none;
+} */
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 80px;
+}
+
+.logo {
+    z-index: 1003;
+}
+
+.nav {
+    display: none;
+}
+
+.navLink {
+    color: var(--tiercery-color);
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.9px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.navLink:hover {
+    color: var(--primary-color);
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+    width: 80%;
+    opacity: 1;
+}
+
+.navLink.active {
+    color: var(--primary-color);
+}
+
+.servicesDropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.servicesLink {
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.9px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.servicesLink svg {
+    display: flex;
+}
+
+.servicesLink:hover {
+    color: var(--primary-color);
+}
+
+.servicesLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.servicesLink:hover::after {
+    width: 80%;
+    opacity: 1;
+}
+
+.servicesLink.active {
+    color: var(--primary-color);
+}
+
+.chevronIcon {
+    transition: transform 0.3s ease;
+    font-size: 16px;
+}
+
+.servicesDropdown:hover .chevronIcon {
+    transform: rotate(90deg);
+    color: var(--primary-color);
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 90%;
+    left: 0;
+    background-color: var(--background);
+    border: 1px solid rgba(254, 209, 167, 0.2);
+    border-radius: 8px;
+    padding: 10px 0;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.servicesDropdown:hover .dropdownMenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdownItem {
+    display: block;
+    padding: 12px 20px;
+    color: var(--tiercery-color);
+    text-decoration: none;
+    font-family: 'Work Sans';
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.dropdownItem:hover {
+    color: var(--primary-color);
+    background-color: rgba(254, 209, 167, 0.1);
+    border-left-color: var(--primary-color);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.buttons a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Le bouton burger est visible par défaut (mobile), caché sur desktop via media query plus bas */
+.burger {
+    position: fixed;
+    right: 20px;
+    top: 28px;
+    cursor: pointer;
+    z-index: 1002;
+    background: none;
+    border: none;
+    color: var(--title);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    font-family: 'WorkSans-SemiBold', sans-serif;
+    display: block;
+}
+
+.burger.hidden {
+    opacity: 1;
+    pointer-events: none;
+}
+
+.mobileOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background);
+    z-index: 1000;
+}
+
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100vh;
+    background-color: var(--background);
+    z-index: 1001;
+    padding: 60px 20px 80px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    animation: slideIn 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.menuClose {
+    position: absolute;
+    top: 28px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1003;
+    color: var(--title);
+}
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 80px;
+    flex: 1;
+}
+
+.mobileItem {
+    border-bottom: 1px solid var(--decorative-line-color);
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.decorativeLine img {
+    max-width: 100%;
+    height: auto;
+}
+
+.mobileItem::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-image: var(--decorative-line);
+    background-repeat: repeat-x;
+    background-size: auto 1px;
+}
+
+.mobileItem:last-of-type {
+    border-bottom: 1px solid var(--decorative-line-color);
+}
+
+.mobileLink {
+    color: var(--text);
+    font-family: 'Work Sans';
+    font-size: 13px;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.mobileLink.active {
+    color: var(--primary-color);
+}
+
+.mobileLink:hover {
+    color: var(--title);
+}
+
+.mobileDropdownBtn {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 13px;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.mobileDropdownBtn:hover {
+    color: var(--title);
+}
+
+.servicesMinus {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.mobileSubMenu {
+    background-color: var(--secondary-color);
+    padding: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mobileSubLink {
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 12px;
+    padding: 8px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.mobileSubLink:hover {
+    color: var(--title);
+}
+
+.subArrow {
+    font-size: 10px;
+    color: var(--title);
+}
+
+.footerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background-color: var(--title);
+    color: var(--background);
+    border: var(--tiercery-color) 1px solid;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-family: 'Work Sans';
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.footerButton:hover {
+    background-color: #e6c087;
+}
+
+.footerX {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footerbuttons {
+    font-size: 13px;
+}
+
+.mobileFooterButtonRdv {
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    border-radius: 30px;
+    text-transform: uppercase;
+    border: 1px solid white;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 15px 32px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.mobileFooterButtonConnexion {
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    border-radius: 30px;
+    text-transform: uppercase;
+    border: 1px solid white;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 15px 32px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+
+/* Desktop styles */
+@media (min-width: 1200px) {
+    .servicesLink {
+        font-size: 16px;
+    }
+
+    .nav {
+        display: flex;
+        gap: 45px;
+        align-items: center;
+    }
+
+    .navLink {
+        color: var(--text);
+        font-family: 'Work Sans', sans-serif;
+        font-size: 16px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .navLink:hover {
+        color: var(--title);
+    }
+
+    .buttons {
+        display: none;
+    }
+
+    .mobileFooterButtonConnexion {
+        display: none;
+    }
+
+    .burger {
+        display: none;
+    }
+
+    .ButtonRdv {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ButtonConnexionMonProfil {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobileFooterButtonConnexion {
+        display: none !important;
+    }
+
+    .mobileFooterButtonRdv {
+        background-color: var(--secondary-color);
+        color: var(--tertiary-color);
+        border-radius: 30px;
+        text-transform: uppercase;
+        border: 1px solid white;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding: 15px 0;
+        max-width: 220px;
+        width: 70% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        white-space: nowrap;
+    }
+
+
+    .mobileFooterButtonContact {
+        background-color: var(--secondary-color);
+        color: var(--tertiary-color);
+        border-radius: 30px;
+        text-transform: uppercase;
+        border: 1px solid white;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding: 15px 32px;
+        max-width: 250px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        white-space: nowrap;
+    }
+
+    .mobileFooterButtonConnexion {
+        background-color: var(--secondary-color);
+        color: var(--tertiary-color);
+        border-radius: 30px;
+        text-transform: uppercase;
+        border: 1px solid white;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding: 15px 32px;
+        max-width: 250px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        white-space: nowrap;
+    }
+}
+
+.chevronMobile {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s;
+    font-size: 15px;
+}
+
+.chevronOpen {
+    transform: rotate(90deg);
+}
+
+/* Responsive styles */
+/* SUPPRIMÉ: la règle qui affichait le burger sur desktop (min-width: 768px) */

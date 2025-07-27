@@ -1,0 +1,16 @@
+/// Modèle représentant un paragraphe associé à un article.
+/// Chaque paragraphe peut contenir du texte, une image et un texte alternatif.
+/// L'ordre permet de définir la position du paragraphe dans l'article.
+model Paragraph {
+    id         String  @id @default(cuid()) // Identifiant unique du paragraphe
+    ordre      Int // Ordre d'affichage du paragraphe dans l'article
+    titre      String? // Titre du paragraphe (optionnel)
+    texte      String? // Texte du paragraphe (optionnel)
+    imageUrl   String? // URL de l'image associée au paragraphe (optionnel)
+    altText    String? // Texte alternatif pour l'image (optionnel)
+    image_url2 String? // URL de la deuxième image (optionnelle)
+    article    Article @relation(fields: [articleId], references: [id]) // Référence à l'article parent
+    articleId  String // Identifiant de l'article parent
+
+    @@map("paragraphs")
+}

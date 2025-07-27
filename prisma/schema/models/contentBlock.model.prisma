@@ -1,0 +1,15 @@
+// Modèle représentant un bloc de contenu d'un article
+// Model representing a content block of an article
+model ContentBlock {
+    id          String  @id @default(cuid()) // Identifiant unique du bloc / Unique block identifier
+    order       Int // Ordre d'affichage du bloc / Display order of the block
+    type        String // Type de bloc (texte, image, etc.) / Block type (text, image, etc.)
+    textContent String? // Contenu textuel du bloc (optionnel) / Text content of the block (optional)
+    mediaUrl    String? // URL du média associé (optionnel) / Associated media URL (optional)
+    altText     String? @map("alt_text") // Texte alternatif pour le média (optionnel) / Alternative text for the media (optional)
+    titleLevel  String? // <-- Ajoute cette ligne
+    article     Article @relation(fields: [articleId], references: [id], onDelete: Cascade) // Référence à l'article parent / Reference to the parent article
+    articleId   String // Identifiant de l'article parent / Parent article identifier
+
+    @@map("content_blocks") // Nom de la table dans la base de données / Table name in the database
+}

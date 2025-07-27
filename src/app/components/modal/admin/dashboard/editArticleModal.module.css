@@ -1,0 +1,156 @@
+.modalContent {
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    background: #2C2520;
+    border-radius: 16px;
+    box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.25);
+    padding: 2.5rem 2rem 2rem 2rem;
+    color: #fff;
+    border: 1px solid #3A2F25;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.title {
+    color: #FFD9A0;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.modalContent h2 {
+    color: #FFD9A0;
+    font-size: 1.2rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.modalContent input,
+.modalContent textarea {
+    background: #2a211b;
+    color: #fff;
+    border: 1px solid #FFD9A0;
+    border-radius: 6px;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+/* Style spécifique pour input file pour rendre le texte visible */
+.modalContent input[type="file"]::-webkit-file-upload-button {
+    background: #FFD9A0;
+    color: #2C2520;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modalContent input[type="file"] {
+    color: #FFD9A0;
+    font-weight: 600;
+    border: 1.5px solid #FFD9A0;
+    background: transparent;
+}
+
+/* Responsive : mobile/tablette */
+@media (max-width: 768px) {
+    .modalContent {
+        max-width: 98vw;
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modalContent {
+        padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+        border-radius: 8px;
+    }
+
+    .title {
+        font-size: 0.9rem;
+    }
+}
+
+/* Pour Firefox */
+.modalContent input[type="file"]::file-selector-button {
+    background: #FFD9A0;
+    color: #2C2520;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modalContent label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* Centrer le label Image uniquement */
+.modalContent label[for="image"] {
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.modalContent textarea {
+    min-height: 70px;
+    resize: vertical;
+    margin-bottom: 1.2rem;
+}
+
+.modalContent button {
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.buttonRow {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.cancelButton {
+    flex: 1;
+    background: #FFD9A0;
+    color: #3A2F25;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.saveButton {
+    flex: 1;
+    background: #FFB86B;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}

@@ -1,0 +1,335 @@
+/* Section principale */
+.section {
+    position: relative;
+    padding: var(--section-padding-desktop) 0px;
+    width: 100%;
+    margin: auto;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;                                /* Évite le débordement des vectors */
+} /* Section conteneur principale avec centrage */
+
+/* Container du contenu */
+.container {
+    position: relative;
+    z-index: 2;                                      /* Au-dessus des vectors décoratifs */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+} /* Container centré pour le contenu */
+
+/* Vector central */
+.vector {
+    margin-bottom: 40px;
+    width: var(--vector-central-desktop);            /* Utilise votre variable */
+    height: auto;
+} /* Image/icône principale centrée */
+
+/* Paragraphe principal */
+.container p {
+    font-family: 'SortsMillGoudy-Regular', serif;
+    font-size: 20px;
+    line-height: 1.5;                                /* Augmenté pour plus d'espace */
+    text-align: center;
+    color: var(--tiercery-color);
+    margin: 0 auto;
+    max-width: 845px;                                /* Largeur optimisée pour 3 lignes */
+    position: relative;
+    word-spacing: 0.1em;                             /* Espacement entre les mots */
+    letter-spacing: 0.01em;                          /* Légère espacement des lettres */
+} /* Texte principal avec typographie personnalisée */
+
+/* === ÉLÉMENTS DÉCORATIFS INLINE === */
+.line,
+.linegrey,
+.lineround {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    margin: 0 6px;
+} /* Base commune pour éléments décoratifs inline */
+
+.line {
+    width: var(--line-width-desktop);                /* Utilise votre variable */
+    height: var(--line-height-desktop);              /* Utilise votre variable */
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    margin: 0 8px;
+    top: -3px;
+} /* Ligne décorative colorée */
+
+.linegrey {
+    width: var(--linegrey-width-desktop);            /* Utilise votre variable */
+    height: var(--linegrey-height-desktop);          /* Utilise votre variable */
+    background-color: var(--lineround-color);
+    border-radius: 15px;
+    margin: 0 8px;
+    top: -3px;
+} /* Ligne décorative grise */
+
+.lineround {
+    width: var(--lineround-size-desktop);            /* Utilise votre variable */
+    height: var(--lineround-size-desktop);           /* Utilise votre variable */
+    background-color: var(--lineround-color);
+    border-radius: 50%;
+    margin: 0 8px;
+    top: -3px;
+} /* Point décoratif rond */
+
+/* Vectors décoratifs */
+.vectorLeftTop {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    z-index: 1;
+    width: var(--vector-decoratif-desktop);          /* Utilise votre variable */
+    height: auto;
+    opacity: 0.7;
+} /* Vector décoratif coin supérieur gauche */
+
+.vectorRightBottom {
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    z-index: 1;
+    width: var(--vector-decoratif-desktop);          /* Utilise votre variable */
+    height: auto;
+    opacity: 0.7;
+} /* Vector décoratif coin inférieur droit */
+
+/* === MEDIA QUERIES RESPONSIVES === */
+
+/* Tablettes (768px - 1024px) */
+@media (max-width: 1024px) {
+    .section {
+        padding: 100px 0;                            /* Override la variable pour tablette */
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .vector {
+        width: 120px;                                /* Override pour tablette */
+        margin-bottom: 35px;
+    }
+    
+    .container p {
+        font-size: 18px;
+        line-height: 1.5;
+        max-width: 800px;                            /* Override pour tablette */
+    }
+    
+    /* Éléments décoratifs - Tablettes */
+    .line {
+        width: 50px;                                 /* Override pour tablette */
+        height: 20px;
+        margin: 0 6px;
+        top: -2px;
+    }
+    
+    .linegrey {
+        width: 45px;
+        height: 20px;
+        margin: 0 6px;
+        top: -2px;
+    }
+    
+    .lineround {
+        width: 20px;
+        height: 20px;
+        margin: 0 6px;
+        top: -2px;
+    }
+    
+    .vectorLeftTop,
+    .vectorRightBottom {
+        width: 250px;                                /* Override pour tablette */
+    }
+} /* Adaptations pour tablettes */
+
+/* Tablettes portrait (481px - 768px) */
+@media (max-width: 768px) {
+    .section {
+        padding: 80px 0;
+    }
+    
+    .vector {
+        /* width: 100px; */
+        margin-bottom: 30px;
+    }
+    
+    .container p {
+        line-height: 1.5;
+        max-width: 95%;
+        padding: 0 15px;
+    }
+    
+    /* Éléments décoratifs - Tablettes portrait */
+    .line {
+        width: 40px;
+        height: 18px;
+        margin: 0 5px;
+        top: -2px;
+    }
+    
+    .linegrey {
+        width: 35px;
+        height: 18px;
+        margin: 0 5px;
+        top: -2px;
+    }
+    
+    .lineround {
+        width: 18px;
+        height: 18px;
+        margin: 0 5px;
+        top: -2px;
+    }
+    
+    .vectorLeftTop,
+    .vectorRightBottom {
+        width: 180px;
+    }
+    
+    .vectorLeftTop {
+        top: -30px;
+        left: -30px;
+    }
+    
+    .vectorRightBottom {
+        bottom: -30px;
+        right: -30px;
+    }
+} /* Adaptations pour tablettes portrait */
+
+/* Mobiles (320px - 480px) */
+@media (max-width: 480px) {
+    .section {
+        padding: 60px 0;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .vector {
+                              
+        margin-bottom: 25px;
+    }
+    
+    .container p {
+
+        line-height: 1.5;
+        max-width: 98%;
+        padding: 0 10px;
+    }
+    
+    /* Éléments décoratifs - Mobiles */
+    .line {
+        width: 30px;
+        height: 15px;
+        margin: 0 3px;
+        top: -1px;
+    }
+    
+    .linegrey {
+        width: 25px;
+        height: 15px;
+        margin: 0 3px;
+        top: -1px;
+    }
+    
+    .lineround {
+        width: 15px;
+        height: 15px;
+        margin: 0 3px;
+        top: -1px;
+    }
+    
+    .vectorLeftTop,
+    .vectorRightBottom {
+        width: 120px;                                /* Vectors très petits */
+        opacity: 0.5;                                /* Plus transparents */
+    }
+    
+    .vectorLeftTop {
+        top: -20px;
+        left: -20px;
+    }
+    
+    .vectorRightBottom {
+        bottom: -20px;
+        right: -20px;
+    }
+} /* Adaptations pour mobiles */
+
+/* Très petits mobiles (max 320px) */
+@media (max-width: 320px) {
+    .section {
+        padding: 40px 0;
+    }
+    
+    .vector {
+                            
+        margin-bottom: 20px;
+    }
+    
+    .container p {
+        font-size: 18px;
+        line-height: 1.2;
+        padding: 0 5px;
+    }
+    
+    /* Éléments décoratifs - Très petits mobiles */
+    .line {
+        width: 25px;
+        height: 12px;
+        margin: 0 2px;
+        top: 0px;
+    }
+    
+    .linegrey {
+        width: 20px;
+        height: 12px;
+        margin: 0 2px;
+        top: 0px;
+    }
+    
+    .lineround {
+        width: 12px;
+        height: 12px;
+        margin: 0 2px;
+        top: 0px;
+    }
+    
+    .vectorLeftTop,
+    .vectorRightBottom {
+        width: 80px;                                 /* Vectors minimaux */
+        opacity: 0.3;
+    }
+} /* Adaptations pour petits mobiles */
+
+/* Option: Cacher les vectors sur très petits écrans */
+@media (max-width: 280px) {
+    .vectorLeftTop,
+    .vectorRightBottom {
+        display: none;                               /* Cache les vectors */
+    }
+    
+    .container p {
+        font-size: 16px;
+    }
+    
+    .vector {
+        width: 50px;
+    }
+} /* Masquage des éléments décoratifs sur très petits écrans */

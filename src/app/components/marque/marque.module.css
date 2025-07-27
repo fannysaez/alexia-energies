@@ -1,0 +1,114 @@
+.marque { /* Conteneur principal du texte défilant */
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    height: 109px;
+    display: flex;
+    align-items: center;
+    font-family: 'Sorts Mill Goudy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 109px;
+    text-transform: capitalize;
+    padding: 120px 0;
+}
+
+.marqueContent { /* Contenu animé du texte */
+    display: inline-flex;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    align-items: center;
+    height: 100%;
+}
+
+.marqueText { /* Style du texte défilant */
+    display: inline-block;
+    padding-right: 6rem;
+    white-space: nowrap;
+    background: linear-gradient(3.88deg, rgba(215, 180, 148, 0) 14.11%, #D7B494 150.28%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Directions */
+.left .marqueContent { /* Animation vers la gauche */
+    animation-name: scroll-left;
+}
+
+.right .marqueContent { /* Animation vers la droite */
+    animation-name: scroll-right;
+}
+
+/* Vitesses */
+.slow .marqueContent { /* Animation lente */
+    animation-duration: 60s;
+}
+
+.normal .marqueContent { /* Animation normale */
+    animation-duration: 30s;
+}
+
+.fast .marqueContent { /* Animation rapide */
+    animation-duration: 15s;
+}
+
+/* Pause au survol */
+.marque[data-pause-on-hover="true"]:hover .marqueContent { /* Pause animation au hover */
+    animation-play-state: paused;
+}
+
+/* Animations pour un défilement continu */
+@keyframes scroll-left { /* Défilement vers la gauche */
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-25%);
+    }
+}
+
+@keyframes scroll-right { /* Défilement vers la droite */
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) { /* Adaptation tablette */
+    .marque {
+        font-size: 70px;
+        height: 77px;
+        line-height: 77px;
+    }
+    .marqueText {
+        padding-right: 4rem;
+    }
+}
+
+@media (max-width: 768px) { /* Adaptation mobile */
+    .marque {
+        font-size: 50px;
+        height: 55px;
+        line-height: 55px;
+    }
+    .marqueText {
+        padding-right: 3rem;
+    }
+}
+
+@media (max-width: 480px) { /* Adaptation petit mobile */
+    .marque {
+        font-size: 30px;
+        height: 33px;
+        line-height: 33px;
+    }
+    .marqueText {
+        padding-right: 2rem;
+    }
+}

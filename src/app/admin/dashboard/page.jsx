@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 const NewsletterAdmin = dynamic(() => import("../newsletter/page"), { ssr: false });
 const UsersAdmin = dynamic(() => import("../users/page"), { ssr: false });
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { useEffect, useState, useCallback } from "react";
 import ArticleForm from "@/app/admin/articles/ArticleForm";
 import Button from "@/app/components/button/button";
@@ -13,7 +14,8 @@ import DeleteArticleModal from "@/app/components/modal/admin/dashboard/DeleteArt
 
 
 
-export default function DashboardPage() {
+
+function DashboardContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [showWelcome, setShowWelcome] = useState(searchParams.get("welcome") === "1");
@@ -523,5 +525,13 @@ export default function DashboardPage() {
                 )}
             </main>
         </div>
+    );
+}
+
+export default function DashboardPage() {
+    return (
+        <Suspense fallback={<div>Chargement du dashboard admin...</div>}>
+            <DashboardContent />
+        </Suspense>
     );
 }

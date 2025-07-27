@@ -1,10 +1,12 @@
 "use client";
 import styles from "./dashboard.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { useEffect, useState, useCallback } from "react";
 import Button from "@/app/components/button/button";
 
-export default function DashboardPage() {
+
+function DashboardContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [showWelcome, setShowWelcome] = useState(searchParams.get("welcome") === "1");
@@ -123,5 +125,13 @@ export default function DashboardPage() {
                 <Button text="Se déconnecter" onClick={handleLogout} className={styles["dashboard-logout"]} type="button" variant="primary" />
             </main>
         </div>
+    );
+}
+
+export default function DashboardPage() {
+    return (
+        <Suspense fallback={<div>Chargement du dashboard...</div>}>
+            <DashboardContent />
+        </Suspense>
     );
 }

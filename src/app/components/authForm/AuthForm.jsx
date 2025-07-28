@@ -22,7 +22,7 @@ export default function AuthForm({
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [firstname, setFirstname] = useState("");
-    const [role, setRole] = useState("user"); // Ajout du rôle côté front
+    // Le rôle n'est plus choisi côté front, il sera toujours 'user' à l'inscription
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const router = useRouter();
@@ -35,7 +35,7 @@ export default function AuthForm({
             let endpoint = apiEndpoint;
             let body;
             if (apiEndpoint.includes("register")) {
-                endpoint = role === "admin" ? "/api/admin/register" : "/api/register";
+                endpoint = "/api/register";
                 body = { email, password, firstname };
             }
             if (apiEndpoint.includes("login")) {
@@ -87,7 +87,7 @@ export default function AuthForm({
                     setEmail("");
                     setPassword("");
                     setFirstname("");
-                    setRole("user");
+                    // Rien à faire, le rôle est toujours 'user'
                     setLoading(false);
                     return;
                 }
@@ -171,14 +171,7 @@ export default function AuthForm({
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </span>
                     </div>
-                    {/* Ajout du choix du rôle */}
-                    <div className={styles["form-input"]} style={{ marginTop: 10 }}>
-                        <label style={{ marginRight: 10 }}>Je m'inscris en tant que :</label>
-                        <select value={role} onChange={e => setRole(e.target.value)} className={styles["role-select"]}>
-                            <option value="user">Utilisateur</option>
-                            <option value="admin">Administrateur</option>
-                        </select>
-                    </div>
+                    {/* Le choix du rôle a été retiré pour la sécurité */}
                 </div>
                 <Button
                     text={loading ? buttonText + "..." : buttonText}

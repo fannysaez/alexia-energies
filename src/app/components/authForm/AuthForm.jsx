@@ -176,7 +176,6 @@ export default function AuthForm({
                 <Button
                     text={loading ? buttonText + "..." : buttonText}
                     type="submit"
-                    className={styles["form-btn"]}
                     disabled={loading}
                     variant="secondary"
                     leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}

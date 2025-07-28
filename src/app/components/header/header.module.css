@@ -273,8 +273,8 @@
 .mobileNav {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    margin-top: 84px;
+    gap: 13px;
+    margin-top: 64px;
     /* réduit l’espace en haut */
     flex: 1;
 }

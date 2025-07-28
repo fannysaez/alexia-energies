@@ -229,7 +229,7 @@ export default function Header() {
                             <Separator />
                             <MenuItem label="FAQ" href="/FAQ" onClick={closeMenu} pathname={pathname} />
                             {/* Boutons mobile : Prendre rdv + Mon Profil (si admin connecté) + Contactez-moi */}
-                            <div className={style.mobileFooter} style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center', marginTop: 25 }}>
+                            <div className={style.mobileFooter} style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center', marginTop: 20 }}>
                                 <Button
                                     className={style.mobileFooterButtonRdv}
                                     text="Prendre rdv"

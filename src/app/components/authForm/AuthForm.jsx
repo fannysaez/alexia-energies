@@ -173,7 +173,7 @@ export default function AuthForm({
                     </div>
                     {/* Le choix du rôle a été retiré pour la sécurité */}
                 </div>
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                     <Button
                         text={loading ? buttonText + "..." : buttonText}
                         type="submit"

@@ -515,7 +515,7 @@ function DashboardContent() {
                 ) : (
                     <>
                         <h1 className={styles["dashboard-main-h1"]}>
-                            Votre espace admin {admin.firstName ? admin.firstName : admin.email} !
+                            Votre espace admin,  {admin.firstName ? admin.firstName : admin.email} !
                         </h1>
                         <div className={styles["dashboard-main-info"]}>
                             <span>Vous avez accès à toutes les fonctionnalités de gestion du contenu.</span>

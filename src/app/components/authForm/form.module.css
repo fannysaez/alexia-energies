@@ -56,16 +56,20 @@
 .form-btn {
     margin-top: 16px;
     width: 100%;
-    padding: 14px 0;
-    border-radius: 8px;
-    border: none;
-    background: var(--primary-color);
-    color: #fff;
-    font-size: 1.1rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 30px;
+    text-transform: uppercase;
+    border: 1px solid white;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 1px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    padding: 15px 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
 }
 
 .form-btn:disabled {

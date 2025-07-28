@@ -1,88 +1,97 @@
-// Générateur du client Prisma
 generator client {
-  provider = "prisma-client-js" // Fournisseur du client Prisma JS
+  provider = "prisma-client-js"
 }
 
-// Source de données : base de données PostgreSQL
 datasource db {
-  provider = "postgresql" // Fournisseur PostgreSQL
-  url      = env("DATABASE_URL") // URL de connexion à la base de données
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-// Modèle pour les articles de blog
 model Article {
-  id               String    @id @default(cuid()) // Identifiant unique
-  titre            String // Titre de l'article
-  slug             String    @unique // Slug unique pour l'URL
-  auteur           String // Auteur de l'article
-  dateCreation     DateTime  @default(now()) // Date de création
-  dateModification DateTime  @updatedAt // Date de dernière modification
-  datePublication  DateTime? // Date de publication (optionnelle)
-  statut           String    @default("brouillon") // Statut de l'article (ex: brouillon, publié)
-  contenu          String // Contenu principal de l'article
-  image            String? // Image principale (optionnelle)
-  imageCouverture  String? // Image de couverture (optionnelle)
-  categoryId       String? // Référence à la catégorie (optionnelle)
+  id               String         @id @default(cuid())
+  titre            String
+  slug             String         @unique
+  auteur           String
+  dateCreation     DateTime       @default(now())
+  dateModification DateTime       @updatedAt
+  datePublication  DateTime?
+  statut           String         @default("brouillon")
+  contenu          String
+  image            String?
+  imageCouverture  String?
+  categoryId       String?
+  category         Category?      @relation(fields: [categoryId], references: [id])
+  contentBlocks    ContentBlock[]
+  paragraphs       Paragraph[]
 
-  contentBlocks ContentBlock[] // Blocs de contenu associés
-  paragraphs    Paragraph[] // Paragraphes associés
-  category      Category?      @relation(fields: [categoryId], references: [id]) // Relation avec la catégorie (optionnelle)
-
-  @@map("articles") // Nom de la table dans la base de données
+  @@map("articles")
 }
 
-// Modèle pour les blocs de contenu d'un article
 model ContentBlock {
-  id          String    @id @default(cuid()) // Identifiant unique
-  order       Int // Ordre d'affichage du bloc
-  type        BlockType @map("block_type") // Type de bloc (texte, image, etc.)
-  textContent String?   @map("text_content") // Contenu texte (optionnel)
-  mediaUrl    String?   @map("media_url") // URL du média (optionnel)
-  altText     String?   @map("alt_text") // Texte alternatif (optionnel)
-  articleId   String // Référence à l'article parent
-  article     Article   @relation(fields: [articleId], references: [id], onDelete: Cascade) // Relation avec l'article
-  titleLevel  String? // Niveau de titre (optionnel)
+  id          String    @id @default(cuid())
+  order       Int
+  type        BlockType @map("block_type")
+  textContent String?   @map("text_content")
+  mediaUrl    String?   @map("media_url")
+  altText     String?   @map("alt_text")
+  articleId   String
+  titleLevel  String?
+  article     Article   @relation(fields: [articleId], references: [id], onDelete: Cascade)
 
-  @@map("content_blocks") // Nom de la table dans la base de données
+  @@map("content_blocks")
 }
 
-// Modèle pour les inscriptions à la newsletter
 model Newsletter {
-  id              String   @id @default(cuid()) // Identifiant unique
-  email           String   @unique // Email unique de l'abonné
-  dateInscription DateTime @default(now()) // Date d'inscription
+  id              String   @id @default(cuid())
+  email           String   @unique
+  dateInscription DateTime @default(now())
 
-  @@map("newsletters") // Nom de la table dans la base de données
+  @@map("newsletters")
 }
 
-// Modèle pour les paragraphes d'un article
 model Paragraph {
-  id         String  @id @default(cuid()) // Identifiant unique
-  ordre      Int // Ordre du paragraphe
-  titre      String? // Titre du paragraphe (ajouté)
-  texte      String? // Texte du paragraphe (ajouté)
-  image_url  String? // URL de l'image (optionnelle)
-  image_url2 String? // URL de la deuxième image (optionnelle)
-  alt_text   String? // Texte alternatif (optionnel)
-  article_id String // Référence à l'article parent
-  articles   Article @relation(fields: [article_id], references: [id], map: "paragraphs_articleId_fkey") // Relation avec l'article
+  id         String  @id @default(cuid())
+  ordre      Int
+  titre      String?
+  texte      String?
+  image_url  String?
+  image_url2 String?
+  alt_text   String?
+  article_id String
+  articles   Article @relation(fields: [article_id], references: [id], map: "paragraphs_articleId_fkey")
 
-  @@map("paragraphs") // Nom de la table dans la base de données
+  @@map("paragraphs")
 }
 
-// Modèle pour les administrateurs
 model Admin {
-  id              String   @id @default(cuid()) // Identifiant unique
-  firstName       String   @default("admin") // Prénom (First name)
-  email           String   @unique // Email unique de l'admin
-  password        String // Mot de passe
-  dateInscription DateTime @default(now()) // Date d'inscription
-  role            String   @default("admin") // Rôle de l'administrateur (admin par défaut)
+  id              String   @id @default(cuid())
+  firstName       String   @default("admin")
+  email           String   @unique
+  password        String
+  dateInscription DateTime @default(now())
+  role            String   @default("admin")
 
-  @@map("admin") // Nom de la table dans la base de données
+  @@map("admin")
 }
 
-// Enumération des types de blocs de contenu
+model User {
+  id        String @id @default(cuid())
+  email     String @unique
+  firstname String
+  password  String
+  role      String @default("user")
+
+  @@map("users")
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  articles Article[]
+
+  @@map("category")
+}
+
 enum BlockType {
   TEXT
   IMAGE
@@ -93,24 +102,4 @@ enum BlockType {
   TITRE
   LISTE
   PARAGRAPHE
-}
-
-// Modèle pour les utilisateurs
-model User {
-  id        String @id @default(cuid()) // Unique identifier // Identifiant unique
-  email     String @unique // Unique email of the user // Email unique de l'utilisateur
-  firstname String // Prénom de l'utilisateur
-  password  String // Hashed password // Mot de passe hashé
-  role      String @default("user") // Rôle de l'utilisateur (user par défaut)
-
-  @@map("users") // Table name in the database // Nom de la table dans la base de données
-}
-
-// Modèle pour les catégories d'articles
-model Category {
-  id       String    @id @default(cuid()) // Identifiant unique
-  name     String    @unique // Nom de la catégorie
-  articles Article[] // Articles associés à la catégorie
-
-  @@map("category") // Nom de la table dans la base de données
 }

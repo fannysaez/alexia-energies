@@ -11,7 +11,7 @@ export const metadataOpenGraph = {
     type: "website",
     images: [
       {
-        url: "/openGraph/OpenGraph.png",
+        url: "https://alexia-energies.vercel.app/openGraph/OpenGraph.png",
         width: 1200,
         height: 630,
         alt: "AstroNex - Bien-être, relaxation et accompagnement personnalisé",

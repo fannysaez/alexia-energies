@@ -228,39 +228,40 @@ export default function Header() {
                             <MenuItem label="Articles" href="/articles" onClick={closeMenu} pathname={pathname} />
                             <Separator />
                             <MenuItem label="FAQ" href="/FAQ" onClick={closeMenu} pathname={pathname} />
-                        </nav>
-                        {/* Boutons mobile : Prendre rdv + Mon Profil (si admin connecté) + Contactez-moi */}
-                        <div className={style.mobileFooter} style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center', marginTop: 24 }}>
-                            <Button
-                                className={style.mobileFooterButtonRdv}
-                                text="Prendre rdv"
-                                link="/contact"
-                                variant="secondary"
-                                leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                onClick={closeMenu}
-                            />
-                            {isMounted && isLogged && isAdmin && (
+                            {/* Boutons mobile : Prendre rdv + Mon Profil (si admin connecté) + Contactez-moi */}
+                            <div className={style.mobileFooter} style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center', marginTop: 25 }}>
                                 <Button
-                                    className={style.mobileFooterButtonConnexion}
-                                    text="Mon Profil"
-                                    link="/admin/dashboard"
-                                    variant="primary"
-                                    leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
-                                    rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                                    className={style.mobileFooterButtonRdv}
+                                    text="Prendre rdv"
+                                    link="/contact"
+                                    variant="secondary"
+                                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
                                     onClick={closeMenu}
                                 />
-                            )}
-                            <Button
-                                className={style.mobileFooterButtonContact}
-                                text="Contactez-moi"
-                                link="/contact"
-                                variant="secondary"
-                                leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                onClick={closeMenu}
-                            />
-                        </div>
+                                {isMounted && isLogged && isAdmin && (
+                                    <Button
+                                        className={style.mobileFooterButtonConnexion}
+                                        text="Mon Profil"
+                                        link="/admin/dashboard"
+                                        variant="primary"
+                                        leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                                        rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                                        onClick={closeMenu}
+                                    />
+                                )}
+                                <Button
+                                    className={style.mobileFooterButtonContact}
+                                    text="Contactez-moi"
+                                    link="/contact"
+                                    variant="secondary"
+                                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                                    onClick={closeMenu}
+                                />
+                            </div>
+                        </nav>
+
                     </div>
                 </div>
             )}

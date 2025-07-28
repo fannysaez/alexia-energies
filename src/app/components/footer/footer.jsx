@@ -98,9 +98,9 @@ const Footer = () => { // Footer component
                                 <h3>Liens Utiles</h3>
                                 <ul>
                                     <li><Link href="/">Accueil</Link></li>
-                                    <li><Link href="/about">À propos</Link></li>
+                                    <li><Link href="/a-propos">À propos</Link></li>
                                     <li><Link href="/articles">Articles</Link></li>
-                                    <li><Link href="/faq">FAQ</Link></li>
+                                    <li><Link href="/FAQ">FAQ</Link></li>
                                 </ul>
                             </div>
                             <div className={styles.linksSection}>
@@ -119,9 +119,9 @@ const Footer = () => { // Footer component
                         <h3>Liens Utiles</h3>
                         <ul>
                             <li><Link href="/">Accueil</Link></li>
-                            <li><Link href="/about">À propos</Link></li>
+                            <li><Link href="/a-propos">À propos</Link></li>
                             <li><Link href="/articles">Articles</Link></li>
-                            <li><Link href="/faq">FAQ</Link></li>
+                            <li><Link href="/FAQ">FAQ</Link></li>
                         </ul>
                     </div>
 

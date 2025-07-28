@@ -37,11 +37,13 @@
     margin-bottom: 24px;
     cursor: pointer;
 }
+
 .logo img {
     max-width: 100%;
     height: auto;
     transition: opacity 0.3s ease;
 }
+
 .logo:hover img {
     opacity: 0.8;
 }
@@ -59,6 +61,7 @@
     display: flex;
     gap: 16px;
 }
+
 .socialLink {
     width: 40px;
     height: 40px;
@@ -71,6 +74,7 @@
     color: var(--primary-color);
     font-size: 18px;
 }
+
 .socialLink:hover {
     border-color: var(--primary-color);
     background-color: var(--primary-color);
@@ -85,14 +89,17 @@
     margin-bottom: 32px;
     font-weight: 300;
 }
+
 .linksSection ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .linksSection li {
     margin-bottom: 30px;
 }
+
 .linksSection a {
     color: var(--paragraph-color);
     font-family: 'Work Sans';
@@ -101,12 +108,14 @@
     position: relative;
     text-decoration: none;
 }
+
 .linksSection a::before {
     content: '▶';
     color: var(--primary-color);
     margin-right: 8px;
     font-size: 12px;
 }
+
 .linksSection a:hover {
     color: var(--primary-color);
 }
@@ -119,6 +128,7 @@
     margin-bottom: 24px;
     font-weight: 300;
 }
+
 .newsletterForm {
     display: flex;
     margin-bottom: 32px;
@@ -128,6 +138,7 @@
     padding: 4px;
     align-items: center;
 }
+
 .emailInput {
     flex: 1;
     background: transparent;
@@ -138,9 +149,11 @@
     outline: none;
     font-size: 14px;
 }
+
 .emailInput::placeholder {
     color: var(--decorative-line-color);
 }
+
 .submitButton {
     background-color: var(--primary-color);
     border: none;
@@ -155,6 +168,7 @@
     color: var(--background);
     font-size: 16px;
 }
+
 .submitButton:hover {
     background-color: var(--title);
     transform: scale(1.05);
@@ -170,10 +184,12 @@
     color: var(--paragraph-color);
     font-family: 'Work Sans';
 }
+
 .checkbox input {
     margin-top: 2px;
     accent-color: var(--primary-color);
 }
+
 .checkbox span {
     line-height: 1.4;
 }
@@ -181,15 +197,22 @@
 /* Copyright and separator styles */
 .copyright {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 16px;
+    text-align: center;
+    flex-wrap: wrap;
+    line-height: 1.6;
+    word-break: break-word;
+    white-space: normal;
     padding-top: 40px;
     border-top: 1px solid var(--footer-decorative-line-color);
     font-family: 'Work Sans';
     font-size: 14px;
     color: var(--tiercery-color);
 }
+
 .separator {
     color: var(--primary-color);
     font-weight: bold;
@@ -198,16 +221,19 @@
     object-fit: contain;
     display: inline-block;
 }
+
 .linksRow {
     display: flex;
     gap: 40px;
 }
+
 /* Ajout : deux colonnes pour les liens */
 .desktopOnly {
-display: block;
+    display: block;
 }
+
 .mobileOnly {
-display: none;
+    display: none;
 }
 
 /* Responsive design: adapt layout and spacing for smaller screens */
@@ -215,31 +241,38 @@ display: none;
     .footer {
         padding: 80px 0 40px;
     }
+
     .mainContent {
         gap: 40px;
     }
 }
+
 @media (max-width: 1024px) {
     .mainContent {
         grid-template-columns: 1fr 1fr 1fr;
         gap: 40px;
     }
+
     .brandSection {
         grid-column: 1 / -1;
         max-width: 100%;
     }
+
     .newsletterSection {
         grid-column: 1 / -1;
     }
 }
+
 @media (max-width: 900px) {
     .desktopOnly {
         display: none !important;
     }
+
     .mobileOnly {
         display: block !important;
     }
-        .linksRow {
+
+    .linksRow {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
         gap: 50px;
@@ -247,56 +280,78 @@ display: none;
         margin-bottom: 0;
         width: 100%;
     }
+
     .linksSection {
         margin-bottom: 0;
         text-align: left;
     }
 }
+
 @media (max-width: 768px) {
     .footer {
         padding: 60px 0 30px;
     }
+
     .container {
         padding: 0 16px;
     }
+
     .mainContent {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+
     .brandSection {
         text-align: center;
     }
+
     .logo {
         justify-content: center;
     }
+
     .socialLinks {
         justify-content: center;
     }
+
     .copyright {
-        flex-direction: column;
-        gap: 8px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
         text-align: center;
+        flex-wrap: wrap;
+        line-height: 1.4;
+        font-size: 13px;
+        padding-top: 24px;
     }
+
     .newsletterForm {
         gap: 12px;
     }
+
     .submitButton {
         align-self: center;
     }
 }
+
 @media (max-width: 480px) {
     .footer {
         padding: 40px 0 20px;
     }
+
     .mainContent {
         gap: 30px;
     }
+
     .logo img {
         max-width: 150px;
     }
+
     .socialLinks {
         gap: 12px;
     }
+
     .socialLink {
         width: 36px;
         height: 36px;

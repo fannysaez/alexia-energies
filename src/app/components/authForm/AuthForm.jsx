@@ -180,6 +180,7 @@ export default function AuthForm({
                     variant="secondary"
                     leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
                     rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                    style={{ width: "100%" }}
                 />
             </form>
             {message && <p className={styles["form-message"]}>{message}</p>}

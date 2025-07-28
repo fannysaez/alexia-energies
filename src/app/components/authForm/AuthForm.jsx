@@ -173,15 +173,16 @@ export default function AuthForm({
                     </div>
                     {/* Le choix du rôle a été retiré pour la sécurité */}
                 </div>
-                <Button
-                    text={loading ? buttonText + "..." : buttonText}
-                    type="submit"
-                    disabled={loading}
-                    variant="secondary"
-                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                    style={{ width: "100%" }}
-                />
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Button
+                        text={loading ? buttonText + "..." : buttonText}
+                        type="submit"
+                        disabled={loading}
+                        variant="secondary"
+                        leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                        rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                    />
+                </div>
             </form>
             {message && <p className={styles["form-message"]}>{message}</p>}
             <div className={styles["form-link-container"]}>

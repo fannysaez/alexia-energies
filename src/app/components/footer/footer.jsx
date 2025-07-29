@@ -4,6 +4,7 @@ import Link from 'next/link'; // Import Next.js Link for navigation
 import Image from 'next/image'; // Import Next.js Image for optimized images
 import { FaInstagram, FaFacebook, FaLinkedin, FaYoutube } from 'react-icons/fa'; // Import social icons
 import { IoArrowForward } from 'react-icons/io5'; // Import arrow icon for newsletter
+import { RxTriangleRight } from 'react-icons/rx';
 import styles from './footer.module.css'; // Import CSS module for styling
 
 const Footer = () => { // Footer component
@@ -97,18 +98,39 @@ const Footer = () => { // Footer component
                             <div className={styles.linksSection}>
                                 <h3>Liens Utiles</h3>
                                 <ul>
-                                    <li><Link href="/">Accueil</Link></li>
-                                    <li><Link href="/a-propos">À propos</Link></li>
-                                    <li><Link href="/articles">Articles</Link></li>
-                                    <li><Link href="/FAQ">FAQ</Link></li>
+                                    <li><Link href="/">
+                                        <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                        Accueil
+                                    </Link></li>
+                                    <li><Link href="/a-propos">
+                                        <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                        À propos
+                                    </Link></li>
+                                    <li><Link href="/articles">
+                                        <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                        Articles
+                                    </Link></li>
+                                    <li><Link href="/FAQ">
+                                        <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                        FAQ
+                                    </Link></li>
                                 </ul>
                             </div>
                             <div className={styles.linksSection}>
                                 <h3>Services</h3>
                                 <ul>
-                                    <li><Link href="/services/magnetisme">Magnétisme</Link></li>
-                                    <li><Link href="/services/sophrologie">Sophrologie</Link></li>
-                                    <li><Link href="/services/human-design">Human Design</Link></li>
+                                    <li><Link href="/services/magnetisme">
+                                        <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                        Magnétisme
+                                    </Link></li>
+                                    <li><Link href="/services/sophrologie">
+                                        <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                        Sophrologie
+                                    </Link></li>
+                                    <li><Link href="/services/human-design">
+                                        <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                        Human Design
+                                    </Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -118,10 +140,22 @@ const Footer = () => { // Footer component
                     <div className={`${styles.linksSection} ${styles.desktopOnly}`}>
                         <h3>Liens Utiles</h3>
                         <ul>
-                            <li><Link href="/">Accueil</Link></li>
-                            <li><Link href="/a-propos">À propos</Link></li>
-                            <li><Link href="/articles">Articles</Link></li>
-                            <li><Link href="/FAQ">FAQ</Link></li>
+                            <li><Link href="/">
+                                <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                Accueil
+                            </Link></li>
+                            <li><Link href="/a-propos">
+                                <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                À propos
+                            </Link></li>
+                            <li><Link href="/articles">
+                                <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                Articles
+                            </Link></li>
+                            <li><Link href="/FAQ">
+                                <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                FAQ
+                            </Link></li>
                         </ul>
                     </div>
 
@@ -129,9 +163,18 @@ const Footer = () => { // Footer component
                     <div className={`${styles.linksSection} ${styles.desktopOnly}`}>
                         <h3>Services</h3>
                         <ul>
-                            <li><Link href="/services/magnetisme">Magnétisme</Link></li>
-                            <li><Link href="/services/sophrologie">Sophrologie</Link></li>
-                            <li><Link href="/services/human-design">Human Design</Link></li>
+                            <li><Link href="/services/magnetisme">
+                                <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                Magnétisme
+                            </Link></li>
+                            <li><Link href="/services/sophrologie">
+                                <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                Sophrologie
+                            </Link></li>
+                            <li><Link href="/services/human-design">
+                                <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                Human Design
+                            </Link></li>
                         </ul>
                     </div>
 
@@ -139,8 +182,14 @@ const Footer = () => { // Footer component
                     <div className={styles.linksSection}>
                         <h3>Informations</h3>
                         <ul>
-                            <li><Link href="/mentions-legales">Mentions Légales</Link></li>
-                            <li><Link href="/contact">Contact</Link></li>
+                            <li><Link href="/mentions-legales">
+                                <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                Mentions Légales
+                            </Link></li>
+                            <li><Link href="/contact">
+                                <RxTriangleRight color="var(--primary-color)" size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+                                Contact
+                            </Link></li>
                         </ul>
                     </div>
 

@@ -109,12 +109,7 @@
     text-decoration: none;
 }
 
-.linksSection a::before {
-    content: '▶';
-    color: var(--primary-color);
-    margin-right: 8px;
-    font-size: 12px;
-}
+
 
 .linksSection a:hover {
     color: var(--primary-color);

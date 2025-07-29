@@ -7,7 +7,8 @@ import style from "./header.module.css"; // Styles CSS modules pour le header
 import Button from "@/app/components/button/button"; // Composant bouton personnalisé
 import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire pour les boutons
 import { FaChevronRight, FaUser } from "react-icons/fa";
-
+import { HiChevronRight } from "react-icons/hi";
+import { RxTriangleRight } from "react-icons/rx";
 // Composant principal Header
 export default function Header() {
     // État pour le menu burger mobile et le sous-menu services
@@ -299,7 +300,10 @@ function Separator() {
 function SubMenuItem({ label, href, onClick }) {
     return (
         <Link href={href} className={style.mobileSubLink} onClick={onClick}>
-            <span className={style.subArrow}>▶</span> {label}
+            <span className={style.subArrow}>
+                <RxTriangleRight color="var(--primary-color)" size={22} />
+            </span>
+            {label}
         </Link>
     );
 }

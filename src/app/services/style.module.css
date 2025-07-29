@@ -1,3 +1,28 @@
+/* Item de la liste des bénéfices */
+.benefitItemList {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+/* Liste des bénéfices sophrologie */
+.benefitList {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    text-align: justify;
+}
+
+/* Paragraphe des bénéfices */
+.benefitParagraph {
+    margin-top: 15px;
+    text-align: justify;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--paragraph-color);
+}
+
 /* style.module.css */
 .container {
     position: relative;
@@ -104,6 +129,7 @@
     line-height: 1.7;
     color: var(--paragraph-color);
     margin-bottom: 16px;
+    text-align: justify;
 }
 
 /* Section bénéfices */
@@ -168,6 +194,8 @@
     gap: 24px;
     background: var(--quaternary-color);
     padding: 38px;
+    text-align: justify;
+
 }
 
 .articlesTitle {
@@ -239,6 +267,8 @@
     font-size: 12px;
     color: var(--paragraph-color);
     line-height: 1.4;
+    text-align: justify;
+
 }
 
 /* Responsive Design */

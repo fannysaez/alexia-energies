@@ -295,7 +295,6 @@
         text-overflow: ellipsis;
         display: block;
         padding: 0 20px;
-
     }
 
     .mainTitle {
@@ -344,6 +343,7 @@
 
     .breadcrumb {
         font-size: 16px;
+        margin-top: 48px;
     }
 
     .statLabel {
@@ -351,127 +351,128 @@
         line-height: 12px;
     }
 }
+
 /* Très petit mobile */
 @media (max-width: 380px) {
-@media (max-width: 380px) {
-    .container {
-        padding: 0 8px;
+    @media (max-width: 380px) {
+        .container {
+            padding: 0 8px;
+        }
+
+        .mainTitle {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+
+        .flexWrapper {
+            padding: 0 2px;
+            gap: 12px;
+        }
+
+
+        .statsContainer {
+            flex-direction: row;
+            border-radius: 25px;
+            border: 1px solid var(--decorative-line-color);
+            background-color: var(--secondary-color);
+            margin-top: 12px;
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+            gap: 0;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .statCard {
+            border-radius: 0;
+            border: none;
+            border-left: 2px solid var(--primary-color);
+            background: none;
+            width: 100%;
+            padding: 16px 10px;
+            margin: 0;
+        }
+
+        .statCard:first-child {
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            border-left: none;
+        }
+
+        .statCard:last-child {
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        .statNumber {
+            font-size: 24px;
+        }
+
+        .statLabel {
+            font-size: 14px;
+            line-height: 18px;
+        }
     }
 
-    .mainTitle {
-        font-size: 20px;
-        margin-bottom: 20px;
+    /* Ultra petit mobile */
+    @media (max-width: 320px) {
+        .container {
+            padding: 0 2px;
+        }
+
+        .mainTitle {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .flexWrapper {
+            padding: 0 1px;
+            gap: 8px;
+        }
+
+        .statsContainer {
+            margin-top: 6px;
+            border-radius: 6px;
+        }
+
+        .statCard {
+            padding: 4px 1px;
+            font-size: 10px;
+        }
+
+        .statNumber {
+            font-size: 18px;
+        }
+
+        .statLabel {
+            font-size: 12px;
+            line-height: 14px;
+        }
+
+        .breadcrumb {
+            font-size: 10px;
+            margin-bottom: 2px;
+            padding: 0 1px;
+            max-width: 100vw;
+            overflow-x: auto;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .breadcrumb span {
+            margin: 0 1px;
+        }
+
+        .breadcrumb {
+            font-size: 10px;
+            padding: 0 20px;
+            max-width: 100vw;
+            overflow-x: auto;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+
     }
-
-
-    .flexWrapper {
-        padding: 0 2px;
-        gap: 12px;
-    }
-
-
-    .statsContainer {
-        flex-direction: row;
-        border-radius: 25px;
-        border: 1px solid var(--decorative-line-color);
-        background-color: var(--secondary-color);
-        margin-top: 12px;
-        width: 100%;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
-        gap: 0;
-        overflow: hidden;
-        padding: 0;
-    }
-
-    .statCard {
-        border-radius: 0;
-        border: none;
-        border-left: 2px solid var(--primary-color);
-        background: none;
-        width: 100%;
-        padding: 16px 10px;
-        margin: 0;
-    }
-
-    .statCard:first-child {
-        border-top-left-radius: 25px;
-        border-bottom-left-radius: 25px;
-        border-left: none;
-    }
-
-    .statCard:last-child {
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
-    }
-
-    .statNumber {
-        font-size: 24px;
-    }
-
-    .statLabel {
-        font-size: 14px;
-        line-height: 18px;
-    }
-}
-
-/* Ultra petit mobile */
-@media (max-width: 320px) {
-    .container {
-        padding: 0 2px;
-    }
-
-    .mainTitle {
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
-
-    .flexWrapper {
-        padding: 0 1px;
-        gap: 8px;
-    }
-
-    .statsContainer {
-        margin-top: 6px;
-        border-radius: 6px;
-    }
-
-    .statCard {
-        padding: 4px 1px;
-        font-size: 10px;
-    }
-
-    .statNumber {
-        font-size: 18px;
-    }
-
-    .statLabel {
-        font-size: 12px;
-        line-height: 14px;
-    }
-
-    .breadcrumb {
-        font-size: 10px;
-        margin-bottom: 2px;
-        padding: 0 1px;
-        max-width: 100vw;
-        overflow-x: auto;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    .breadcrumb span {
-        margin: 0 1px;
-    }
-
-    .breadcrumb {
-        font-size: 10px;
-        padding: 0 20px;
-        max-width: 100vw;
-        overflow-x: auto;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-
-}
 }

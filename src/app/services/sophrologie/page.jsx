@@ -150,42 +150,42 @@ export default function SophrologiePage() {
                             harmoniser le corps et l&apos;esprit. Voici ses principaux bienfaits développés selon mon approche
                             intégrative.
                         </p>
-                        <ul style={{ listStyle: "none", padding: 0 }}>
-                            <li style={{ marginBottom: 20 }}>
+                        <ul className={styles.benefitList}>
+                            <li className={styles.benefitItemList}>
                                 <span className={styles.benefitIcon}>✓</span>
                                 <strong style={{ color: "var(--benefit-strong-color)" }}> Réduction du stress et de l&apos;anxiété</strong>
                                 <br />
-                                <p>
+                                <p className={styles.benefitParagraph}>
                                     Grâce à des techniques de respiration contrôlée et de relaxation musculaire, la sophrologie
                                     diminue significativement le niveau de stress. Elle régule l&apos;activité du système nerveux et
                                     favorise un état de calme intérieur durable.
                                 </p>
                             </li>
-                            <li style={{ marginBottom: 20 }}>
+                            <li className={styles.benefitItemList}>
                                 <span className={styles.benefitIcon}>✓</span>
                                 <strong style={{ color: "var(--benefit-strong-color)" }}> Amélioration du sommeil</strong>
                                 <br />
-                                <p>
+                                <p className={styles.benefitParagraph}>
                                     Les exercices de détente et de visualisation préparent naturellement le corps et l&apos;esprit
                                     au repos. La sophrologie aide à évacuer les tensions accumulées et facilite l&apos;endormissement
                                     pour un sommeil plus réparateur.
                                 </p>
                             </li>
-                            <li style={{ marginBottom: 20 }}>
+                            <li className={styles.benefitItemList}>
                                 <span className={styles.benefitIcon}>✓</span>
                                 <strong style={{ color: "var(--benefit-strong-color)" }}> Renforcement de la confiance en soi</strong>
                                 <br />
-                                <p>
+                                <p className={styles.benefitParagraph}>
                                     Par des exercices de visualisation positive et d&apos;ancrage, la sophrologie développe
                                     l&apos;estime de soi. Elle permet de reconnecter avec ses ressources intérieures et de cultiver
                                     une image positive de soi-même.
                                 </p>
                             </li>
-                            <li>
+                            <li className={styles.benefitItemList}>
                                 <span className={styles.benefitIcon}>✓</span>
                                 <strong style={{ color: "var(--benefit-strong-color)" }}> Équilibre émotionnel</strong>
                                 <br />
-                                <p>
+                                <p className={styles.benefitParagraph}>
                                     Les techniques sophrologiques aident à prendre du recul face aux émotions fortes (colère,
                                     tristesse, peur). Elles favorisent une meilleure gestion émotionnelle et développent
                                     la capacité à retrouver un équilibre rapidement.

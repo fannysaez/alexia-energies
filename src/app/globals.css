@@ -35,8 +35,8 @@
   --section-padding-desktop: 120px;
   --container-max-width: 1350px;
   --text-max-width: 1024px;
-  
-  
+
+
 }
 
 /* Déclaration de la police personnalisée */
@@ -104,8 +104,10 @@ a {
 
 p {
   color: var(--paragraph-color);
-  font-family: 'Work Sans';
+  font-family: 'Work Sans', sans-serif;
   line-height: 26px;
+  margin-top: 15px;
+  text-align: justify;
 }
 
 /* Classe pour le lien actif */
@@ -119,7 +121,7 @@ p {
 }
 
 .activeBtn {
-    border: 2px solid var(--primary-color);
-    background: var(--primary-color);
-    color: var(--secondary-color);
+  border: 2px solid var(--primary-color);
+  background: var(--primary-color);
+  color: var(--secondary-color);
 }

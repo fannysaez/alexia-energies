@@ -1,4 +1,7 @@
+
+"use client";
 import Link from "next/link"; // Import du composant Link de Next.js
+import { useRouter } from "next/navigation";
 import style from "./button.module.css"; // Import des styles CSS du bouton
 
 export default function Button({
@@ -12,6 +15,7 @@ export default function Button({
     type = "button", // Type du bouton (button/submit)
     isReserveButton = false // Indique si c'est un bouton "réservez"
 }) {
+    const router = useRouter();
     // Attribution de la bonne classe CSS selon le variant
     const buttonClass = variant === "primary" ? style.primary : style.secondary;
 
@@ -35,7 +39,27 @@ export default function Button({
         </>
     );
 
-    // Si onClick est fourni, utiliser un button
+
+    // Si onClick ET link sont fournis, on veut fermer le menu ET naviguer
+    if (onClick && link && !link.startsWith("#")) {
+        const handleClick = (e) => {
+            e.preventDefault();
+            onClick && onClick(e);
+            router.push(link);
+        };
+        return (
+            <button
+                className={`${buttonClass} ${reserveClass} ${className}`}
+                onClick={handleClick}
+                type={type}
+                style={{ textDecoration: 'none', cursor: 'pointer' }}
+            >
+                {buttonContent}
+            </button>
+        );
+    }
+
+    // Si onClick seul est fourni, utiliser un button
     if (onClick) {
         return (
             <button

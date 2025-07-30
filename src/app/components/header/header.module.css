@@ -15,16 +15,16 @@
 }
 
 .ButtonConnexionMonProfil {
-    display: none ;
+    display: none;
 }
 
 /* .buttons .mobileFooterButtonRdv {
     display: none;
-}
-
-.buttons .mobileFooterButtonConnexion {
-    display: none;
 } */
+
+/* .buttons .mobileFooterButtonConnexion {
+    display: none;
+}  */
 
 .container {
     max-width: var(--container-max-width);
@@ -184,8 +184,10 @@
     border-left-color: var(--primary-color);
 }
 
+
+/* Par défaut, les boutons desktop sont masqués sur mobile/tablette */
 .buttons {
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     gap: 16px;
@@ -481,8 +483,9 @@
         color: var(--title);
     }
 
+    /* Les boutons desktop sont visibles uniquement sur desktop */
     .buttons {
-        display: none;
+        display: flex;
     }
 
     .mobileFooterButtonConnexion {
@@ -527,7 +530,6 @@
         gap: 10px;
         white-space: nowrap;
     }
-
 
     .mobileFooterButtonContact {
         background-color: var(--secondary-color);

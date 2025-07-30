@@ -187,7 +187,7 @@
 
 /* Par défaut, les boutons desktop sont masqués sur mobile/tablette */
 .buttons {
-    display: none;
+    display: none !important;
     flex-direction: row;
     align-items: center;
     gap: 16px;

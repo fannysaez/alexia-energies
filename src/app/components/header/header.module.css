@@ -15,16 +15,16 @@
 }
 
 .ButtonConnexionMonProfil {
-    display: none;
+    display: none !important;
 }
 
 /* .buttons .mobileFooterButtonRdv {
     display: none;
-} */
+}
 
-/* .buttons .mobileFooterButtonConnexion {
+.buttons .mobileFooterButtonConnexion {
     display: none;
-}  */
+} */
 
 .container {
     max-width: var(--container-max-width);
@@ -184,10 +184,8 @@
     border-left-color: var(--primary-color);
 }
 
-
-/* Par défaut, les boutons desktop sont masqués sur mobile/tablette */
 .buttons {
-    display: none !important;
+    display: flex;
     flex-direction: row;
     align-items: center;
     gap: 16px;
@@ -234,12 +232,11 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 288px;
+    width: 320px;
     height: 100vh;
     background-color: var(--background);
     z-index: 1001;
-    padding: 20px 20px 24px;
-    /* réduit le padding haut et bas */
+    padding: 60px 20px 80px;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -247,8 +244,6 @@
     animation: slideIn 0.4s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    /* espace entre nav et footer */
 }
 
 @keyframes slideIn {
@@ -275,9 +270,8 @@
 .mobileNav {
     display: flex;
     flex-direction: column;
-    gap: 13px;
-    margin-top: 64px;
-    /* réduit l’espace en haut */
+    gap: 15px;
+    margin-top: 80px;
     flex: 1;
 }
 
@@ -285,7 +279,7 @@
     border-bottom: 1px solid var(--decorative-line-color);
     overflow: hidden;
     position: relative;
-    /* padding-bottom: 10px; */
+    padding-bottom: 10px;
 }
 
 .decorativeLine img {
@@ -313,7 +307,7 @@
     color: var(--text);
     font-family: 'Work Sans';
     font-size: 13px;
-    margin: 10px;
+    padding: 10px;
     text-decoration: none;
     display: block;
     transition: color 0.3s ease;
@@ -412,14 +406,6 @@
     font-size: 13px;
 }
 
-.mobileFooterButtonRdv,
-.mobileFooterButtonContact,
-.mobileFooterButtonConnexion {
-    width: 100%;
-    padding: 15px 32px;
-    /* ...autres styles identiques... */
-}
-
 .mobileFooterButtonRdv {
     background-color: var(--secondary-color);
     color: var(--tertiary-color);
@@ -430,7 +416,7 @@
     font-weight: 600;
     letter-spacing: 1px;
     padding: 15px 32px;
-    width: 100%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -448,7 +434,7 @@
     font-weight: 600;
     letter-spacing: 1px;
     padding: 15px 32px;
-    width: 100%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -483,9 +469,8 @@
         color: var(--title);
     }
 
-    /* Les boutons desktop sont visibles uniquement sur desktop */
     .buttons {
-        display: flex;
+        display: none;
     }
 
     .mobileFooterButtonConnexion {
@@ -521,15 +506,16 @@
         font-size: 14px;
         font-weight: 600;
         letter-spacing: 1px;
-        padding: 15px 17px;
-        max-width: 250px;
-        width: 100%;
+        padding: 15px 0;
+        max-width: 220px;
+        width: 70% !important;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
         white-space: nowrap;
     }
+
 
     .mobileFooterButtonContact {
         background-color: var(--secondary-color);
@@ -541,7 +527,8 @@
         font-weight: 600;
         letter-spacing: 1px;
         padding: 15px 32px;
-        width: 80%;
+        max-width: 250px;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;

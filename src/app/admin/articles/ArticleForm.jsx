@@ -522,60 +522,91 @@ export default function ArticleForm({
 
     // Ajouter un paragraphe
     const handleAddParagraph = async () => {
-        if (!paraText && !paraImageUrl && !paraImageFile && !paraImageUrl2 && !paraImageFile2) return;
-        let image_url = paraImageUrl;
-        let image_url2 = paraImageUrl2;
-        // upload image 1 si fichier
-        if (paraImageFile) {
-            const formData = new FormData();
-            formData.append('file', paraImageFile);
-            if (paraImageName.trim() !== '') {
-                formData.append('newName', paraImageName.trim());
-            }
-            try {
+        if (!paraText && !paraImageUrl && !paraImageFile && !paraImageUrl2 && !paraImageFile2) {
+            setParaSuccess('');
+            alert('Veuillez ajouter du texte ou au moins une image pour créer un paragraphe.');
+            return;
+        }
+
+        try {
+            let image_url = paraImageUrl;
+            let image_url2 = paraImageUrl2;
+
+            // upload image 1 si fichier
+            if (paraImageFile) {
+                const formData = new FormData();
+                formData.append('file', paraImageFile);
+                if (paraImageName.trim() !== '') {
+                    formData.append('newName', paraImageName.trim());
+                }
+
                 const res = await fetch('/api/upload-image', {
                     method: 'POST',
                     body: formData,
                 });
                 const data = await res.json();
-                if (res.ok && data.imageUrl) image_url = data.imageUrl;
-            } catch { }
-        }
-        // upload image 2 si fichier
-        if (paraImageFile2) {
-            const formData2 = new FormData();
-            formData2.append('file', paraImageFile2);
-            if (paraImageName2.trim() !== '') {
-                formData2.append('newName', paraImageName2.trim());
+
+                if (!res.ok) {
+                    throw new Error(data.error || `Erreur upload image 1: ${res.status}`);
+                }
+
+                if (data.imageUrl) {
+                    image_url = data.imageUrl;
+                }
             }
-            try {
+
+            // upload image 2 si fichier
+            if (paraImageFile2) {
+                const formData2 = new FormData();
+                formData2.append('file', paraImageFile2);
+                if (paraImageName2.trim() !== '') {
+                    formData2.append('newName', paraImageName2.trim());
+                }
+
                 const res2 = await fetch('/api/upload-image', {
                     method: 'POST',
                     body: formData2,
                 });
                 const data2 = await res2.json();
-                if (res2.ok && data2.imageUrl) image_url2 = data2.imageUrl;
-            } catch { }
+
+                if (!res2.ok) {
+                    throw new Error(data2.error || `Erreur upload image 2: ${res2.status}`);
+                }
+
+                if (data2.imageUrl) {
+                    image_url2 = data2.imageUrl;
+                }
+            }
+
+            // Ajouter le paragraphe
+            setParagraphs([...paragraphs, {
+                texte: paraText,
+                image_url,
+                image_url2,
+                alt_text: paraAltText,
+                ordre: paragraphs.length + 1,
+            }]);
+
+            // Réinitialiser les champs
+            setParaText('');
+            setParaImageUrl('');
+            setParaImageFile(null);
+            setParaImagePreview('');
+            setParaImageUrl2('');
+            setParaImageFile2(null);
+            setParaImagePreview2('');
+            setParaImageName('');
+            setParaImageName2('');
+            setParaAltText('');
+
+            setParaSuccess('Paragraphe ajouté !');
+            setTimeout(() => setParaSuccess(''), MESSAGE_TIMEOUT);
+
+        } catch (error) {
+            console.error('Erreur lors de l\'ajout du paragraphe:', error);
+            setParaSuccess('');
+            alert(`Erreur lors de l'upload: ${error.message}`);
         }
-        setParagraphs([...paragraphs, {
-            texte: paraText,
-            image_url,
-            image_url2,
-            alt_text: paraAltText,
-            ordre: paragraphs.length + 1,
-        }]);
-        setParaText('');
-        setParaImageUrl('');
-        setParaImageFile(null);
-        setParaImagePreview('');
-        setParaImageUrl2('');
-        setParaImageFile2(null);
-        setParaImagePreview2('');
-        setParaImageName('');
-        setParaImageName2('');
-        setParaAltText('');
-        setParaSuccess('Paragraphe ajouté !');
-        setTimeout(() => setParaSuccess(''), MESSAGE_TIMEOUT);
     };
 
     // Éditer un paragraphe

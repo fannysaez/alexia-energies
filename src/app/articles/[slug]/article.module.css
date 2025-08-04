@@ -316,7 +316,7 @@
 
 .paragraphImagesRow {
     display: flex;
-    gap: 32px;
+    gap: 40px;
     justify-content: center;
     align-items: center;
     margin-top: 20px;

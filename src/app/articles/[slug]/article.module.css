@@ -2,6 +2,7 @@
 .blockCitation,
 .blockCitation * {
     color: var(--paragraph-color) !important;
+    margin-top: 20px;
 }
 
 .metaFlex {
@@ -37,7 +38,7 @@
 /* Agrandissement de l'image principale de l'article */
 .articleImage {
     width: 100%;
-    max-width: 1200px;
+    max-width: 950px;
     height: auto;
     max-height: 550px;
     border-radius: 15px;
@@ -230,6 +231,7 @@
     margin: 5px auto 0 auto;
     padding-left: 24px;
     padding-right: 24px;
+    margin-bottom: 25px;
 }
 
 .articleContent h2 {
@@ -304,7 +306,7 @@
 .blocksWrapper,
 .paragraphsWrapper {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 10px;
 }
 
 .paragraphItem {
@@ -373,13 +375,18 @@
     line-height: 1.8;
     font-size: 1.13rem;
     text-align: justify;
-    margin-bottom: 40px;
+    /* margin-bottom: 15px; */
 }
 
 /* Correction couleur pour les blocs LISTE */
 .blockList,
 .blockListItem {
-    color: var(--paragraph-color) !important;
+    color: var(--primary-color);
+    padding: 0px 0px 0px 13px;
+    font-family: 'SortsMillGoudy-Regular', serif;
+    line-height: 1.8;
+    font-size: 1.13rem;
+    text-align: justify;
 }
 
 /* Correction couleur pour les blocs PARAGRAPHE */
@@ -387,6 +394,74 @@
 .blockParagraph * {
     color: var(--paragraph-color) !important;
 }
+
+/* Style pour les blocs TITRE NIVEAU */
+.blockTitleLevel,
+.blockTitleLevel * {
+    color: var(--primary-color) !important;
+    font-family: 'SortsMillGoudy-Regular', serif;
+    line-height: 1.4;
+    text-align: left;
+    font-weight: 400;
+    /* margin-top: 15px; */
+}
+
+/* Classes spécifiques pour chaque niveau */
+.blockTitleH1 {
+    color: var(--primary-color) !important;
+    font-family: 'SortsMillGoudy-Regular', serif !important;
+    font-size: 2rem !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+    font-weight: 400 !important;
+    /* margin: 40px 0 24px 0 !important; */
+}
+
+.blockTitleH2 {
+    color: var(--primary-color) !important;
+    font-family: 'SortsMillGoudy-Regular', serif !important;
+    font-size: 1.6rem !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+    font-weight: 400 !important;
+}
+
+.blockTitleH3 {
+    color: var(--primary-color) !important;
+    font-family: 'SortsMillGoudy-Regular', serif !important;
+    font-size: 1.3rem !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+    font-weight: 400 !important;
+}
+
+.blockTitleH4 {
+    color: var(--primary-color) !important;
+    font-family: 'SortsMillGoudy-Regular', serif !important;
+    font-size: 1.6rem !important;
+    line-height: 1 !important;
+    text-align: left !important;
+    font-weight: 400 !important;
+}
+
+.blockTitleH5 {
+    color: var(--primary-color) !important;
+    font-family: 'SortsMillGoudy-Regular', serif !important;
+    font-size: 1.4rem !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+    font-weight: 400 !important;
+}
+
+.blockTitleH6 {
+    color: var(--primary-color) !important;
+    font-family: 'SortsMillGoudy-Regular', serif !important;
+    font-size: 1.2rem !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+    font-weight: 400 !important;
+}
+
 
 .blockItem p {
     color: var(--primary-color);

@@ -181,7 +181,11 @@ export default function ArticlePage() {
                                     {block.type === "TITRE" && block.textContent && (
                                         React.createElement(
                                             block.titleLevel || 'h3',
-                                            { className: styles.blockTitle },
+                                            {
+                                                className: block.titleLevel
+                                                    ? styles[`blockTitle${block.titleLevel.toUpperCase()}`]
+                                                    : styles.blockTitle
+                                            },
                                             block.textContent
                                         )
                                     )}

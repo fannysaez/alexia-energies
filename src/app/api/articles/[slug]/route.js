@@ -141,15 +141,8 @@ export async function PUT(request, { params }) {
                     }
                 }
                 for (const p of data.paragraphs) {
-                    let image_url = p.image_url;
-                    let image_url2 = p.image_url2;
-                    if (image_url && typeof image_url === 'string' && !image_url.startsWith('/articles/')) {
-                        image_url = '/articles/' + image_url.replace(/^\/+/, '');
-                    }
-                    if (image_url2 && typeof image_url2 === 'string' && !image_url2.startsWith('/articles/')) {
-                        image_url2 = '/articles/' + image_url2.replace(/^\/+/, '');
-                    }
-                    const paragraphData = { ...p, article_id: article.id, image_url, image_url2 };
+                    // On stocke l'URL Cloudinary telle quelle
+                    const paragraphData = { ...p, article_id: article.id };
                     if (p.id) {
                         await prisma.paragraph.update({
                             where: { id: p.id },
@@ -225,19 +218,7 @@ export async function DELETE(request, { params }) {
                 { status: 404, headers: { "Content-Type": "application/json" } }
             );
         }
-        // Suppression du fichier image si présent
-        if (article.image && typeof article.image === 'string' && article.image.startsWith('/articles/')) {
-            try {
-                const path = require('path');
-                const fs = require('fs');
-                const imagePath = path.join(process.cwd(), 'public', article.image.replace(/^\//, ''));
-                if (fs.existsSync(imagePath)) {
-                    fs.unlinkSync(imagePath);
-                }
-            } catch (err) {
-                console.error('Erreur suppression image:', err);
-            }
-        }
+        // Les images sont maintenant hébergées sur Cloudinary, donc pas de suppression locale
         await prisma.article.delete({ where: { slug } });
         return new Response(JSON.stringify({ message: "Article supprimé" }), {
             status: 200,

@@ -332,7 +332,8 @@
     object-fit: cover;
     object-position: center;
     background: transparent;
-    border: 2px solid var(--primary-color);
+    border-radius: 10px 10px 0 0;
+    border: 1px solid var(--primary-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }

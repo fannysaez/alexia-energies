@@ -1384,10 +1384,58 @@ export default function ArticleForm({
                                     <div className={styles.paragraphText}>{para.texte}</div>
                                     <div className={styles.paragraphImagesRow}>
                                         {para.image_url && (
-                                            <img src={para.image_url} alt={para.alt_text || "Image du paragraphe"} className={styles.paragraphImage} />
+                                            <img
+                                                src={para.image_url}
+                                                alt={para.alt_text || "Image du paragraphe"}
+                                                className={styles.paragraphImage}
+                                                onError={(e) => {
+                                                    e.target.style.display = 'none';
+                                                    e.target.nextSibling.style.display = 'flex';
+                                                }}
+                                            />
+                                        )}
+                                        {para.image_url && (
+                                            <div style={{
+                                                display: 'none',
+                                                width: '120px',
+                                                height: '80px',
+                                                backgroundColor: '#444',
+                                                borderRadius: '4px',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                color: '#FFD9A0',
+                                                fontSize: '12px',
+                                                textAlign: 'center'
+                                            }}>
+                                                Image<br />indisponible
+                                            </div>
                                         )}
                                         {para.image_url2 && (
-                                            <img src={para.image_url2} alt={para.alt_text || "Image du paragraphe 2"} className={styles.paragraphImage2} />
+                                            <img
+                                                src={para.image_url2}
+                                                alt={para.alt_text || "Image du paragraphe 2"}
+                                                className={styles.paragraphImage2}
+                                                onError={(e) => {
+                                                    e.target.style.display = 'none';
+                                                    e.target.nextSibling.style.display = 'flex';
+                                                }}
+                                            />
+                                        )}
+                                        {para.image_url2 && (
+                                            <div style={{
+                                                display: 'none',
+                                                width: '120px',
+                                                height: '80px',
+                                                backgroundColor: '#444',
+                                                borderRadius: '4px',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                color: '#FFD9A0',
+                                                fontSize: '12px',
+                                                textAlign: 'center'
+                                            }}>
+                                                Image<br />indisponible
+                                            </div>
                                         )}
                                     </div>
                                     <div className={styles.paragraphActions}>
@@ -1399,14 +1447,62 @@ export default function ArticleForm({
                                         <input type="file" accept="image/*" onChange={e => handleUploadParaImage(idx, 'image_url', e)} className={styles.inputParagraphImage} key={para.image_url || `para-img1-${idx}`} />
                                         {para.image_url && (
                                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                                <img src={para.image_url} alt={para.alt_text || "Image du paragraphe"} className={styles.paragraphImage} style={{ maxWidth: 120, marginTop: 4 }} />
+                                                <img
+                                                    src={para.image_url}
+                                                    alt={para.alt_text || "Image du paragraphe"}
+                                                    className={styles.paragraphImage}
+                                                    style={{ maxWidth: 120, marginTop: 4 }}
+                                                    onError={(e) => {
+                                                        e.target.style.display = 'none';
+                                                        e.target.nextSibling.style.display = 'flex';
+                                                    }}
+                                                />
+                                                <div style={{
+                                                    display: 'none',
+                                                    width: '120px',
+                                                    height: '80px',
+                                                    backgroundColor: '#444',
+                                                    borderRadius: '4px',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    color: '#FFD9A0',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                    marginTop: 4
+                                                }}>
+                                                    Image<br />indisponible
+                                                </div>
                                                 <button type="button" onClick={() => handleEditParagraph(idx, { image_url: '' })} className={styles.deleteParaImageBtn}>✕</button>
                                             </div>
                                         )}
                                         <input type="file" accept="image/*" onChange={e => handleUploadParaImage(idx, 'image_url2', e)} className={styles.inputParagraphImage2} key={para.image_url2 || `para-img2-${idx}`} />
                                         {para.image_url2 && (
                                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                                <img src={para.image_url2} alt={para.alt_text || "Image du paragraphe 2"} className={styles.paragraphImage2} style={{ maxWidth: 120, marginTop: 4 }} />
+                                                <img
+                                                    src={para.image_url2}
+                                                    alt={para.alt_text || "Image du paragraphe 2"}
+                                                    className={styles.paragraphImage2}
+                                                    style={{ maxWidth: 120, marginTop: 4 }}
+                                                    onError={(e) => {
+                                                        e.target.style.display = 'none';
+                                                        e.target.nextSibling.style.display = 'flex';
+                                                    }}
+                                                />
+                                                <div style={{
+                                                    display: 'none',
+                                                    width: '120px',
+                                                    height: '80px',
+                                                    backgroundColor: '#444',
+                                                    borderRadius: '4px',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    color: '#FFD9A0',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                    marginTop: 4
+                                                }}>
+                                                    Image<br />indisponible
+                                                </div>
                                                 <button type="button" onClick={() => handleEditParagraph(idx, { image_url2: '' })} className={styles.deleteParaImageBtn}>✕</button>
                                             </div>
                                         )}

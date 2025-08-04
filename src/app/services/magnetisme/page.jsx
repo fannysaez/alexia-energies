@@ -46,14 +46,14 @@ export default function MagnetismePage() {
             title: "Séance de magnétisme : à quoi s'attendre ?",
             description: "Comprenez le déroulement d'une séance et préparez-vous à cette expérience unique.",
             image: "/img/services/magnetisme/Indoor Meditation.webp",
-            link: "#/articles/magnetisme-seance"
+            link: "/articles/magnetisme-seance"
         },
         {
             id: 3,
             title: "Magnétisme et sommeil réparateur",
             description: "Comment le magnétisme peut améliorer la qualité de votre sommeil naturellement.",
             image: "/img/services/magnetisme/Serene Crystal Meditation.webp",
-            link: "#/articles/magnetisme-sommeil-reparateur"
+            link: "/articles/magnetisme-sommeil-reparateur"
         }
     ];
 

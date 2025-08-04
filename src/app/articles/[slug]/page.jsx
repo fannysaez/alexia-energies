@@ -241,8 +241,18 @@ export default function ArticlePage() {
                                         />
                                     )}
                                     <div className={styles.paragraphImagesRow}>
-                                        {para.image_url && <img src={para.image_url} alt="Image 1" />}
-                                        {para.image_url2 && <img src={para.image_url2} alt="Image 2" />}
+                                        {para.image_url && (
+                                            <img
+                                                src={para.image_url}
+                                                alt={para.alt_text || `Image du paragraphe ${para.ordre}`}
+                                            />
+                                        )}
+                                        {para.image_url2 && (
+                                            <img
+                                                src={para.image_url2}
+                                                alt={para.alt_text || `Image 2 du paragraphe ${para.ordre}`}
+                                            />
+                                        )}
                                     </div>
                                 </div>
                             ))}

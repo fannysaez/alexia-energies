@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import { writeFile, mkdir } from 'fs/promises';
+import path from 'path';
 
 export async function POST(req) {
     try {
@@ -17,9 +19,9 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Aucun fichier envoyé' }, { status: 400 });
         }
 
-        // Vérifier la taille du fichier (max 10MB)
-        if (file.size > 10 * 1024 * 1024) {
-            return NextResponse.json({ error: 'Fichier trop volumineux (max 10MB)' }, { status: 413 });
+        // Vérifier la taille du fichier (max 5MB)
+        if (file.size > 5 * 1024 * 1024) {
+            return NextResponse.json({ error: 'Fichier trop volumineux (max 5MB)' }, { status: 413 });
         }
 
         // Vérifier le type de fichier
@@ -27,21 +29,38 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Le fichier doit être une image' }, { status: 400 });
         }
 
-        // Convertir le fichier en Base64 pour le stocker temporairement
+        // Créer le nom de fichier
+        const originalName = file.name;
+        const extension = path.extname(originalName);
+        const timestamp = Date.now();
+        const finalFileName = newName && newName.trim()
+            ? `${timestamp}-${newName.trim().replace(/[^a-zA-Z0-9.-]/g, '_')}${extension}`
+            : `${timestamp}-${originalName.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+
+        // Créer le chemin de destination
+        const uploadDir = path.join(process.cwd(), 'public', 'articles');
+        const filePath = path.join(uploadDir, finalFileName);
+
+        // Créer le dossier s'il n'existe pas
+        try {
+            await mkdir(uploadDir, { recursive: true });
+        } catch (error) {
+            // Le dossier existe déjà
+        }
+
+        // Convertir le fichier en buffer et l'écrire
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
-        const base64 = buffer.toString('base64');
-        const mimeType = file.type;
+        await writeFile(filePath, buffer);
 
-        // Créer une URL de données (data URL) que nous pouvons utiliser directement
-        const dataUrl = `data:${mimeType};base64,${base64}`;
+        // Créer l'URL publique
+        const imageUrl = `/articles/${finalFileName}`;
 
-        console.log('File converted to data URL successfully');
+        console.log('File saved successfully:', filePath);
 
-        // Retourner l'URL de données directement
         return NextResponse.json({
-            imageUrl: dataUrl,
-            fileName: file.name,
+            imageUrl,
+            fileName: finalFileName,
             size: file.size
         });
 

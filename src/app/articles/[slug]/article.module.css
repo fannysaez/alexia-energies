@@ -329,6 +329,7 @@
 .paragraphImagesRow img {
     width: 350px;
     height: 200px;
+    gap: 40px;
     object-fit: cover;
     object-position: center;
     background: transparent;

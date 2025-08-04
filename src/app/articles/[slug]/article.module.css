@@ -329,7 +329,6 @@
 .paragraphImagesRow img {
     border-radius: 8px;
     width: auto;
-    max-width: 300px;
     height: auto;
     max-height: 200px;
     object-fit: cover;

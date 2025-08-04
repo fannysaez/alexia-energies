@@ -5,6 +5,7 @@ model Article {
     titre            String // Titre de l'article / Article title
     slug             String         @unique // Slug unique pour l'URL / Unique slug for URL
     auteur           String // Nom de l'auteur / Author name
+    description      String? // Description courte de l'article / Short article description
     dateCreation     DateTime       @default(now()) // Date de création / Creation date
     dateModification DateTime       @updatedAt // Date de modification / Last modification date
     datePublication  DateTime? // Date de publication (optionnelle) / Publication date (optional)

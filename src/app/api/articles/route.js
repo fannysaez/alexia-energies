@@ -94,7 +94,13 @@ export async function GET(req) {
 // POST : Ajouter un article
 export async function POST(req) {
     try {
-        const { titre, slug, auteur, image, contenu, categoryId, contentBlocks = [], paragraphs = [], dateCreation, datePublication } = await req.json();
+        const { titre, slug, auteur, description, image, contenu, categoryId, contentBlocks = [], paragraphs = [], dateCreation, datePublication } = await req.json();
+
+        // Debug: Afficher les données reçues
+        console.log('POST /api/articles - Données reçues:', {
+            titre, slug, auteur, description, image, contenu, categoryId
+        });
+
         // Correction : forcer le type des blocs en majuscules
         const normalizedBlocks = contentBlocks.map(block => ({
             ...block,
@@ -108,6 +114,7 @@ export async function POST(req) {
                 titre,
                 slug,
                 auteur,
+                description,
                 image,
                 contenu,
                 categoryId,
@@ -137,6 +144,12 @@ export async function POST(req) {
 export async function PUT(req) {
     try {
         const { id, slug, contentBlocks = [], paragraphs = [], dateCreation, datePublication, ...updateData } = await req.json();
+
+        // Debug: Afficher les données reçues
+        console.log('PUT /api/articles - Données reçues:', {
+            id, slug, ...updateData
+        });
+
         if (!id && !slug) {
             return NextResponse.json({ error: 'ID ou slug requis' }, { status: 400 });
         }

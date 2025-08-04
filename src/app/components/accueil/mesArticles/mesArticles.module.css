@@ -138,6 +138,14 @@
     justify-content: center;
 }
 
+.description {
+    color: var(--paragraph-color);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 8px 0 12px 0;
+    opacity: 0.8;
+}
+
 .allArticlesBtn {
     margin: 40px auto 0;
     display: block;
@@ -250,7 +258,8 @@
         margin: 28px auto 0;
         outline-offset: 3px;
     }
-        .articlesGrid {
+
+    .articlesGrid {
         padding-left: 18px;
         padding-right: 18px;
     }

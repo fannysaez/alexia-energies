@@ -8,10 +8,11 @@ datasource db {
 }
 
 model Article {
-  id               String         @id @default(cuid())
-  titre            String
-  slug             String         @unique
-  auteur           String
+  id          String  @id @default(cuid())
+  titre       String
+  slug        String  @unique
+  auteur      String
+  description String? // Description courte de l'article / Short article description
   dateCreation     DateTime       @default(now())
   dateModification DateTime       @updatedAt
   datePublication  DateTime?

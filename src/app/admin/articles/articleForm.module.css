@@ -629,6 +629,19 @@
     color: #FFD9A0;
 }
 
+.textareaDescription {
+    font-size: 16px;
+    padding: 10px 8px;
+    border-radius: 5px;
+    margin-bottom: 4px;
+    border: 1px solid #FFD9A0;
+    background: #1a1816;
+    color: #FFD9A0;
+    resize: vertical;
+    min-height: 60px;
+    font-family: inherit;
+}
+
 .labelCategory {
     font-weight: bold;
     color: #FFD9A0;

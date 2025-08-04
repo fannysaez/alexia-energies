@@ -20,7 +20,10 @@ export default function ArticlesPage() {
     useEffect(() => {
         fetch("/api/articles")
             .then((res) => res.json())
-            .then((data) => setArticles(Array.isArray(data) ? data : []));
+            .then((data) => {
+                console.log('Articles récupérés:', data); // Debug
+                setArticles(Array.isArray(data) ? data : []);
+            });
     }, []);
 
     // Récupère les catégories dynamiquement depuis l'API
@@ -130,7 +133,7 @@ export default function ArticlesPage() {
                                     : ''} &nbsp;|&nbsp; {mainArticle.comments || 0} Commentaires
                             </span>
                             <h3>{mainArticle.titre}</h3>
-                            <p>{mainArticle.description}</p>
+                            {mainArticle.description && <p>{mainArticle.description}</p>}
                             <a href={"/articles/" + mainArticle.slug} className={styles.readMore}>Lire la suite</a>
                         </div>
                     </div>
@@ -158,6 +161,7 @@ export default function ArticlesPage() {
                                         : ''} &nbsp;|&nbsp; {article.comments || 0} Commentaires
                                 </span>
                                 <h4>{article.titre}</h4>
+                                {article.description && <p>{article.description}</p>}
                                 <a href={"/articles/" + article.slug} className={styles.readMore}>Lire la suite</a>
                             </div>
                         </div>

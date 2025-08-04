@@ -33,6 +33,7 @@ export default function ArticleForm({
     };
     const [slug, setSlug] = useState(article?.slug || '');
     const [author, setAuthor] = useState(article?.auteur || '');
+    const [description, setDescription] = useState(article?.description || '');
     const [content, setContent] = useState(article?.contenu || '');
     const [dateCreation, setDateCreation] = useState(article?.dateCreation ? article.dateCreation.slice(0, 16) : '');
     const [datePublication, setDatePublication] = useState(article?.datePublication ? article.datePublication.slice(0, 16) : '');
@@ -78,6 +79,7 @@ export default function ArticleForm({
                     if (data.title) setTitle(data.title);
                     if (data.slug) setSlug(data.slug);
                     if (data.author) setAuthor(data.author);
+                    if (data.description) setDescription(data.description);
                     if (data.content) setContent(data.content);
                     if (data.dateCreation) setDateCreation(data.dateCreation);
                     if (data.datePublication) setDatePublication(data.datePublication);
@@ -89,6 +91,7 @@ export default function ArticleForm({
                     // Pour l'édition, on restaure seulement si le slug correspond
                     if (data.title) setTitle(data.title);
                     if (data.author) setAuthor(data.author);
+                    if (data.description) setDescription(data.description);
                     if (data.content) setContent(data.content);
                     if (data.dateCreation) setDateCreation(data.dateCreation);
                     if (data.datePublication) setDatePublication(data.datePublication);
@@ -109,6 +112,7 @@ export default function ArticleForm({
             title,
             slug,
             author,
+            description,
             content,
             dateCreation,
             datePublication,
@@ -120,7 +124,7 @@ export default function ArticleForm({
         try {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(draft));
         } catch { }
-    }, [title, slug, author, content, dateCreation, datePublication, statut, categoryId, contentBlocks, paragraphs, LOCAL_STORAGE_KEY]);
+    }, [title, slug, author, description, content, dateCreation, datePublication, statut, categoryId, contentBlocks, paragraphs, LOCAL_STORAGE_KEY]);
 
     // Fonction pour réinitialiser le brouillon
     const handleResetDraft = () => {
@@ -130,6 +134,7 @@ export default function ArticleForm({
             setTitle('');
             setSlug('');
             setAuthor('');
+            setDescription('');
             setContent('');
             setDateCreation('');
             setDatePublication('');
@@ -141,6 +146,7 @@ export default function ArticleForm({
             setTitle(article.titre || '');
             setSlug(article.slug || '');
             setAuthor(article.auteur || '');
+            setDescription(article.description || '');
             setContent(article.contenu || '');
             setDateCreation(article.dateCreation ? article.dateCreation.slice(0, 16) : '');
             setDatePublication(article.datePublication ? article.datePublication.slice(0, 16) : '');
@@ -210,6 +216,12 @@ export default function ArticleForm({
     const handleSlugChange = (e) => {
         setSlug(e.target.value);
         clearFieldError('slug');
+    };
+
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
+        console.log('Description changée:', e.target.value); // Debug
+        clearFieldError('description');
     };
 
     const handleContentChange = (e) => {
@@ -698,6 +710,7 @@ export default function ArticleForm({
             const payload = {
                 titre: title,
                 slug,
+                description,
                 contenu: content,
                 auteur: author,
                 statut,
@@ -709,7 +722,10 @@ export default function ArticleForm({
                 dateCreation: dateCreation ? new Date(dateCreation).toISOString() : null,
                 datePublication: datePublication ? new Date(datePublication).toISOString() : null,
             };
-            console.log('Payload envoyé à l\'API articles:', payload);
+
+            // Debug: Afficher le payload avant envoi
+            console.log('Payload envoyé:', payload);
+
             // Récupération du token d'authentification
             const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
             const headers = {
@@ -907,6 +923,16 @@ export default function ArticleForm({
                         />
                         {showValidation && fieldErrors.slug && (
                             <div className={styles.errorMsg}>{fieldErrors.slug}</div>
+                        )}
+                        <textarea
+                            placeholder="Description courte de l'article"
+                            value={description}
+                            onChange={handleDescriptionChange}
+                            className={styles.textareaDescription}
+                            rows={3}
+                        />
+                        {showValidation && fieldErrors.description && (
+                            <div className={styles.errorMsg}>{fieldErrors.description}</div>
                         )}
                         <label htmlFor="dateCreation" style={{ color: '#FFD9A0', fontWeight: 'bold', marginTop: 8 }}>Date de création</label>
                         <input

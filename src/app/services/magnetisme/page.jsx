@@ -53,7 +53,7 @@ export default function MagnetismePage() {
             title: "Magnétisme et sommeil réparateur",
             description: "Comment le magnétisme peut améliorer la qualité de votre sommeil naturellement.",
             image: "/img/services/magnetisme/Serene Crystal Meditation.webp",
-            link: "/articles/magnetisme-sommeil-reparateur"
+            link: "/articles/magnetisme-sommeil"
         }
     ];
 
@@ -217,16 +217,15 @@ export default function MagnetismePage() {
                         buttonText="Réservez"
                         onReserveClick={() => openModal("magnetisme")}
                     />
-                    <>
-                        <Modal
-                            isOpen={modalState.isOpen}
-                            onClose={closeModal}
-                            type={modalState.type}
-                            service={modalState.service}
-                        />
-                    </>
                 </div>
             </section>
+
+            <Modal
+                isOpen={modalState.isOpen}
+                onClose={closeModal}
+                type={modalState.type}
+                service={modalState.service}
+            />
         </div>
     );
 }

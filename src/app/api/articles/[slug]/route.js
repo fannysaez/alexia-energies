@@ -74,6 +74,15 @@ export async function PUT(request, { params }) {
     }
     try {
         const data = await request.json();
+
+        // Debug: Afficher les données reçues
+        console.log('PUT /api/articles/[slug] - Données reçues:', {
+            slug,
+            titre: data.titre,
+            description: data.description,
+            auteur: data.auteur
+        });
+
         // On récupère l'article existant
         const article = await prisma.article.findUnique({ where: { slug } });
         if (!article) {
@@ -159,6 +168,7 @@ export async function PUT(request, { params }) {
             where: { slug },
             data: {
                 titre: data.titre,
+                description: data.description, // AJOUT: description manquante
                 contenu: data.contenu,
                 auteur: data.auteur,
                 image: data.image,

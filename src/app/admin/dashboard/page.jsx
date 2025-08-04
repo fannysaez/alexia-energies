@@ -357,6 +357,9 @@ function DashboardContent() {
                                                                         <img src={article.image} alt={article.titre} style={{ width: '100%', height: 120, objectFit: 'cover', borderRadius: 8, marginBottom: 14, border: '1.5px solid #FFD9A0', background: '#1a1816' }} />
                                                                     )}
                                                                     <strong style={{ fontSize: 18, color: '#FFD9A0', marginBottom: 6, textAlign: 'center', lineHeight: 1.2 }}>{article.titre}</strong>
+                                                                    {article.description && (
+                                                                        <div style={{ fontSize: 13, color: '#bfae8f', marginBottom: 8, textAlign: 'center', fontStyle: 'italic', lineHeight: 1.3 }}>{article.description}</div>
+                                                                    )}
                                                                     {article.auteur && (
                                                                         <div style={{ fontSize: 14, color: '#bfae8f', fontStyle: 'italic', marginBottom: 2, textAlign: 'center' }}>par {article.auteur}</div>
                                                                     )}
@@ -478,6 +481,9 @@ function DashboardContent() {
                                                                     <img src={article.image} alt={article.titre} style={{ width: '100%', height: 120, objectFit: 'cover', borderRadius: 8, marginBottom: 14, border: '1.5px solid #FFD9A0', background: '#1a1816' }} />
                                                                 )}
                                                                 <strong style={{ fontSize: 18, color: '#FFD9A0', marginBottom: 6, textAlign: 'center', lineHeight: 1.2 }}>{article.titre}</strong>
+                                                                {article.description && (
+                                                                    <div style={{ fontSize: 13, color: '#bfae8f', marginBottom: 8, textAlign: 'center', fontStyle: 'italic', lineHeight: 1.3 }}>{article.description}</div>
+                                                                )}
                                                                 {article.auteur && (
                                                                     <div style={{ fontSize: 14, color: '#bfae8f', fontStyle: 'italic', marginBottom: 2, textAlign: 'center' }}>par {article.auteur}</div>
                                                                 )}

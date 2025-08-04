@@ -11,21 +11,40 @@ export default function ArticlePage() {
     const { slug } = useParams();
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (!slug) return;
         const fetchArticle = async () => {
             try {
+                console.log('Tentative de chargement de l\'article avec slug:', slug);
                 const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-                const res = await fetch(`${baseUrl}/api/articles/${slug}`);
+                const url = `${baseUrl}/api/articles/${slug}`;
+                console.log('URL appelée:', url);
+
+                const res = await fetch(url);
+                console.log('Statut de la réponse:', res.status);
+
                 if (res.ok) {
                     const data = await res.json();
+                    console.log('Article chargé avec succès:', data);
                     setArticle(data);
+                    setError(null);
+                } else if (res.status === 404) {
+                    const errorData = await res.json().catch(() => ({}));
+                    // console.error("Article non trouvé:", errorData);
+                    setError("Cet article n'existe pas ou n'est pas publié");
+                    setArticle(null);
                 } else {
-                    console.error("Erreur HTTP:", res.status);
+                    const errorData = await res.json().catch(() => ({}));
+                    console.error("Erreur HTTP:", res.status, errorData);
+                    setError(`Erreur de chargement (${res.status})`);
+                    setArticle(null);
                 }
             } catch (error) {
                 console.error("Erreur lors du chargement de l'article :", error);
+                setError("Erreur de connexion au serveur");
+                setArticle(null);
             } finally {
                 setLoading(false);
             }
@@ -34,7 +53,20 @@ export default function ArticlePage() {
     }, [slug]);
 
     if (loading) return <div className={styles.loadingContainer}><p>Chargement...</p></div>;
-    if (!article) return <div className={styles.noArticles}><p>Article introuvable.</p></div>;
+    if (error || !article) return (
+        <div className={styles.noArticles}>
+            <p style={{ textAlign: 'center', width: '100%' }}>{error || "Article introuvable."}</p>
+            <div className={styles.errorActions}>
+                <Button
+                    text="Retour aux articles"
+                    link="/articles"
+                    variant="secondary"
+                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                />
+            </div>
+        </div>
+    );
 
     // Debug : afficher les paragraphes reçus
     if (article && Array.isArray(article.paragraphs)) {

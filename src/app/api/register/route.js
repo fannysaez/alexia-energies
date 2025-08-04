@@ -61,8 +61,10 @@ export async function POST(req) {
 }
 
 export async function GET(req) {
-    const error = verifyJWT(req);
-    if (error) return error;
+    const authResult = verifyJWT(req);
+    if (!authResult.isValid) {
+        return NextResponse.json({ error: authResult.error }, { status: 401 });
+    }
     // Retourne la liste des utilisateurs (pour test uniquement)
     const users = await prisma.user.findMany({
         select: { id: true, email: true }

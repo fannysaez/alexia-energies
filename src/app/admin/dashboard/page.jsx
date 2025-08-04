@@ -43,7 +43,13 @@ function DashboardContent() {
         setLoadingArticles(true);
         setErrorArticles('');
         try {
-            const res = await fetch('/api/articles');
+            const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+            const res = await fetch('/api/admin/articles', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            }); // Utiliser la route admin pour voir tous les articles
             const data = await res.json();
             console.log(data);
 
@@ -72,7 +78,14 @@ function DashboardContent() {
             // On suppose que tu passes l'article complet ou que tu as accès au slug
             const article = articles.find(a => a.id === id);
             if (!article) throw new Error('Article introuvable');
-            const res = await fetch(`/api/articles/${article.slug}`, { method: 'DELETE' });
+            const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+            const res = await fetch(`/api/articles/${article.slug}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || 'Erreur lors de la suppression');
             setArticles(articles => articles.filter(a => a.id !== id));
@@ -90,9 +103,13 @@ function DashboardContent() {
     const handleEditSave = async (updatedArticle) => {
         // Appel API pour update (à adapter selon ton API)
         try {
+            const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
             const res = await fetch(`/api/articles/${updatedArticle.slug}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
                 body: JSON.stringify(updatedArticle),
             });
             const data = await res.json();
@@ -344,6 +361,15 @@ function DashboardContent() {
                                                                         <div style={{ fontSize: 14, color: '#bfae8f', fontStyle: 'italic', marginBottom: 2, textAlign: 'center' }}>par {article.auteur}</div>
                                                                     )}
                                                                     <div style={{ fontSize: 13, color: '#FFD9A0', marginBottom: 12, textAlign: 'center', opacity: 0.8 }}>{article.slug}</div>
+                                                                    <div style={{
+                                                                        fontSize: 12,
+                                                                        marginBottom: 12,
+                                                                        textAlign: 'center',
+                                                                        color: article.statut === 'publié' ? '#4BB543' : '#FFA500',
+                                                                        fontWeight: 'bold'
+                                                                    }}>
+                                                                        {article.statut === 'publié' ? '✅ Publié' : '📝 Brouillon'}
+                                                                    </div>
                                                                     <button style={{
                                                                         background: '#FFD9A0',
                                                                         color: '#2C2520',
@@ -456,6 +482,15 @@ function DashboardContent() {
                                                                     <div style={{ fontSize: 14, color: '#bfae8f', fontStyle: 'italic', marginBottom: 2, textAlign: 'center' }}>par {article.auteur}</div>
                                                                 )}
                                                                 <div style={{ fontSize: 13, color: '#FFD9A0', marginBottom: 12, textAlign: 'center', opacity: 0.8 }}>{article.slug}</div>
+                                                                <div style={{
+                                                                    fontSize: 12,
+                                                                    marginBottom: 12,
+                                                                    textAlign: 'center',
+                                                                    color: article.statut === 'publié' ? '#4BB543' : '#FFA500',
+                                                                    fontWeight: 'bold'
+                                                                }}>
+                                                                    {article.statut === 'publié' ? '✅ Publié' : '📝 Brouillon'}
+                                                                </div>
                                                                 <button style={{
                                                                     background: '#F76C5E',
                                                                     color: '#fff',

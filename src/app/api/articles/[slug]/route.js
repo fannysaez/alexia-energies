@@ -1,4 +1,5 @@
 import prisma from '@/lib/prisma';
+import { verifyJWT } from '../../middleware/route';
 
 // GET: Récupérer un article par son slug
 export async function GET(request, context) {
@@ -14,13 +15,21 @@ export async function GET(request, context) {
 
     try {
         const article = await prisma.article.findFirst({
-            where: { slug },
+            where: {
+                slug,
+                statut: 'publié' // Seuls les articles publiés sont accessibles publiquement
+            },
             include: {
                 contentBlocks: true,
                 paragraphs: true,
                 category: true,
             },
         });
+        if (article) {
+            console.log('[API] Article trouvé (slug: ' + slug + ') - statut:', article.statut);
+        } else {
+            console.log('[API] Aucun article publié trouvé pour le slug:', slug);
+        }
 
         if (!article) {
             return new Response(
@@ -33,7 +42,8 @@ export async function GET(request, context) {
             status: 200,
             headers: {
                 "Content-Type": "application/json",
-                "Cache-Control": "public, max-age=3600"
+                // Désactive le cache pour éviter l'affichage d'un article brouillon après modif
+                "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
             }
         });
     } catch (error) {
@@ -46,6 +56,15 @@ export async function GET(request, context) {
 
 // PUT: Modifier un article par son slug
 export async function PUT(request, { params }) {
+    // Vérification JWT pour la modification
+    const authResult = verifyJWT(request);
+    if (!authResult.isValid) {
+        return new Response(
+            JSON.stringify({ error: 'Non autorisé' }),
+            { status: 401, headers: { 'Content-Type': 'application/json' } }
+        );
+    }
+
     const { slug } = params;
     if (!slug) {
         return new Response(
@@ -148,6 +167,7 @@ export async function PUT(request, { params }) {
                 categoryId: data.categoryId,
                 dateCreation: data.dateCreation ? new Date(data.dateCreation) : undefined,
                 datePublication: data.datePublication ? new Date(data.datePublication) : undefined,
+                statut: data.statut, // Ajout de la mise à jour du statut
             },
             include: {
                 contentBlocks: true,
@@ -170,6 +190,15 @@ export async function PUT(request, { params }) {
 
 // DELETE: Supprimer un article par son slug
 export async function DELETE(request, { params }) {
+    // Vérification JWT pour la suppression
+    const authResult = verifyJWT(request);
+    if (!authResult.isValid) {
+        return new Response(
+            JSON.stringify({ error: 'Non autorisé' }),
+            { status: 401, headers: { 'Content-Type': 'application/json' } }
+        );
+    }
+
     const { slug } = params;
     if (!slug) {
         return new Response(

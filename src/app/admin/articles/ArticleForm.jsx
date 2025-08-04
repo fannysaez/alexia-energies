@@ -36,6 +36,7 @@ export default function ArticleForm({
     const [content, setContent] = useState(article?.contenu || '');
     const [dateCreation, setDateCreation] = useState(article?.dateCreation ? article.dateCreation.slice(0, 16) : '');
     const [datePublication, setDatePublication] = useState(article?.datePublication ? article.datePublication.slice(0, 16) : '');
+    const [statut, setStatut] = useState(article?.statut || 'brouillon');
     const [image, setImage] = useState(null);
     const [imageName, setImageName] = useState('');
     const [imageSuccess, setImageSuccess] = useState('');
@@ -80,6 +81,7 @@ export default function ArticleForm({
                     if (data.content) setContent(data.content);
                     if (data.dateCreation) setDateCreation(data.dateCreation);
                     if (data.datePublication) setDatePublication(data.datePublication);
+                    if (data.statut) setStatut(data.statut);
                     if (data.categoryId) setCategoryId(data.categoryId);
                     if (data.contentBlocks) setContentBlocks(data.contentBlocks);
                     if (data.paragraphs) setParagraphs(data.paragraphs);
@@ -90,6 +92,7 @@ export default function ArticleForm({
                     if (data.content) setContent(data.content);
                     if (data.dateCreation) setDateCreation(data.dateCreation);
                     if (data.datePublication) setDatePublication(data.datePublication);
+                    if (data.statut) setStatut(data.statut);
                     if (data.categoryId) setCategoryId(data.categoryId);
                     if (data.contentBlocks) setContentBlocks(data.contentBlocks);
                     if (data.paragraphs) setParagraphs(data.paragraphs);
@@ -109,6 +112,7 @@ export default function ArticleForm({
             content,
             dateCreation,
             datePublication,
+            statut,
             categoryId,
             contentBlocks,
             paragraphs
@@ -116,7 +120,7 @@ export default function ArticleForm({
         try {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(draft));
         } catch { }
-    }, [title, slug, author, content, dateCreation, datePublication, categoryId, contentBlocks, paragraphs, LOCAL_STORAGE_KEY]);
+    }, [title, slug, author, content, dateCreation, datePublication, statut, categoryId, contentBlocks, paragraphs, LOCAL_STORAGE_KEY]);
 
     // Fonction pour réinitialiser le brouillon
     const handleResetDraft = () => {
@@ -129,6 +133,7 @@ export default function ArticleForm({
             setContent('');
             setDateCreation('');
             setDatePublication('');
+            setStatut('brouillon');
             setCategoryId('');
             setContentBlocks([]);
             setParagraphs([]);
@@ -139,6 +144,7 @@ export default function ArticleForm({
             setContent(article.contenu || '');
             setDateCreation(article.dateCreation ? article.dateCreation.slice(0, 16) : '');
             setDatePublication(article.datePublication ? article.datePublication.slice(0, 16) : '');
+            setStatut(article.statut || 'brouillon');
             setCategoryId(article.categoryId || '');
             setContentBlocks(article.contentBlocks || []);
             setParagraphs(article.paragraphs || []);
@@ -216,6 +222,10 @@ export default function ArticleForm({
         clearFieldError('categoryId');
     };
 
+    const handleStatutChange = (e) => {
+        setStatut(e.target.value);
+    };
+
     const handleImageChangeWithValidation = (e) => {
         handleImageChange(e);
         clearFieldError('image');
@@ -242,9 +252,15 @@ export default function ArticleForm({
         setError('');
         setSuccess('');
         try {
+            const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
             const res = await fetch(`/api/articles/${articleToDelete.slug}`, {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' }
+                headers
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || 'Erreur lors de la suppression');
@@ -266,9 +282,15 @@ export default function ArticleForm({
         setCatError('');
         setCatSuccess('');
         try {
+            const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
             const res = await fetch('/api/categories', {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
+                headers,
                 body: JSON.stringify({ id: categoryToDelete })
             });
             const data = await res.json();
@@ -365,9 +387,15 @@ export default function ArticleForm({
         }
         setAddingCategory(true);
         try {
+            const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
             const res = await fetch('/api/categories', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers,
                 body: JSON.stringify({ name: newCategory.trim() })
             });
             const data = await res.json();
@@ -672,6 +700,7 @@ export default function ArticleForm({
                 slug,
                 contenu: content,
                 auteur: author,
+                statut,
                 image: imageUrl,
                 imageCouverture: coverImageUrl,
                 categoryId,
@@ -681,10 +710,19 @@ export default function ArticleForm({
                 datePublication: datePublication ? new Date(datePublication).toISOString() : null,
             };
             console.log('Payload envoyé à l\'API articles:', payload);
+            // Récupération du token d'authentification
+            const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
             if (mode === "edit" && article) {
                 res = await fetch(`/api/articles/${article.slug}`, {
                     method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers,
                     body: JSON.stringify(payload)
                 });
                 data = await res.json();
@@ -693,7 +731,7 @@ export default function ArticleForm({
             } else {
                 res = await fetch('/api/articles', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers,
                     body: JSON.stringify(payload)
                 });
                 data = await res.json();
@@ -889,6 +927,17 @@ export default function ArticleForm({
                             onChange={e => setDatePublication(e.target.value)}
                             style={{ marginBottom: 8 }}
                         />
+                        <label htmlFor="statut" style={{ color: '#FFD9A0', fontWeight: 'bold', marginTop: 8 }}>Statut</label>
+                        <select
+                            id="statut"
+                            className={styles.inputTitle}
+                            value={statut}
+                            onChange={handleStatutChange}
+                            style={{ marginBottom: 8 }}
+                        >
+                            <option value="brouillon">📝 Brouillon</option>
+                            <option value="publié">✅ Publié</option>
+                        </select>
                         <textarea
                             placeholder="Contenu *"
                             value={content}
@@ -918,6 +967,7 @@ export default function ArticleForm({
                                     <div style={{ color: '#FFD9A0', fontSize: '0.95em', marginTop: 2 }}>Auteur : <span style={{ color: '#fff' }}>{author || 'Auteur'}</span></div>
                                     <div style={{ color: '#FFD9A0', fontSize: '0.95em', marginTop: 2 }}>Slug : <span style={{ color: '#fff' }}>{slug || 'slug-article'}</span></div>
                                     <div style={{ color: '#FFD9A0', fontSize: '0.95em', marginTop: 2 }}>Date : <span style={{ color: '#fff' }}>{datePublication ? new Date(datePublication).toLocaleDateString() : 'JJ/MM/AAAA'}</span></div>
+                                    <div style={{ color: '#FFD9A0', fontSize: '0.95em', marginTop: 2 }}>Statut : <span style={{ color: statut === 'publié' ? '#4BB543' : '#FFA500' }}>{statut === 'publié' ? '✅ Publié' : '📝 Brouillon'}</span></div>
                                     <div style={{ color: '#FFD9A0', fontSize: '0.95em', marginTop: 2 }}>Description : <span style={{ color: '#fff' }}>{content ? content.slice(0, 120) + (content.length > 120 ? '...' : '') : 'Courte description de l\'article'}</span></div>
                                 </div>
                             </div>

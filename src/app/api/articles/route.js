@@ -60,6 +60,9 @@ export async function GET(req) {
     // Route publique : pas de vérification JWT
     try {
         const articles = await prisma.article.findMany({
+            where: {
+                statut: 'publié' // Seuls les articles publiés sont visibles publiquement
+            },
             orderBy: { dateCreation: 'desc' },
             include: {
                 category: true,

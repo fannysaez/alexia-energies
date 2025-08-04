@@ -44,7 +44,8 @@
     display: inline-block;
     margin: 0 auto;
     border: 1px solid var(--decorative-line-color);
-
+    object-fit: cover;
+    object-position: center;
 }
 
 .paragraphText p,
@@ -167,12 +168,15 @@
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    height: 480px;
 }
 
 .articleImage {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
+    object-fit: cover;
+    object-position: center 20%;
 }
 
 /* Section Méta informations */
@@ -323,8 +327,9 @@
     border-radius: 18px;
     width: 480px;
     max-width: 48vw;
-    height: 220px;
+    height: 250px;
     object-fit: cover;
+    object-position: center 20%;
     background: #181512;
     border: 1.5px solid #FFD9A0;
     box-shadow: 0 4px 24px rgba(44, 37, 32, 0.18);
@@ -421,18 +426,79 @@
 /* Aucun article */
 .noArticles {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 40px;
     background: var(--secondary-color);
     border-radius: 24px;
     border: 1px solid var(--decorative-line-color);
-    max-width: 600px;
-    margin: 60px auto;
+    max-width: 800px;
+    margin: 120px auto 40px auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.noArticles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 217, 160, 0.05) 0%, rgba(44, 37, 32, 0.02) 100%);
+    z-index: 1;
 }
 
 .noArticles p {
     color: var(--paragraph-color);
     font-family: 'Work Sans', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    position: relative;
+    z-index: 2;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.noArticles .errorActions {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.noArticles .errorActions>* {
+    width: auto;
+    max-width: 300px;
+    flex-shrink: 0;
+}
+
+/* Responsive pour noArticles */
+@media (max-width: 768px) {
+    .noArticles {
+        padding: 60px 30px;
+        margin: 80px 16px;
+        max-width: calc(100% - 32px);
+    }
+
+    .noArticles p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .noArticles {
+        padding: 50px 20px;
+        margin: 60px 12px;
+        border-radius: 16px;
+    }
+
+    .noArticles p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
 }
 
 /* Responsive Design */
@@ -454,8 +520,9 @@
         font-size: 1rem;
         padding: 10px 0;
         border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(44,37,32,0.08);
+        box-shadow: 0 2px 8px rgba(44, 37, 32, 0.08);
     }
+
     /* Si tu utilises un container pour les boutons */
     .categoryFilterContainer {
         display: flex;
@@ -464,6 +531,7 @@
         gap: 8px;
         width: 100%;
     }
+
     .articleContent h2 {
         font-size: 1.75rem;
     }

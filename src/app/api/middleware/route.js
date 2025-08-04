@@ -7,13 +7,13 @@ export function verifyJWT(req) {
     try {
         const authHeader = req.headers.get('authorization');
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
-            return NextResponse.json({ error: 'Token manquant' }, { status: 401 });
+            return { isValid: false, error: 'Token manquant' };
         }
         const token = authHeader.split(' ')[1];
         const decoded = jwt.verify(token, SECRET);
         req.user = decoded;
-        return null; // Pas d'erreur, continuer
+        return { isValid: true, user: decoded };
     } catch (err) {
-        return NextResponse.json({ error: 'Token invalide' }, { status: 401 });
+        return { isValid: false, error: 'Token invalide' };
     }
 }

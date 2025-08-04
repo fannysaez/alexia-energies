@@ -1,85 +1,45 @@
+
 import { NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
+import { v2 as cloudinary } from 'cloudinary';
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export async function POST(req) {
     try {
         const formData = await req.formData();
         const file = formData.get('file');
-        const newName = formData.get('newName');
-
-        console.log('Upload attempt:', {
-            hasFile: !!file,
-            fileName: file?.name,
-            fileSize: file?.size,
-            newName
-        });
-
+        // Sécurité basique
         if (!file) {
             return NextResponse.json({ error: 'Aucun fichier envoyé' }, { status: 400 });
         }
-
-        // Vérifier la taille du fichier (max 5MB)
         if (file.size > 5 * 1024 * 1024) {
             return NextResponse.json({ error: 'Fichier trop volumineux (max 5MB)' }, { status: 413 });
         }
-
-        // Vérifier le type de fichier
         if (!file.type.startsWith('image/')) {
             return NextResponse.json({ error: 'Le fichier doit être une image' }, { status: 400 });
         }
 
-        // Créer le nom de fichier
-        const originalName = file.name;
-        const extension = path.extname(originalName);
-        const timestamp = Date.now();
+        // Conversion du fichier en buffer
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
 
-        let finalFileName;
-        if (newName && newName.trim()) {
-            const customName = newName.trim().replace(/[^a-zA-Z0-9.-]/g, '_');
-            // Si le nom personnalisé a déjà une extension, on l'utilise tel quel
-            // Sinon on ajoute l'extension du fichier original
-            if (path.extname(customName)) {
-                finalFileName = `${timestamp}-${customName}`;
-            } else {
-                finalFileName = `${timestamp}-${customName}${extension}`;
-            }
-        } else {
-            finalFileName = `${timestamp}-${originalName.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
-        }
-
-        // Créer le chemin de destination
-        const uploadDir = path.join(process.cwd(), 'public', 'articles');
-        const filePath = path.join(uploadDir, finalFileName);
-
-        // Créer le dossier s'il n'existe pas
-        try {
-            await mkdir(uploadDir, { recursive: true });
-        } catch (error) {
-            // Le dossier existe déjà
-        }
-
-        // Convertir le fichier en buffer et l'écrire
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-        await writeFile(filePath, buffer);
-
-        // Créer l'URL publique
-        const imageUrl = `/articles/${finalFileName}`;
-
-        console.log('File saved successfully:', filePath);
-
-        return NextResponse.json({
-            imageUrl,
-            fileName: finalFileName,
-            size: file.size
+        // Upload vers Cloudinary
+        const uploadRes = await new Promise((resolve, reject) => {
+            cloudinary.uploader.upload_stream(
+                { folder: 'alexia-energies' },
+                (error, result) => {
+                    if (error) reject(error);
+                    else resolve(result);
+                }
+            ).end(buffer);
         });
 
+        return NextResponse.json({ imageUrl: uploadRes.secure_url });
     } catch (error) {
-        console.error('Erreur upload image:', error);
-        return NextResponse.json({
-            error: `Erreur lors de l'upload: ${error.message}`,
-            details: error.toString()
-        }, { status: 500 });
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }

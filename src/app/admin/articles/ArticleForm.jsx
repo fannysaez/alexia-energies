@@ -571,6 +571,8 @@ export default function ArticleForm({
         setParaImageUrl2('');
         setParaImageFile2(null);
         setParaImagePreview2('');
+        setParaImageName('');
+        setParaImageName2('');
         setParaAltText('');
         setParaSuccess('Paragraphe ajouté !');
         setTimeout(() => setParaSuccess(''), MESSAGE_TIMEOUT);
@@ -1281,6 +1283,38 @@ export default function ArticleForm({
                             <div className={styles.miniatureSection}>
                                 <h3 className={styles.miniatureTitle}>Images de paragraphe</h3>
                                 <p className={styles.miniatureHelp}>
+                                    Ajoutez du texte et/ou des images pour créer un nouveau paragraphe.<br />
+                                    <strong>Si ni l'image de couverture ni l'image principale ne sont renseignées, la première image de paragraphe pourra être utilisée comme miniature.</strong>
+                                </p>
+
+                                {/* Champ de texte pour le paragraphe */}
+                                <div style={{ marginBottom: 16 }}>
+                                    <label htmlFor="paraText" className={styles.labelParagraphs}>Texte du paragraphe</label>
+                                    <textarea
+                                        id="paraText"
+                                        placeholder="Saisissez le contenu du paragraphe..."
+                                        value={paraText}
+                                        onChange={e => setParaText(e.target.value)}
+                                        className={styles.textareaBlockList}
+                                        rows={4}
+                                        style={{ width: '100%', marginTop: 8 }}
+                                    />
+                                </div>
+
+                                {/* Champ pour le texte alternatif */}
+                                <div style={{ marginBottom: 16 }}>
+                                    <label htmlFor="paraAltText" className={styles.labelParagraphs}>Texte alternatif des images (optionnel)</label>
+                                    <input
+                                        id="paraAltText"
+                                        type="text"
+                                        placeholder="Description des images pour l'accessibilité"
+                                        value={paraAltText}
+                                        onChange={e => setParaAltText(e.target.value)}
+                                        className={styles.inputImageName}
+                                        style={{ width: '100%', marginTop: 8 }}
+                                    />
+                                </div>
+                                <p className={styles.miniatureHelp}>
                                     Ces images sont affichées dans le corps de l’article, dans les paragraphes concernés.<br />
                                     <strong>Si ni l’image de couverture ni l’image principale ne sont renseignées, la première image de paragraphe pourra être utilisée comme miniature.</strong>
                                 </p>
@@ -1310,6 +1344,7 @@ export default function ArticleForm({
                         </div>
                         <div className={styles.paragraphsBtnWrapper}>
                             <button type="button" className={styles.addParagraphBtn} onClick={handleAddParagraph}>Ajouter paragraphe</button>
+                            {paraSuccess && <span className={styles.successMsg}>{paraSuccess}</span>}
                         </div>
                         <div className={styles.paragraphsListWrapper}>
                             {paragraphs.map((para, idx) => (

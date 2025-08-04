@@ -1,8 +1,4 @@
-import { promises as fs } from 'fs';
-import path from 'path';
 import { NextResponse } from 'next/server';
-
-export const runtime = 'nodejs'; // Pour permettre l'accès au système de fichiers
 
 export async function POST(req) {
     try {
@@ -31,25 +27,24 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Le fichier doit être une image' }, { status: 400 });
         }
 
-        const buffer = Buffer.from(await file.arrayBuffer());
-        let fileName;
-        if (newName && typeof newName === 'string' && newName.trim() !== '') {
-            // Nettoyage du nom fourni
-            const ext = file.name.split('.').pop();
-            fileName = newName.replace(/\s/g, '-').replace(/[^a-zA-Z0-9\-_.]/g, '');
-            if (!fileName.endsWith(`.${ext}`)) fileName += `.${ext}`;
-        } else {
-            fileName = Date.now() + '-' + file.name.replace(/\s/g, '-');
-        }
+        // Convertir le fichier en Base64 pour le stocker temporairement
+        const bytes = await file.arrayBuffer();
+        const buffer = Buffer.from(bytes);
+        const base64 = buffer.toString('base64');
+        const mimeType = file.type;
 
-        const filePath = path.join(process.cwd(), 'public', 'articles', fileName);
-        console.log('Attempting to write file to:', filePath);
+        // Créer une URL de données (data URL) que nous pouvons utiliser directement
+        const dataUrl = `data:${mimeType};base64,${base64}`;
 
-        await fs.writeFile(filePath, buffer);
-        console.log('File written successfully:', fileName);
+        console.log('File converted to data URL successfully');
 
-        // Retourne le chemin relatif pour l'enregistrement dans la base
-        return NextResponse.json({ imageUrl: `/articles/${fileName}` });
+        // Retourner l'URL de données directement
+        return NextResponse.json({
+            imageUrl: dataUrl,
+            fileName: file.name,
+            size: file.size
+        });
+
     } catch (error) {
         console.error('Erreur upload image:', error);
         return NextResponse.json({

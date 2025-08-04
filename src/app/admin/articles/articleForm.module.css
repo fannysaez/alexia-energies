@@ -719,13 +719,84 @@
 }
 
 .errorMsg {
-    color: red;
+    color: #ff4444;
     font-size: 13px;
+    font-weight: 500;
+    margin-top: 4px;
+    display: block;
 }
 
 .successMsg {
-    color: green;
+    color: #00aa44;
     font-size: 13px;
+    font-weight: 500;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Styles pour les champs requis */
+.fieldRequired {
+    position: relative;
+}
+
+.fieldRequired::after {
+    content: " *";
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.labelRequired {
+    color: #FFD9A0;
+    font-weight: bold;
+    position: relative;
+}
+
+.labelRequired::after {
+    content: " *";
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Styles pour les champs en erreur */
+.inputError {
+    border: 2px solid #ff4444 !important;
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.3) !important;
+    background-color: rgba(255, 68, 68, 0.05) !important;
+}
+
+.textareaError {
+    border: 2px solid #ff4444 !important;
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.3) !important;
+    background-color: rgba(255, 68, 68, 0.05) !important;
+}
+
+.selectError {
+    border: 2px solid #ff4444 !important;
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.3) !important;
+    background-color: rgba(255, 68, 68, 0.05) !important;
+}
+
+/* Animation pour attirer l'attention sur les erreurs */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.fieldError {
+    animation: shake 0.5s ease-in-out;
 }
 
 /* --- Blocs de contenu --- */
@@ -1261,4 +1332,24 @@
     padding-left: 12px;
     color: var(--paragraph-color);
     opacity: 0.85;
+}
+
+/* Note d'aide pour les champs obligatoires */
+.requiredFieldsNote {
+    background: rgba(255, 217, 160, 0.1);
+    border: 1px solid #FFD9A0;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+    color: #FFD9A0;
+    font-size: 0.9em;
+}
+
+.requiredFieldsNote strong {
+    color: #FFD9A0;
+}
+
+.asterisk {
+    color: #ff4444;
+    font-weight: bold;
 }

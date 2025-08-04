@@ -166,6 +166,61 @@ export default function ArticleForm({
     const [success, setSuccess] = useState('');
     const MESSAGE_TIMEOUT = 2000;
 
+    // Validation des champs
+    const [fieldErrors, setFieldErrors] = useState({});
+    const [showValidation, setShowValidation] = useState(false);
+
+    // Fonction helper pour obtenir les classes CSS des champs
+    const getFieldClassName = (baseClassName, fieldName) => {
+        let className = baseClassName;
+        if (showValidation && fieldErrors[fieldName]) {
+            className += ` ${styles.inputError} ${styles.fieldError}`;
+        }
+        return className;
+    };
+
+    // Fonction pour effacer l'erreur d'un champ spécifique
+    const clearFieldError = (fieldName) => {
+        if (fieldErrors[fieldName]) {
+            setFieldErrors(prev => {
+                const newErrors = { ...prev };
+                delete newErrors[fieldName];
+                return newErrors;
+            });
+        }
+    };
+
+    // Gestionnaires de changement avec nettoyage des erreurs
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+        clearFieldError('title');
+    };
+
+    const handleAuthorChange = (e) => {
+        setAuthor(e.target.value);
+        clearFieldError('author');
+    };
+
+    const handleSlugChange = (e) => {
+        setSlug(e.target.value);
+        clearFieldError('slug');
+    };
+
+    const handleContentChange = (e) => {
+        setContent(e.target.value);
+        clearFieldError('content');
+    };
+
+    const handleCategoryChange = (e) => {
+        setCategoryId(e.target.value);
+        clearFieldError('categoryId');
+    };
+
+    const handleImageChangeWithValidation = (e) => {
+        handleImageChange(e);
+        clearFieldError('image');
+    };
+
     // Modale suppression article
     const [showDeleteArticleModal, setShowDeleteArticleModal] = useState(false);
     const [articleToDelete, setArticleToDelete] = useState(null);
@@ -529,12 +584,57 @@ export default function ArticleForm({
         }
     };
 
+    // Fonction de validation des champs obligatoires
+    const validateRequiredFields = () => {
+        const errors = {};
+        let hasErrors = false;
+
+        // Vérification des champs obligatoires
+        if (!title.trim()) {
+            errors.title = 'Le titre est obligatoire';
+            hasErrors = true;
+        }
+        if (!slug.trim()) {
+            errors.slug = 'Le slug est obligatoire';
+            hasErrors = true;
+        }
+        if (!author.trim()) {
+            errors.author = 'L\'auteur est obligatoire';
+            hasErrors = true;
+        }
+        if (!content.trim()) {
+            errors.content = 'Le contenu est obligatoire';
+            hasErrors = true;
+        }
+        if (!categoryId) {
+            errors.categoryId = 'La catégorie est obligatoire';
+            hasErrors = true;
+        }
+        if (!image && !article?.image) {
+            errors.image = 'L\'image principale est obligatoire';
+            hasErrors = true;
+        }
+
+        setFieldErrors(errors);
+        setShowValidation(true);
+        return !hasErrors;
+    };
+
     // Soumission du formulaire
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validation côté client avant soumission
+        if (!validateRequiredFields()) {
+            setLoading(false);
+            setError('Veuillez remplir tous les champs obligatoires marqués d\'un astérisque (*)');
+            return;
+        }
+
         setLoading(true);
         setError('');
         setSuccess('');
+        setFieldErrors({}); // Réinitialiser les erreurs si validation OK
         try {
             let imageUrl = article?.image || '';
             if (image) {
@@ -626,6 +726,12 @@ export default function ArticleForm({
     return (
         <form onSubmit={handleSubmit} className={styles.formWrapper}>
             <h2 className={styles.formTitle}>{mode === "edit" ? "Modifier l'article" : "Ajouter un article"}</h2>
+
+            {/* Note d'aide pour les champs obligatoires */}
+            <div className={styles.requiredFieldsNote}>
+                <strong>📝 Note :</strong> Les champs marqués d'un astérisque (<span className={styles.asterisk}>*</span>) sont obligatoires pour publier l'article.
+            </div>
+
             {/* Sauvegarde automatique locale */}
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 8 }}>
                 <button type="button" onClick={handleResetDraft} style={{ background: '#FFD9A0', color: '#222', border: 'none', borderRadius: 4, padding: '4px 12px', cursor: 'pointer', fontWeight: 600 }}>
@@ -689,11 +795,14 @@ export default function ArticleForm({
                     </div>
                     {/* Image principale */}
                     <div className={styles.miniatureSection}>
-                        <h3 className={styles.miniatureTitle}>Image principale</h3>
+                        <h3 className={`${styles.miniatureTitle} ${styles.labelRequired}`}>Image principale</h3>
                         <p className={styles.miniatureHelp}>
                             Cette image s’affiche en haut de l’article, dans la page de détail.<br />
                             <strong>Si l’image de couverture n’est pas renseignée, cette image pourra être utilisée comme miniature.</strong>
                         </p>
+                        {showValidation && fieldErrors.image && (
+                            <div className={styles.errorMsg}>{fieldErrors.image}</div>
+                        )}
                         {article?.image && !image && (
                             <img src={article.image} alt="aperçu" className={styles.mainImageMiniature} />
                         )}
@@ -701,7 +810,7 @@ export default function ArticleForm({
                             <input
                                 type="file"
                                 accept="image/*"
-                                onChange={handleImageChange}
+                                onChange={handleImageChangeWithValidation}
                                 className={styles.inputImageFile}
                                 key={imageName || ''}
                             />
@@ -730,28 +839,37 @@ export default function ArticleForm({
                     <div className={styles.formFieldsColumn}>
                         <input
                             type="text"
-                            placeholder="Titre"
+                            placeholder="Titre *"
                             value={title}
-                            onChange={e => setTitle(e.target.value)}
+                            onChange={handleTitleChange}
                             required
-                            className={styles.inputTitle}
+                            className={getFieldClassName(styles.inputTitle, 'title')}
                         />
+                        {showValidation && fieldErrors.title && (
+                            <div className={styles.errorMsg}>{fieldErrors.title}</div>
+                        )}
                         <input
                             type="text"
-                            placeholder="Auteur"
+                            placeholder="Auteur *"
                             value={author}
-                            onChange={e => setAuthor(e.target.value)}
+                            onChange={handleAuthorChange}
                             required
-                            className={styles.inputAuthor}
+                            className={getFieldClassName(styles.inputAuthor, 'author')}
                         />
+                        {showValidation && fieldErrors.author && (
+                            <div className={styles.errorMsg}>{fieldErrors.author}</div>
+                        )}
                         <input
                             type="text"
-                            placeholder="Slug (ex: mon-article)"
+                            placeholder="Slug (ex: mon-article) *"
                             value={slug}
-                            onChange={e => setSlug(e.target.value)}
+                            onChange={handleSlugChange}
                             required
-                            className={styles.inputSlug}
+                            className={getFieldClassName(styles.inputSlug, 'slug')}
                         />
+                        {showValidation && fieldErrors.slug && (
+                            <div className={styles.errorMsg}>{fieldErrors.slug}</div>
+                        )}
                         <label htmlFor="dateCreation" style={{ color: '#FFD9A0', fontWeight: 'bold', marginTop: 8 }}>Date de création</label>
                         <input
                             type="datetime-local"
@@ -772,12 +890,16 @@ export default function ArticleForm({
                             style={{ marginBottom: 8 }}
                         />
                         <textarea
-                            placeholder="Contenu"
+                            placeholder="Contenu *"
                             value={content}
-                            onChange={e => setContent(e.target.value)}
+                            onChange={handleContentChange}
                             rows={7}
-                            className={styles.textareaContent}
+                            className={getFieldClassName(styles.textareaContent, 'content')}
+                            required
                         />
+                        {showValidation && fieldErrors.content && (
+                            <div className={styles.errorMsg}>{fieldErrors.content}</div>
+                        )}
                         <div className={styles.articleMiniaturePreview} style={{ border: '2px dashed #FFD9A0', borderRadius: 8, padding: 16, margin: '24px 0', background: '#222' }}>
                             <div style={{ fontWeight: 'bold', color: '#FFD9A0', marginBottom: 8 }}>Aperçu de la miniature de l'article</div>
                             <div style={{ color: '#FFD9A0', fontSize: '0.95em', marginBottom: 8 }}>
@@ -800,20 +922,23 @@ export default function ArticleForm({
                                 </div>
                             </div>
                         </div>
-                        <label className={styles.labelCategory}>Catégorie</label>
+                        <label className={`${styles.labelCategory} ${styles.labelRequired}`}>Catégorie</label>
                         <div className={styles.categoryAddWrapper}>
                             <div className={styles.categoryAddRow}>
                                 <select
                                     value={categoryId}
-                                    onChange={e => setCategoryId(e.target.value)}
+                                    onChange={handleCategoryChange}
                                     required
-                                    className={styles.selectCategory}
+                                    className={getFieldClassName(styles.selectCategory, 'categoryId')}
                                 >
-                                    <option value="">-- Sélectionner --</option>
+                                    <option value="">-- Sélectionner une catégorie * --</option>
                                     {Array.isArray(categories) && categories.map(cat => (
                                         <option key={cat.id} value={cat.id}>{cat.name}</option>
                                     ))}
                                 </select>
+                                {showValidation && fieldErrors.categoryId && (
+                                    <div className={styles.errorMsg}>{fieldErrors.categoryId}</div>
+                                )}
                                 <input
                                     className={styles.inputNewCategory}
                                     type="text"

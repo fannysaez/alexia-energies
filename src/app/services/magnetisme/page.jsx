@@ -39,7 +39,7 @@ export default function MagnetismePage() {
             title: "Les bienfaits du magnétisme sur le stress",
             description: "Découvrez comment le magnétisme peut vous aider à retrouver sérénité et équilibre intérieur.",
             image: "/img/services/magnetisme/Serene Spa Moment.webp",
-            link: "#/articles/magnetisme-bienfaits"
+            link: "/articles/magnetisme-bienfaits"
         },
         {
             id: 2,

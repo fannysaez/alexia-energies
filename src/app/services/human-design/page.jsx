@@ -54,14 +54,14 @@ export default function HumanDesignPage() {
             title: "Votre stratégie personnelle révélée",
             description: "Apprenez à utiliser votre stratégie unique pour prendre les bonnes décisions.",
             image: "/img/services/human-design/Tranquility Zen Space.webp",
-            link: "#/articles/votre-strategie-personnelle-revelee"
+            link: "#/articles/votre-strategie-personnelle"
         },
         {
             id: 3,
             title: "L'autorité intérieure : votre boussole",
             description: "Développez votre capacité à suivre votre autorité intérieure pour une vie alignée.",
             image: "/img/services/human-design/Mystical Meditation Setting with Tarot and Crystals.webp",
-            link: "#/articles/l-autorite-interieure-votre-boussole"
+            link: "#/articles/votre-boussole"
         }
     ];
 

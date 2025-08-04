@@ -118,6 +118,8 @@ export default function ArticleForm({
             datePublication,
             statut,
             categoryId,
+            image,
+            coverImage,
             contentBlocks,
             paragraphs
         };

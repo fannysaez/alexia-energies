@@ -43,7 +43,7 @@ export default function ArticlePage() {
                 }
             } catch (error) {
                 console.error("Erreur lors du chargement de l'article :", error);
-                setError("Erreur de connexion au serveur");
+                setError("Cet article n'est pas disponible, en cours de construction");
                 setArticle(null);
             } finally {
                 setLoading(false);

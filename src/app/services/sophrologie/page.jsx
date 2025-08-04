@@ -45,21 +45,21 @@ export default function SophrologiePage() {
             title: "Sophrologie et gestion du stress",
             description: "Découvrez comment la sophrologie peut vous aider à mieux gérer le stress quotidien.",
             image: "/img/services/sophrologie/Elderly Woman Meditating by Lake in Autumn.webp",
-            link: "#/articles/sophrologie-gestion-stress"
+            link: "/articles/sophrologie-gestion-stress"
         },
         {
             id: 2,
             title: "Techniques de respiration en sophrologie",
             description: "Apprenez les exercices de respiration pour retrouver calme et sérénité.",
             image: "/img/services/sophrologie/Tranquil Beauty Spa Facial.webp",
-            link: "#/articles/sophrologie-techniques-respiration"
+            link: "/articles/sophrologie-techniques-respiration"
         },
         {
             id: 3,
             title: "Sophrologie et préparation mentale",
             description: "Utilisez la sophrologie pour vous préparer mentalement aux défis importants.",
             image: "/img/services/sophrologie/Peaceful Wellness Therapy Session.webp",
-            link: "#/articles/sophrologie-preparation-mentale"
+            link: "/articles/sophrologie-preparation-mentale"
         }
 
     ];

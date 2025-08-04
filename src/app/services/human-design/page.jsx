@@ -47,21 +47,21 @@ export default function HumanDesignPage() {
             title: "Comprendre votre type en Human Design",
             description: "Découvrez les 5 types énergétiques et leurs spécificités pour mieux vous connaître.",
             image: "/img/services/human-design/Serenity in Gesture_ Hands in Prayer or Meditation.webp",
-            link: "#/articles/comprendre-votre-type"
+            link: "/articles/comprendre-votre-type"
         },
         {
             id: 2,
             title: "Votre stratégie personnelle révélée",
             description: "Apprenez à utiliser votre stratégie unique pour prendre les bonnes décisions.",
             image: "/img/services/human-design/Tranquility Zen Space.webp",
-            link: "#/articles/votre-strategie-personnelle"
+            link: "/articles/votre-strategie-personnelle"
         },
         {
             id: 3,
             title: "L'autorité intérieure : votre boussole",
             description: "Développez votre capacité à suivre votre autorité intérieure pour une vie alignée.",
             image: "/img/services/human-design/Mystical Meditation Setting with Tarot and Crystals.webp",
-            link: "#/articles/votre-boussole"
+            link: "/articles/votre-boussole"
         }
     ];
 

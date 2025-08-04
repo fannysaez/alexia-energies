@@ -18,8 +18,7 @@ export default function ArticlePage() {
         const fetchArticle = async () => {
             try {
                 console.log('Tentative de chargement de l\'article avec slug:', slug);
-                const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-                const url = `${baseUrl}/api/articles/${slug}`;
+                const url = `/api/articles/${slug}`;
                 console.log('URL appelée:', url);
 
                 const res = await fetch(url);

@@ -33,9 +33,20 @@ export async function POST(req) {
         const originalName = file.name;
         const extension = path.extname(originalName);
         const timestamp = Date.now();
-        const finalFileName = newName && newName.trim()
-            ? `${timestamp}-${newName.trim().replace(/[^a-zA-Z0-9.-]/g, '_')}${extension}`
-            : `${timestamp}-${originalName.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+
+        let finalFileName;
+        if (newName && newName.trim()) {
+            const customName = newName.trim().replace(/[^a-zA-Z0-9.-]/g, '_');
+            // Si le nom personnalisé a déjà une extension, on l'utilise tel quel
+            // Sinon on ajoute l'extension du fichier original
+            if (path.extname(customName)) {
+                finalFileName = `${timestamp}-${customName}`;
+            } else {
+                finalFileName = `${timestamp}-${customName}${extension}`;
+            }
+        } else {
+            finalFileName = `${timestamp}-${originalName.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+        }
 
         // Créer le chemin de destination
         const uploadDir = path.join(process.cwd(), 'public', 'articles');

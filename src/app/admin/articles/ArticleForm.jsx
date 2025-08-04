@@ -375,7 +375,7 @@ export default function ArticleForm({
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setImage(file || null);
-        setImageName(file ? file.name : '');
+        setImageName(''); // Laisser vide pour permettre la saisie personnalisée
         if (file) {
             setImageSuccess('Image sélectionnée !');
         }
@@ -384,7 +384,7 @@ export default function ArticleForm({
     const handleCoverImageChange = (e) => {
         const file = e.target.files[0];
         setCoverImage(file || null);
-        setCoverImageName(file ? file.name : '');
+        setCoverImageName(''); // Laisser vide pour permettre la saisie personnalisée
         setCoverImagePreview(file ? URL.createObjectURL(file) : '');
         if (file) {
             setCoverImageSuccess('Image de couverture sélectionnée !');
@@ -508,7 +508,7 @@ export default function ArticleForm({
         setParaImageFile(file || null);
         setParaImagePreview(file ? URL.createObjectURL(file) : '');
         setParaImageUrl('');
-        setParaImageName(file ? file.name : '');
+        setParaImageName(''); // Laisser vide pour permettre la saisie personnalisée
     };
 
     // Gestion upload image paragraphe 2
@@ -517,7 +517,7 @@ export default function ArticleForm({
         setParaImageFile2(file || null);
         setParaImagePreview2(file ? URL.createObjectURL(file) : '');
         setParaImageUrl2('');
-        setParaImageName2(file ? file.name : '');
+        setParaImageName2(''); // Laisser vide pour permettre la saisie personnalisée
     };
 
     // Ajouter un paragraphe
@@ -636,10 +636,7 @@ export default function ArticleForm({
         if (!file) return;
         const formData = new FormData();
         formData.append('file', file);
-        // Ajout du champ de nom personnalisé
-        if (file.name && file.name.trim() !== '') {
-            formData.append('newName', file.name.trim());
-        }
+        // Pas de nom personnalisé pour éviter les doubles extensions
         try {
             const res = await fetch('/api/upload-image', {
                 method: 'POST',
@@ -1115,7 +1112,7 @@ export default function ArticleForm({
                                     </p>
                                     <input type="file" accept="image/*" onChange={async e => {
                                         const file = e.target.files[0];
-                                        setBlockMediaName(file ? file.name : '');
+                                        setBlockMediaName(''); // Laisser vide pour permettre la saisie personnalisée
                                         if (file) {
                                             const formData = new FormData();
                                             formData.append('file', file);

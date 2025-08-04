@@ -181,12 +181,19 @@
 }
 
 .checkbox input {
-    margin-top: 2px;
+    margin-top: 0px;
     accent-color: var(--primary-color);
+    width: 13px;
+    height: 13px;
 }
 
 .checkbox span {
     line-height: 1.4;
+    font-size: 16px;
+    font-family: 'SortsMillGoudy-Regular';
+    text-transform: lowercase;
+    margin-left: 4px;
+    margin-top: 0px;
 }
 
 /* Copyright and separator styles */

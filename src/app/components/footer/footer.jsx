@@ -215,7 +215,7 @@ const Footer = () => { // Footer component
                                 checked={cguChecked}
                                 onChange={e => setCguChecked(e.target.checked)}
                             />
-                            <span> J'accepte les Conditions Générales d'Utilisation </span>
+                            <span> J'accepte les conditions générales d'utilisation </span>
                         </label>
                         {newsletterError && (
                             <div className={styles.confirmationMessage} style={{ color: 'red', marginTop: '10px' }}>

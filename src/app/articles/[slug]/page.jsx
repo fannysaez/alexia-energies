@@ -188,7 +188,7 @@ export default function ArticlePage() {
                                                     : styles.blockTitle
                                             },
                                             block.titleLevel && block.titleLevel.toUpperCase() !== "H1"
-                                                ? <><MdCheck style={{ marginRight: 8, verticalAlign: 'middle', color: '#FFD9A0', fontSize: '1.6em' }} />{block.textContent}</>
+                                                ? <><MdCheck style={{ marginRight: 8, verticalAlign: 'middle', color: '#FFD9A0', fontSize: '1.1em' }} />{block.textContent}</>
                                                 : block.textContent
                                         )
                                     )}

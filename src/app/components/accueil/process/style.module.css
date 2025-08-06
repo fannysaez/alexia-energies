@@ -39,7 +39,7 @@
 /* En-tête de section */
 .header {
     text-align: center;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
 }
 
 /* Titre principal */

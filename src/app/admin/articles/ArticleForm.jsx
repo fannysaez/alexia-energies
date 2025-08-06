@@ -1075,7 +1075,7 @@ export default function ArticleForm({
                                         {cat.name ? cat.name : cat}
                                         <button
                                             className={styles.deleteCategoryBtn}
-                                            onClick={() => handleDelete(cat.id ? cat.id : cat)}
+                                            onClick={() => openDeleteModal(cat.id ? cat.id : cat)}
                                         >
                                             ×
                                         </button>

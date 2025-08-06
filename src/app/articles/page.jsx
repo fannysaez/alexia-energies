@@ -123,16 +123,17 @@ export default function ArticlesPage() {
                         />
                         <div className={styles.mainContent}>
                             <span className={styles.meta}>
-                                {mainArticle.category?.name && (
-                                    <>
-                                        <b>{mainArticle.category.name}</b> &nbsp;|&nbsp;
-                                    </>
-                                )}
-                                {mainArticle.dateCreation
-                                    ? new Date(mainArticle.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
-                                    : ''}
-                                {/* Vues affichées à droite */}
-                                <span style={{ float: 'right', marginLeft: 16, color: '#E2C6A8', fontWeight: 'bold' }}>{mainArticle.views || 0} vues</span>
+                                <span>
+                                    {mainArticle.category?.name && (
+                                        <>
+                                            <b>{mainArticle.category.name}</b> &nbsp;|&nbsp;
+                                        </>
+                                    )}
+                                    {mainArticle.dateCreation
+                                        ? new Date(mainArticle.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
+                                        : ''}
+                                </span>
+                                <span style={{ color: '#E2C6A8', fontWeight: 'bold' }}>{mainArticle.views || 0} vues</span>
                             </span>
                             <h3>{mainArticle.titre}</h3>
                             {mainArticle.description && <p>{mainArticle.description}</p>}
@@ -153,16 +154,17 @@ export default function ArticlesPage() {
                             />
                             <div>
                                 <span className={styles.meta}>
-                                    {article.category?.name && (
-                                        <>
-                                            <b>{article.category.name}</b> &nbsp;|&nbsp;
-                                        </>
-                                    )}
-                                    {article.dateCreation
-                                        ? new Date(article.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
-                                        : ''}
-                                    {/* Vues affichées à droite */}
-                                    <span style={{ float: 'right', marginLeft: 8, color: '#E2C6A8', fontWeight: 'bold' }}>{article.views || 0} vues</span>
+                                    <span>
+                                        {article.category?.name && (
+                                            <>
+                                                <b>{article.category.name}</b> &nbsp;|&nbsp;
+                                            </>
+                                        )}
+                                        {article.dateCreation
+                                            ? new Date(article.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
+                                            : ''}
+                                    </span>
+                                    <span style={{ color: '#E2C6A8', fontWeight: 'bold' }}>{article.views || 0} vues</span>
                                 </span>
                                 <h4>{article.titre}</h4>
                                 {article.description && (

@@ -2,7 +2,7 @@
 .blockCitation,
 .blockCitation * {
     color: var(--paragraph-color) !important;
-    margin-top: 20px;
+    margin-top: 11px;
 }
 
 .metaFlex {
@@ -438,6 +438,7 @@
     line-height: 1.4 !important;
     text-align: left !important;
     font-weight: 400 !important;
+    margin-top: 10px;
 }
 
 .blockTitleH4 {

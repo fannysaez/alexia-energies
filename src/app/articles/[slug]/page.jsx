@@ -13,6 +13,8 @@ export default function ArticlePage() {
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    // Ajout : état pour les vues
+    const [views, setViews] = useState(null);
 
     useEffect(() => {
         if (!slug) return;
@@ -29,6 +31,8 @@ export default function ArticlePage() {
                     const data = await res.json();
                     console.log('Article chargé avec succès:', data);
                     setArticle(data);
+                    // Récupère le nombre de vues si présent
+                    if (typeof data.views === 'number') setViews(data.views);
                     setError(null);
                 } else if (res.status === 404) {
                     const errorData = await res.json().catch(() => ({}));
@@ -50,6 +54,15 @@ export default function ArticlePage() {
             }
         };
         fetchArticle();
+        // Incrémente le compteur de vues à chaque affichage
+        const incrementViews = async () => {
+            try {
+                await fetch(`/api/articles/${slug}/view`, { method: 'POST' });
+            } catch (e) {
+                console.error('Erreur lors de l\'incrémentation des vues:', e);
+            }
+        };
+        incrementViews();
     }, [slug]);
 
     if (loading) return <div className={styles.loadingContainer}><p>Chargement...</p></div>;
@@ -96,9 +109,10 @@ export default function ArticlePage() {
                 </div>
             </section>
 
-            {/* Section Infos auteur/date */}
+            {/* Section Infos auteur/date + vues */}
             <section className={styles.metaSection}>
                 <div className={styles.metaFlex}>
+                    {/* Date */}
                     {article.datePublication && (
                         <span className={styles.articleDate}>
                             {new Date(article.datePublication).toLocaleDateString("fr-FR", {
@@ -108,14 +122,18 @@ export default function ArticlePage() {
                             })}
                         </span>
                     )}
-
+                    {/* Catégorie */}
                     {article.category && (
                         <div className={styles.articleCategory}>
                             <span>Catégorie :</span>
                             <span>{article.category.name}</span>
                         </div>
                     )}
-
+                    {/* Vues, affichées à droite */}
+                    <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ fontWeight: 'bold', color: '#E2C6A8' }}>{views !== null ? views : article.views || 0}</span>
+                        <span style={{ color: '#E2C6A8' }}>vues</span>
+                    </div>
                 </div>
             </section>
 

@@ -21,6 +21,7 @@ model Article {
   image            String?
   imageCouverture  String?
   categoryId       String?
+  views   Int    @default(0)
   category         Category?      @relation(fields: [categoryId], references: [id])
   contentBlocks    ContentBlock[]
   paragraphs       Paragraph[]

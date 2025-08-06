@@ -14,6 +14,7 @@ model Article {
     image            String? // Image associée (optionnelle) / Associated image (optional)
     imageCouverture  String? // Image de couverture (optionnelle) / Cover image (optional)
     categoryId       String? // Référence à la catégorie (optionnelle)
+    views   Int    @default(0)
     // Relations
     contentBlocks    ContentBlock[] // Blocs de contenu liés / Related content blocks
     paragraphs       Paragraph[] // Paragraphes liés / Related paragraphs

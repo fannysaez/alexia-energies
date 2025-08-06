@@ -125,7 +125,7 @@
 .dashboard-nav-link:hover,
 .dashboard-nav-link.active {
     background: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--background);
 }
 
 .dashboard-logout {

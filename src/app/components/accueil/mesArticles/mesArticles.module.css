@@ -101,7 +101,9 @@
     color: var(--primary-color);
     font-size: 0.95rem;
     margin-bottom: 8px;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .readMore {

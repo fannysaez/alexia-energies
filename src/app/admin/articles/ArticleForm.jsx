@@ -321,6 +321,8 @@ export default function ArticleForm({
     // Fonction pour ouvrir la modale de suppression catégorie
     const openDeleteModal = (id) => {
         setCategoryToDelete(id);
+        setCatSuccess('');
+        setCatError('');
         setShowDeleteModal(true);
     };
     // Ajouter un bloc de contenu (fonction indépendante)

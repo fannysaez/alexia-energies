@@ -113,7 +113,7 @@
 }
 
 .dashboard-nav-link {
-    color: var(--tiercery-color);
+    color: var(--background);
     font-size: 1.08rem;
     padding: 15px 28px;
     border-radius: 30px;

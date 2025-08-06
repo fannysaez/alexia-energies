@@ -850,7 +850,7 @@ export default function ArticleForm({
                     </div>
                     {/* Image principale */}
                     <div className={styles.miniatureSection}>
-                        <h3 className={`${styles.miniatureTitle} ${styles.labelRequired}`}>Image principale</h3>
+                        <h3 className={styles.miniatureTitle}>Image principale</h3>
                         <p className={styles.miniatureHelp}>
                             Cette image s’affiche en haut de l’article, dans la page de détail.<br />
                             <strong>Si l’image de couverture n’est pas renseignée, cette image pourra être utilisée comme miniature.</strong>
@@ -894,7 +894,7 @@ export default function ArticleForm({
                     <div className={styles.formFieldsColumn}>
                         <input
                             type="text"
-                            placeholder="Titre *"
+                            placeholder="Titre"
                             value={title}
                             onChange={handleTitleChange}
                             className={getFieldClassName(styles.inputTitle, 'title')}
@@ -994,7 +994,7 @@ export default function ArticleForm({
                                 </div>
                             </div>
                         </div>
-                        <label className={`${styles.labelCategory} ${styles.labelRequired}`}>Catégorie</label>
+                        <label className={styles.labelCategory}>Catégorie</label>
                         <div className={styles.categoryAddWrapper}>
                             <div className={styles.categoryAddRow}>
                                 <select

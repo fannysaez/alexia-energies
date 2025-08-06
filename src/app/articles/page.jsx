@@ -165,7 +165,13 @@ export default function ArticlesPage() {
                                     <span style={{ float: 'right', marginLeft: 8, color: '#E2C6A8', fontWeight: 'bold' }}>{article.views || 0} vues</span>
                                 </span>
                                 <h4>{article.titre}</h4>
-                                {article.description && <p>{article.description}</p>}
+                                {article.description && (
+                                    <p>
+                                        {article.description.length > 80
+                                            ? article.description.slice(0, 80) + "..."
+                                            : article.description}
+                                    </p>
+                                )}
                                 <a href={"/articles/" + article.slug} className={styles.readMore}>Lire la suite</a>
                             </div>
                         </div>

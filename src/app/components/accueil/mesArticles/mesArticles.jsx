@@ -48,7 +48,9 @@ export default function MesArticles() {
                                     : mainArticle.dateCreation
                                         ? new Date(mainArticle.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
                                         : ''
-                                } &nbsp;|&nbsp; {mainArticle.comments || 0} Comments
+                                }
+                                {/* Vues affichées à droite */}
+                                <span style={{ float: 'right', marginLeft: 16, color: '#E2C6A8', fontWeight: 'bold' }}>{mainArticle.views || 0} vues</span>
                             </span>
                             <h3>{mainArticle.titre}</h3>
                             <p>{mainArticle.description}</p>
@@ -72,7 +74,9 @@ export default function MesArticles() {
                                         : article.dateCreation
                                             ? new Date(article.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
                                             : ''
-                                    } &nbsp;|&nbsp; {article.comments || 0} Comments
+                                    }
+                                    {/* Vues affichées à droite */}
+                                    <span style={{ float: 'right', marginLeft: 8, color: '#E2C6A8', fontWeight: 'bold' }}>{article.views || 0} vues</span>
                                 </span>
                                 <h4>{article.titre}</h4>
                                 {article.slug ? (

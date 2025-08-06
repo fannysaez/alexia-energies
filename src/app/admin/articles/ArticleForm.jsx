@@ -293,10 +293,6 @@ export default function ArticleForm({
     };
     // Fonction pour supprimer une catégorie avec confirmation
     const handleDeleteCategory = async () => {
-        if (!window.confirm('Voulez-vous vraiment supprimer cette catégorie ?')) {
-            setShowDeleteModal(false);
-            return;
-        }
         setCatError('');
         setCatSuccess('');
         try {

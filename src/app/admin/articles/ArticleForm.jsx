@@ -290,6 +290,8 @@ export default function ArticleForm({
     // Fonction pour fermer la modale de suppression catégorie
     const closeDeleteModal = () => {
         setShowDeleteModal(false);
+        setCatSuccess('');
+        setCatError('');
     };
     // Fonction pour supprimer une catégorie avec confirmation
     const handleDeleteCategory = async () => {

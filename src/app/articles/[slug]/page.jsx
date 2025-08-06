@@ -112,7 +112,7 @@ export default function ArticlePage() {
             {/* Section Infos auteur/date + vues */}
             <section className={styles.metaSection}>
                 <div className={styles.metaFlex}>
-                    {/* Date */}
+                    {/* Date à gauche */}
                     {article.datePublication && (
                         <span className={styles.articleDate}>
                             {new Date(article.datePublication).toLocaleDateString("fr-FR", {
@@ -122,17 +122,14 @@ export default function ArticlePage() {
                             })}
                         </span>
                     )}
-                    {/* Catégorie */}
-                    {article.category && (
-                        <div className={styles.articleCategory}>
-                            <span>Catégorie :</span>
-                            <span>{article.category.name}</span>
-                        </div>
-                    )}
-                    {/* Vues, affichées à droite */}
-                    <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ fontWeight: 'bold', color: '#E2C6A8' }}>{views !== null ? views : article.views || 0}</span>
-                        <span style={{ color: '#E2C6A8' }}>vues</span>
+                    {/* Catégorie à droite */}
+                    <div style={{ marginLeft: 'auto' }}>
+                        {article.category && (
+                            <div className={styles.articleCategory}>
+                                <span>Catégorie :</span>
+                                <span>{article.category.name}</span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>

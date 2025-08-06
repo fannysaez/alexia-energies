@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { FaStar } from "react-icons/fa";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -186,7 +187,10 @@ export default function ArticlePage() {
                                                     ? styles[`blockTitle${block.titleLevel.toUpperCase()}`]
                                                     : styles.blockTitle
                                             },
-                                            block.textContent
+                                            <>
+                                                <FaStar style={{ marginRight: 8, verticalAlign: 'middle', color: 'var(--primary-color)' }} />
+                                                {block.textContent}
+                                            </>
                                         )
                                     )}
                                     {block.type === "VIDEO" && block.mediaUrl && (

@@ -291,8 +291,12 @@ export default function ArticleForm({
     const closeDeleteModal = () => {
         setShowDeleteModal(false);
     };
-    // Fonction pour supprimer une catégorie
+    // Fonction pour supprimer une catégorie avec confirmation
     const handleDeleteCategory = async () => {
+        if (!window.confirm('Voulez-vous vraiment supprimer cette catégorie ?')) {
+            setShowDeleteModal(false);
+            return;
+        }
         setCatError('');
         setCatSuccess('');
         try {

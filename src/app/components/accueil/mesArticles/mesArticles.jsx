@@ -79,6 +79,13 @@ export default function MesArticles() {
                                     <span style={{ float: 'right', marginLeft: 8, color: '#E2C6A8', fontWeight: 'bold' }}>{article.views || 0} vues</span>
                                 </span>
                                 <h4>{article.titre}</h4>
+                                {article.description && (
+                                    <p>
+                                        {article.description.length > 18
+                                            ? article.description.slice(0, 18) + "..."
+                                            : article.description}
+                                    </p>
+                                )}
                                 {article.slug ? (
                                     <Link href={`/articles/${article.slug}`} className={styles.readMore}>Lire la suite</Link>
                                 ) : (

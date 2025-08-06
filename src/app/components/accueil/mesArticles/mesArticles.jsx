@@ -49,8 +49,7 @@ export default function MesArticles() {
                                         ? new Date(mainArticle.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
                                         : ''
                                 }
-                                {/* Vues affichées à droite */}
-                                <span style={{ float: 'right', marginLeft: 16, color: '#E2C6A8', fontWeight: 'bold' }}>{mainArticle.views || 0} vues</span>
+                                {/* <span style={{ float: 'right', marginLeft: 16, color: '#E2C6A8', fontWeight: 'bold' }>{mainArticle.views || 0} vues</span> */}
                             </span>
                             <h3>{mainArticle.titre}</h3>
                             <p>{mainArticle.description}</p>
@@ -75,8 +74,7 @@ export default function MesArticles() {
                                             ? new Date(article.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
                                             : ''
                                     }
-                                    {/* Vues affichées à droite */}
-                                    <span style={{ float: 'right', marginLeft: 8, color: '#E2C6A8', fontWeight: 'bold' }}>{article.views || 0} vues</span>
+                                    {/* <span style={{ float: 'right', marginLeft: 8, color: '#E2C6A8', fontWeight: 'bold' }>{article.views || 0} vues</span> */}
                                 </span>
                                 <h4>{article.titre}</h4>
                                 {article.description && (

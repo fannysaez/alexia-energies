@@ -164,7 +164,7 @@ export default function ArticlesPage() {
                                             ? new Date(article.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
                                             : ''}
                                     </span>
-                                    <span style={{ color: '#E2C6A8', fontWeight: 'bold' }}>| {article.views || 0} vues</span>
+                                    <span style={{ color: '#E2C6A8', fontWeight: 'bold' }}>&nbsp;|&nbsp;{article.views || 0} vues</span>
                                 </span>
                                 <h4>{article.titre}</h4>
                                 {article.description && (

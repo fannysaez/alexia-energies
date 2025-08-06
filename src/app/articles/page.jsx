@@ -167,8 +167,8 @@ export default function ArticlesPage() {
                                 <h4>{article.titre}</h4>
                                 {article.description && (
                                     <p>
-                                        {article.description.length > 80
-                                            ? article.description.slice(0, 80) + "..."
+                                        {article.description.length > 30
+                                            ? article.description.slice(0, 30) + "..."
                                             : article.description}
                                     </p>
                                 )}

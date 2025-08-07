@@ -374,18 +374,18 @@
 /* Style pour les blocs de contenu (fond sombre, texte clair, aération, bordure) */
 
 .blockItem {
-    color: var(--primary-color);
-    padding: 4px 28px;
-    font-family: 'Work Sans', sans-serif;
-    line-height: 1.8;
-    font-size: 1.13rem;
-    text-align: justify;
-    /* margin-bottom: 15px; */
-}
-
-/* Correction couleur pour les blocs LISTE */
-.blockList,
-.blockListItem {
+    display: block;
+    margin: 0 auto;
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    max-width: 400px;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+    background: #fff;
+    transition: transform 0.3s ease;
     color: var(--primary-color);
     padding: 0px 0px 0px 13px;
     font-family: 'SortsMillGoudy-Regular', serif;

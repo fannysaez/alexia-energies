@@ -487,8 +487,8 @@ function DashboardContent() {
                                                                 <strong style={{ fontSize: 18, color: '#FFD9A0', marginBottom: 6, textAlign: 'center', lineHeight: 1.2 }}>{article.titre}</strong>
                                                                 {article.description && (
                                                                     <div style={{ fontSize: 13, color: '#bfae8f', marginBottom: 8, textAlign: 'center', fontStyle: 'italic', lineHeight: 1.3 }}>
-                                                                        {article.description.length > 120
-                                                                            ? article.description.slice(0, 120) + '...'
+                                                                        {article.description.length > 30
+                                                                            ? article.description.slice(0, 30) + '...'
                                                                             : article.description}
                                                                     </div>
                                                                 )}

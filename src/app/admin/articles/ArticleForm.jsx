@@ -855,9 +855,7 @@ export default function ArticleForm({
                             Cette image s’affiche en haut de l’article, dans la page de détail.<br />
                             <strong>Si l’image de couverture n’est pas renseignée, cette image pourra être utilisée comme miniature.</strong>
                         </p>
-                        {showValidation && fieldErrors.image && (
-                            <div className={styles.errorMsg}>{fieldErrors.image}</div>
-                        )}
+                        {/* Aucun message d'erreur pour image */}
                         {article?.image && !image && (
                             <img src={article.image} alt="aperçu" className={styles.mainImageMiniature} />
                         )}
@@ -899,9 +897,7 @@ export default function ArticleForm({
                             onChange={handleTitleChange}
                             className={getFieldClassName(styles.inputTitle, 'title')}
                         />
-                        {showValidation && fieldErrors.title && (
-                            <div className={styles.errorMsg}>{fieldErrors.title}</div>
-                        )}
+                        {/* Aucun message d'erreur pour titre */}
                         <input
                             type="text"
                             placeholder="Auteur"
@@ -909,9 +905,7 @@ export default function ArticleForm({
                             onChange={handleAuthorChange}
                             className={getFieldClassName(styles.inputAuthor, 'author')}
                         />
-                        {showValidation && fieldErrors.author && (
-                            <div className={styles.errorMsg}>{fieldErrors.author}</div>
-                        )}
+                        {/* Aucun message d'erreur pour auteur */}
                         <input
                             type="text"
                             placeholder="Slug (ex: mon-article)"
@@ -919,9 +913,7 @@ export default function ArticleForm({
                             onChange={handleSlugChange}
                             className={getFieldClassName(styles.inputSlug, 'slug')}
                         />
-                        {showValidation && fieldErrors.slug && (
-                            <div className={styles.errorMsg}>{fieldErrors.slug}</div>
-                        )}
+                        {/* Aucun message d'erreur pour slug */}
                         <textarea
                             placeholder="Description courte de l'article"
                             value={description}
@@ -929,9 +921,7 @@ export default function ArticleForm({
                             className={styles.textareaDescription}
                             rows={3}
                         />
-                        {showValidation && fieldErrors.description && (
-                            <div className={styles.errorMsg}>{fieldErrors.description}</div>
-                        )}
+                        {/* Aucun message d'erreur pour description */}
                         <label htmlFor="dateCreation" style={{ color: '#FFD9A0', fontWeight: 'bold', marginTop: 8 }}>Date de création</label>
                         <input
                             type="datetime-local"
@@ -968,9 +958,7 @@ export default function ArticleForm({
                             rows={7}
                             className={getFieldClassName(styles.textareaContent, 'content')}
                         />
-                        {showValidation && fieldErrors.content && (
-                            <div className={styles.errorMsg}>{fieldErrors.content}</div>
-                        )}
+                        {/* Aucun message d'erreur pour contenu */}
                         <div className={styles.articleMiniaturePreview} style={{ border: '2px dashed #FFD9A0', borderRadius: 8, padding: 16, margin: '24px 0', background: '#222' }}>
                             <div style={{ fontWeight: 'bold', color: '#FFD9A0', marginBottom: 8 }}>Aperçu de la miniature de l'article</div>
                             <div style={{ color: '#FFD9A0', fontSize: '0.95em', marginBottom: 8 }}>
@@ -1007,9 +995,7 @@ export default function ArticleForm({
                                         <option key={cat.id} value={cat.id}>{cat.name}</option>
                                     ))}
                                 </select>
-                                {showValidation && fieldErrors.categoryId && (
-                                    <div className={styles.errorMsg}>{fieldErrors.categoryId}</div>
-                                )}
+                                {/* Aucun message d'erreur pour catégorie */}
                                 <input
                                     className={styles.inputNewCategory}
                                     type="text"

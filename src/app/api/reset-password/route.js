@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 export async function POST(req) {
     const { token, password } = await req.json();
     console.log("🔄 Reset password - Token reçu:", token ? token.substring(0, 10) + "..." : "MANQUANT");
+    console.log("🔄 Reset password - Token complet:", token);
 
     if (!token || !password) {
         console.log("❌ Token ou mot de passe manquant");
@@ -13,6 +14,7 @@ export async function POST(req) {
 
     // Chercher l'utilisateur ou l'admin avec ce token
     console.log("🔍 Recherche du token dans la base...");
+    console.log("🔍 Token recherché:", token);
     let user = await prisma.user.findFirst({ where: { resetToken: token } });
     let role = "user";
 

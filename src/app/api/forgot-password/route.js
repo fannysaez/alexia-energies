@@ -31,7 +31,7 @@ export async function POST(req) {
 
     // Envoyer l'email via EmailJS de manière asynchrone
     const resetUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/reset-password?token=${token}`;
-    
+
     // Ne pas attendre l'envoi d'email pour retourner la réponse
     sendResetEmail(email, resetUrl).catch(error => {
         console.error("Erreur lors de l'envoi de l'email:", error);

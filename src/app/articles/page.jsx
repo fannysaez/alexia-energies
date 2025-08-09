@@ -58,9 +58,9 @@ export default function ArticlesPage() {
     const totalPages = Math.ceil(sortedArticles.length / ARTICLES_PER_PAGE);
     const paginatedArticles = sortedArticles.slice((currentPage - 1) * ARTICLES_PER_PAGE, currentPage * ARTICLES_PER_PAGE);
 
-    // On reprend la logique d'accueil : 1 mainArticle, 3 secondaires, mais sur la page courante de la pagination
-    const mainArticle = paginatedArticles.length > 0 ? paginatedArticles[0] : null;
-    const secondaryArticles = paginatedArticles.length > 1 ? paginatedArticles.slice(1, 4) : [];
+    // Nouvelle logique : dernier article en vedette à gauche, les autres à droite
+    const mainArticle = paginatedArticles.length > 0 ? paginatedArticles[paginatedArticles.length - 1] : null;
+    const secondaryArticles = paginatedArticles.length > 1 ? paginatedArticles.slice(0, paginatedArticles.length - 1) : [];
 
     // Changement de catégorie : reset page à 1
     const handleCategoryChange = (catId) => {

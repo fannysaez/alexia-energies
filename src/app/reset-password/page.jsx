@@ -57,7 +57,7 @@ function ResetPasswordPageInner() {
             });
             const data = await res.json();
             console.log("Réponse API:", data);
-            
+
             if (res.ok) {
                 setMessage("Mot de passe réinitialisé avec succès. Vous pouvez vous connecter.");
                 setPassword("");
@@ -75,7 +75,7 @@ function ResetPasswordPageInner() {
     return (
         <div className={styles["form-container"]}>
             <h2>Réinitialiser le mot de passe</h2>
-            {token && <p style={{fontSize: "0.8em", opacity: 0.7}}>Token: {token.substring(0, 10)}...</p>}
+            {token && <p style={{ fontSize: "0.8em", opacity: 0.7 }}>Token: {token.substring(0, 10)}...</p>}
             <form onSubmit={handleSubmit}>
                 <div className={styles["form-fields"]}>
                     {/* Champ mot de passe avec œil */}

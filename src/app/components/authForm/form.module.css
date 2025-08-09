@@ -24,7 +24,7 @@
 
 .form-container h2 {
     margin-bottom: 32px;
-    font-size: 2rem;
+    font-size: 1.6rem;
     letter-spacing: 1px;
     color: var(--primary-color);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);

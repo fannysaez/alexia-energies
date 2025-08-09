@@ -1,33 +1,49 @@
-/* Style pour le bouton principal */
-.primary {
-    background-color: var(--secondary-color);
-    color: var(--tiercery-color);
-    border-radius: 30px;
-    text-transform: uppercase;
-    border: 1px solid #5C4228;
-    font-size: 14px;
-    letter-spacing: 1px;
-    padding: 15px 17px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-}
+ .leftVector {
+     height: 16px;
+     width: 16px;
+     display: flex;
+     align-items: center;
+     margin-right: 8px;
+ }
 
-/* Style pour le bouton secondaire */
-.secondary {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border-radius: 30px;
-    text-transform: uppercase;
-    border: 1px solid white;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    padding: 15px 17px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    white-space: nowrap;
-}
+ .rightVector {
+     height: 16px;
+     width: 16px;
+     display: flex;
+     align-items: center;
+     margin-left: 8px;
+ }
+
+ /* Style pour le bouton principal */
+ .primary {
+     background-color: var(--secondary-color);
+     color: var(--tiercery-color);
+     border-radius: 30px;
+     text-transform: uppercase;
+     border: 1px solid #5C4228;
+     font-size: 14px;
+     letter-spacing: 1px;
+     padding: 15px 17px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     white-space: nowrap;
+ }
+
+ /* Style pour le bouton secondaire */
+ .secondary {
+     background-color: var(--primary-color);
+     color: var(--secondary-color);
+     border-radius: 30px;
+     text-transform: uppercase;
+     border: 1px solid white;
+     font-size: 14px;
+     font-weight: 600;
+     letter-spacing: 1px;
+     padding: 15px 17px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 10px;
+     white-space: nowrap;
+ }

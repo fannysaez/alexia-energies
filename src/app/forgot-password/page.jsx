@@ -24,7 +24,7 @@ export default function ForgotPasswordPage() {
 
     return (
         <div className={styles["form-container"]}>
-            <h2>Réinitialisation <br /> du mot de passe</h2>
+            <h2>Réinitialisation du mot de passe</h2>
             <form onSubmit={handleSubmit}>
                 <div className={styles["form-fields"]}>
                     <input
@@ -41,7 +41,8 @@ export default function ForgotPasswordPage() {
                     type="submit"
                     text="Envoyer l’email"
                     className={styles["form-btn"]}
-                    leftVector={<img src="/img/boutons/VectorStarBlack.svg" alt="" style={{ height: 20 }} />}
+                    leftVector={<img src="/img/boutons/VectorStarBlack.svg" alt="" className={styles.leftVector} />}
+                    rightVector={<img src="/img/boutons/VectorStarBlack.svg" alt="" className={styles.rightVector} />}
                 />
             </form>
             {message && <p className={styles["form-message"]} style={{ color: "green" }}>{message}</p>}

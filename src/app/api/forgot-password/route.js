@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { getResetPasswordEmailTemplate } from "@/lib/emailTemplates";
 import crypto from "crypto";
 
 export async function POST(req) {
@@ -93,51 +94,10 @@ async function sendResetEmail(email, url) {
         console.log("🌐 Envoi de l'email via Resend...");
 
         const { data, error } = await resend.emails.send({
-            from: 'Alexia Energies <noreply@resend.dev>', // Vous pourrez changer ça avec votre domaine
+            from: 'Alexia Energies <fsaez.apprenant@simplon.co>',
             to: [email],
             subject: 'Réinitialisation de votre mot de passe - Alexia Energies',
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-                    <h2 style="color: #333; text-align: center;">Réinitialisation de votre mot de passe</h2>
-                    
-                    <p style="color: #666; line-height: 1.6;">
-                        Bonjour,
-                    </p>
-                    
-                    <p style="color: #666; line-height: 1.6;">
-                        Vous avez demandé la réinitialisation de votre mot de passe sur Alexia Energies.
-                        Cliquez sur le bouton ci-dessous pour créer un nouveau mot de passe :
-                    </p>
-                    
-                    <div style="text-align: center; margin: 30px 0;">
-                        <a href="${url}" 
-                           style="background-color: #4F46E5; color: white; padding: 12px 30px; 
-                                  text-decoration: none; border-radius: 5px; display: inline-block;">
-                            Réinitialiser mon mot de passe
-                        </a>
-                    </div>
-                    
-                    <p style="color: #666; line-height: 1.6; font-size: 14px;">
-                        Si le bouton ne fonctionne pas, vous pouvez copier et coller ce lien dans votre navigateur :
-                        <br>
-                        <a href="${url}" style="color: #4F46E5; word-break: break-all;">${url}</a>
-                    </p>
-                    
-                    <p style="color: #666; line-height: 1.6; font-size: 14px;">
-                        Ce lien expirera dans 1 heure pour des raisons de sécurité.
-                    </p>
-                    
-                    <p style="color: #666; line-height: 1.6; font-size: 14px;">
-                        Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer cet email.
-                    </p>
-                    
-                    <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
-                    
-                    <p style="color: #999; font-size: 12px; text-align: center;">
-                        Alexia Energies - Bien-être et développement personnel
-                    </p>
-                </div>
-            `,
+            html: getResetPasswordEmailTemplate(url),
         });
 
         if (error) {

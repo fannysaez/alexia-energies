@@ -13,13 +13,32 @@ export default function ForgotPasswordPage() {
         e.preventDefault();
         setMessage("");
         setError("");
-        // Ici, tu pourras ajouter la logique d'appel à l'API pour réinitialiser le mot de passe
+
         if (!email) {
             setError("Veuillez entrer votre adresse email.");
             return;
         }
-        // Simulation d'envoi
-        setMessage("Si cette adresse existe, un email de réinitialisation a été envoyé.");
+
+        try {
+            const response = await fetch("/api/forgot-password", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setMessage(data.message);
+            } else {
+                setError(data.message || "Une erreur est survenue.");
+            }
+        } catch (error) {
+            console.error("Erreur:", error);
+            setError("Une erreur est survenue lors de l'envoi.");
+        }
     };
 
     return (

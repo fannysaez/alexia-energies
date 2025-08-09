@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import styles from "../components/authForm/form.module.css";

@@ -94,7 +94,7 @@ async function sendResetEmail(email, url) {
         console.log("🌐 Envoi de l'email via Resend...");
 
         const { data, error } = await resend.emails.send({
-            from: 'Alexia Energies <fsaez.apprenant@simplon.co>',
+            from: 'Alexia Energies <onboarding@resend.dev>',
             to: [email],
             subject: 'Réinitialisation de votre mot de passe - Alexia Energies',
             html: getResetPasswordEmailTemplate(url),

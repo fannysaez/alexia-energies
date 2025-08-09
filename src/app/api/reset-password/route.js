@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
 export async function POST(req) {
@@ -7,7 +8,7 @@ export async function POST(req) {
 
     if (!token || !password) {
         console.log("❌ Token ou mot de passe manquant");
-        return Response.json({ message: "Token et mot de passe requis." }, { status: 400 });
+        return NextResponse.json({ message: "Token et mot de passe requis." }, { status: 400 });
     }
 
     // Chercher l'utilisateur ou l'admin avec ce token
@@ -23,7 +24,7 @@ export async function POST(req) {
 
     if (!user) {
         console.log("❌ Token non trouvé dans aucune table");
-        return Response.json({ message: "Token invalide." }, { status: 400 });
+        return NextResponse.json({ message: "Token invalide." }, { status: 400 });
     }
 
     console.log("✅ Utilisateur trouvé:", user.email, "Type:", role);
@@ -36,7 +37,7 @@ export async function POST(req) {
 
     if (!user.resetTokenExpiry || tokenExpiry < now) {
         console.log("❌ Token expiré");
-        return Response.json({ message: "Token expiré." }, { status: 400 });
+        return NextResponse.json({ message: "Token expiré." }, { status: 400 });
     }
 
     console.log("✅ Token valide, réinitialisation du mot de passe...");
@@ -65,5 +66,5 @@ export async function POST(req) {
         });
     }
 
-    return Response.json({ message: "Mot de passe réinitialisé avec succès." });
+    return NextResponse.json({ message: "Mot de passe réinitialisé avec succès." });
 }

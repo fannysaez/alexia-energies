@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { NextResponse } from "next/server";
 import crypto from "crypto";
 
 export async function POST(req) {
@@ -6,7 +7,7 @@ export async function POST(req) {
     console.log("🔍 Tentative de reset pour email:", email);
 
     if (!email) {
-        return Response.json({ message: "Email requis" }, { status: 400 });
+        return NextResponse.json({ message: "Email requis" }, { status: 400 });
     }
 
     // Vérifier si l'utilisateur existe (dans user ou admin)
@@ -23,7 +24,7 @@ export async function POST(req) {
     if (!user) {
         console.log("❌ Utilisateur non trouvé pour:", email);
         // Pour la sécurité, on ne révèle pas si l'email existe ou non
-        return Response.json({ message: "Si cet email existe, un lien a été envoyé." });
+        return NextResponse.json({ message: "Si cet email existe, un lien a été envoyé." });
     }
 
     // Générer un token sécurisé
@@ -58,11 +59,15 @@ export async function POST(req) {
     try {
         await sendResetEmail(email, resetUrl);
         console.log("✅ Email envoyé avec succès");
-        return Response.json({ message: "Un email de réinitialisation a été envoyé à votre adresse." });
+        return NextResponse.json({ message: "Un email de réinitialisation a été envoyé à votre adresse." });
     } catch (error) {
         console.error("🚨 Erreur lors de l'envoi de l'email:", error);
-        // Même en cas d'erreur d'envoi, on ne révèle pas d'informations sensibles
-        return Response.json({ message: "Si cet email existe, un lien a été envoyé." });
+        // En mode développement, on peut montrer l'erreur pour debugger
+        if (process.env.NODE_ENV === 'development') {
+            return NextResponse.json({ message: `Erreur: ${error.message}` }, { status: 500 });
+        }
+        // En production, on reste discret pour la sécurité
+        return NextResponse.json({ message: "Si cet email existe, un lien a été envoyé." });
     }
 }
 
@@ -76,12 +81,18 @@ async function sendResetEmail(email, url) {
     const userId = process.env.EMAILJS_USER_ID;
 
     console.log("⚙️ Configuration EmailJS:");
-    console.log("- Service ID:", serviceId);
-    console.log("- Template ID:", templateId);
-    console.log("- User ID:", userId);
+    console.log("- Service ID:", serviceId ? "✅ Défini" : "❌ Manquant");
+    console.log("- Template ID:", templateId ? "✅ Défini" : "❌ Manquant");
+    console.log("- User ID:", userId ? "✅ Défini" : "❌ Manquant");
 
     if (!serviceId || !templateId || !userId) {
-        throw new Error("Configuration EmailJS manquante - Variables d'environnement non définies");
+        const missingVars = [];
+        if (!serviceId) missingVars.push("EMAILJS_SERVICE_ID");
+        if (!templateId) missingVars.push("EMAILJS_TEMPLATE_ID_RESET");
+        if (!userId) missingVars.push("EMAILJS_USER_ID");
+
+        console.error("❌ Variables d'environnement manquantes:", missingVars.join(", "));
+        throw new Error(`Configuration EmailJS manquante - Variables manquantes: ${missingVars.join(", ")}`);
     }
 
     // Les variables à passer au template EmailJS

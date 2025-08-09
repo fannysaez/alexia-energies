@@ -24,7 +24,7 @@ export default function ForgotPasswordPage() {
 
     return (
         <div className={styles["form-container"]}>
-            <h2>Réinitialisation du mot de passe</h2>
+            <h2>Réinitialiser le mot de passe</h2>
             <form onSubmit={handleSubmit}>
                 <div className={styles["form-fields"]}>
                     <input

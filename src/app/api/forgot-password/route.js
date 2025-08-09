@@ -40,7 +40,7 @@ export async function POST(req) {
 // Fonction d'envoi d'email via EmailJS REST API
 async function sendResetEmail(email, url) {
     const serviceId = process.env.EMAILJS_SERVICE_ID;
-    const templateId = process.env.EMAILJS_TEMPLATE_ID;
+    const templateId = process.env.EMAILJS_TEMPLATE_ID_RESET;
     const userId = process.env.EMAILJS_USER_ID;
 
     // Les variables à passer au template EmailJS

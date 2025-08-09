@@ -71,9 +71,10 @@ async function sendResetEmail(email, url) {
     const templateParams = {
         to_email: email,
         user_email: email,
-        to_name: email,
+        to_name: email.split('@')[0], // Nom sans le domaine
         reset_link: url,
         reset_url: url,
+        link: url, // Variable alternative
     };
 
     console.log("📋 Paramètres du template:", templateParams);

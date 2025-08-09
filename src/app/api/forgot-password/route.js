@@ -6,7 +6,7 @@ import crypto from "crypto";
 export async function POST(req) {
     const { email } = await req.json();
     console.log("🔍 Tentative de reset pour email:", email);
-    
+
     if (!email) {
         return Response.json({ message: "Email requis" }, { status: 400 });
     }
@@ -14,7 +14,7 @@ export async function POST(req) {
     // Vérifier si l'utilisateur existe
     const user = await prisma.user.findUnique({ where: { email } });
     console.log("👤 Utilisateur trouvé:", !!user);
-    
+
     if (!user) {
         console.log("❌ Utilisateur non trouvé pour:", email);
         // Pour la sécurité, on ne révèle pas si l'email existe ou non
@@ -53,7 +53,7 @@ export async function POST(req) {
 async function sendResetEmail(email, url) {
     console.log("📨 Début envoi email pour:", email);
     console.log("🔗 URL:", url);
-    
+
     const serviceId = process.env.EMAILJS_SERVICE_ID;
     const templateId = process.env.EMAILJS_TEMPLATE_ID_RESET;
     const userId = process.env.EMAILJS_USER_ID;

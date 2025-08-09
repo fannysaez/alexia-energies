@@ -918,9 +918,11 @@ export default function ArticleForm({
                             placeholder="Description courte de l'article"
                             value={description}
                             onChange={handleDescriptionChange}
+                            maxLength={160}
                             className={styles.textareaDescription}
                             rows={3}
                         />
+                        <div>{description.length} / 160 caractères</div>
                         {/* Aucun message d'erreur pour description */}
                         <label htmlFor="dateCreation" style={{ color: '#FFD9A0', fontWeight: 'bold', marginTop: 8 }}>Date de création</label>
                         <input

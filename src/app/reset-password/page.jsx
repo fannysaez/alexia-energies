@@ -77,3 +77,11 @@ export default function ResetPasswordPage() {
         </div>
     );
 }
+
+export function Wrapper() {
+    return (
+        <React.Suspense fallback={<div>Loading...</div>}>
+            <ResetPasswordPage />
+        </React.Suspense>
+    );
+}

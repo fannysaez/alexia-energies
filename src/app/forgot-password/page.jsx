@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
                     type="submit"
                     text="Envoyer l’email"
                     className={styles["form-btn"]}
-                    leftVector={<StarBlack />}
+                    leftVector={<img src="/img/boutons/VectorStarBlack.svg" alt="" style={{ height: 20 }} />}
                 />
             </form>
             {message && <p className={styles["form-message"]} style={{ color: "green" }}>{message}</p>}

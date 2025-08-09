@@ -170,6 +170,12 @@ export default function AuthForm({
                         >
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </span>
+                        {/* Lien mot de passe oublié */}
+                        <div style={{ marginTop: 8, textAlign: "right" }}>
+                            <a href="/forgot-password" style={{ color: "#0070f3", textDecoration: "underline", fontSize: "0.95rem", cursor: "pointer" }}>
+                                Mot de passe oublié ?
+                            </a>
+                        </div>
                     </div>
                     {/* Le choix du rôle a été retiré pour la sécurité */}
                 </div>

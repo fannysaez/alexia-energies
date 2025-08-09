@@ -1,12 +1,14 @@
 // Modèle représentant un administrateur
 // Model representing an administrator
 model Admin {
-    id              String   @id @default(cuid()) // Identifiant unique (Unique identifier)
-    firstName       String // Prénom (First name)
-    email           String   @unique // Email unique (Unique email)
-    password        String // Mot de passe (Password)
-    dateInscription DateTime @default(now()) // Date d'inscription (Registration date)
-    role            String   @default("admin") // Rôle de l'administrateur (admin par défaut)
+    id               String    @id @default(cuid()) // Identifiant unique (Unique identifier)
+    firstName        String // Prénom (First name)
+    email            String    @unique // Email unique (Unique email)
+    password         String // Mot de passe (Password)
+    dateInscription  DateTime  @default(now()) // Date d'inscription (Registration date)
+    role             String    @default("admin") // Rôle de l'administrateur (admin par défaut)
+    resetToken       String? // Token de réinitialisation
+    resetTokenExpiry DateTime? // Expiration du token
 
     @@map("admins") // Nom de la table dans la base de données (Table name in the database)
 }

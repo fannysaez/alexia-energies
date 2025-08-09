@@ -160,7 +160,7 @@ export default function AuthForm({
                             style={{
                                 position: "absolute",
                                 right: 15,
-                                top: "38%", // Remonté de 55% à 45%
+                                top: "35%", // Remonté de 55% à 45%
                                 transform: "translateY(-50%)",
                                 cursor: "pointer",
                                 color: "#A88B6F",

@@ -45,7 +45,7 @@ async function sendResetEmail(email, url) {
 
     // Les variables à passer au template EmailJS
     const templateParams = {
-        email: email,
+        to_email: email,        // Nom standard pour EmailJS
         reset_link: url,
     };
 

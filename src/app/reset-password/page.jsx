@@ -15,6 +15,7 @@ function ResetPasswordPageInner() {
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [countdown, setCountdown] = useState(0);
 
     // Debug du token
     React.useEffect(() => {
@@ -62,6 +63,20 @@ function ResetPasswordPageInner() {
                 setMessage("Mot de passe réinitialisé avec succès. Vous pouvez vous connecter.");
                 setPassword("");
                 setConfirm("");
+
+                // Démarrer le compte à rebours
+                setCountdown(3);
+                const countdownInterval = setInterval(() => {
+                    setCountdown(prev => {
+                        if (prev <= 1) {
+                            clearInterval(countdownInterval);
+                            setMessage("");
+                            window.location.reload();
+                            return 0;
+                        }
+                        return prev - 1;
+                    });
+                }, 1000);
             } else {
                 setError(data.message || "Erreur lors de la réinitialisation.");
             }
@@ -75,7 +90,6 @@ function ResetPasswordPageInner() {
     return (
         <div className={styles["form-container"]}>
             <h2>Réinitialiser le mot de passe</h2>
-            {token && <p style={{ fontSize: "0.8em", opacity: 0.7 }}>Token: {token.substring(0, 10)}...</p>}
             <form onSubmit={handleSubmit}>
                 <div className={styles["form-fields"]}>
                     {/* Champ mot de passe avec œil */}
@@ -147,7 +161,12 @@ function ResetPasswordPageInner() {
                 />
             </form>
             {error && <p className={styles["form-message"]} style={{ color: "red" }}>{error}</p>}
-            {message && <p className={styles["form-message"]} style={{ color: "green" }}>{message}</p>}
+            {message && (
+                <p className={styles["form-message"]} style={{ color: "green" }}>
+                    {message}
+                    {countdown > 0 && <span> (Rechargement dans {countdown}s)</span>}
+                </p>
+            )}
         </div>
     );
 }

@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import styles from "../components/authForm/form.module.css";
 
-export default function ResetPasswordPage() {
+function ResetPasswordPageInner() {
     const searchParams = useSearchParams();
     const token = searchParams.get("token");
     const [password, setPassword] = useState("");
@@ -40,10 +40,9 @@ export default function ResetPasswordPage() {
                 setError(data.message || "Erreur lors de la réinitialisation.");
             }
         } catch (err) {
-            setError("Erreur réseau.");
-        } finally {
-            setLoading(false);
+            setError("Erreur serveur.");
         }
+        setLoading(false);
     };
 
     return (
@@ -72,16 +71,17 @@ export default function ResetPasswordPage() {
                     {loading ? "Réinitialisation..." : "Réinitialiser"}
                 </button>
             </form>
-            {message && <p className={styles["form-message"]} style={{ color: "green" }}>{message}</p>}
-            {error && <p className={styles["form-message"]} style={{ color: "red" }}>{error}</p>}
+            {error && <p className={styles["form-error"]}>{error}</p>}
+            {message && <p className={styles["form-success"]}>{message}</p>}
         </div>
     );
 }
 
-export function Wrapper() {
+export default function ResetPasswordPage() {
     return (
-        <React.Suspense fallback={<div>Loading...</div>}>
-            <ResetPasswordPage />
-        </React.Suspense>
+        <Suspense>
+            <ResetPasswordPageInner />
+        </Suspense>
     );
 }
+// Suppression du code dupliqué et de la fonction Wrapper

@@ -9,9 +9,16 @@ export async function POST(req) {
         return Response.json({ message: "Email requis" }, { status: 400 });
     }
 
-    // Vérifier si l'utilisateur existe
-    const user = await prisma.user.findUnique({ where: { email } });
-    console.log("👤 Utilisateur trouvé:", !!user);
+    // Vérifier si l'utilisateur existe (dans user ou admin)
+    let user = await prisma.user.findUnique({ where: { email } });
+    let userType = "user";
+
+    if (!user) {
+        user = await prisma.admin.findUnique({ where: { email } });
+        userType = "admin";
+    }
+
+    console.log("👤 Utilisateur trouvé:", !!user, "Type:", userType);
 
     if (!user) {
         console.log("❌ Utilisateur non trouvé pour:", email);
@@ -24,15 +31,25 @@ export async function POST(req) {
     const expires = new Date(Date.now() + 1000 * 60 * 60); // 1h
     console.log("🔑 Token généré:", token.substring(0, 10) + "...");
 
-    // Enregistrer le token en base
-    await prisma.user.update({
-        where: { email },
-        data: {
-            resetToken: token,
-            resetTokenExpiry: expires,
-        },
-    });
-    console.log("💾 Token sauvé en base pour:", email);
+    // Enregistrer le token en base (dans la bonne table)
+    if (userType === "user") {
+        await prisma.user.update({
+            where: { email },
+            data: {
+                resetToken: token,
+                resetTokenExpiry: expires,
+            },
+        });
+    } else {
+        await prisma.admin.update({
+            where: { email },
+            data: {
+                resetToken: token,
+                resetTokenExpiry: expires,
+            },
+        });
+    }
+    console.log("💾 Token sauvé en base pour:", email, "dans table:", userType);
 
     // Envoyer l'email via EmailJS
     const resetUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/reset-password?token=${token}`;

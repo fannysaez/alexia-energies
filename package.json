@@ -19,7 +19,8 @@
     "react": "^19.0.0",
     "react-calendly": "^4.4.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "resend": "^6.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

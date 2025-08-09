@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 import crypto from "crypto";
 
 export async function POST(req) {
@@ -52,7 +53,7 @@ export async function POST(req) {
     }
     console.log("💾 Token sauvé en base pour:", email, "dans table:", userType);
 
-    // Envoyer l'email via EmailJS
+    // Envoyer l'email via Resend
     const resetUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/reset-password?token=${token}`;
     console.log("📧 URL de reset:", resetUrl);
 
@@ -71,67 +72,80 @@ export async function POST(req) {
     }
 }
 
-// Fonction d'envoi d'email via EmailJS REST API
+// Fonction d'envoi d'email via Resend
 async function sendResetEmail(email, url) {
     console.log("📨 Début envoi email pour:", email);
     console.log("🔗 URL:", url);
 
-    const serviceId = process.env.EMAILJS_SERVICE_ID;
-    const templateId = process.env.EMAILJS_TEMPLATE_ID_RESET;
-    const userId = process.env.EMAILJS_USER_ID;
+    const resendApiKey = process.env.RESEND_API_KEY;
 
-    console.log("⚙️ Configuration EmailJS:");
-    console.log("- Service ID:", serviceId ? "✅ Défini" : "❌ Manquant");
-    console.log("- Template ID:", templateId ? "✅ Défini" : "❌ Manquant");
-    console.log("- User ID:", userId ? "✅ Défini" : "❌ Manquant");
+    console.log("⚙️ Configuration Resend:");
+    console.log("- API Key:", resendApiKey ? "✅ Défini" : "❌ Manquant");
 
-    if (!serviceId || !templateId || !userId) {
-        const missingVars = [];
-        if (!serviceId) missingVars.push("EMAILJS_SERVICE_ID");
-        if (!templateId) missingVars.push("EMAILJS_TEMPLATE_ID_RESET");
-        if (!userId) missingVars.push("EMAILJS_USER_ID");
-
-        console.error("❌ Variables d'environnement manquantes:", missingVars.join(", "));
-        throw new Error(`Configuration EmailJS manquante - Variables manquantes: ${missingVars.join(", ")}`);
+    if (!resendApiKey) {
+        console.error("❌ Variable d'environnement RESEND_API_KEY manquante");
+        throw new Error("Configuration Resend manquante - RESEND_API_KEY non définie");
     }
 
-    // Les variables à passer au template EmailJS
-    const templateParams = {
-        to_email: email,
-        user_email: email,
-        to_name: email.split('@')[0], // Nom sans le domaine
-        reset_link: url,
-        reset_url: url,
-        link: url, // Variable alternative
-    };
-
-    console.log("📋 Paramètres du template:", templateParams);
+    const resend = new Resend(resendApiKey);
 
     try {
-        console.log("🌐 Envoi de la requête à EmailJS...");
-        const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                service_id: serviceId,
-                template_id: templateId,
-                user_id: userId,
-                template_params: templateParams,
-            }),
+        console.log("🌐 Envoi de l'email via Resend...");
+
+        const { data, error } = await resend.emails.send({
+            from: 'Alexia Energies <noreply@resend.dev>', // Vous pourrez changer ça avec votre domaine
+            to: [email],
+            subject: 'Réinitialisation de votre mot de passe - Alexia Energies',
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+                    <h2 style="color: #333; text-align: center;">Réinitialisation de votre mot de passe</h2>
+                    
+                    <p style="color: #666; line-height: 1.6;">
+                        Bonjour,
+                    </p>
+                    
+                    <p style="color: #666; line-height: 1.6;">
+                        Vous avez demandé la réinitialisation de votre mot de passe sur Alexia Energies.
+                        Cliquez sur le bouton ci-dessous pour créer un nouveau mot de passe :
+                    </p>
+                    
+                    <div style="text-align: center; margin: 30px 0;">
+                        <a href="${url}" 
+                           style="background-color: #4F46E5; color: white; padding: 12px 30px; 
+                                  text-decoration: none; border-radius: 5px; display: inline-block;">
+                            Réinitialiser mon mot de passe
+                        </a>
+                    </div>
+                    
+                    <p style="color: #666; line-height: 1.6; font-size: 14px;">
+                        Si le bouton ne fonctionne pas, vous pouvez copier et coller ce lien dans votre navigateur :
+                        <br>
+                        <a href="${url}" style="color: #4F46E5; word-break: break-all;">${url}</a>
+                    </p>
+                    
+                    <p style="color: #666; line-height: 1.6; font-size: 14px;">
+                        Ce lien expirera dans 1 heure pour des raisons de sécurité.
+                    </p>
+                    
+                    <p style="color: #666; line-height: 1.6; font-size: 14px;">
+                        Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer cet email.
+                    </p>
+                    
+                    <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
+                    
+                    <p style="color: #999; font-size: 12px; text-align: center;">
+                        Alexia Energies - Bien-être et développement personnel
+                    </p>
+                </div>
+            `,
         });
 
-        console.log("📡 Réponse EmailJS - Status:", response.status);
-
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error("❌ Erreur EmailJS - Status:", response.status);
-            console.error("❌ Erreur EmailJS - Response:", errorText);
-            throw new Error(`EmailJS error: ${response.status} - ${errorText}`);
+        if (error) {
+            console.error("❌ Erreur Resend:", error);
+            throw new Error(`Resend error: ${error.message}`);
         }
 
-        console.log("✅ Email envoyé avec succès vers:", email);
+        console.log("✅ Email envoyé avec succès via Resend. ID:", data?.id);
         return true;
     } catch (error) {
         console.error("🚨 Erreur lors de l'envoi de l'email:", error.message);

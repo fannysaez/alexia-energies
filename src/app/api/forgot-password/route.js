@@ -29,9 +29,13 @@ export async function POST(req) {
         },
     });
 
-    // Envoyer l'email via EmailJS
+    // Envoyer l'email via EmailJS de manière asynchrone
     const resetUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/reset-password?token=${token}`;
-    await sendResetEmail(email, resetUrl);
+    
+    // Ne pas attendre l'envoi d'email pour retourner la réponse
+    sendResetEmail(email, resetUrl).catch(error => {
+        console.error("Erreur lors de l'envoi de l'email:", error);
+    });
 
     return Response.json({ message: "Si cet email existe, un lien a été envoyé." });
 }
@@ -49,21 +53,39 @@ async function sendResetEmail(email, url) {
         reset_link: url,
     };
 
-    const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            service_id: serviceId,
-            template_id: templateId,
-            user_id: userId,
-            template_params: templateParams,
-        }),
-    });
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // Timeout de 10 secondes
 
-    if (!response.ok) {
-        // Tu peux logger l'erreur ou la traiter
-        console.error("Erreur EmailJS", await response.text());
+        const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                service_id: serviceId,
+                template_id: templateId,
+                user_id: userId,
+                template_params: templateParams,
+            }),
+            signal: controller.signal,
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Erreur EmailJS", errorText);
+            throw new Error(`EmailJS error: ${response.status} - ${errorText}`);
+        }
+
+        console.log("Email envoyé avec succès");
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.error("Timeout lors de l'envoi de l'email EmailJS");
+        } else {
+            console.error("Erreur lors de l'envoi de l'email:", error.message);
+        }
+        throw error;
     }
 }

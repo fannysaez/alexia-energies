@@ -160,7 +160,7 @@ export default function AuthForm({
                             style={{
                                 position: "absolute",
                                 right: 15,
-                                top: "55%", // Descendu de 33% à 55%
+                                top: "45%", // Remonté de 55% à 45%
                                 transform: "translateY(-50%)",
                                 cursor: "pointer",
                                 color: "#A88B6F",
@@ -172,7 +172,7 @@ export default function AuthForm({
                         </span>
                         {/* Lien mot de passe oublié */}
                         <div style={{ marginTop: 8, textAlign: "right" }}>
-                            <a href="/forgot-password" style={{ color: "#0070f3", textDecoration: "underline", fontSize: "0.95rem", cursor: "pointer" }}>
+                            <a href="/forgot-password" style={{ color: "#fff", textDecoration: "underline", fontSize: "0.95rem", cursor: "pointer" }}>
                                 Mot de passe oublié ?
                             </a>
                         </div>

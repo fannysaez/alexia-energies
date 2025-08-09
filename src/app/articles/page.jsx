@@ -14,7 +14,7 @@ export default function ArticlesPage() {
     const [selectedCategory, setSelectedCategory] = useState(0);
     // Pagination : page courante
     const [currentPage, setCurrentPage] = useState(1);
-    const ARTICLES_PER_PAGE = 6;
+    const ARTICLES_PER_PAGE = 4;
 
     // Récupère les articles depuis l'API lors du montage du composant
     useEffect(() => {

@@ -26,18 +26,17 @@ export default function MesArticles() {
         fetchArticles();
     }, []);
 
-    // On affiche simplement les 4 derniers articles (ou moins)
-    const sortedArticles = Array.isArray(articles) ? [...articles].sort((a, b) => new Date(b.dateCreation) - new Date(a.dateCreation)) : [];
-    const mainArticle = sortedArticles.length > 0 ? sortedArticles[0] : null;
-    const secondaryArticles = sortedArticles.length > 1 ? sortedArticles.slice(1, 4) : [];
+    // On affiche uniquement les 4 derniers articles (ou moins), le dernier en vedette à gauche
+    const sortedArticles = Array.isArray(articles) ? [...articles].sort((a, b) => new Date(b.dateCreation) - new Date(a.dateCreation)).slice(0, 4) : [];
+    const mainArticle = sortedArticles.length > 0 ? sortedArticles[sortedArticles.length - 1] : null;
+    const secondaryArticles = sortedArticles.length > 1 ? sortedArticles.slice(0, sortedArticles.length - 1) : [];
 
     return (
         <section className={styles.section}>
             <h2 className={styles.title}>Mes Articles</h2>
             <p className={styles.subtitle}>Cras sed rhoncus risus, non accu cenas fareta.</p>
-
             <div className={styles.articlesGrid}>
-                {/* Article principal */}
+                {/* Article principal (dernier article) */}
                 {mainArticle && (
                     <div className={styles.mainArticle}>
                         <Image src={mainArticle.image} alt={mainArticle.titre} className={styles.mainImage} width={600} height={400} />
@@ -49,7 +48,6 @@ export default function MesArticles() {
                                         ? new Date(mainArticle.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
                                         : ''
                                 }
-                                {/* <span style={{ float: 'right', marginLeft: 16, color: '#E2C6A8', fontWeight: 'bold' }>{mainArticle.views || 0} vues</span> */}
                             </span>
                             <h3>{mainArticle.titre}</h3>
                             <p>{mainArticle.description}</p>
@@ -61,7 +59,7 @@ export default function MesArticles() {
                         </div>
                     </div>
                 )}
-                {/* Articles secondaires */}
+                {/* Articles secondaires (les 3 premiers) */}
                 <div className={styles.secondaryArticles}>
                     {secondaryArticles.map(article => (
                         <div key={article.id} className={styles.secondaryArticle}>
@@ -74,7 +72,6 @@ export default function MesArticles() {
                                             ? new Date(article.dateCreation).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })
                                             : ''
                                     }
-                                    {/* <span style={{ float: 'right', marginLeft: 8, color: '#E2C6A8', fontWeight: 'bold' }>{article.views || 0} vues</span> */}
                                 </span>
                                 <h4>{article.titre}</h4>
                                 {article.description && (
@@ -94,7 +91,6 @@ export default function MesArticles() {
                     ))}
                 </div>
             </div>
-            {/* <button className={styles.allArticlesBtn}>Voir tous les articles</button> */}
         </section>
     );
 }

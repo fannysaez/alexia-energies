@@ -1,4 +1,4 @@
-import { prisma } from "../../lib/prisma";
+import { prisma } from "@/lib/prisma";
 import crypto from "crypto";
 // Pour l'envoi d'email, tu peux utiliser nodemailer ou un service externe
 // import nodemailer from "nodemailer";

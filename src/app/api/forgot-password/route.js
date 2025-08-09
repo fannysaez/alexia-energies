@@ -64,11 +64,23 @@ export async function POST(req) {
         return NextResponse.json({ message: "Un email de réinitialisation a été envoyé à votre adresse." });
     } catch (error) {
         console.error("🚨 Erreur lors de l'envoi de l'email:", error);
+
+        // Améliorer les messages d'erreur pour déboguer
+        let errorMessage = error.message;
+        if (error.message.includes("You can only send testing emails")) {
+            errorMessage = `Pour tester, utilisez l'email: fsaez.apprenant@simplon.co (compte Resend gratuit)`;
+        }
+
         // En mode développement, on peut montrer l'erreur pour debugger
         if (process.env.NODE_ENV === 'development') {
-            return NextResponse.json({ message: `Erreur: ${error.message}` }, { status: 500 });
+            return NextResponse.json({ message: `Erreur: ${errorMessage}` }, { status: 500 });
         }
-        // En production, on reste discret pour la sécurité
+
+        // En production, on reste discret pour la sécurité, sauf pour les erreurs de domaine
+        if (error.message.includes("You can only send testing emails")) {
+            return NextResponse.json({ message: errorMessage }, { status: 500 });
+        }
+
         return NextResponse.json({ message: "Si cet email existe, un lien a été envoyé." });
     }
 }

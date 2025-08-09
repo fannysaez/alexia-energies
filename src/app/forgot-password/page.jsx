@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import styles from "../components/authForm/form.module.css";
+import StarBlack from "/public/img/boutons/VectorStarBlack.svg";
+import Button from "../components/button/button";
 
 export default function ForgotPasswordPage() {
     const [email, setEmail] = useState("");
@@ -22,7 +24,7 @@ export default function ForgotPasswordPage() {
 
     return (
         <div className={styles["form-container"]}>
-            <h2>Réinitialiser le mot de passe</h2>
+            <h2>Réinitialisation <br /> du mot de passe</h2>
             <form onSubmit={handleSubmit}>
                 <div className={styles["form-fields"]}>
                     <input
@@ -32,12 +34,15 @@ export default function ForgotPasswordPage() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         className={styles["form-input"]}
-                        placeholder="Adresse email"
+                        placeholder="votre adresse email"
                     />
                 </div>
-                <button type="submit" className={styles["form-btn"]}>
-                    Envoyer le lien de réinitialisation
-                </button>
+                <Button
+                    type="submit"
+                    text="Envoyer l’email"
+                    className={styles["form-btn"]}
+                    leftVector={<StarBlack />}
+                />
             </form>
             {message && <p className={styles["form-message"]} style={{ color: "green" }}>{message}</p>}
             {error && <p className={styles["form-message"]} style={{ color: "red" }}>{error}</p>}

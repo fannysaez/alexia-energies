@@ -32,6 +32,10 @@ export default function ForgotPasswordPage() {
 
             if (response.ok) {
                 setMessage(data.message);
+                // Rafraîchir la page après 3 secondes
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
             } else {
                 setError(data.message || "Une erreur est survenue.");
             }

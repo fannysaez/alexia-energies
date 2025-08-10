@@ -5,7 +5,9 @@ import Link from "next/link"; // Composant de navigation Next.js
 import Image from "next/image"; // Composant d'image optimisée Next.js
 import style from "./header.module.css"; // Styles CSS modules pour le header
 import Button from "@/app/components/button/button"; // Composant bouton personnalisé
-import ServiceModal from "@/app/components/accueil/serviceModale/ServiceModal";
+import Modal from "../modal/modal";
+import ServiceModal from "../accueil/serviceModale/ServiceModal";
+import ServiceChoiceModal from "../modal/forms/serviceChoiceModal";
 import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire pour les boutons
 import { FaChevronRight, FaUser } from "react-icons/fa";
 import { HiChevronRight } from "react-icons/hi";
@@ -20,6 +22,11 @@ export default function Header() {
     const [isMounted, setIsMounted] = useState(false);
     const pathname = usePathname();
     const [modalOpen, setModalOpen] = useState(false);
+    const [modalState, setModalState] = useState({
+        isOpen: false,
+        type: 'serviceChoice', // 'serviceChoice' ou 'reservation'
+        service: null
+    });
 
     // Vérifie la session admin
     useEffect(() => {
@@ -56,6 +63,40 @@ export default function Header() {
     useEffect(() => {
         setIsMounted(true);
     }, []);
+
+    // Fonctions pour gérer les modals
+    const openServiceChoiceModal = () => {
+        setModalState({
+            isOpen: true,
+            type: 'serviceChoice',
+            service: null
+        });
+        setModalOpen(false);
+    };
+
+    const openReservationModal = (service) => {
+        setModalState({
+            isOpen: true,
+            type: 'reservation',
+            service: service
+        });
+    };
+
+    const closeModal = () => {
+        setModalState({
+            isOpen: false,
+            type: '',
+            service: null
+        });
+    };
+
+    const backToServiceChoice = () => {
+        setModalState({
+            isOpen: true,
+            type: 'serviceChoice',
+            service: null
+        });
+    };
 
     // Fonctions pour ouvrir/fermer le menu mobile
     const closeMenu = () => {
@@ -117,7 +158,7 @@ export default function Header() {
                         variant="secondary"
                         leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
                         rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                        onClick={() => setModalOpen(true)}
+                        onClick={() => openServiceChoiceModal()}
                     />
                     {/* Bouton Connexion/Profil visible uniquement pour admin connecté */}
                     {isMounted && isLogged && isAdmin && (
@@ -239,7 +280,7 @@ export default function Header() {
                                     variant="secondary"
                                     leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
                                     rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                    onClick={() => { setModalOpen(true); closeMenu(); }}
+                                    onClick={() => { openServiceChoiceModal(); closeMenu(); }}
                                 />
                                 {isMounted && isLogged && isAdmin && (
                                     <Button
@@ -267,7 +308,21 @@ export default function Header() {
                     </div>
                 </div>
             )}
-            <ServiceModal open={modalOpen} onClose={() => setModalOpen(false)} />
+            {/* Modal système */}
+            <Modal
+                isOpen={modalState.isOpen}
+                onClose={closeModal}
+                type={modalState.type}
+                service={modalState.service}
+                onBackToServices={modalState.type === 'reservation' ? backToServiceChoice : null}
+            >
+                {modalState.type === 'serviceChoice' && (
+                    <ServiceChoiceModal
+                        onServiceSelect={openReservationModal}
+                        onClose={closeModal}
+                    />
+                )}
+            </Modal>
         </header>
     );
 }

@@ -13,14 +13,18 @@ export default function Modal({
     onClose,
     type = 'reservation',
     service = null,
-    children
+    children,
+    onBackToServices = null,
+    shouldScrollToServices = false
 }) {
-    // Nouvelle fonction de fermeture qui gère le scroll
+    // Fonction de fermeture qui gère le scroll seulement si demandé
     const handleClose = () => {
         onClose();
-        const section = document.getElementById('services');
-        if (section) {
-            section.scrollIntoView({ behavior: 'auto', block: 'start' });
+        if (shouldScrollToServices) {
+            const section = document.getElementById('services');
+            if (section) {
+                section.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
         }
     };
 
@@ -56,6 +60,7 @@ export default function Modal({
                         <ReservationModal
                             service={service}
                             onClose={handleClose}
+                            onBackToServices={onBackToServices}
                         />
                     )
                 )}

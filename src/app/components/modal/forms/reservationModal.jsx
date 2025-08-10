@@ -6,7 +6,7 @@ import Image from 'next/image'; // Composant image optimisé Next.js
 import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire
 import { HiOutlineCheck } from 'react-icons/hi'; // Icône de validation
 
-export default function ReservationModal({ service, onClose }) {
+export default function ReservationModal({ service, onClose, onBackToServices = null }) {
     // États pour gérer le flux du modal
     const [step, setStep] = useState('choice'); // Étape actuelle: 'choice', 'calendar', 'confirmation'
     const [selectedOption, setSelectedOption] = useState(null); // Option choisie: 'distance' ou 'presentiel'
@@ -152,6 +152,16 @@ export default function ReservationModal({ service, onClose }) {
     const renderChoiceStep = () => (
         <div className={Style.stepContainer}>
             <div className={Style.titleSection}>
+                {onBackToServices && (
+                    <Button
+                        text="Retour aux services"
+                        onClick={onBackToServices}
+                        variant="primary"
+                        leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                        rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                        className={Style.backToServicesBtn}
+                    />
+                )}
                 <h2 className={Style.serviceTitle}>{currentService.title}</h2>
             </div>
 
@@ -196,7 +206,7 @@ export default function ReservationModal({ service, onClose }) {
             </div>
 
             <div className={Style.disclaimer}>
-                <p>Les Rendez-vous doivent être annulés au moins 24h à l'avance.</p>
+                <p style={{ textAlign: 'center' }}>Les Rendez-vous doivent être annulés au moins 24h à l'avance.</p>
             </div>
         </div>
     );

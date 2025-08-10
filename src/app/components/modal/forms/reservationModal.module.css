@@ -1,21 +1,49 @@
-.reservationModal { /* Conteneur principal du modal de réservation */
+.reservationModal {
+    /* Conteneur principal du modal de réservation */
     width: 100%;
-    min-height: 400px;
+    min-height: 200px;
 }
 
-.stepContainer { /* Conteneur des étapes du formulaire */
+.stepContainer {
+    /* Conteneur des étapes du formulaire */
     width: 100%;
-    padding: 40px 40px 30px 40px; /* Plus d'espace intérieur autour du contenu */
+    padding: 25px 40px 40px 40px;
+    /* Plus d'espace intérieur autour du contenu */
 }
 
-.titleSection { /* Section du titre principal */
+.disclaimerText {
+    /* Classe spécifique pour centrer le texte d'avertissement */
+    text-align: center !important;
+}
+
+.titleSection {
+    /* Section du titre principal */
     text-align: center;
     border-bottom: 1px solid var(--decorative-line-color);
     padding-bottom: 10px;
     margin-bottom: 50px;
+    position: relative;
 }
 
-.serviceTitle { /* Titre du service */
+.backToServicesBtn {
+    /* Bouton retour aux services */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 14px !important;
+    padding: 8px 16px !important;
+    border-radius: 15px !important;
+    transition: all 0.3s ease;
+}
+
+.backToServicesBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 227, 179, 0.3);
+    filter: brightness(1.1);
+}
+
+.serviceTitle {
+    /* Titre du service */
     font-family: 'SortsMillGoudy-Regular', serif;
     font-size: 36px;
     color: var(--primary-color);
@@ -23,12 +51,14 @@
     line-height: 1.2;
 }
 
-.introSection { /* Section d’introduction */
+.introSection {
+    /* Section d’introduction */
     text-align: center;
     margin-bottom: 40px;
 }
 
-.question { /* Question principale de l’étape */
+.question {
+    /* Question principale de l’étape */
     font-family: 'Work Sans', sans-serif;
     font-size: 22px;
     font-weight: 500;
@@ -37,23 +67,28 @@
     line-height: 1.3;
 }
 
-.subtitle { /* Sous-titre ou explication */
+.subtitle {
+    /* Sous-titre ou explication */
     font-family: 'Work Sans', sans-serif;
     font-size: 17px;
     font-weight: 300;
     color: var(--paragraph-color);
     margin: 0;
+    text-align: center;
 }
 
-.optionsContainer { /* Grille des options de réservation */
+.optionsContainer {
+    /* Grille des options de réservation */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     margin-bottom: 45px;
-    justify-items: center; /* Centre les cartes dans la grille */
+    justify-items: center;
+    /* Centre les cartes dans la grille */
 }
 
-.optionCard { /* Carte d’option individuelle */
+.optionCard {
+    /* Carte d’option individuelle */
     border: 2px solid var(--decorative-line-color);
     border-radius: 16px;
     padding: 45px 35px;
@@ -68,13 +103,15 @@
     width: 100%;
 }
 
-.optionCard:hover { /* Effet au survol d’une carte */
+.optionCard:hover {
+    /* Effet au survol d’une carte */
     border-color: var(--primary-color);
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(254, 209, 167, 0.2);
 }
 
-.optionIcon { /* Icône dans la carte d’option */
+.optionIcon {
+    /* Icône dans la carte d’option */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +124,8 @@
     border: 1px solid var(--decorative-line-color);
 }
 
-.optionCard h4 { /* Titre de l’option */
+.optionCard h4 {
+    /* Titre de l’option */
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     font-weight: 600;
@@ -95,22 +133,26 @@
     margin-bottom: 18px;
 }
 
-.paymentInfo { /* Infos de paiement */
+.paymentInfo {
+    /* Infos de paiement */
     font-family: 'Work Sans', sans-serif;
     font-size: 15px;
     color: var(--paragraph-color);
     font-weight: 300;
     margin: 0;
     line-height: 1.4;
+    text-align: center;
 }
 
-.disclaimer { /* Avertissement ou note */
+.disclaimer {
+    /* Avertissement ou note */
     text-align: center;
     padding-top: 35px;
     border-top: 1px solid var(--decorative-line-color);
 }
 
-.disclaimer p { /* Texte de l’avertissement */
+.disclaimer p {
+    /* Texte de l’avertissement */
     font-family: 'Work Sans', sans-serif;
     font-size: 15px;
     color: var(--paragraph-color);
@@ -119,7 +161,8 @@
 }
 
 /* Calendrier */
-.calendarHeader { /* En-tête du calendrier */
+.calendarHeader {
+    /* En-tête du calendrier */
     display: flex;
     align-items: center;
     gap: 25px;
@@ -128,7 +171,8 @@
     border-bottom: 1px solid var(--decorative-line-color);
 }
 
-.calendarHeader h3 { /* Titre du calendrier */
+.calendarHeader h3 {
+    /* Titre du calendrier */
     font-family: 'SortsMillGoudy-Regular', serif;
     font-size: 24px;
     color: var(--primary-color);
@@ -137,7 +181,8 @@
 }
 
 /* Conteneur Calendly */
-.calendlyContainer { /* Conteneur de l’iframe Calendly */
+.calendlyContainer {
+    /* Conteneur de l’iframe Calendly */
     min-height: 600px;
     width: 100%;
     border-radius: 14px;
@@ -149,18 +194,20 @@
     position: relative;
 }
 
-.calendlyContainer iframe { /* Iframe Calendly */
+.calendlyContainer iframe {
+    /* Iframe Calendly */
     border: none !important;
     border-radius: 16px !important;
     background-color: var(--background) !important;
     width: 100% !important;
     min-height: 700px !important;
-    max-width: none !important; /* Supprime la limite de largeur de Calendly */
+    max-width: none !important;
+    /* Supprime la limite de largeur de Calendly */
 }
 
 /* Forcer Calendly à prendre toute la largeur disponible */
 .calendly-inline-widget,
-.calendly-inline-widget > div {
+.calendly-inline-widget>div {
     width: 100% !important;
     max-width: none !important;
 }
@@ -170,9 +217,10 @@
     width: 100% !important;
     max-width: none !important;
 }
+
 /* Styles globaux pour Calendly - appliqués à tous les widgets */
 .calendly-inline-widget,
-.calendly-inline-widget > div,
+.calendly-inline-widget>div,
 .calendly-popup-content,
 .calendly-scheduling-page,
 .calendly-event-type-page {
@@ -184,7 +232,9 @@
 .calendly-inline-widget * {
     max-width: none !important;
 }
-.loadingCalendly { /* Overlay de chargement Calendly */
+
+.loadingCalendly {
+    /* Overlay de chargement Calendly */
     position: absolute;
     top: 0;
     left: 0;
@@ -203,7 +253,8 @@
     z-index: 2;
 }
 
-.loadingSpinner { /* Spinner de chargement */
+.loadingSpinner {
+    /* Spinner de chargement */
     display: inline-block;
     width: 32px;
     height: 32px;
@@ -213,19 +264,23 @@
     animation: spin 1s ease-in-out infinite;
 }
 
-@keyframes spin { /* Animation du spinner */
+@keyframes spin {
+
+    /* Animation du spinner */
     to {
         transform: rotate(360deg);
     }
 }
 
 /* Confirmation */
-.confirmationContainer { /* Conteneur de confirmation */
+.confirmationContainer {
+    /* Conteneur de confirmation */
     text-align: center;
     padding: 80px 60px;
 }
 
-.successIcon { /* Icône de succès */
+.successIcon {
+    /* Icône de succès */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,7 +293,8 @@
     border-radius: 50%;
 }
 
-.confirmationTitle { /* Titre de confirmation */
+.confirmationTitle {
+    /* Titre de confirmation */
     font-family: 'SortsMillGoudy-Regular', serif;
     font-size: 32px;
     color: var(--primary-color);
@@ -246,7 +302,8 @@
     line-height: 1.2;
 }
 
-.confirmationText { /* Texte de confirmation */
+.confirmationText {
+    /* Texte de confirmation */
     font-family: 'Work Sans', sans-serif;
     font-size: 18px;
     color: var(--paragraph-color);
@@ -254,7 +311,8 @@
     line-height: 1.5;
 }
 
-.confirmationActions { /* Actions après confirmation */
+.confirmationActions {
+    /* Actions après confirmation */
     display: flex;
     justify-content: center;
 }
@@ -262,155 +320,613 @@
 /* Media queries : adaptations responsives pour chaque taille d’écran */
 /* Desktop Large (1400px+) */
 @media (min-width: 1400px) {
-    .serviceTitle { font-size: 42px; }
-    .question { font-size: 26px; }
-    .subtitle { font-size: 19px; }
-    .calendlyContainer {  border-radius: 18px; }
-    .loadingCalendly { border-radius: 18px; }
-    .loadingSpinner { width: 45px; height: 45px; }
-    .confirmationContainer { padding: 100px 80px; }
-    .confirmationTitle { font-size: 36px; }
+    .serviceTitle {
+        font-size: 42px;
+    }
+
+    .question {
+        font-size: 26px;
+    }
+
+    .subtitle {
+        font-size: 19px;
+    }
+
+    .calendlyContainer {
+        border-radius: 18px;
+    }
+
+    .loadingCalendly {
+        border-radius: 18px;
+    }
+
+    .loadingSpinner {
+        width: 45px;
+        height: 45px;
+    }
+
+    .confirmationContainer {
+        padding: 100px 80px;
+    }
+
+    .confirmationTitle {
+        font-size: 36px;
+    }
 }
 
 /* Desktop Medium (1200px - 1399px) */
 @media (max-width: 1399px) and (min-width: 1200px) {
-    .stepContainer { padding: 60px 105px 46px; }
-    .serviceTitle { font-size: 38px; }
-    .question { font-size: 24px; }
-    .calendlyContainer { min-height: 700px; }
-    .calendlyContainer iframe { min-height: 700px !important; }
+    .stepContainer {
+        padding: 60px 105px 46px;
+    }
+
+    .serviceTitle {
+        font-size: 38px;
+    }
+
+    .question {
+        font-size: 24px;
+    }
+
+    .calendlyContainer {
+        min-height: 700px;
+    }
+
+    .calendlyContainer iframe {
+        min-height: 700px !important;
+    }
 }
 
 /* Desktop Small (992px - 1199px) */
 @media (max-width: 1199px) and (min-width: 992px) {
-    .stepContainer { padding: 50px 60px 60px; }
-    .serviceTitle { font-size: 34px; }
-    .question { font-size: 22px; }
-    .optionsContainer { gap: 35px; }
-    .calendlyContainer { min-height: 650px; }
+    .stepContainer {
+        padding: 50px 60px 60px;
+    }
+
+    .serviceTitle {
+        font-size: 34px;
+    }
+
+    .question {
+        font-size: 22px;
+    }
+
+    .optionsContainer {
+        gap: 35px;
+    }
+
+    .calendlyContainer {
+        min-height: 650px;
+    }
 }
 
 /* Tablette Large (768px - 991px) */
 @media (max-width: 991px) and (min-width: 768px) {
+
     /* Adaptations pour tablette large */
-    .stepContainer { padding: 45px 50px 55px; }
-    .serviceTitle { font-size: 30px; }
-    .question { font-size: 20px; }
-    .subtitle { font-size: 16px; }
-    .optionsContainer { gap: 30px; margin-bottom: 45px; }
-    .optionCard { padding: 40px 30px; min-height: 200px; }
-    .optionIcon { width: 80px; height: 80px; margin-bottom: 25px; }
-    .optionCard h4 { font-size: 19px; margin-bottom: 16px; }
-    .calendarHeader { gap: 20px; margin-bottom: 25px; padding-bottom: 20px; }
-    .calendarHeader h3 { font-size: 22px; }
-    .calendlyContainer { min-height: 600px; border-radius: 14px; margin-top: 20px; }
-    .calendlyContainer iframe { min-height: 600px !important; border-radius: 14px !important; }
-    .loadingCalendly { border-radius: 14px; }
-    .confirmationContainer { padding: 70px 50px; }
-    .successIcon { width: 110px; height: 110px; font-size: 55px; }
-    .confirmationTitle { font-size: 30px; }
-    .confirmationText { font-size: 17px; }
+    .stepContainer {
+        padding: 45px 50px 55px;
+    }
+
+    .serviceTitle {
+        font-size: 30px;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .optionsContainer {
+        gap: 30px;
+        margin-bottom: 45px;
+    }
+
+    .optionCard {
+        padding: 40px 30px;
+        min-height: 200px;
+    }
+
+    .optionIcon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 25px;
+    }
+
+    .optionCard h4 {
+        font-size: 19px;
+        margin-bottom: 16px;
+    }
+
+    .calendarHeader {
+        gap: 20px;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+    }
+
+    .calendarHeader h3 {
+        font-size: 22px;
+    }
+
+    .calendlyContainer {
+        min-height: 600px;
+        border-radius: 14px;
+        margin-top: 20px;
+    }
+
+    .calendlyContainer iframe {
+        min-height: 600px !important;
+        border-radius: 14px !important;
+    }
+
+    .loadingCalendly {
+        border-radius: 14px;
+    }
+
+    .confirmationContainer {
+        padding: 70px 50px;
+    }
+
+    .successIcon {
+        width: 110px;
+        height: 110px;
+        font-size: 55px;
+    }
+
+    .confirmationTitle {
+        font-size: 30px;
+    }
+
+    .confirmationText {
+        font-size: 17px;
+    }
 }
 
 /* Tablette Small (576px - 767px) */
 @media (max-width: 767px) and (min-width: 576px) {
+
     /* Adaptations pour tablette petite */
-    .stepContainer { padding: 40px 35px 45px; }
-    .titleSection { padding-bottom: 25px; margin-bottom: 40px; }
-    .serviceTitle { font-size: 28px; }
-    .introSection { margin-bottom: 45px; }
-    .question { font-size: 19px; margin-bottom: 12px; }
-    .subtitle { font-size: 15px; }
-    .optionsContainer { grid-template-columns: 1fr; gap: 25px; margin-bottom: 40px; }
-    .optionCard { padding: 35px 25px; min-height: 180px; }
-    .optionIcon { width: 75px; height: 75px; margin-bottom: 22px; }
-    .optionCard h4 { font-size: 18px; margin-bottom: 15px; }
-    .paymentInfo { font-size: 14px; }
-    .calendarHeader { flex-direction: column; align-items: flex-start; gap: 18px; }
-    .calendarHeader h3 { font-size: 20px; }
-    .calendlyContainer { min-height: 550px; border-radius: 12px; margin-top: 18px; }
-    .calendlyContainer iframe { min-height: 550px !important; border-radius: 12px !important; }
-    .loadingCalendly { font-size: 15px; gap: 12px; border-radius: 12px; }
-    .confirmationContainer { padding: 60px 35px; }
-    .successIcon { width: 100px; height: 100px; font-size: 50px; margin-bottom: 35px; }
-    .confirmationTitle { font-size: 28px; }
-    .confirmationText { font-size: 16px; }
+    .stepContainer {
+        padding: 40px 35px 45px;
+    }
+
+    .titleSection {
+        padding-bottom: 25px;
+        margin-bottom: 40px;
+    }
+
+    .serviceTitle {
+        font-size: 28px;
+    }
+
+    .introSection {
+        margin-bottom: 45px;
+    }
+
+    .question {
+        font-size: 19px;
+        margin-bottom: 12px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .optionsContainer {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .optionCard {
+        padding: 35px 25px;
+        min-height: 180px;
+    }
+
+    .optionIcon {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 22px;
+    }
+
+    .optionCard h4 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .paymentInfo {
+        font-size: 14px;
+    }
+
+    .calendarHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .calendarHeader h3 {
+        font-size: 20px;
+    }
+
+    .calendlyContainer {
+        min-height: 550px;
+        border-radius: 12px;
+        margin-top: 18px;
+    }
+
+    .calendlyContainer iframe {
+        min-height: 550px !important;
+        border-radius: 12px !important;
+    }
+
+    .loadingCalendly {
+        font-size: 15px;
+        gap: 12px;
+        border-radius: 12px;
+    }
+
+    .confirmationContainer {
+        padding: 60px 35px;
+    }
+
+    .successIcon {
+        width: 100px;
+        height: 100px;
+        font-size: 50px;
+        margin-bottom: 35px;
+    }
+
+    .confirmationTitle {
+        font-size: 28px;
+    }
+
+    .confirmationText {
+        font-size: 16px;
+    }
+
+    .backToServicesBtn {
+        font-size: 13px !important;
+        padding: 7px 14px !important;
+    }
 }
 
 /* Mobile Large (480px - 575px) */
 @media (max-width: 575px) and (min-width: 480px) {
+
     /* Adaptations pour mobile large */
-    .stepContainer { padding: 35px 25px 40px; }
-    .titleSection { padding-bottom: 22px; margin-bottom: 35px; }
-    .serviceTitle { font-size: 26px; }
-    .introSection { margin-bottom: 40px; }
-    .question { font-size: 18px; margin-bottom: 10px; }
-    .subtitle { font-size: 14px; }
-    .optionsContainer { grid-template-columns: 1fr; gap: 22px; margin-bottom: 35px; }
-    .optionCard { padding: 30px 20px; min-height: 160px; border-radius: 14px; }
-    .optionIcon { width: 70px; height: 70px; margin-bottom: 20px; }
-    .optionCard h4 { font-size: 17px; margin-bottom: 14px; }
-    .paymentInfo { font-size: 13px; }
-    .disclaimer { padding-top: 22px; }
-    .disclaimer p { font-size: 14px; }
-    .calendarHeader { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 22px; padding-bottom: 18px; }
-    .calendarHeader h3 { font-size: 19px; }
-    .calendlyContainer { min-height: 500px; border-radius: 14px; margin-top: 20px; }
-    .loadingCalendly { font-size: 15px; gap: 12px; border-radius: 14px; }
-    .confirmationContainer { padding: 50px 25px; }
-    .successIcon { width: 90px; height: 90px; font-size: 45px; margin-bottom: 30px; }
-    .confirmationTitle { font-size: 26px; margin-bottom: 22px; }
-    .confirmationText { font-size: 15px; margin-bottom: 40px; }
+    .stepContainer {
+        padding: 35px 25px 40px;
+    }
+
+    .titleSection {
+        padding-bottom: 22px;
+        margin-bottom: 35px;
+    }
+
+    .serviceTitle {
+        font-size: 26px;
+    }
+
+    .introSection {
+        margin-bottom: 40px;
+    }
+
+    .question {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .optionsContainer {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-bottom: 35px;
+    }
+
+    .optionCard {
+        padding: 30px 20px;
+        min-height: 160px;
+        border-radius: 14px;
+    }
+
+    .optionIcon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+
+    .optionCard h4 {
+        font-size: 17px;
+        margin-bottom: 14px;
+    }
+
+    .paymentInfo {
+        font-size: 13px;
+    }
+
+    .disclaimer {
+        padding-top: 22px;
+    }
+
+    .disclaimer p {
+        font-size: 14px;
+    }
+
+    .calendarHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 22px;
+        padding-bottom: 18px;
+    }
+
+    .calendarHeader h3 {
+        font-size: 19px;
+    }
+
+    .calendlyContainer {
+        min-height: 500px;
+        border-radius: 14px;
+        margin-top: 20px;
+    }
+
+    .loadingCalendly {
+        font-size: 15px;
+        gap: 12px;
+        border-radius: 14px;
+    }
+
+    .confirmationContainer {
+        padding: 50px 25px;
+    }
+
+    .successIcon {
+        width: 90px;
+        height: 90px;
+        font-size: 45px;
+        margin-bottom: 30px;
+    }
+
+    .confirmationTitle {
+        font-size: 26px;
+        margin-bottom: 22px;
+    }
+
+    .confirmationText {
+        font-size: 15px;
+        margin-bottom: 40px;
+    }
 }
 
 /* Mobile Small (360px - 479px) */
 @media (max-width: 479px) and (min-width: 360px) {
+
     /* Adaptations pour mobile petit */
-    .stepContainer { padding: 30px 20px 35px; }
-    .titleSection { padding-bottom: 20px; margin-bottom: 30px; }
-    .serviceTitle { font-size: 24px; }
-    .introSection { margin-bottom: 35px; }
-    .question { font-size: 17px; margin-bottom: 10px; }
-    .subtitle { font-size: 14px; }
-    .optionsContainer { grid-template-columns: 1fr; gap: 20px; margin-bottom: 30px; }
-    .optionCard { padding: 25px 18px; min-height: 150px; border-radius: 12px; }
-    .optionIcon { width: 65px; height: 65px; margin-bottom: 18px; }
-    .optionCard h4 { font-size: 16px; margin-bottom: 12px; }
-    .paymentInfo { font-size: 13px; }
-    .disclaimer { padding-top: 20px; }
-    .disclaimer p { font-size: 13px; }
-    .calendarHeader { flex-direction: column; align-items: flex-start; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; }
-    .calendarHeader h3 { font-size: 18px; }
-    .calendlyContainer { min-height: 480px; border-radius: 12px; margin-top: 18px; }
-    .loadingCalendly { font-size: 14px; gap: 10px; border-radius: 12px; }
-    .confirmationContainer { padding: 45px 20px; }
-    .successIcon { width: 85px; height: 85px; font-size: 42px; margin-bottom: 28px; }
-    .confirmationTitle { font-size: 24px; margin-bottom: 20px; }
-    .confirmationText { font-size: 15px; margin-bottom: 38px; }
+    .stepContainer {
+        padding: 30px 20px 35px;
+    }
+
+    .titleSection {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+
+    .serviceTitle {
+        font-size: 24px;
+    }
+
+    .introSection {
+        margin-bottom: 35px;
+    }
+
+    .question {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .optionsContainer {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .optionCard {
+        padding: 25px 18px;
+        min-height: 150px;
+        border-radius: 12px;
+    }
+
+    .optionIcon {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 18px;
+    }
+
+    .optionCard h4 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .paymentInfo {
+        font-size: 13px;
+    }
+
+    .disclaimer {
+        padding-top: 20px;
+    }
+
+    .disclaimer p {
+        font-size: 13px;
+    }
+
+    .calendarHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+
+    .calendarHeader h3 {
+        font-size: 18px;
+    }
+
+    .calendlyContainer {
+        min-height: 480px;
+        border-radius: 12px;
+        margin-top: 18px;
+    }
+
+    .loadingCalendly {
+        font-size: 14px;
+        gap: 10px;
+        border-radius: 12px;
+    }
+
+    .confirmationContainer {
+        padding: 45px 20px;
+    }
+
+    .successIcon {
+        width: 85px;
+        height: 85px;
+        font-size: 42px;
+        margin-bottom: 28px;
+    }
+
+    .confirmationTitle {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .confirmationText {
+        font-size: 15px;
+        margin-bottom: 38px;
+    }
+
+    .backToServicesBtn {
+        font-size: 12px !important;
+        padding: 6px 12px !important;
+    }
 }
 
 /* Mobile Very Small (< 360px) */
 @media (max-width: 359px) {
+
     /* Adaptations pour très petit mobile */
-    .stepContainer { padding: 25px 15px 30px; }
-    .titleSection { padding-bottom: 18px; margin-bottom: 25px; }
-    .serviceTitle { font-size: 22px; }
-    .introSection { margin-bottom: 30px; }
-    .question { font-size: 16px; margin-bottom: 8px; }
-    .subtitle { font-size: 13px; }
-    .optionsContainer { grid-template-columns: 1fr; gap: 18px; margin-bottom: 25px; }
-    .optionCard { padding: 22px 15px; min-height: 140px; border-radius: 10px; }
-    .optionIcon { width: 60px; height: 60px; margin-bottom: 15px; }
-    .optionCard h4 { font-size: 15px; margin-bottom: 10px; }
-    .paymentInfo { font-size: 12px; }
-    .disclaimer { padding-top: 18px; }
-    .disclaimer p { font-size: 12px; }
-    .calendarHeader { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 18px; padding-bottom: 12px; }
-    .calendarHeader h3 { font-size: 17px; }
-    .calendlyContainer { min-height: 450px; border-radius: 10px; margin-top: 15px; }
-    .loadingCalendly { font-size: 13px; gap: 8px; border-radius: 10px; }
-    .confirmationContainer { padding: 40px 15px; }
-    .successIcon { width: 80px; height: 80px; font-size: 38px; margin-bottom: 25px; }
-    .confirmationTitle { font-size: 22px; margin-bottom: 18px; }
-    .confirmationText { font-size: 14px; margin-bottom: 35px; }
+    .stepContainer {
+        padding: 25px 15px 30px;
+    }
+
+    .titleSection {
+        padding-bottom: 18px;
+        margin-bottom: 25px;
+    }
+
+    .serviceTitle {
+        font-size: 22px;
+    }
+
+    .introSection {
+        margin-bottom: 30px;
+    }
+
+    .question {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .optionsContainer {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 25px;
+    }
+
+    .optionCard {
+        padding: 22px 15px;
+        min-height: 140px;
+        border-radius: 10px;
+    }
+
+    .optionIcon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+
+    .optionCard h4 {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .paymentInfo {
+        font-size: 12px;
+    }
+
+    .disclaimer {
+        padding-top: 18px;
+    }
+
+    .disclaimer p {
+        font-size: 12px;
+    }
+
+    .calendarHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+    }
+
+    .calendarHeader h3 {
+        font-size: 17px;
+    }
+
+    .calendlyContainer {
+        min-height: 450px;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
+    .loadingCalendly {
+        font-size: 13px;
+        gap: 8px;
+        border-radius: 10px;
+    }
+
+    .confirmationContainer {
+        padding: 40px 15px;
+    }
+
+    .successIcon {
+        width: 80px;
+        height: 80px;
+        font-size: 38px;
+        margin-bottom: 25px;
+    }
+
+    .confirmationTitle {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .confirmationText {
+        font-size: 14px;
+        margin-bottom: 35px;
+    }
 }

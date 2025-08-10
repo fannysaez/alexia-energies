@@ -20,7 +20,7 @@ export default function Process() {
         {
             id: 1,
             title: "Magnétisme",
-            description: "Séances de magnétisme près d'Arras pour \n soulager les blocages physiques et émotionnels.",
+            description: "Séances de magnétisme, \n soulager les blocages physiques et émotionnels.",
             image: "/img/accueil/process/magnetisme.webp",
             link: "/services/magnetisme",
             serviceKey: "magnetisme"
@@ -135,6 +135,7 @@ export default function Process() {
                 onClose={closeModal}
                 type={modalState.type}
                 service={modalState.service}
+                shouldScrollToServices={true}
             />
         </>
     );

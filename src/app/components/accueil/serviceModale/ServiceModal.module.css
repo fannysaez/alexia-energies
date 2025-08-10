@@ -1,0 +1,311 @@
+/* ----------- Media Queries ----------- */
+/* Tablette */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .overlay {
+        padding: 20px;
+    }
+
+    .modal {
+        min-width: 80vw;
+        max-width: 80vw;
+        padding: 20px 16px;
+        max-height: 85vh;
+        margin-top: 94px;
+    }
+
+    .servicesContainer {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .serviceCard {
+        min-width: 160px;
+        max-width: 180px;
+        padding: 16px 10px;
+        flex: 0 1 calc(50% - 6px);
+    }
+
+    .serviceCard:nth-child(3) {
+        flex: 0 1 100%;
+        max-width: 220px;
+        margin: 6px auto 0;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile paysage et tablette petite */
+@media (max-width: 768px) and (min-width: 481px) {
+    .overlay {
+        padding: 15px;
+        align-items: center;
+        padding-top: 25px;
+    }
+
+    .modal {
+        min-width: 80vw;
+        max-width: 80vw;
+        padding: 16px 12px;
+        margin: 0;
+        max-height: 80vh;
+        width: 80vw;
+        margin-top: 94px;
+    }
+
+    .servicesContainer {
+        flex-direction: row;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .serviceCard {
+        min-width: 140px;
+        max-width: 160px;
+        padding: 12px 8px;
+        flex: 0 1 calc(33.33% - 6px);
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+    }
+
+    .close {
+        font-size: 1.1rem;
+        top: 6px;
+        right: 6px;
+    }
+
+    .icon {
+        font-size: 1.4rem;
+        margin-bottom: 4px;
+    }
+
+    .serviceCard h3 {
+        font-size: 0.9rem;
+        margin: 4px 0 6px 0;
+    }
+
+    .serviceCard p {
+        font-size: 0.75rem;
+        margin: 6px 0;
+    }
+
+    .chooseBtn {
+        padding: 5px 8px;
+        font-size: 0.75rem;
+        margin-top: 6px;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    .overlay {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 80px;
+        padding-bottom: 20px;
+    }
+
+    .modal {
+        max-width: 100vw;
+        padding: 8px 4px 12px 4px;
+        margin: 0;
+        border-radius: 8px;
+        max-height: 50vh;
+        width: 100vw;
+        overflow-y: auto;
+        border: 1px solid #ffe3b3;
+        margin-top: 84px;
+    }
+
+    .servicesContainer {
+        flex-direction: column;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .serviceCard {
+        min-width: 94vw;
+        max-width: 94vw;
+        padding: 8px 4px;
+        width: 94vw;
+    }
+
+    .title {
+        font-size: 1rem;
+        margin-bottom: 1px;
+    }
+
+    .subtitle {
+        font-size: 0.7rem;
+        margin-bottom: 6px;
+    }
+
+    .separator {
+        margin: 6px 0;
+    }
+
+    .close {
+        font-size: 0.85rem;
+        top: 3px;
+        right: 3px;
+    }
+
+    .icon {
+        font-size: 1.1rem;
+        margin-bottom: 1px;
+    }
+
+    .serviceCard h3 {
+        font-size: 0.8rem;
+        margin: 2px 0 3px 0;
+    }
+
+    .serviceCard p {
+        font-size: 0.65rem;
+        margin: 3px 0;
+        line-height: 1.1;
+    }
+
+    .chooseBtn {
+        padding: 3px 6px;
+        font-size: 0.65rem;
+        margin-top: 3px;
+    }
+
+    .info {
+        font-size: 0.6rem;
+        margin-top: 2px;
+        padding: 4px;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(20, 20, 20, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 900;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.modal {
+    background: #18141c;
+    border-radius: 16px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+    padding: 32px 40px;
+    border: 2px solid #ffe3b3;
+    color: #ffe3b3;
+    position: relative;
+    text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #ffe3b3;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.separator {
+    border: none;
+    border-top: 1px solid #ffe3b3;
+    margin: 28px 0;
+    margin-top: 39px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.servicesContainer {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.serviceCard {
+    background: #18141c;
+    border-radius: 12px;
+    padding: 24px 18px;
+    min-width: 220px;
+    max-width: 220px;
+    flex: 1 1 0;
+    box-sizing: border-box;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ffe3b3;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.serviceCard p {
+    text-align: center;
+}
+
+
+.serviceCard.selected,
+.serviceCard:hover {
+    border: 2px solid #ffe3b3;
+    box-shadow: 0 0 12px 2px #ffe3b333;
+}
+
+.icon {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+
+.chooseBtn {
+    margin-top: 12px;
+    background: #ffe3b3;
+    color: #18141c;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.chooseBtn:hover {
+    background: #ffcf7b;
+}
+
+.info {
+    font-size: 0.9rem;
+    color: #bfa77a;
+    margin-top: 8px;
+    text-align: center;
+}

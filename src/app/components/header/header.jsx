@@ -5,6 +5,7 @@ import Link from "next/link"; // Composant de navigation Next.js
 import Image from "next/image"; // Composant d'image optimisée Next.js
 import style from "./header.module.css"; // Styles CSS modules pour le header
 import Button from "@/app/components/button/button"; // Composant bouton personnalisé
+import ServiceModal from "@/app/components/accueil/serviceModale/ServiceModal";
 import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire pour les boutons
 import { FaChevronRight, FaUser } from "react-icons/fa";
 import { HiChevronRight } from "react-icons/hi";
@@ -18,6 +19,7 @@ export default function Header() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const pathname = usePathname();
+    const [modalOpen, setModalOpen] = useState(false);
 
     // Vérifie la session admin
     useEffect(() => {
@@ -112,10 +114,10 @@ export default function Header() {
                     <Button
                         className={style.ButtonRdv}
                         text="Prendre rdv"
-                        link="/contact"
                         variant="secondary"
                         leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
                         rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                        onClick={() => setModalOpen(true)}
                     />
                     {/* Bouton Connexion/Profil visible uniquement pour admin connecté */}
                     {isMounted && isLogged && isAdmin && (
@@ -234,11 +236,10 @@ export default function Header() {
                                 <Button
                                     className={style.mobileFooterButtonRdv}
                                     text="Prendre rdv"
-                                    link="/contact"
                                     variant="secondary"
                                     leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
                                     rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                    onClick={closeMenu}
+                                    onClick={() => { setModalOpen(true); closeMenu(); }}
                                 />
                                 {isMounted && isLogged && isAdmin && (
                                     <Button
@@ -266,6 +267,7 @@ export default function Header() {
                     </div>
                 </div>
             )}
+            <ServiceModal open={modalOpen} onClose={() => setModalOpen(false)} />
         </header>
     );
 }

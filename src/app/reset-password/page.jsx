@@ -153,7 +153,7 @@ function ResetPasswordPageInner() {
 
                 <Button
                     type="submit"
-                    text={loading ? "Réinitialisation..." : "RÉINITIALISER"}
+                    text={loading ? "Réinitialisation..." : "Réinitialiser le mot de passe"}
                     className={styles["form-btn"]}
                     disabled={loading}
                     leftVector={<img src="/img/boutons/VectorStarBlack.svg" alt="" className={styles.leftVector} />}

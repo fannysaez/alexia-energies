@@ -1,6 +1,6 @@
 // Template email pour la réinitialisation de mot de passe
 export function getResetPasswordEmailTemplate(resetUrl) {
-    return `
+  return `
 <table style="background: #f7f6f2; font-family: 'Work Sans', Arial, sans-serif; color: #222;" width="100%" cellspacing="0" cellpadding="0">
   <tbody>
     <tr>
@@ -12,7 +12,7 @@ export function getResetPasswordEmailTemplate(resetUrl) {
 
                 <!-- Logo -->
                 <div style="text-align: center; margin-bottom: 32px;">
-                  <img style="height: 60px;" src="https://alexia-energies.vercel.app/img/accueil/logo/Logo.svg" alt="Alexia Energies">
+                  <img style="height: 60px;" src="https://res.cloudinary.com/ddvgydnpm/image/upload/v1754799926/alexia-energies/logo-astronex.png" alt="Alexia Energies">
                 </div>
 
                 <!-- Notification -->

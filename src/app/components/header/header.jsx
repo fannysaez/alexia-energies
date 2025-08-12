@@ -6,7 +6,6 @@ import Image from "next/image"; // Composant d'image optimisée Next.js
 import style from "./header.module.css"; // Styles CSS modules pour le header
 import Button from "@/app/components/button/button"; // Composant bouton personnalisé
 import Modal from "../modal/modal";
-import ServiceModal from "../accueil/serviceModale/ServiceModal";
 import ServiceChoiceModal from "../modal/forms/serviceChoiceModal";
 import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire pour les boutons
 import { FaChevronRight, FaUser } from "react-icons/fa";

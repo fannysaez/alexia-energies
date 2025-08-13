@@ -1,3 +1,25 @@
+@media (max-width: 600px) {
+    .modalOverlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        z-index: 9999 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: auto !important;
+    }
+
+    .modalContent {
+        z-index: 10000 !important;
+    }
+}
+
 /* Styles pour la modal */
 .modalOverlay {
     position: fixed;
@@ -22,8 +44,7 @@
     /* Coins arrondis */
     padding: 0;
     max-width: 1200px;
-    max-height: 85vh;
-    /* Hauteur maximale */
+    /* max-height supprimé pour éviter la coupure sur tablette */
     overflow-y: auto;
     /* Scroll si contenu trop grand */
     position: relative;
@@ -73,7 +94,7 @@
     /* Tablettes */
     .modalContent {
         max-width: 98vw;
-        max-height: 95vh;
+        /* max-height supprimé pour éviter la coupure sur tablette */
         width: 98vw;
         border-radius: 12px;
         /* Coins moins arrondis */
@@ -86,38 +107,30 @@
 
     /* Mobiles */
     .modalOverlay {
-        align-items: center;
-        /* Retour au centrage parfait sur mobile */
+        align-items: center !important;
     }
 
     .modalContent {
         max-width: 100vw;
-        max-height: 100vh;
+        max-height: 95vh;
         width: 100vw;
-        height: 100vh;
-        /* Plein écran */
+        height: auto;
         border-radius: 0;
-        /* Pas de coins arrondis */
         border: none;
         margin-top: 0;
-        /* Pas de marge sur mobile - centrage parfait */
-        margin-top: 0;
-        /* Pas de marge sur mobile - centrage parfait */
+        overflow-y: auto;
     }
 
     .closeButton {
         top: 10px;
         right: 10px;
         background-color: rgba(0, 0, 0, 0.5);
-        /* Fond sombre pour visibilité */
         color: var(--tiercery-color);
         border-radius: 50%;
         width: 40px;
         height: 40px;
-        /* Taille fixe */
         display: flex;
         align-items: center;
         justify-content: center;
-        /* Centrage du X */
     }
 }

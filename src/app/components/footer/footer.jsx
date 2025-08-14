@@ -77,7 +77,7 @@ const Footer = () => { // Footer component
                             </Link>
                         </div>
                         <p className={styles.description}>
-                            Duis et neque non quam feugiat posuere. In eu vehicula dolor. Etiam faucibucidunt.
+                            Situé à Villers-au-Bois, près d'Arras, je propose des séances de magnétisme et sophrologie pour vous accompagner vers un mieux-être global.
                         </p>
                         <div className={styles.socialLinks}>
                             <a href="#" className={styles.socialLink}>

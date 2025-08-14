@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export async function POST(req, { params }) {
-    const { slug } = params;
+    const { slug } = await params;
     if (!slug) {
         return new Response(JSON.stringify({ error: 'Slug manquant' }), { status: 400 });
     }

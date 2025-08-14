@@ -1,48 +1,3 @@
-@media (min-width: 768px) and (max-width: 1024px) {
-    .container {
-        max-height: none !important;
-        overflow-y: auto !important;
-    }
-
-    .serviceChoiceModal_container {
-        margin-top: 2vh !important;
-    }
-
-    .separator {
-        margin-top: 15px !important;
-    }
-}
-
-.serviceChoiceModal_container {
-    margin-top: 11vh;
-    padding-bottom: 32px;
-}
-
-/* --- FORCE LA GRILLE 2 COLONNES EN TABLETTE (PRIORITAIRE, UNIQUE) --- */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .servicesContainer {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: auto auto !important;
-        gap: 24px !important;
-        justify-items: center !important;
-        align-items: stretch !important;
-        margin-bottom: 16px !important;
-    }
-
-    .serviceCard {
-        width: 100% !important;
-        max-width: 320px !important;
-        min-width: 180px !important;
-        padding: 24px 18px !important;
-    }
-
-    .servicesContainer>.serviceCard:nth-child(3) {
-        grid-column: 1 / span 2 !important;
-        justify-self: center !important;
-    }
-}
-
 /* Container principal du modal de choix de service */
 .container {
     background: var(--background);
@@ -50,7 +5,6 @@
     padding: 32px 40px;
     color: var(--tiercery-color);
     text-align: center;
-    /* max-height supprimé pour éviter la coupure sur tablette */
     overflow-y: auto;
     width: 100%;
     box-sizing: border-box;
@@ -150,6 +104,50 @@
 }
 
 /* ----------- Media Queries ----------- */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        max-height: none !important;
+        overflow-y: auto !important;
+    }
+
+    .serviceChoiceModal_container {
+        margin-top: 2vh !important;
+    }
+
+    .separator {
+        margin-top: 15px !important;
+    }
+}
+
+.serviceChoiceModal_container {
+    margin-top: 1vh;
+    padding-bottom: 37px;
+}
+
+/* --- FORCE LA GRILLE 2 COLONNES EN TABLETTE (PRIORITAIRE, UNIQUE) --- */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .servicesContainer {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 24px !important;
+        justify-items: center !important;
+        align-items: stretch !important;
+        margin-bottom: 16px !important;
+    }
+
+    .serviceCard {
+        width: 100% !important;
+        max-width: 320px !important;
+        min-width: 180px !important;
+        padding: 24px 18px !important;
+    }
+
+    .servicesContainer>.serviceCard:nth-child(3) {
+        grid-column: 1 / span 2 !important;
+        justify-self: center !important;
+    }
+}
 
 /* Tablette (768px - 1024px) */
 @media (max-width: 1024px) {

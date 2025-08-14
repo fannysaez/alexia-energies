@@ -1,24 +1,27 @@
 "use client";
 import React, { useState } from "react";
+import { GiMagnet } from "react-icons/gi";
+import { GiLotus } from "react-icons/gi";
+import { GiSparkles } from "react-icons/gi";
 import styles from "./serviceChoiceModal.module.css";
 
 const services = [
     {
-        icon: "🧲",
+        icon: <GiMagnet size={32} />,
         title: "Magnétisme",
         description: "Séances de magnétisme pour équilibrer vos énergies",
         button: "Choisir ce service",
         serviceKey: "magnetisme"
     },
     {
-        icon: "🌸",
+        icon: <GiLotus size={32} />,
         title: "Sophrologie",
         description: "Techniques de relaxation et de bien-être",
         button: "Choisir ce service",
         serviceKey: "sophrologie"
     },
     {
-        icon: "✨",
+        icon: <GiSparkles size={32} />,
         title: "Human Design",
         description: "Découvrez votre design énergétique unique",
         button: "Choisir ce service",
@@ -34,7 +37,7 @@ export default function ServiceChoiceModal({ onServiceSelect, onClose }) {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${styles.serviceChoiceModal_container}`}>
             <h2 className={styles.title}>Choisissez votre service</h2>
             <hr className={styles.separator} />
             <p className={styles.subtitle}>

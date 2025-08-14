@@ -182,13 +182,16 @@
 .reservationModal {
     width: 100%;
     min-height: 200px;
+    max-height: 80vh;
+    /* ou ajuste selon ton besoin, ex : 85vh */
+    overflow-y: auto;
 }
 
 /* Conteneur des étapes du formulaire */
 .stepContainer {
     width: 100%;
-    padding: 25px 40px 40px 40px;
-    /* Plus d'espace intérieur autour du contenu */
+    padding: 32px 36px 29px 37px;
+    box-sizing: border-box;
 }
 
 /* Classe spécifique pour centrer le texte d'avertissement */
@@ -392,17 +395,18 @@
 /* Conteneur Calendly */
 .calendlyContainer {
     /* Conteneur de l’iframe Calendly */
-    min-height: 800px;
+    min-height: 600px;
+    /* réduit la hauteur minimale */
     width: 100%;
     border-radius: 14px;
-    margin-top: 20px;
+    margin-top: 8px;
+    /* réduit l'espace au-dessus */
     overflow: hidden;
     border: none;
     background-color: var(--background);
     height: auto;
     position: relative;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding: 0 !important;
 }
 
 .calendlyContainer iframe {
@@ -411,7 +415,8 @@
     border-radius: 16px !important;
     background-color: var(--background) !important;
     width: 100% !important;
-    min-height: 800px !important;
+    min-height: 600px !important;
+    /* réduit la hauteur minimale */
     max-width: none !important;
     display: block !important;
     margin: 0 !important;

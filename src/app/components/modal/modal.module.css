@@ -1,3 +1,10 @@
+/* Ajout pour la réservation : step container */
+.reservationModal_stepContainner {
+    width: 100%;
+    padding: 25px 40px 40px 40px;
+    margin-bottom: -2vh;
+}
+
 @media (max-width: 600px) {
     .modalOverlay {
         position: fixed !important;
@@ -43,7 +50,7 @@
     border-radius: 16px;
     /* Coins arrondis */
     padding: 0;
-    max-width: 1200px;
+    max-width: 1250px;
     /* max-height supprimé pour éviter la coupure sur tablette */
     overflow-y: auto;
     /* Scroll si contenu trop grand */
@@ -52,8 +59,8 @@
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
     /* Ombre portée */
     width: 100%;
-    margin-top: 11vh;
-    /* Déplacer la modal vers le bas */
+    margin-top: 15vh;
+    /* Modal remontée légèrement */
 }
 
 .closeButton {

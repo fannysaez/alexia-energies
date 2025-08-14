@@ -156,9 +156,9 @@ export default function ReservationModal({ service, onClose, onBackToServices = 
                     <Button
                         text="Retour aux services"
                         onClick={onBackToServices}
-                        variant="primary"
-                        leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
-                        rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                        variant="secondary"
+                        leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                        rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
                         className={Style.backToServicesBtn}
                     />
                 )}
@@ -219,6 +219,8 @@ export default function ReservationModal({ service, onClose, onBackToServices = 
                     text="Retour"
                     onClick={goBack}
                     variant="secondary"
+                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
                 />
                 <h3>
                     {selectedOption === 'distance' ? 'Consultation à distance' : 'Consultation en présentiel'}

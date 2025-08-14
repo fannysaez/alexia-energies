@@ -95,7 +95,7 @@ export default function ArticlesPage() {
             <h2 className={styles.title}>Mes Articles</h2>
             {/* Sous-titre / Subtitle */}
             <p className={styles.subtitle}>
-                Parcourez nos différentes catégories pour découvrir des articles sur le bien-être, l’harmonie , la spiritualité...
+                Parcourez nos différentes catégories pour découvrir des articles sur le bien-être, l’harmonie , la spiritualité... <br />
                 Chaque thème vous propose des ressources pour avancer sur votre chemin personnel.
             </p>
 

@@ -94,9 +94,9 @@ export default function ArticlesPage() {
             {/* Titre de la section / Section title */}
             <h2 className={styles.title}>Mes Articles</h2>
             {/* Sous-titre / Subtitle */}
-            <p className={styles.subtitle}>Cras sed rhoncus risus, non accu cenas fareta.</p>
-            <p>
-                Parcourez nos différentes catégories pour découvrir des articles sur le bien-être, l’harmonie , la spiritualité... Chaque thème vous propose des ressources pour avancer sur votre chemin personnel.
+            <p className={styles.subtitle}>
+                Parcourez nos différentes catégories pour découvrir des articles sur le bien-être, l’harmonie , la spiritualité...
+                Chaque thème vous propose des ressources pour avancer sur votre chemin personnel.
             </p>
 
             {/* Filtres de catégories / Category filters */}

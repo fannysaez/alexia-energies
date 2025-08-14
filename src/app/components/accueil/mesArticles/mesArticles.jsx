@@ -34,7 +34,7 @@ export default function MesArticles() {
     return (
         <section className={styles.section}>
             <h2 className={styles.title}>Mes Articles</h2>
-            <p className={styles.subtitle}>Cras sed rhoncus risus, non accu cenas fareta.</p>
+            <p className={styles.subtitle}>Découvrez nos derniers articles pour prendre soin de vous et explorer de nouvelles pratiques de bien-être.</p>
             <div className={styles.articlesGrid}>
                 {/* Article principal (dernier article) */}
                 {mainArticle && (

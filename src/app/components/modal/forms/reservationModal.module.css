@@ -38,6 +38,19 @@
     position: static;
     margin-bottom: 12px;
     align-self: center;
+    background-color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
+    border: 1px solid white !important;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    /* border-radius: 30px; */
+}
+
+.backToServicesBtn svg,
+.backToServicesBtn img {
+    color: var(--secondary-color) !important;
+    fill: var(--secondary-color) !important;
 }
 
 /* Force le déplacement du bouton retour sur mobile et tablette */

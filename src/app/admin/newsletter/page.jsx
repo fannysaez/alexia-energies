@@ -124,7 +124,9 @@ const NewsletterAdmin = () => {
                 {error && <p style={{ color: 'red', textAlign: 'center', marginBottom: 12 }}>{error}</p>}
                 {!loading && !error && (
                     <div style={{ width: '100%' }}>
+
                         <table
+                            className="admin-table-responsive"
                             style={{
                                 width: '100%',
                                 background: '#FFD9A0',
@@ -152,9 +154,9 @@ const NewsletterAdmin = () => {
                                 )}
                                 {inscriptions.map((item) => (
                                     <tr key={item.id} style={{ borderBottom: '1px solid #F7C59F', background: '#fff' }}>
-                                        <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{item.email}</td>
-                                        <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{new Date(item.dateInscription).toLocaleString('fr-FR')}</td>
-                                        <td style={{ padding: '10px 18px', textAlign: 'center' }}>
+                                        <td data-label="Email" style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{item.email}</td>
+                                        <td data-label="Date d'inscription" style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{new Date(item.dateInscription).toLocaleString('fr-FR')}</td>
+                                        <td data-label="Actions" style={{ padding: '10px 18px', textAlign: 'center', display: 'flex', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
                                             <FaEye style={{ color: '#1bac0eff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => handleView(item)} title="Voir" />
                                             <FaRegEdit style={{ color: '#0e4dacff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} onClick={() => handleEdit(item)} title="Éditer" />
                                             <FaRegTrashAlt style={{ color: '#ac0e20ff', fontSize: 18, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} onClick={() => handleDelete(item)} title="Supprimer" />

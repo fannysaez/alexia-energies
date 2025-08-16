@@ -122,7 +122,10 @@ const UsersAdmin = () => {
                 {error && <p style={{ color: 'red', textAlign: 'center', marginBottom: 12 }}>{error}</p>}
                 {!loading && !error && (
                     <div style={{ width: '100%' }}>
-                        <table style={{ width: '100%', background: '#FFD9A0', color: '#2d2620', borderRadius: 12, overflow: 'hidden', borderCollapse: 'separate', borderSpacing: 0, marginTop: 8, boxShadow: '0 2px 12px #0001' }}>
+
+                        <table
+                            className="admin-table-responsive"
+                            style={{ width: '100%', background: '#FFD9A0', color: '#2d2620', borderRadius: 12, overflow: 'hidden', borderCollapse: 'separate', borderSpacing: 0, marginTop: 8, boxShadow: '0 2px 12px #0001' }}>
                             <thead>
                                 <tr style={{ background: '#F7C59F', fontWeight: 700, fontSize: 16 }}>
                                     <th style={{ padding: '12px 18px', textAlign: 'left', borderTopLeftRadius: 10 }}>Email</th>
@@ -139,10 +142,10 @@ const UsersAdmin = () => {
                                 )}
                                 {users.map((user) => (
                                     <tr key={user.type + '-' + user.id} style={{ borderBottom: '1px solid #F7C59F', background: '#fff' }}>
-                                        <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.email}</td>
-                                        <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.firstname || '-'}</td>
-                                        <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.role}</td>
-                                        <td style={{ padding: '10px 18px', textAlign: 'center' }}>
+                                        <td data-label="Email" style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.email}</td>
+                                        <td data-label="Prénom" style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.firstname || '-'}</td>
+                                        <td data-label="Rôle" style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.role}</td>
+                                        <td data-label="Actions" style={{ padding: '10px 18px', textAlign: 'center', display: 'flex', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
                                             <FaEye style={{ color: '#1bac0eff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer' }} title="Voir" onClick={() => handleView(user)} />
                                             <FaRegEdit style={{ color: '#0e4dacff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} title="Éditer" onClick={() => handleEdit(user)} />
                                             <FaRegTrashAlt style={{ color: '#ac0e20ff', fontSize: 18, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} title="Supprimer" onClick={() => handleDelete(user)} />

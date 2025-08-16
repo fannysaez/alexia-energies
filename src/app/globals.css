@@ -1,3 +1,18 @@
+@media (max-width: 700px) {
+  .admin-table-responsive tr {
+    transition: box-shadow 0.2s, background 0.2s;
+  }
+
+  .admin-table-responsive tr:hover {
+    box-shadow: 0 4px 16px #0002;
+    background: #faf7f3;
+    cursor: pointer;
+  }
+}
+
+/* Responsive table: scroll horizontal sur mobile */
+/* Suppression du scroll horizontal inutile sur mobile, car les cards sont en 100% largeur et en colonne */
+
 :root {
   --background: #181411;
   --primary-color: #FED1A7;
@@ -12,31 +27,22 @@
   --decorative-line-color: #776B62;
   --lineround-color: #776B62;
   --footer-decorative-line-color: #5C4228;
-  /* Variables pour les croix de navigation */
   --navigation-cross-default: url('/img/accueil/testimonials/VectorCroixMarron.svg');
   --navigation-cross-active: url('/img/accueil/testimonials/VectorCroixBeige.svg');
-  /* Variables pour le header mobile */
   --text: #CAC3BC;
   --title: #FED1A7;
-  /* Couleur des titres/hover */
   --text2: #776B62;
-  /* Couleur des bordures */
   --benefit-strong-color: var(--primary-color);
-  /* Tailles responsive pour les éléments décoratifs */
   --line-width-desktop: 60px;
   --line-height-desktop: 24px;
   --linegrey-width-desktop: 50px;
   --linegrey-height-desktop: 24px;
   --lineround-size-desktop: 24px;
-  /* Tailles des vectors */
   --vector-central-desktop: 140px;
   --vector-decoratif-desktop: 350px;
-  /* Espacements */
   --section-padding-desktop: 120px;
   --container-max-width: 1350px;
   --text-max-width: 1024px;
-
-
 }
 
 /* Déclaration de la police personnalisée */
@@ -55,7 +61,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 
 html,
 body {
@@ -82,7 +87,6 @@ body {
   min-height: 100vh;
   scrollbar-width: none;
   -ms-overflow-style: none;
-
 }
 
 /* Motif d'arrière-plan avec opacité 6% */
@@ -99,7 +103,6 @@ body::before {
 
 a {
   text-decoration: none;
-  /* Supprime le soulignement des liens */
 }
 
 p {
@@ -124,4 +127,88 @@ p {
   border: 2px solid var(--primary-color);
   background: var(--primary-color);
   color: var(--secondary-color);
+}
+
+/* Responsive Table Styles */
+@media (max-width: 700px) {
+
+  .admin-table-responsive thead,
+  .admin-table-responsive thead tr,
+  .admin-table-responsive thead th {
+    display: none !important;
+  }
+
+  .admin-table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: visible;
+    background: none;
+    box-shadow: none;
+    border: none;
+  }
+
+  .admin-table-responsive tr {
+    margin-bottom: 28px;
+    margin-top: 18px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #181411;
+    width: calc(100% - 24px);
+    margin-left: 12px;
+    margin-right: 12px;
+    display: block;
+  }
+
+  .admin-table-responsive td {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 15px;
+    background: rgba(200, 200, 200, 0.10);
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .admin-table-responsive td:before {
+    content: attr(data-label) ": ";
+    font-weight: bold;
+    color: #b48a5b;
+    min-width: 110px;
+    margin-bottom: 2px;
+    margin-right: 0;
+    flex-shrink: 0;
+    font-size: 15px;
+    display: block;
+  }
+
+  .admin-table-responsive td[data-label="Actions"] {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px;
+    background: rgba(200, 200, 200, 0.10);
+  }
+
+  .admin-table-responsive td[data-label="Actions"]:before {
+    margin-bottom: 0;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .admin-table-responsive th,
+  .admin-table-responsive td {
+    font-size: 14px;
+    padding: 8px 10px;
+    min-width: 110px;
+    white-space: normal;
+  }
+
+  .admin-table-responsive tbody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 }

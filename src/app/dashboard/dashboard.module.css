@@ -1,3 +1,65 @@
+/* Responsive stacked table for admin (newsletter & users) */
+.admin-table-responsive {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #FFD9A0;
+    color: #2d2620;
+    box-shadow: 0 2px 12px #0001;
+}
+
+@media (max-width: 700px) {
+
+    .admin-table-responsive,
+    .admin-table-responsive thead,
+    .admin-table-responsive tbody,
+    .admin-table-responsive th,
+    .admin-table-responsive td,
+    .admin-table-responsive tr {
+        display: block;
+        width: 100%;
+    }
+
+    .admin-table-responsive thead tr {
+        display: none;
+    }
+
+    .admin-table-responsive tr {
+        margin-bottom: 1.2rem;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 1px 6px #0001;
+        border: 1px solid #F7C59F;
+        padding: 0.5rem 0.2rem;
+    }
+
+    .admin-table-responsive td {
+        position: relative;
+        padding-left: 48%;
+        min-height: 2.5em;
+        border: none;
+        border-bottom: 1px solid #eee;
+        font-size: 1rem;
+        text-align: left;
+        background: #fff;
+        box-sizing: border-box;
+    }
+
+    .admin-table-responsive td:before {
+        position: absolute;
+        left: 0.7rem;
+        top: 0.7rem;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #b48a5b;
+        content: attr(data-label);
+        font-size: 0.98em;
+    }
+}
+
 .dashboard-container {
     max-width: 1100px;
     margin: 100px auto 40px auto;

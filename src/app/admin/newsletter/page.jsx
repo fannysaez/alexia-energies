@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import styles from './newsletter.module.css';
 import { FaEye, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 
 const NewsletterAdmin = () => {
@@ -116,7 +117,7 @@ const NewsletterAdmin = () => {
                 borderBottom: '1.5px solid var(--decorative-line-color, #F7C59F)',
                 margin: '18px 0 36px 0',
             }} />
-            <div style={{ background: 'rgba(44, 34, 32, 1)', borderRadius: 18, border: '3px solid #F7C59F', padding: '32px 24px', minWidth: 340, width: '100%', boxShadow: '0 2px 24px #0003', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className={styles.cardContainer}>
                 <h2 style={{ color: '#F7C59F', fontFamily: 'SortsMillGoudy-Regular, serif', fontSize: '1.5rem', marginBottom: 18, textAlign: 'center' }}>
                     Inscriptions à la newsletter
                 </h2>
@@ -126,55 +127,41 @@ const NewsletterAdmin = () => {
                     <div style={{ width: '100%' }}>
 
                         <table
-                            className="admin-table-responsive"
-                            style={{
-                                width: '100%',
-                                background: '#FFD9A0',
-                                color: '#2d2620',
-                                borderRadius: 12,
-                                overflow: 'hidden',
-                                borderCollapse: 'separate',
-                                borderSpacing: 0,
-                                marginTop: 8,
-                                boxShadow: '0 2px 12px #0001',
-                            }}
+                            className={`admin-table-responsive ${styles.newsletterTable}`}
                         >
                             <thead>
-                                <tr style={{ background: '#F7C59F', fontWeight: 700, fontSize: 16 }}>
-                                    <th style={{ padding: '12px 18px', textAlign: 'left', borderTopLeftRadius: 10 }}>Email</th>
-                                    <th style={{ padding: '12px 18px', textAlign: 'left' }}>Date d'inscription</th>
-                                    <th style={{ padding: '12px 18px', textAlign: 'center', borderTopRightRadius: 10 }}>Actions</th>
+                                <tr className={styles.tableHeadRow}>
+                                    <th className={styles.thLeft}>Email</th>
+                                    <th className={styles.thLeft}>Date d'inscription</th>
+                                    <th className={styles.thCenter}>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {inscriptions.length === 0 && (
                                     <tr>
-                                        <td colSpan={3} style={{ color: '#2d2620', textAlign: 'center', padding: 20, fontSize: 15, background: '#FFD9A0' }}>Aucune inscription</td>
+                                        <td colSpan={3} className={styles.noNewsletterCell}>Aucune inscription</td>
                                     </tr>
                                 )}
                                 {inscriptions.map((item) => (
-                                    <tr key={item.id} style={{ borderBottom: '1px solid #F7C59F', background: '#fff' }}>
-                                        <td data-label="Email" style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{item.email}</td>
-                                        <td data-label="Date d'inscription" style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{new Date(item.dateInscription).toLocaleString('fr-FR')}</td>
-                                        <td data-label="Actions" style={{ padding: '10px 18px', textAlign: 'center', display: 'flex', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
+                                    <tr key={item.id} className={styles.cardRow}>
+                                        <td data-label="Email" className={styles.tdCell}>{item.email}</td>
+                                        <td data-label="Date d'inscription" className={styles.tdCell}>{new Date(item.dateInscription).toLocaleString('fr-FR')}</td>
+                                        <td data-label="Actions" className={styles.actionsCell}>
                                             <FaEye style={{ color: '#1bac0eff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => handleView(item)} title="Voir" />
                                             <FaRegEdit style={{ color: '#0e4dacff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} onClick={() => handleEdit(item)} title="Éditer" />
                                             <FaRegTrashAlt style={{ color: '#ac0e20ff', fontSize: 18, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} onClick={() => handleDelete(item)} title="Supprimer" />
                                             {/* Modal Supprimer */}
                                             {showDeleteModal && deleteItem && (
-                                                <div style={{
-                                                    position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: '#000a', zIndex: 1000,
-                                                    display: 'flex', alignItems: 'center', justifyContent: 'center'
-                                                }}>
-                                                    <div style={{ background: '#fff', borderRadius: 12, padding: 32, minWidth: 320, boxShadow: '0 2px 24px #0005', position: 'relative', maxWidth: 350 }}>
-                                                        <h3 style={{ color: '#ac0e20ff', marginBottom: 18 }}>Supprimer l'inscription</h3>
-                                                        <div style={{ marginBottom: 16, color: '#2d2620' }}>
+                                                <div className={styles.modalOverlay}>
+                                                    <div className={styles.modalBox}>
+                                                        <h3 className={styles.modalDeleteTitle}>Supprimer l'inscription</h3>
+                                                        <div className={styles.modalDeleteText}>
                                                             Êtes-vous sûr de vouloir supprimer l'inscription de&nbsp;
                                                             <strong>{deleteItem.email}</strong> ?
                                                         </div>
-                                                        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
-                                                            <button type="button" onClick={closeDeleteModal} style={{ padding: '8px 16px', borderRadius: 6, border: 'none', background: '#ccc', color: '#2d2620', cursor: 'pointer' }}>Annuler</button>
-                                                            <button type="button" onClick={confirmDelete} style={{ padding: '8px 16px', borderRadius: 6, border: 'none', background: '#ac0e20ff', color: '#fff', fontWeight: 600, cursor: 'pointer' }}>Supprimer</button>
+                                                        <div className={styles.modalDeleteActions}>
+                                                            <button type="button" onClick={closeDeleteModal} className={styles.btnCancel}>Annuler</button>
+                                                            <button type="button" onClick={confirmDelete} className={styles.btnDelete}>Supprimer</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -186,20 +173,13 @@ const NewsletterAdmin = () => {
                         </table>
                         {/* Modal Voir */}
                         {showViewModal && viewItem && (
-                            <div style={{
-                                position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: '#000a', zIndex: 1000,
-                                display: 'flex', alignItems: 'center', justifyContent: 'center'
-                            }}>
-                                <div style={{ background: '#fff', borderRadius: 12, padding: 32, minWidth: 320, boxShadow: '0 2px 24px #0005', position: 'relative' }}>
-                                    <h3 style={{ color: '#2d2620', marginBottom: 18 }}>Détail inscription</h3>
-                                    <div style={{ marginBottom: 16 }}>
-                                        <strong>Email :</strong> {viewItem.email}
-                                    </div>
-                                    <div style={{ marginBottom: 16 }}>
-                                        <strong>Date d'inscription :</strong> {new Date(viewItem.dateInscription).toLocaleString('fr-FR')}
-                                    </div>
-                                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                        <button type="button" onClick={closeViewModal} style={{ padding: '8px 16px', borderRadius: 6, border: 'none', background: '#F7C59F', color: '#2d2620', fontWeight: 600, cursor: 'pointer' }}>Fermer</button>
+                            <div className={styles.modalOverlay}>
+                                <div className={styles.modalBox}>
+                                    <h3 className={styles.modalViewTitle}>Détail inscription</h3>
+                                    <div className={styles.modalViewText}><strong>Email :</strong> {viewItem.email}</div>
+                                    <div className={styles.modalViewText}><strong>Date d'inscription :</strong> {new Date(viewItem.dateInscription).toLocaleString('fr-FR')}</div>
+                                    <div className={styles.modalViewActions}>
+                                        <button type="button" onClick={closeViewModal} className={styles.btnClose}>Fermer</button>
                                     </div>
                                 </div>
                             </div>
@@ -207,21 +187,18 @@ const NewsletterAdmin = () => {
 
                         {/* Modal Editer */}
                         {showEditModal && editItem && (
-                            <div style={{
-                                position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: '#000a', zIndex: 1000,
-                                display: 'flex', alignItems: 'center', justifyContent: 'center'
-                            }}>
-                                <div style={{ background: '#fff', borderRadius: 12, padding: 32, minWidth: 320, boxShadow: '0 2px 24px #0005', position: 'relative' }}>
-                                    <h3 style={{ color: '#2d2620', marginBottom: 18 }}>Modifier l'inscription</h3>
+                            <div className={styles.modalOverlay}>
+                                <div className={styles.modalBox}>
+                                    <h3 className={styles.modalEditTitle}>Modifier l'inscription</h3>
                                     <form onSubmit={handleEditSubmit}>
-                                        <div style={{ marginBottom: 16 }}>
-                                            <label style={{ display: 'block', marginBottom: 6, color: '#2d2620' }}>Email</label>
-                                            <input type="email" value={editEmail} onChange={e => setEditEmail(e.target.value)} required style={{ width: '100%', padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
+                                        <div className={styles.modalEditField}>
+                                            <label className={styles.modalEditLabel}>Email</label>
+                                            <input type="email" value={editEmail} onChange={e => setEditEmail(e.target.value)} required className={styles.modalEditInput} />
                                         </div>
-                                        {editError && <div style={{ color: 'red', marginBottom: 10 }}>{editError}</div>}
-                                        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
-                                            <button type="button" onClick={closeEditModal} style={{ padding: '8px 16px', borderRadius: 6, border: 'none', background: '#ccc', color: '#2d2620', cursor: 'pointer' }}>Annuler</button>
-                                            <button type="submit" style={{ padding: '8px 16px', borderRadius: 6, border: 'none', background: '#F7C59F', color: '#2d2620', fontWeight: 600, cursor: 'pointer' }}>Enregistrer</button>
+                                        {editError && <div className={styles.modalEditError}>{editError}</div>}
+                                        <div className={styles.modalEditActions}>
+                                            <button type="button" onClick={closeEditModal} className={styles.btnCancel}>Annuler</button>
+                                            <button type="submit" className={styles.btnSave}>Enregistrer</button>
                                         </div>
                                     </form>
                                 </div>

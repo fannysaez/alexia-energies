@@ -1,0 +1,284 @@
+/* Effet cardRow hover newsletter : doré, transition, box-shadow */
+.cardRow:hover {
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--primary-color);
+    transition: transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+    transform: translateY(-2px) scale(1.01);
+}
+
+.admin-table-responsive tr {
+    margin-bottom: 28px;
+    margin-top: 18px;
+    background: transparent !important;
+    border-radius: 12px;
+    border: 1px solid #FFD700;
+    width: calc(100% - 24px);
+    margin-left: 12px;
+    margin-right: 12px;
+    display: block;
+}
+
+.admin-table-responsive td {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 15px;
+    background: transparent !important;
+    box-sizing: border-box;
+    position: relative;
+    color: #fff;
+}
+
+.admin-table-responsive td[data-label="Actions"] {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px;
+    background: transparent !important;
+}
+
+/* Texte blanc pour email et date d'inscription */
+.tdCell[data-label="Email"],
+.tdCell[data-label="Date d'inscription"] {
+    color: #fff !important;
+}
+
+.admin-table-responsive tr {
+    margin-bottom: 28px;
+    margin-top: 18px;
+    background: transparent !important;
+    border-radius: 12px;
+    border: 1px solid #FFD700;
+    width: calc(100% - 24px);
+    margin-left: 12px;
+    margin-right: 12px;
+    display: block;
+}
+
+@media (max-width: 700px) {
+    .cardContainer {
+        border: 2px solid #FFD700;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .cardTitle,
+    .tdCell,
+    .actionsCell,
+    .noNewsletterCell {
+        color: #fff;
+    }
+}
+
+/* Container de la carte principale */
+.cardContainer {
+    background: rgba(44, 34, 32, 1);
+    border-radius: 18px;
+    border: 3px solid #F7C59F;
+    padding: 32px 24px;
+    min-width: 340px;
+    width: 100%;
+    box-shadow: 0 2px 24px #0003;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Overlay de modale */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000a;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Boîte de modale */
+.modalBox {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    min-width: 320px;
+    max-width: 350px;
+    box-shadow: 0 2px 24px #0005;
+    position: relative;
+}
+
+/* Titres modale */
+.modalDeleteTitle {
+    color: #ac0e20ff;
+    margin-bottom: 18px;
+}
+
+.modalViewTitle {
+    color: #2d2620;
+    margin-bottom: 18px;
+}
+
+.modalEditTitle {
+    color: #2d2620;
+    margin-bottom: 18px;
+}
+
+/* Textes modale */
+.modalDeleteText {
+    margin-bottom: 16px;
+    color: #2d2620;
+}
+
+.modalViewText {
+    margin-bottom: 16px;
+}
+
+.modalEditField {
+    margin-bottom: 16px;
+}
+
+.modalEditLabel {
+    display: block;
+    margin-bottom: 6px;
+    color: #2d2620;
+}
+
+.modalEditInput {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.modalEditError {
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* Actions modale */
+.modalDeleteActions,
+.modalEditActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modalViewActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Boutons */
+.btnCancel {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background: #ccc;
+    color: #2d2620;
+    cursor: pointer;
+}
+
+.btnDelete {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background: #ac0e20ff;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnClose {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background: #F7C59F;
+    color: #2d2620;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnSave {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background: #F7C59F;
+    color: #2d2620;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Table newsletter responsive */
+.newsletterTable {
+    width: 100%;
+    color: #2d2620;
+    border-radius: 12px;
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 8px;
+    box-shadow: 0 2px 12px #0001;
+    background: transparent !important;
+}
+
+.tableHeadRow {
+    background: #F7C59F;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.thLeft {
+    padding: 12px 18px;
+    text-align: left;
+}
+
+.thLeft:first-child {
+    border-top-left-radius: 10px;
+}
+
+.thCenter {
+    padding: 12px 18px;
+    text-align: center;
+    border-top-right-radius: 10px;
+}
+
+.cardRow {
+    border-bottom: 1px solid #F7C59F;
+    background: transparent !important;
+}
+
+.tdCell {
+    padding: 10px 18px;
+    font-size: 15px;
+    text-align: left;
+    background: transparent !important;
+    color: #fff !important;
+}
+
+.actionsCell {
+    padding: 10px 18px;
+    text-align: center;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    color: #fff !important;
+}
+
+.cardRow td[data-label] {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+.noNewsletterCell {
+    color: #2d2620;
+    text-align: center;
+    padding: 20px;
+    font-size: 15px;
+    background: #FFD9A0;
+}

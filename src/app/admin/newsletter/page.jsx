@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import styles from './newsletter.module.css';
+import { FaEye, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 // Hook pour détecter le mobile
 function useIsMobile(breakpoint = 700) {
     const [isMobile, setIsMobile] = useState(false);
@@ -11,8 +13,6 @@ function useIsMobile(breakpoint = 700) {
     }, [breakpoint]);
     return isMobile;
 }
-import styles from './newsletter.module.css';
-import { FaEye, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 
 const NewsletterAdmin = () => {
     const [inscriptions, setInscriptions] = useState([]);
@@ -107,6 +107,15 @@ const NewsletterAdmin = () => {
     };
 
     const isMobile = useIsMobile();
+    // Pagination responsive
+    const itemsPerPage = isMobile ? 5 : 10;
+    const [currentPage, setCurrentPage] = useState(1);
+    const totalPages = Math.max(1, Math.ceil(inscriptions.length / itemsPerPage));
+    const paginatedInscriptions = inscriptions.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    // Remettre à la page 1 si la liste change et la page courante n'existe plus
+    useEffect(() => {
+        if (currentPage > totalPages) setCurrentPage(1);
+    }, [inscriptions, totalPages]);
     return (
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '60vh', justifyContent: 'flex-start' }}>
             <h1
@@ -143,7 +152,7 @@ const NewsletterAdmin = () => {
                                 {inscriptions.length === 0 && (
                                     <div className={styles.noNewsletterCell}>Aucune inscription</div>
                                 )}
-                                {inscriptions.map((item) => (
+                                {paginatedInscriptions.map((item) => (
                                     <div key={item.id} className={styles.cardRow} style={{ background: '#23201D', border: '1.5px solid #F7C59F', borderRadius: 12, marginBottom: 18, padding: 18 }}>
                                         <div className={styles.tdCell}><strong>Email :</strong> {item.email}</div>
                                         <div className={styles.tdCell}><strong>Date d'inscription :</strong> {new Date(item.dateInscription).toLocaleString('fr-FR')}</div>
@@ -200,7 +209,7 @@ const NewsletterAdmin = () => {
                                             <td colSpan={3} style={{ color: '#2d2620', textAlign: 'center', padding: 20, fontSize: 15, background: '#FFD9A0' }}>Aucune inscription</td>
                                         </tr>
                                     )}
-                                    {inscriptions.map((item) => (
+                                    {paginatedInscriptions.map((item) => (
                                         <tr key={item.id} style={{ borderBottom: '1px solid #F7C59F', background: '#fff' }}>
                                             <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{item.email}</td>
                                             <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{new Date(item.dateInscription).toLocaleString('fr-FR')}</td>
@@ -265,6 +274,22 @@ const NewsletterAdmin = () => {
                                     </form>
                                 </div>
                             </div>
+                        )}
+                        {/* Pagination mobile */}
+                        {isMobile && inscriptions.length > itemsPerPage && (
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                onPageChange={setCurrentPage}
+                            />
+                        )}
+                        {/* Pagination desktop/tablette */}
+                        {!isMobile && inscriptions.length > itemsPerPage && (
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                onPageChange={setCurrentPage}
+                            />
                         )}
                     </div>
                 )}

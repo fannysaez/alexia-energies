@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import styles from './users.module.css';
+import { FaEye, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 // Hook pour détecter le mobile
 function useIsMobile(breakpoint = 700) {
     const [isMobile, setIsMobile] = useState(false);
@@ -11,8 +13,6 @@ function useIsMobile(breakpoint = 700) {
     }, [breakpoint]);
     return isMobile;
 }
-import styles from './users.module.css';
-import { FaEye, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 
 const UsersAdmin = () => {
     const [users, setUsers] = useState([]);
@@ -120,6 +120,15 @@ const UsersAdmin = () => {
     };
 
     const isMobile = useIsMobile();
+    // Pagination responsive
+    const itemsPerPage = isMobile ? 5 : 10;
+    const [currentPage, setCurrentPage] = useState(1);
+    const totalPages = Math.max(1, Math.ceil(users.length / itemsPerPage));
+    const paginatedUsers = users.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    // Remettre à la page 1 si la liste change et la page courante n'existe plus
+    useEffect(() => {
+        if (currentPage > totalPages) setCurrentPage(1);
+    }, [users, totalPages]);
     return (
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '60vh', justifyContent: 'flex-start' }}>
             <h1 style={{ color: '#F7C59F', fontFamily: 'SortsMillGoudy-Regular, serif', fontSize: '2.2rem', fontWeight: 400, letterSpacing: '0.02em', textAlign: 'center', lineHeight: 1.1, textShadow: '0 1px 8px #0002' }}>
@@ -141,8 +150,8 @@ const UsersAdmin = () => {
                                 {users.length === 0 && (
                                     <div className={styles.noUserCell}>Aucun utilisateur</div>
                                 )}
-                                {users.map((user) => (
-                                    <div key={user.type + '-' + user.id} className={styles.cardRow} style={{border: '1.5px solid #F7C59F', borderRadius: 12, marginBottom: 18, padding: 18 }}>
+                                {paginatedUsers.map((user) => (
+                                    <div key={user.type + '-' + user.id} className={styles.cardRow} style={{ border: '1.5px solid #F7C59F', borderRadius: 12, marginBottom: 18, padding: 18 }}>
                                         <div className={styles.tdCell}><strong>Email :</strong> {user.email}</div>
                                         <div className={styles.tdCell}><strong>Prénom :</strong> {user.firstname || '-'}</div>
                                         <div className={styles.tdCell}><strong>Rôle :</strong> {user.role}</div>
@@ -201,7 +210,7 @@ const UsersAdmin = () => {
                                             <td colSpan={4} style={{ color: '#2d2620', textAlign: 'center', padding: 20, fontSize: 15, background: '#FFD9A0' }}>Aucun utilisateur</td>
                                         </tr>
                                     )}
-                                    {users.map((user) => (
+                                    {paginatedUsers.map((user) => (
                                         <tr key={user.type + '-' + user.id} style={{ borderBottom: '1px solid #F7C59F', background: '#fff' }}>
                                             <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.email}</td>
                                             <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.firstname || '-'}</td>
@@ -276,6 +285,22 @@ const UsersAdmin = () => {
                                     </form>
                                 </div>
                             </div>
+                        )}
+                        {/* Pagination mobile */}
+                        {isMobile && users.length > itemsPerPage && (
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                onPageChange={setCurrentPage}
+                            />
+                        )}
+                        {/* Pagination desktop/tablette */}
+                        {!isMobile && users.length > itemsPerPage && (
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                onPageChange={setCurrentPage}
+                            />
                         )}
                     </div>
                 )}

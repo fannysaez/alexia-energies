@@ -1,3 +1,57 @@
+/* Pagination styles */
+.paginationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0 0.5rem 0;
+    background: #2d2217;
+    border-radius: 12px;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.paginationButton {
+    background: linear-gradient(90deg, #fbe7b2 0%, #e6c07b 100%);
+    color: #2d2217;
+    border: none;
+    border-radius: 8px;
+    padding: 0.4rem 1.2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.paginationButton:disabled {
+    background: #b8a07a;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.paginationInfo {
+    color: #fbe7b2;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
+
+@media (max-width: 700px) {
+    .paginationContainer {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .paginationButton {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .paginationInfo {
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 700px) {
     .tdCell {
         display: flex;

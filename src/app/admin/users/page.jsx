@@ -1,5 +1,16 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+// Hook pour détecter le mobile
+function useIsMobile(breakpoint = 700) {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= breakpoint);
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, [breakpoint]);
+    return isMobile;
+}
 import styles from './users.module.css';
 import { FaEye, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 
@@ -108,6 +119,7 @@ const UsersAdmin = () => {
         setViewUser(null);
     };
 
+    const isMobile = useIsMobile();
     return (
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '60vh', justifyContent: 'flex-start' }}>
             <h1 style={{ color: '#F7C59F', fontFamily: 'SortsMillGoudy-Regular, serif', fontSize: '2.2rem', fontWeight: 400, letterSpacing: '0.02em', textAlign: 'center', lineHeight: 1.1, textShadow: '0 1px 8px #0002' }}>
@@ -123,30 +135,19 @@ const UsersAdmin = () => {
                 {error && <p style={{ color: 'red', textAlign: 'center', marginBottom: 12 }}>{error}</p>}
                 {!loading && !error && (
                     <div style={{ width: '100%' }}>
-
-                        <table
-                            className="admin-table-responsive"
-                            style={{ width: '100%', color: '#2d2620', borderRadius: 12, overflow: 'hidden', borderCollapse: 'separate', borderSpacing: 0, marginTop: 8, boxShadow: '0 2px 12px #0001' }}>
-                            <thead>
-                                <tr className={styles.tableHeadRow}>
-                                    <th style={{ padding: '12px 18px', textAlign: 'left', borderTopLeftRadius: 10 }}>Email</th>
-                                    <th style={{ padding: '12px 18px', textAlign: 'left' }}>Prénom</th>
-                                    <th style={{ padding: '12px 18px', textAlign: 'left' }}>Rôle</th>
-                                    <th style={{ padding: '12px 18px', textAlign: 'center', borderTopRightRadius: 10 }}>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        {isMobile ? (
+                            // Version mobile : cartes
+                            <div>
                                 {users.length === 0 && (
-                                    <tr>
-                                        <td colSpan={4} className={styles.noUserCell}>Aucun utilisateur</td>
-                                    </tr>
+                                    <div className={styles.noUserCell}>Aucun utilisateur</div>
                                 )}
                                 {users.map((user) => (
-                                    <tr key={user.type + '-' + user.id} className={styles.cardRow}>
-                                        <td data-label="Email" className={styles.tdCell}>{user.email}</td>
-                                        <td data-label="Prénom" className={styles.tdCell}>{user.firstname || '-'}</td>
-                                        <td data-label="Rôle" className={styles.tdCell}>{user.role}</td>
-                                        <td data-label="Actions" className={styles.actionsCell}>
+                                    <div key={user.type + '-' + user.id} className={styles.cardRow} style={{ background: '#23201D', border: '1.5px solid #F7C59F', borderRadius: 12, marginBottom: 18, padding: 18 }}>
+                                        <div className={styles.tdCell}><strong>Email :</strong> {user.email}</div>
+                                        <div className={styles.tdCell}><strong>Prénom :</strong> {user.firstname || '-'}</div>
+                                        <div className={styles.tdCell}><strong>Rôle :</strong> {user.role}</div>
+                                        <div className={styles.actionsCell} style={{ marginTop: 10 }}>
+                                            <span style={{ color: '#b48a5b', fontWeight: 600, marginRight: 8 }}>Actions :</span>
                                             <FaEye style={{ color: '#1bac0eff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer' }} title="Voir" onClick={() => handleView(user)} />
                                             <FaRegEdit style={{ color: '#0e4dacff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} title="Éditer" onClick={() => handleEdit(user)} />
                                             <FaRegTrashAlt style={{ color: '#ac0e20ff', fontSize: 18, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} title="Supprimer" onClick={() => handleDelete(user)} />
@@ -159,7 +160,7 @@ const UsersAdmin = () => {
                                                             Êtes-vous sûr de vouloir supprimer l'utilisateur&nbsp;
                                                             <strong>{deleteUser.email}</strong> ?
                                                         </div>
-                                                        {deleteError && <div className={styles.modalDeleteError}>{deleteError}</div>}
+                                                        {deleteError && <div style={{ color: 'red', marginBottom: 10 }}>{deleteError}</div>}
                                                         <div className={styles.modalDeleteActions}>
                                                             <button type="button" onClick={closeDeleteModal} className={styles.btnCancel}>Annuler</button>
                                                             <button type="button" onClick={confirmDelete} className={styles.btnDelete}>Supprimer</button>
@@ -167,52 +168,115 @@ const UsersAdmin = () => {
                                                     </div>
                                                 </div>
                                             )}
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </div>
                                 ))}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
-                {/* Modal Voir */}
-                {showViewModal && viewUser && (
-                    <div className={styles.modalOverlay}>
-                        <div className={styles.modalBox}>
-                            <h3 className={styles.modalViewTitle}>Détail utilisateur</h3>
-                            <div className={styles.modalViewText}><strong>Email :</strong> {viewUser.email}</div>
-                            <div className={styles.modalViewText}><strong>Prénom :</strong> {viewUser.firstname || '-'}</div>
-                            <div className={styles.modalViewText}><strong>Rôle :</strong> {viewUser.role}</div>
-                            <div className={styles.modalViewActions}>
-                                <button type="button" onClick={closeViewModal} className={styles.btnClose}>Fermer</button>
                             </div>
-                        </div>
-                    </div>
-                )}
+                        ) : (
+                            // Version desktop/tablette : tableau
+                            <table
+                                style={{
+                                    width: '100%',
+                                    background: '#FFD9A0',
+                                    color: '#2d2620',
+                                    borderRadius: 12,
+                                    overflow: 'hidden',
+                                    borderCollapse: 'separate',
+                                    borderSpacing: 0,
+                                    marginTop: 8,
+                                    boxShadow: '0 2px 12px #0001',
+                                }}
+                            >
+                                <thead>
+                                    <tr style={{ background: '#F7C59F', fontWeight: 700, fontSize: 16 }}>
+                                        <th style={{ padding: '12px 18px', textAlign: 'left', borderTopLeftRadius: 10 }}>Email</th>
+                                        <th style={{ padding: '12px 18px', textAlign: 'left' }}>Prénom</th>
+                                        <th style={{ padding: '12px 18px', textAlign: 'left' }}>Rôle</th>
+                                        <th style={{ padding: '12px 18px', textAlign: 'center', borderTopRightRadius: 10 }}>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {users.length === 0 && (
+                                        <tr>
+                                            <td colSpan={4} style={{ color: '#2d2620', textAlign: 'center', padding: 20, fontSize: 15, background: '#FFD9A0' }}>Aucun utilisateur</td>
+                                        </tr>
+                                    )}
+                                    {users.map((user) => (
+                                        <tr key={user.type + '-' + user.id} style={{ borderBottom: '1px solid #F7C59F', background: '#fff' }}>
+                                            <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.email}</td>
+                                            <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.firstname || '-'}</td>
+                                            <td style={{ padding: '10px 18px', fontSize: 15, textAlign: 'left' }}>{user.role}</td>
+                                            <td style={{ padding: '10px 18px', textAlign: 'center' }}>
+                                                <FaEye style={{ color: '#1bac0eff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer' }} title="Voir" onClick={() => handleView(user)} />
+                                                <FaRegEdit style={{ color: '#0e4dacff', fontSize: 18, marginRight: 10, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} title="Éditer" onClick={() => handleEdit(user)} />
+                                                <FaRegTrashAlt style={{ color: '#ac0e20ff', fontSize: 18, verticalAlign: 'middle', cursor: 'pointer', opacity: 1 }} title="Supprimer" onClick={() => handleDelete(user)} />
+                                                {/* Modal Supprimer */}
+                                                {showDeleteModal && deleteUser && (
+                                                    <div style={{
+                                                        position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: '#000a', zIndex: 1000,
+                                                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                                    }}>
+                                                        <div style={{ background: '#fff', borderRadius: 12, padding: 32, minWidth: 320, boxShadow: '0 2px 24px #0005', position: 'relative', maxWidth: 350 }}>
+                                                            <h3 style={{ color: '#ac0e20ff', marginBottom: 18 }}>Supprimer l'utilisateur</h3>
+                                                            <div style={{ marginBottom: 16, color: '#2d2620' }}>
+                                                                Êtes-vous sûr de vouloir supprimer l'utilisateur&nbsp;
+                                                                <strong>{deleteUser.email}</strong> ?
+                                                            </div>
+                                                            {deleteError && <div style={{ color: 'red', marginBottom: 10 }}>{deleteError}</div>}
+                                                            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                                                                <button type="button" onClick={closeDeleteModal} style={{ padding: '8px 16px', borderRadius: 6, border: 'none', background: '#ccc', color: '#2d2620', cursor: 'pointer' }}>Annuler</button>
+                                                                <button type="button" onClick={confirmDelete} style={{ padding: '8px 16px', borderRadius: 6, border: 'none', background: '#ac0e20ff', color: '#fff', fontWeight: 600, cursor: 'pointer' }}>Supprimer</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        )}
+                        {/* Modal Voir */}
+                        {showViewModal && viewUser && (
+                            <div className={styles.modalOverlay}>
+                                <div className={styles.modalBox}>
+                                    <h3 className={styles.modalViewTitle}>Détail utilisateur</h3>
+                                    <div className={styles.modalViewText}><strong>Email :</strong> {viewUser.email}</div>
+                                    <div className={styles.modalViewText}><strong>Prénom :</strong> {viewUser.firstname || '-'}</div>
+                                    <div className={styles.modalViewText}><strong>Rôle :</strong> {viewUser.role}</div>
+                                    <div className={styles.modalViewActions}>
+                                        <button type="button" onClick={closeViewModal} className={styles.btnClose}>Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
-                {/* Modal d'édition */}
-                {showEditModal && (
-                    <div className={styles.modalOverlay}>
-                        <div className={styles.modalBox}>
-                            <h3 className={styles.modalEditTitle}>Modifier l'utilisateur</h3>
-                            <form onSubmit={handleEditSubmit}>
-                                <div className={styles.modalEditField}>
-                                    <label className={styles.modalEditLabel}>Email</label>
-                                    <input type="email" value={editEmail} onChange={e => setEditEmail(e.target.value)} required className={styles.modalEditInput} />
+                        {/* Modal d'édition */}
+                        {showEditModal && (
+                            <div className={styles.modalOverlay}>
+                                <div className={styles.modalBox}>
+                                    <h3 className={styles.modalEditTitle}>Modifier l'utilisateur</h3>
+                                    <form onSubmit={handleEditSubmit}>
+                                        <div className={styles.modalEditField}>
+                                            <label className={styles.modalEditLabel}>Email</label>
+                                            <input type="email" value={editEmail} onChange={e => setEditEmail(e.target.value)} required className={styles.modalEditInput} />
+                                        </div>
+                                        <div className={styles.modalEditField}>
+                                            <label className={styles.modalEditLabel}>Rôle</label>
+                                            <select value={editRole} onChange={e => setEditRole(e.target.value)} className={styles.modalEditInput}>
+                                                <option value="user">Utilisateur</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </div>
+                                        {modalError && <div className={styles.modalEditError}>{modalError}</div>}
+                                        <div className={styles.modalEditActions}>
+                                            <button type="button" onClick={closeModal} className={styles.btnCancel}>Annuler</button>
+                                            <button type="submit" className={styles.btnSave}>Enregistrer</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div className={styles.modalEditField}>
-                                    <label className={styles.modalEditLabel}>Rôle</label>
-                                    <select value={editRole} onChange={e => setEditRole(e.target.value)} className={styles.modalEditInput}>
-                                        <option value="user">Utilisateur</option>
-                                        <option value="admin">Admin</option>
-                                    </select>
-                                </div>
-                                {modalError && <div className={styles.modalEditError}>{modalError}</div>}
-                                <div className={styles.modalEditActions}>
-                                    <button type="button" onClick={closeModal} className={styles.btnCancel}>Annuler</button>
-                                    <button type="submit" className={styles.btnSave}>Enregistrer</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

@@ -142,7 +142,7 @@ const UsersAdmin = () => {
                                     <div className={styles.noUserCell}>Aucun utilisateur</div>
                                 )}
                                 {users.map((user) => (
-                                    <div key={user.type + '-' + user.id} className={styles.cardRow} style={{ background: '#23201D', border: '1.5px solid #F7C59F', borderRadius: 12, marginBottom: 18, padding: 18 }}>
+                                    <div key={user.type + '-' + user.id} className={styles.cardRow} style={{border: '1.5px solid #F7C59F', borderRadius: 12, marginBottom: 18, padding: 18 }}>
                                         <div className={styles.tdCell}><strong>Email :</strong> {user.email}</div>
                                         <div className={styles.tdCell}><strong>Prénom :</strong> {user.firstname || '-'}</div>
                                         <div className={styles.tdCell}><strong>Rôle :</strong> {user.role}</div>

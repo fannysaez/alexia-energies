@@ -1,3 +1,9 @@
+@media (max-width: 700px) {
+    .tdCell strong {
+        color: rgb(180, 138, 91);
+        font-weight: 600;
+    }
+}
 .admin-table-responsive tr {
     margin-bottom: 28px;
     margin-top: 18px;

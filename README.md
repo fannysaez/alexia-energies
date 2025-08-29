@@ -1,3 +1,4 @@
+
 # alexia-energies
 
 Application web de bien-être et formations, développée dans le cadre du Titre Pro Développeur Web & Web Mobile (mai-juillet 2025).
@@ -16,6 +17,8 @@ Plateforme dédiée au bien-être, proposant :
 - Prise de rendez-vous via Calendly (présentiel/distanciel)
 - Espace de formation en ligne sécurisé (accès après paiement)
 - Interface d’administration (gestion utilisateurs, articles, formations)
+
+---
 
 ## Fonctionnalités principales
 
@@ -39,6 +42,20 @@ Plateforme dédiée au bien-être, proposant :
 | Emails           | Email.js, Resend     |
 | Formulaires      | React Hook Form, Zod |
 | Déploiement      | Vercel               |
+
+---
+## Cahier des charges
+
+Le cahier des charges complet du projet est disponible dans le fichier [Cachier des charges](./cahier-des-charges.md).
+
+Résumé : développement d’une application web de bien-être avec site vitrine, prise de rendez-vous, espace formation en ligne (privé après paiement), et interface d’administration. Voir le fichier pour le détail des pages, fonctionnalités et contraintes techniques.
+
+## Limites / Non réalisé
+
+- L’espace formation en ligne, le paiement Stripe et la gestion des chapitres n’ont pas pu être réalisés par manque de temps.
+- Seules les parties site vitrine, prise de rendez-vous, articles, FAQ, contact et administration de base sont fonctionnelles.
+
+---
 
 ## Démarrage
 

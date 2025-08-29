@@ -1,39 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# alexia-energies
 
-## Getting Started
+Application web de bien-être et formations, développée dans le cadre du Titre Pro Développeur Web & Web Mobile (mai-juillet 2025).
 
-First, run the development server:
+Démo en ligne : [alexia-energies.vercel.app](https://alexia-energies.vercel.app/)
+
+---
+
+Il s'agit d'un projet [Next.js](https://nextjs.org) initialisé avec [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Présentation
+
+Plateforme dédiée au bien-être, proposant :
+
+- Un site vitrine (magnétisme, sophrologie, human design)
+- Prise de rendez-vous via Calendly (présentiel/distanciel)
+- Espace de formation en ligne sécurisé (accès après paiement)
+- Interface d’administration (gestion utilisateurs, articles, formations)
+
+## Fonctionnalités principales
+
+- Pages publiques : Accueil, Qui suis-je, Services, Articles, FAQ, Contact
+- Prise de rendez-vous intégrée (Calendly)
+- Espace formation privé (achat via Stripe, accès sécurisé, contenus multimédias)
+- Administration complète (utilisateurs, articles, chapitres de formation)
+- Authentification sécurisée (BcryptJs, JWT)
+- Emails transactionnels (Resend, Email.js)
+- Site responsive et SEO friendly
+
+## Stack technique
+
+| Élément          | Technologie          |
+| ---------------- | -------------------- |
+| Framework        | Next.js              |
+| Base de données  | Neon (PostgreSQL)    |
+| ORM              | Prisma               |
+| Authentification | BcryptJs, JWT        |
+| Paiement         | Stripe               |
+| Emails           | Email.js, Resend     |
+| Formulaires      | React Hook Form, Zod |
+| Déploiement      | Vercel               |
+
+## Démarrage
+
+Pour commencer, lancez le serveur de développement :
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour voir le résultat.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Vous pouvez commencer à modifier la page en éditant le fichier `app/page.js`. La page se met à jour automatiquement lors de vos modifications.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ce projet utilise [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) pour optimiser et charger automatiquement [Geist](https://vercel.com/font), une nouvelle famille de polices créée par Vercel.
 
-## Learn More
+## En savoir plus
 
-To learn more about Next.js, take a look at the following resources:
+Pour en savoir plus sur Next.js, consultez les ressources suivantes :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Documentation Next.js](https://nextjs.org/docs) - découvrez les fonctionnalités et l'API de Next.js.
+- [Apprendre Next.js](https://nextjs.org/learn) - un tutoriel interactif sur Next.js.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Vous pouvez également consulter [le dépôt GitHub de Next.js](https://github.com/vercel/next.js) - vos retours et contributions sont les bienvenus !
 
-## Deploy on Vercel
+## Déployer sur Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Le moyen le plus simple de déployer votre application Next.js est d'utiliser la [plateforme Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) créée par les auteurs de Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# alexia-energies
-# alexia-energies
-"# alexia-energies" 
+Consultez notre [documentation sur le déploiement Next.js](https://nextjs.org/docs/app/building-your-application/deploying) pour plus de détails.
+
+---

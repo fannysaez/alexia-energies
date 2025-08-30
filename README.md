@@ -1,4 +1,3 @@
-
 # alexia-energies
 
 Application web de bien-être et formations, développée dans le cadre du Titre Pro Développeur Web & Web Mobile (mai-juillet 2025).
@@ -44,6 +43,7 @@ Plateforme dédiée au bien-être, proposant :
 | Déploiement      | Vercel               |
 
 ---
+
 ## Cahier des charges
 
 Le cahier des charges complet du projet est disponible dans le fichier [Cachier des charges](./cahier-des-charges.md).
@@ -54,6 +54,20 @@ Résumé : développement d’une application web de bien-être avec site vitri
 
 - L’espace formation en ligne, le paiement Stripe et la gestion des chapitres n’ont pas pu être réalisés par manque de temps.
 - Seules les parties site vitrine, prise de rendez-vous, articles, FAQ, contact et administration de base sont fonctionnelles.
+
+---
+
+## Audits Lighthouse
+
+Résultats des audits Lighthouse sur la version Desktop et Mobile :
+
+### Desktop
+
+![Lighthouse Desktop](public/img/readme/Desktop.png)
+
+### Mobile
+
+![Lighthouse Mobile](public/img/readme/Mobile.png)
 
 ---
 

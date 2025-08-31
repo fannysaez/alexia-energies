@@ -44,6 +44,42 @@ Plateforme dédiée au bien-être, proposant :
 
 ---
 
+## Vocabulaire / Définitions
+
+- **Framework** : Ensemble d’outils et de conventions facilitant le développement d’applications (ex : Next.js).
+- **Next.js** : Framework basé sur React pour créer des applications web performantes, avec rendu côté serveur, génération statique, routage simplifié, etc.
+- **Base de données** : Système permettant de stocker et organiser les données (ex : PostgreSQL).
+- **ORM (Object-Relational Mapping)** : Outil qui simplifie les interactions entre le code et la base de données (ex : Prisma).
+- **Authentification** : Processus permettant de vérifier l’identité d’un utilisateur (ex : BcryptJs pour le hachage des mots de passe, JWT pour les jetons d’accès).
+- **Paiement** : Intégration de solutions pour accepter des paiements en ligne (ex : Stripe).
+- **Emails transactionnels** : Envoi automatique d’emails liés aux actions des utilisateurs (ex : Email.js, Resend).
+- **Formulaires** : Outils pour gérer la saisie et la validation des données utilisateurs (ex : React Hook Form, Zod).
+- **Déploiement** : Mise en ligne de l’application sur un serveur ou une plateforme cloud (ex : Vercel).
+
+---
+
+## Les Hooks
+
+## Les Hooks
+
+### Qu’est-ce qu’un hook ? À quoi ça sert ?
+
+Un **hook** en React est une fonction spéciale qui permet d’ajouter des fonctionnalités avancées (comme la gestion de l’état ou des effets de bord) aux composants fonctionnels, sans avoir besoin d’utiliser des classes. Les hooks rendent le code plus simple, plus modulaire et plus facile à maintenir. Par exemple, grâce aux hooks, on peut gérer l’état local (`useState`), effectuer des actions après le rendu (`useEffect`), ou gérer des formulaires (`useForm`).
+
+### Principaux hooks utilisés dans ce projet
+
+- **useState** : Permet de déclarer une variable d’état locale dans un composant fonctionnel. On l’utilise pour stocker et modifier des valeurs dynamiques, par exemple le contenu d’un champ de formulaire ou le nombre de clics sur un bouton.
+- **useEffect** : Sert à exécuter du code en réponse à certains événements du cycle de vie du composant (montage, mise à jour, démontage). Il est utilisé pour effectuer des effets de bord comme des appels API, la gestion d’événements ou la modification du DOM après le rendu.
+- **useForm** : Proposé par la librairie React Hook Form, ce hook simplifie la gestion des formulaires dans React. Il permet de gérer la validation, la collecte des données et les erreurs de manière efficace, tout en réduisant la quantité de code nécessaire.
+
+En résumé, les hooks sont essentiels pour gérer l’état, les effets secondaires et la logique des formulaires dans les applications React modernes, tout en gardant le code clair et modulaire.
+
+## Qu’est-ce que la logique métier ?
+
+La **logique métier** (ou « business logic ») désigne l’ensemble des règles, traitements et processus propres au fonctionnement d’une application, indépendamment de l’interface utilisateur ou de la gestion des données. Elle définit comment les données sont manipulées, validées et comment les fonctionnalités principales répondent aux besoins spécifiques du domaine (ex : gestion des réservations, calculs de tarifs, validation d’accès à une formation). Séparer la logique métier du reste du code permet d’avoir une application plus claire, maintenable et évolutive.
+
+---
+
 ## Cahier des charges
 
 Le cahier des charges complet du projet est disponible dans le fichier [Cachier des charges](./cahier-des-charges.md).

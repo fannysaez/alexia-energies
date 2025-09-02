@@ -1,6 +1,6 @@
 # alexia-energies
 
-Application web de bien-être et formations, développée dans le cadre du Titre Pro Développeur Web & Web Mobile (mai-juillet 2025).
+Application web de bien-être et formations, développée dans le cadre du Titre Pro Développeur Web & Web Mobile (mai-juillet 2025) pendant mon stage en freelance.
 
 Démo en ligne : [alexia-energies.vercel.app](https://alexia-energies.vercel.app/)
 
@@ -14,8 +14,7 @@ Plateforme dédiée au bien-être, proposant :
 
 - Un site vitrine (magnétisme, sophrologie, human design)
 - Prise de rendez-vous via Calendly (présentiel/distanciel)
-- Espace de formation en ligne sécurisé (accès après paiement)
-- Interface d’administration (gestion utilisateurs, articles, formations)
+- Interface d’administration (gestion utilisateurs, articles, newsletter)
 
 ---
 
@@ -23,8 +22,8 @@ Plateforme dédiée au bien-être, proposant :
 
 - Pages publiques : Accueil, Qui suis-je, Services, Articles, FAQ, Contact
 - Prise de rendez-vous intégrée (Calendly)
-- Espace formation privé (achat via Stripe, accès sécurisé, contenus multimédias)
-- Administration complète (utilisateurs, articles, chapitres de formation)
+<!-- - Espace formation privé (achat via Stripe, accès sécurisé, contenus multimédias) -->
+- Administration complète (utilisateurs, articles, newsletters)
 - Authentification sécurisée (BcryptJs, JWT)
 - Emails transactionnels (Resend, Email.js)
 - Site responsive et SEO friendly
@@ -37,7 +36,6 @@ Plateforme dédiée au bien-être, proposant :
 | Base de données  | Neon (PostgreSQL)    |
 | ORM              | Prisma               |
 | Authentification | BcryptJs, JWT        |
-| Paiement         | Stripe               |
 | Emails           | Email.js, Resend     |
 | Formulaires      | React Hook Form, Zod |
 | Déploiement      | Vercel               |
@@ -57,8 +55,6 @@ Plateforme dédiée au bien-être, proposant :
 - **Déploiement** : Mise en ligne de l’application sur un serveur ou une plateforme cloud (ex : Vercel).
 
 ---
-
-## Les Hooks
 
 ## Les Hooks
 

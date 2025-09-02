@@ -1,6 +1,6 @@
 # alexia-energies
 
-Application web de bien-être et formations, développée dans le cadre du Titre Pro Développeur Web & Web Mobile (mai-juillet 2025) pendant mon stage en freelance.
+Application web de bien-être et formations (Site Vitrine), développée dans le cadre de mon stage de 2.5 mois en Freelance.
 
 Démo en ligne : [alexia-energies.vercel.app](https://alexia-energies.vercel.app/)
 
@@ -27,6 +27,7 @@ Plateforme dédiée au bien-être, proposant :
 - Authentification sécurisée (BcryptJs, JWT)
 - Emails transactionnels (Resend, Email.js)
 - Site responsive et SEO friendly
+- Hébergement et gestion d’images avec [Cloudinary](https://cloudinary.com) (upload, transformation, optimisation)
 
 ## Stack technique
 
@@ -139,3 +140,4 @@ Le moyen le plus simple de déployer votre application Next.js est d'utiliser la
 Consultez notre [documentation sur le déploiement Next.js](https://nextjs.org/docs/app/building-your-application/deploying) pour plus de détails.
 
 ---
+

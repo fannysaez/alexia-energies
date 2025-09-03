@@ -31,12 +31,12 @@ export default function Mentions_LegaesPage() {
                 <h2 className={styles.sectionTitle}>1. Présentation du site</h2>
                 <p className={styles.text}>
                     En vertu de l’article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique, il est précisé aux utilisateurs du site <strong>www.alexia-magnetiseuse.fr</strong> l’identité des différents intervenants dans le cadre de sa réalisation et de son suivi :<br /><br />
-                    <strong>Propriétaire :</strong> Alexia Anduskiewicz – 21 Grand’ Rue 63440 Villars-sur-Var<br />
-                    <strong>Création du site web :</strong> Anis<br />
-                    <strong>Responsable publication :</strong> Alexia Anduskiewicz – contact@alexia-magnetiseuse.fr<br />
-                    <strong>Webmaster :</strong> Anis – anis.dev@gmail.com<br />
-                    <strong>Hébergeur :</strong> Infomaniak – 26 Avenue de la Praille, 1227 Carouge, Suisse<br />
-                    <strong>Crédits photos :</strong> Adobe Stock, Pexels<br />
+                    <strong>Propriétaire :</strong> Alexia – rue du Lilas à Lens<br />
+                    <strong>Création du site web :</strong> Fanny SAEZ<br />
+                    <strong>Responsable publication :</strong> Alexia – contact@alexia-magnetiseuse.fr<br />
+                    <strong>Webmaster :</strong> Fanny SAEZ – fanny.saez.0486@gmail.com<br />
+                    {/* <strong>Hébergeur :</strong> Infomaniak – 26 Avenue de la Praille, 1227 Carouge, Suisse<br />
+                    <strong>Crédits photos :</strong> Adobe Stock, Pexels<br /> */}
                 </p>
             </section>
 

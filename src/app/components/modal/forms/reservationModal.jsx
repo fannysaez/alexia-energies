@@ -19,22 +19,22 @@ export default function ReservationModal({ service, onClose, onBackToServices = 
         magnetisme: {
             title: "Magnétisme",
             calendlyLinks: {
-                distance: "https://calendly.com/alexis59184/nouvelle-reunion-1",
-                presentiel: "https://calendly.com/alexis59184/nouvelle-reunion-1"
+                distance: "https://calendly.com/fannysaez/nouvelle-reunion",
+                presentiel: "https://calendly.com/fannysaez/nouvelle-reunion"
             }
         },
         sophrologie: {
             title: "Sophrologie",
             calendlyLinks: {
-                distance: "https://calendly.com/alexis59184/nouvelle-reunion-1",
-                presentiel: "https://calendly.com/alexis59184/nouvelle-reunion-1"
+                distance: "https://calendly.com/fannysaez/nouvelle-reunion",
+                presentiel: "https://calendly.com/fannysaez/nouvelle-reunion"
             }
         },
         humandesign: {
             title: "Human Design",
             calendlyLinks: {
-                distance: "https://calendly.com/alexis59184/nouvelle-reunion-1",
-                presentiel: "https://calendly.com/alexis59184/nouvelle-reunion-1"
+                distance: "https://calendly.com/fannysaez/nouvelle-reunion",
+                presentiel: "https://calendly.com/fannysaez/nouvelle-reunion"
             }
         }
     };

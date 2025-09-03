@@ -77,7 +77,7 @@ const Footer = () => { // Footer component
                             </Link>
                         </div>
                         <p className={styles.description}>
-                            Situé à Villers-au-Bois, près d'Arras, je propose des séances de magnétisme et sophrologie pour vous accompagner vers un mieux-être global.
+                            Situé à Lilas, près de Lens, je propose des séances de magnétisme et sophrologie pour vous accompagner vers un mieux-être global.
                         </p>
                         <div className={styles.socialLinks}>
                             <a href="#" className={styles.socialLink}>
@@ -234,7 +234,7 @@ const Footer = () => { // Footer component
                 <div className={styles.copyright}>
                     <span>2025</span>
                     <span className={styles.separator}>|</span>
-                    <span>Alexia Andriszkiewicz</span>
+                    <span>Fanny SAEZ</span>
                     <span className={styles.separator}>|</span>
                     <span>© Tous droits réservés.</span>
                 </div>

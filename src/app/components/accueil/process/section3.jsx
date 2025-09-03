@@ -71,7 +71,7 @@ export default function Process() {
                     <header className={Style.header}>
                         <h2>Magnétisme Et Sophrologie : Mes Solutions Pour Votre Bien-Être</h2>
                         <p>Magnétiseuse et sophrologue dans le Nord </p>
-                        <p>Séances individuelles pour un bien-être global à Villers-au-Bois.</p>
+                        <p>Séances individuelles pour un bien-être global à Lilas.</p>
                     </header>
 
                     {/* Grille des cartes de services */}

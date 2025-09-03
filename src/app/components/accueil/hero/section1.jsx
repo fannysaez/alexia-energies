@@ -20,9 +20,9 @@ export default function HeroSection() {
             {/* L'overlay */}
             <div className={style.overlay}></div>
             <div className={style.container}>
-                <h1>Magnétisme & Sophrologie Près D'Arras <span className={style.line}></span> Bien-Être Et Relaxation</h1>
+                <h1>Magnétisme & Sophrologie Près De Lens <span className={style.line}></span> Bien-Être Et Relaxation</h1>
                 <p>
-                    Situé à Villers-au-Bois, près d'Arras, je propose des séances de
+                    Situé à Lilas, près de Lens, je propose des séances de
                     magnétisme et sophrologie pour vous accompagner vers un mieux-être
                     global.
                 </p>

@@ -53,10 +53,10 @@ export default function ContactPage() {
             </div>
             <section className={styles.container}>
                 <div className={styles.left}>
-                    <div className={styles.subtitle}>Magnétisme & Sophrologie près d'Arras</div>
+                    <div className={styles.subtitle}>Magnétisme & Sophrologie près de Lens</div>
                     <h1 className={styles.title}>Bien-être, relaxation et accompagnement personnalisé</h1>
                     <div className={styles.text}>
-                        Située à Villers-au-Bois, je vous propose des séances de magnétisme et sophrologie pour vous accompagner vers un mieux-être global.<br />
+                        Située à Lens, je vous propose des séances de magnétisme et sophrologie pour vous accompagner vers un mieux-être global.<br />
                        <br />
                         Besoin d’un conseil ou d’un renseignement&nbsp;? Je vous réponds avec bienveillance sous 48h, par téléphone, email ou via le formulaire ci-dessous.<br />
                         Prenez soin de vous, je suis là pour vous guider.

@@ -33,7 +33,7 @@ export default function Mentions_LegaesPage() {
                     En vertu de l’article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique, il est précisé aux utilisateurs du site <strong>www.alexia-magnetiseuse.fr</strong> l’identité des différents intervenants dans le cadre de sa réalisation et de son suivi :<br /><br />
                     <strong>Propriétaire :</strong> Alexia – rue du Lilas à Lens<br />
                     <strong>Création du site web :</strong> Fanny SAEZ<br />
-                    <strong>Responsable publication :</strong> Alexia – contact@alexia-magnetiseuse.fr<br />
+                    {/* <strong>Responsable publication :</strong> Astronex –  contact@astronex-alexia.fr<br /> */}
                     <strong>Webmaster :</strong> Fanny SAEZ – fanny.saez.0486@gmail.com<br />
                     {/* <strong>Hébergeur :</strong> Infomaniak – 26 Avenue de la Praille, 1227 Carouge, Suisse<br />
                     <strong>Crédits photos :</strong> Adobe Stock, Pexels<br /> */}
@@ -43,14 +43,14 @@ export default function Mentions_LegaesPage() {
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>2. Conditions générales d’utilisation du site et des services proposés</h2>
                 <p className={styles.text}>
-                    L’utilisation du site <strong>www.alexia-magnetiseuse.fr</strong> implique l’acceptation pleine et entière des conditions générales d’utilisation ci-après décrites. Ces conditions d’utilisation sont susceptibles d’être modifiées ou complétées à tout moment, les utilisateurs du site sont donc invités à les consulter de manière régulière.
+                    L’utilisation du site implique l’acceptation pleine et entière des conditions générales d’utilisation ci-après décrites. Ces conditions d’utilisation sont susceptibles d’être modifiées ou complétées à tout moment, les utilisateurs du site sont donc invités à les consulter de manière régulière.
                 </p>
             </section>
 
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>3. Description des services fournis</h2>
                 <p className={styles.text}>
-                    Le site <strong>www.alexia-magnetiseuse.fr</strong> a pour objet de fournir une information concernant l’ensemble des activités de la société. Toutes les informations indiquées sur le site sont données à titre indicatif, et sont susceptibles d’évoluer.
+                    Le site a pour objet de fournir une information concernant l’ensemble des activités de la société. Toutes les informations indiquées sur le site sont données à titre indicatif, et sont susceptibles d’évoluer.
                 </p>
             </section>
 
@@ -78,21 +78,21 @@ export default function Mentions_LegaesPage() {
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>7. Gestion des données personnelles</h2>
                 <p className={styles.text}>
-                    Les données personnelles sont notamment protégées par la loi n° 78-87 du 6 janvier 1978, la loi n° 2004-801 du 6 août 2004, l’article L. 226-13 du Code pénal et la Directive Européenne du 24 octobre 1995. Aucune information personnelle de l’utilisateur du site <strong>www.alexia-magnetiseuse.fr</strong> n’est publiée à l’insu de l’utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers.
+                    Les données personnelles sont notamment protégées par la loi n° 78-87 du 6 janvier 1978, la loi n° 2004-801 du 6 août 2004, l’article L. 226-13 du Code pénal et la Directive Européenne du 24 octobre 1995. Aucune information personnelle de l’utilisateur du site n’est publiée à l’insu de l’utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers.
                 </p>
             </section>
 
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>8. Liens hypertextes et cookies</h2>
                 <p className={styles.text}>
-                    Le site <strong>www.alexia-magnetiseuse.fr</strong> contient un certain nombre de liens hypertextes vers d’autres sites, mis en place avec l’autorisation de Alexia Anduskiewicz. La navigation sur le site est susceptible de provoquer l’installation de cookie(s) sur l’ordinateur de l’utilisateur. Un cookie est un fichier de petite taille, qui ne permet pas l’identification de l’utilisateur, mais qui enregistre des informations relatives à la navigation d’un ordinateur sur un site.
+                    Le site contient un certain nombre de liens hypertextes vers d’autres sites, mis en place avec l’autorisation de Alexia Anduskiewicz. La navigation sur le site est susceptible de provoquer l’installation de cookie(s) sur l’ordinateur de l’utilisateur. Un cookie est un fichier de petite taille, qui ne permet pas l’identification de l’utilisateur, mais qui enregistre des informations relatives à la navigation d’un ordinateur sur un site.
                 </p>
             </section>
 
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>9. Droit applicable et attribution de juridiction</h2>
                 <p className={styles.text}>
-                    Tout litige en relation avec l’utilisation du site <strong>www.alexia-magnetiseuse.fr</strong> est soumis au droit français. Il est fait attribution exclusive de juridiction aux tribunaux compétents de Paris.
+                    Tout litige en relation avec l’utilisation du site est soumis au droit français. Il est fait attribution exclusive de juridiction aux tribunaux compétents de Paris.
                 </p>
             </section>
 

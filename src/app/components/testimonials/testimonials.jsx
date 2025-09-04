@@ -35,11 +35,11 @@ const testimonialsData = [
     },
     {
         id: 4,
-        name: "Les 4 Pattes De L'artois",
+        name: "Les Amis à Poils",
         type: "Entreprise",
         rating: 5,
         text: "Suspendisse elit eros, elementum quis massa sed, luctus pharetra risus. Morbi placerat fermentum mauris, eget egestas sem mollis ut. Proin vitae luctus at libero condimentum consectetur et anim.",
-        avatar: "/img/accueil/testimonials/les4pattesdelartois.webp"
+        avatar: "/img/accueil/testimonials/les-amis-a-poils.webp"
     },
     {
         id: 5,

@@ -4,10 +4,10 @@ import Footer from "./components/footer/footer";
 
 export const metadataOpenGraph = {
   title: "AstroNex - Bien-être, relaxation et accompagnement personnalisé",
-  description: "Située à Villers-au-Bois, je vous propose des séances de magnétisme, sophrologie et de human design pour vous accompagner vers un mieux-être global.",
+  description: "Située à Lens, je vous propose des séances de magnétisme, sophrologie et de human design pour vous accompagner vers un mieux-être global.",
   openGraph: {
     title: "AstroNex - Bien-être, relaxation et accompagnement personnalisé",
-    description: "Située à Villers-au-Bois, je vous propose des séances de magnétisme, sophrologie et de human design pour vous accompagner vers un mieux-être global.",
+    description: "Située à Lens, je vous propose des séances de magnétisme, sophrologie et de human design pour vous accompagner vers un mieux-être global.",
     type: "website",
     images: [
       {

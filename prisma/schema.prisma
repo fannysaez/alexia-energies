@@ -83,6 +83,7 @@ model User {
   email            String    @unique
   firstname        String
   password         String
+  dateInscription  DateTime  @default(now())
   role             String    @default("user")
   resetToken       String? // Token de réinitialisation
   resetTokenExpiry DateTime? // Expiration du token

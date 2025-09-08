@@ -82,10 +82,12 @@ const ServiceSidebar = ({
                     articles.map((article) => (
                         <Link href={article.link} key={article.id} className={styles.articleCard}>
                             <div className={styles.articleImage}>
-                                <img
+                                <Image
                                     src={article.image}
                                     alt={article.title}
                                     className={styles.articleImg}
+                                    width={300}
+                                    height={200}
                                 />
                             </div>
                             <div className={styles.articleContent}>

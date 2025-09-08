@@ -57,6 +57,7 @@ export default function ServiceChoiceModal({ onServiceSelect, onClose }) {
                         <button
                             className={styles.chooseBtn}
                             onClick={() => handleServiceSelect(service)}
+                            aria-label={`Choisir le service : ${service.title}`}
                         >
                             {service.button}
                         </button>

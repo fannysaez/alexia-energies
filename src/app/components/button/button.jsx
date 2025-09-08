@@ -13,7 +13,8 @@ export default function Button({
     leftVector, // Icône ou élément à gauche
     rightVector, // Icône ou élément à droite
     type = "button", // Type du bouton (button/submit)
-    isReserveButton = false // Indique si c'est un bouton "réservez"
+    isReserveButton = false, // Indique si c'est un bouton "réservez"
+    ariaLabel // Label accessible optionnel
 }) {
     const router = useRouter();
     // Attribution de la bonne classe CSS selon le variant
@@ -53,6 +54,7 @@ export default function Button({
                 onClick={handleClick}
                 type={type}
                 style={{ textDecoration: 'none', cursor: 'pointer' }}
+                aria-label={ariaLabel}
             >
                 {buttonContent}
             </button>
@@ -67,6 +69,7 @@ export default function Button({
                 onClick={onClick}
                 type={type}
                 style={{ textDecoration: 'none', cursor: 'pointer' }}
+                aria-label={ariaLabel}
             >
                 {buttonContent}
             </button>
@@ -101,6 +104,7 @@ export default function Button({
             className={`${buttonClass} ${className}`}
             type={type}
             style={{ textDecoration: 'none', cursor: 'pointer' }}
+            aria-label={ariaLabel}
         >
             {buttonContent}
         </button>

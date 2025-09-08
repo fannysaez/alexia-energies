@@ -75,6 +75,7 @@ export default function FAQPage() {
                             <button
                                 onClick={() => toggleItem(index)}
                                 className={styles.questionButton}
+                                aria-label={`Afficher ou masquer la réponse à la question : ${item.question}`}
                             >
                                 <h3 className={styles.questionText}>
                                     {item.question}

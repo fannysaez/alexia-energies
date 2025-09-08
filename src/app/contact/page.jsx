@@ -57,7 +57,7 @@ export default function ContactPage() {
                     <h1 className={styles.title}>Bien-être, relaxation et accompagnement personnalisé</h1>
                     <div className={styles.text}>
                         Située à Lens, je vous propose des séances de magnétisme et sophrologie pour vous accompagner vers un mieux-être global.<br />
-                       <br />
+                        <br />
                         Besoin d’un conseil ou d’un renseignement&nbsp;? Je vous réponds avec bienveillance sous 48h, par téléphone, email ou via le formulaire ci-dessous.<br />
                         Prenez soin de vous, je suis là pour vous guider.
                     </div>
@@ -85,7 +85,7 @@ export default function ContactPage() {
                             <input className={styles["form-input"]} type="email" name="email" placeholder="Votre e-mail" required />
                             <textarea className={styles["form-input"]} name="message" rows={5} placeholder="Entrez votre message ici..." required />
                             <div className={styles.captcha}>10 + 1 = <input name="captcha" type="text" style={{ width: '40px', marginLeft: '8px' }} required /></div>
-                            <button type="submit" className={styles["form-btn"]}>Envoyer un message</button>
+                            <button type="submit" className={styles["form-btn"]} aria-label="Envoyer le message du formulaire de contact">Envoyer un message</button>
                         </form>
                         {statusMessage && (
                             <div

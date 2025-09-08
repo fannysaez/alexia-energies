@@ -107,6 +107,7 @@ export default function ArticlesPage() {
                         className={selectedCategory === cat.id ? styles.activeFilterBtn : styles.filterBtn}
                         onClick={() => handleCategoryChange(cat.id)}
                         type="button"
+                        aria-label={`Filtrer par catégorie : ${cat.name}`}
                     >
                         {cat.name}
                     </button>

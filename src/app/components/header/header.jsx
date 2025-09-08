@@ -155,8 +155,8 @@ export default function Header() {
                         className={style.ButtonRdv}
                         text="Prendre rdv"
                         variant="secondary"
-                        leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                        rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                        leftVector={<Image src={StarBlack} alt="Icône étoile gauche" width={16} height={16} />}
+                        rightVector={<Image src={StarBlack} alt="Icône étoile droite" width={16} height={16} />}
                         onClick={() => openServiceChoiceModal()}
                     />
                     {/* Bouton Connexion/Profil visible uniquement pour admin connecté */}
@@ -166,8 +166,8 @@ export default function Header() {
                             text="Mon Profil"
                             link="/admin/dashboard"
                             variant="primary"
-                            leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
-                            rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                            leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile gauche" width={16} height={16} />}
+                            rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile droite" width={16} height={16} />}
                         />
                     )}
                 </div>

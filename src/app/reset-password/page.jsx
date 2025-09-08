@@ -3,6 +3,7 @@ import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import styles from "../components/authForm/form.module.css";
 import Button from "../components/button/button";
+import Image from "next/image";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function ResetPasswordPageInner() {
@@ -116,6 +117,7 @@ function ResetPasswordPageInner() {
                                 cursor: "pointer",
                                 color: "#7c6a46"
                             }}
+                            aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
                         >
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
@@ -145,6 +147,7 @@ function ResetPasswordPageInner() {
                                 cursor: "pointer",
                                 color: "#7c6a46"
                             }}
+                            aria-label={showConfirmPassword ? "Masquer la confirmation du mot de passe" : "Afficher la confirmation du mot de passe"}
                         >
                             {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
@@ -156,8 +159,8 @@ function ResetPasswordPageInner() {
                     text={loading ? "Réinitialisation..." : "Réinitialiser le mot de passe"}
                     className={styles["form-btn"]}
                     disabled={loading}
-                    leftVector={<img src="/img/boutons/VectorStarBlack.svg" alt="" className={styles.leftVector} />}
-                    rightVector={<img src="/img/boutons/VectorStarBlack.svg" alt="" className={styles.rightVector} />}
+                    leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Icône étoile gauche" width={16} height={16} className={styles.leftVector} />}
+                    rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Icône étoile droite" width={16} height={16} className={styles.rightVector} />}
                 />
             </form>
             {error && <p className={styles["form-message"]} style={{ color: "red" }}>{error}</p>}

@@ -171,8 +171,8 @@ const UsersAdmin = () => {
                                                         </div>
                                                         {deleteError && <div style={{ color: 'red', marginBottom: 10 }}>{deleteError}</div>}
                                                         <div className={styles.modalDeleteActions}>
-                                                            <button type="button" onClick={closeDeleteModal} className={styles.btnCancel}>Annuler</button>
-                                                            <button type="button" onClick={confirmDelete} className={styles.btnDelete}>Supprimer</button>
+                                                            <button type="button" onClick={closeDeleteModal} className={styles.btnCancel} aria-label="Annuler la suppression de l'utilisateur">Annuler</button>
+                                                            <button type="button" onClick={confirmDelete} className={styles.btnDelete} aria-label="Confirmer la suppression de l'utilisateur">Supprimer</button>
                                                         </div>
                                                     </div>
                                                 </div>

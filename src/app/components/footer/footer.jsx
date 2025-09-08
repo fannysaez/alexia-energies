@@ -204,7 +204,7 @@ const Footer = () => { // Footer component
                                 className={styles.emailInput}
                                 required
                             />
-                            <button type="submit" className={styles.submitButton}>
+                            <button type="submit" className={styles.submitButton} aria-label="S'inscrire à la newsletter">
                                 <IoArrowForward />
                             </button>
                         </form>

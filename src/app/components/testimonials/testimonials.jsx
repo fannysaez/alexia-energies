@@ -176,6 +176,7 @@ const Testimonials = () => {
                             key={index}
                             className={`${styles.dot} ${index === selectedIndex ? styles.dotSelected : ''}`}
                             type="button"
+                            aria-label={`Voir le témoignage ${index + 1}`}
                             onClick={() => scrollTo(index)}
                         />
                     ))}
@@ -192,7 +193,7 @@ const Testimonials = () => {
                         width: '100%',
                         height: 'auto',
                     }}
-                />      
+                />
             </div>
 
         </section>

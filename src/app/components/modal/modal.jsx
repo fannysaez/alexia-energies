@@ -51,7 +51,7 @@ export default function Modal({
         <div className={Style.modalOverlay} onClick={handleClose}>
             <div className={Style.modalContent} onClick={(e) => e.stopPropagation()}>
                 {/* Bouton de fermeture */}
-                <button className={Style.closeButton} onClick={handleClose}>
+                <button className={Style.closeButton} onClick={handleClose} aria-label="Fermer la fenêtre">
                     <HiOutlineX />
                 </button>
                 {/* Si children est fourni, on l'affiche, sinon fallback ReservationModal */}

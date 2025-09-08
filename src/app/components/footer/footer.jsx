@@ -80,16 +80,16 @@ const Footer = () => { // Footer component
                             Situé à Lilas, près de Lens, je propose des séances de magnétisme et sophrologie pour vous accompagner vers un mieux-être global.
                         </p>
                         <div className={styles.socialLinks}>
-                            <a href="#" className={styles.socialLink}>
+                            <a href="#" className={styles.socialLink} aria-label="Instagram">
                                 <FaInstagram />
                             </a>
-                            <a href="#" className={styles.socialLink}>
+                            <a href="#" className={styles.socialLink} aria-label="Facebook">
                                 <FaFacebook />
                             </a>
-                            <a href="#" className={styles.socialLink}>
+                            <a href="#" className={styles.socialLink} aria-label="LinkedIn">
                                 <FaLinkedin />
                             </a>
-                            <a href="#" className={styles.socialLink}>
+                            <a href="#" className={styles.socialLink} aria-label="YouTube">
                                 <FaYoutube />
                             </a>
                         </div>

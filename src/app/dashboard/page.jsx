@@ -11,6 +11,7 @@ function DashboardContent() {
     const searchParams = useSearchParams();
     const [showWelcome, setShowWelcome] = useState(searchParams.get("welcome") === "1");
     const [admin, setAdmin] = useState(undefined); // undefined = loading, null = refusé, objet = ok
+    const [selectedSection, setSelectedSection] = useState("infos");
 
     useEffect(() => {
         // Récupération de l'admin via le token JWT
@@ -100,6 +101,26 @@ function DashboardContent() {
 
     return (
         <div className={styles["dashboard-layout"]}>
+            <aside className={styles["dashboard-sidebar"]}>
+                <h2>Mon espace</h2>
+                <nav className={styles["dashboard-nav"]}>
+                    <Button
+                        text="Mes infos"
+                        variant={selectedSection === "infos" ? "secondary" : "primary"}
+                        className={styles["dashboard-nav-link"]}
+                        onClick={() => setSelectedSection("infos")}
+                        type="button"
+                    />
+                    <Button
+                        text="Mes favoris"
+                        variant={selectedSection === "favoris" ? "secondary" : "primary"}
+                        className={styles["dashboard-nav-link"]}
+                        onClick={() => setSelectedSection("favoris")}
+                        type="button"
+                    />
+                </nav>
+                <Button text="Se déconnecter" onClick={handleLogout} className={styles["dashboard-logout"]} type="button" variant="primary" />
+            </aside>
             <main className={styles["dashboard-main"]}>
                 {showWelcome && (
                     <div style={{
@@ -115,14 +136,27 @@ function DashboardContent() {
                         Bienvenue, vous êtes bien connecté !
                     </div>
                 )}
-                <h1 style={{ color: "var(--primary-color)", fontFamily: "'SortsMillGoudy-Regular', serif", fontSize: "2rem", marginBottom: 18 }}>
-                    Votre espace personnel, {admin.firstname || admin.firstName || admin.email}
-                </h1>
-                <div style={{ color: "var(--paragraph-color)", fontSize: "1.1rem", marginBottom: 32, display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-                    <span>Vous êtes connecté en tant qu'utilisateur.</span>
-                    <span>Ce dashboard est réservé à vos informations personnelles.</span>
-                </div>
-                <Button text="Se déconnecter" onClick={handleLogout} className={styles["dashboard-logout"]} type="button" variant="primary" />
+                {selectedSection === "infos" && (
+                    <>
+                        <h1 style={{ color: "var(--primary-color)", fontFamily: "'SortsMillGoudy-Regular', serif", fontSize: "2rem", marginBottom: 18 }}>
+                            Votre espace personnel, {admin.firstname || admin.firstName || admin.email}
+                        </h1>
+                        <div style={{ color: "var(--paragraph-color)", fontSize: "1.1rem", marginBottom: 32, display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+                            <span>Vous êtes connecté en tant qu'utilisateur.</span>
+                            <span>Ce dashboard est réservé à vos informations personnelles.</span>
+                        </div>
+                    </>
+                )}
+                {selectedSection === "favoris" && (
+                    <div>
+                        <h2 style={{ color: "var(--primary-color)", fontFamily: "'SortsMillGoudy-Regular', serif", fontSize: "1.5rem", marginBottom: 18 }}>
+                            Mes favoris
+                        </h2>
+                        <p style={{ color: "var(--paragraph-color)", fontSize: "1.1rem" }}>
+                            (Section favoris à compléter)
+                        </p>
+                    </div>
+                )}
             </main>
         </div>
     );

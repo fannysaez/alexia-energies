@@ -25,6 +25,7 @@ model Article {
   category         Category?      @relation(fields: [categoryId], references: [id])
   contentBlocks    ContentBlock[]
   paragraphs       Paragraph[]
+  favorites        Favorite[]
 
   @@map("articles")
 }
@@ -79,14 +80,15 @@ model Admin {
 }
 
 model User {
-  id               String    @id @default(cuid())
-  email            String    @unique
+  id               String     @id @default(cuid())
+  email            String     @unique
   firstname        String
   password         String
-  dateInscription  DateTime  @default(now())
-  role             String    @default("user")
+  dateInscription  DateTime   @default(now())
+  role             String     @default("user")
   resetToken       String? // Token de réinitialisation
   resetTokenExpiry DateTime? // Expiration du token
+  favorites        Favorite[]
 
   @@map("users")
 }
@@ -97,6 +99,17 @@ model Category {
   articles Article[]
 
   @@map("category")
+}
+
+model Favorite {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  article   Article  @relation(fields: [articleId], references: [id])
+  articleId String
+
+  @@unique([userId, articleId])
 }
 
 enum BlockType {

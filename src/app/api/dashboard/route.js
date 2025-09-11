@@ -7,7 +7,7 @@ export async function GET(request) {
         return NextResponse.json({ error: authResult.error }, { status: 401 });
     }
 
-    // Vérification du rôle admin
+    // Vérification du rôle utilisateur
     if (!authResult.user || authResult.user.role !== 'admin') {
         // On ne renvoie plus de message d'erreur explicite
         return NextResponse.json({}, { status: 403 });

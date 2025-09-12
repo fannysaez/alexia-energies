@@ -1,5 +1,7 @@
+//src/app/articles/[slug]/page.jsx
 "use client";
 import React, { useEffect, useState } from "react";
+import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
 import { MdCheck } from "react-icons/md";
 import { useParams } from "next/navigation";
 import Image from "next/image";
@@ -88,6 +90,8 @@ export default function ArticlePage() {
 
     return (
         <div className={styles.container}>
+            {/* Bouton Favoris - cœur en haut à droite */}
+            <FavoriteButton slug={slug} />
             {/* Section Hero */}
             <section
                 className={styles.heroSection}
@@ -279,7 +283,7 @@ export default function ArticlePage() {
             )}
 
             <div className={styles.metaSeparator2} />
- 
+
             {/* Section Infos auteur/date */}
             <section className={styles.metaSection}>
                 <div className={styles.metaFlex}>

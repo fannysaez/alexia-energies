@@ -8,15 +8,15 @@ function DashboardContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [showWelcome, setShowWelcome] = useState(searchParams.get("welcome") === "1");
-    const [admin, setAdmin] = useState(undefined); // undefined = loading, null = refusé, objet = ok
+    const [user, setUser] = useState(undefined); // undefined = loading, null = refusé, objet = ok
     const [selectedSection, setSelectedSection] = useState("home");
     const [showLogoutMsg, setShowLogoutMsg] = useState(false);
 
     useEffect(() => {
-        // Récupération de l'admin via le token JWT
+        // Récupération de l'utilisateur via le token JWT
         const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
         if (!token) {
-            setAdmin(null);
+            setUser(null);
             return;
         }
         fetch("/api/auth/me", {
@@ -25,8 +25,8 @@ function DashboardContent() {
             }
         })
             .then((res) => res.json())
-            .then(setAdmin)
-            .catch(() => setAdmin(null));
+            .then(setUser)
+            .catch(() => setUser(null));
     }, []);
 
     useEffect(() => {
@@ -62,15 +62,15 @@ function DashboardContent() {
 
     // Gestion de la redirection pour utilisateur non connecté uniquement
     useEffect(() => {
-        if (admin === null) {
+        if (user === null) {
             router.replace("/login");
         }
-    }, [admin, router]);
+    }, [user, router]);
 
-    if (admin === undefined) {
+    if (user === undefined) {
         return <p>Chargement...</p>;
     }
-    if (admin === null) {
+    if (user === null) {
         router.replace("/login");
         return null;
     }
@@ -100,7 +100,7 @@ function DashboardContent() {
     return (
         <div className={styles["dashboard-layout"]}>
             <aside className={styles["dashboard-sidebar"]}>
-                <h2>Mon Espace</h2>
+                <h2>{user && user.firstName ? `Bienvenue, ${user.firstName}` : "Bienvenue"}</h2>
                 <nav className={styles["dashboard-nav"]}>
                     <Button
                         text="Accueil"
@@ -139,7 +139,7 @@ function DashboardContent() {
                 {selectedSection === "home" ? (
                     <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "60vh" }}>
                         <h1 style={{ color: "#FFD9A0", fontFamily: "'SortsMillGoudy-Regular', serif", fontSize: "2.5rem", marginBottom: 18, textAlign: "center" }}>
-                            {admin && admin.firstName ? `Votre espace personnel, ${admin.firstName}` : "Votre espace personnel"}
+                            Votre espace personnel
                         </h1>
                         <p style={{ color: "#fff", fontSize: "1.2rem", textAlign: "center", marginBottom: 8 }}>
                             Vous êtes connecté en tant qu'utilisateur.<br />
@@ -152,10 +152,10 @@ function DashboardContent() {
                             Mon profil
                         </h1>
                         {/* Affichage des infos utilisateur */}
-                        {admin ? (
+                        {user ? (
                             <div style={{ background: "rgba(44,34,23,0.85)", border: "2px solid #FFD9A0", borderRadius: 16, boxShadow: "0 2px 16px #0002", padding: "32px 28px", minWidth: 320, maxWidth: 500 }}>
-                                <p><strong>Nom :</strong> {admin.firstName} {admin.lastName}</p>
-                                <p><strong>Email :</strong> {admin.email}</p>
+                                <p><strong>Nom :</strong> {user.firstName} {user.lastName}</p>
+                                <p><strong>Email :</strong> {user.email}</p>
                                 {/* Ajoute d'autres infos si besoin */}
                             </div>
                         ) : (

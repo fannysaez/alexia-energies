@@ -159,12 +159,32 @@ export default function Header() {
                         rightVector={<Image src={StarBlack} alt="Icône étoile droite" width={16} height={16} />}
                         onClick={() => openServiceChoiceModal()}
                     />
-                    {/* Bouton Connexion/Profil visible uniquement pour admin connecté */}
+                    {/* Bouton Connexion/Profil visible selon session */}
+                    {isMounted && !isLogged && (
+                        <Button
+                            className={style.ButtonConnexionMonProfil}
+                            text="Connexion"
+                            link="/login"
+                            variant="primary"
+                            leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile gauche" width={16} height={16} />}
+                            rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile droite" width={16} height={16} />}
+                        />
+                    )}
                     {isMounted && isLogged && isAdmin && (
                         <Button
                             className={style.ButtonConnexionMonProfil}
                             text="Mon Profil"
                             link="/admin/dashboard"
+                            variant="primary"
+                            leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile gauche" width={16} height={16} />}
+                            rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile droite" width={16} height={16} />}
+                        />
+                    )}
+                    {isMounted && isLogged && !isAdmin && (
+                        <Button
+                            className={style.ButtonConnexionMonProfil}
+                            text="Mon espace"
+                            link="/dashboard"
                             variant="primary"
                             leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile gauche" width={16} height={16} />}
                             rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile droite" width={16} height={16} />}
@@ -281,11 +301,33 @@ export default function Header() {
                                     rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
                                     onClick={() => { openServiceChoiceModal(); closeMenu(); }}
                                 />
+                                {isMounted && !isLogged && (
+                                    <Button
+                                        className={style.mobileFooterButtonConnexion}
+                                        text="Connexion"
+                                        link="/login"
+                                        variant="primary"
+                                        leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                                        rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                                        onClick={closeMenu}
+                                    />
+                                )}
                                 {isMounted && isLogged && isAdmin && (
                                     <Button
                                         className={style.mobileFooterButtonConnexion}
                                         text="Mon Profil"
                                         link="/admin/dashboard"
+                                        variant="primary"
+                                        leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                                        rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
+                                        onClick={closeMenu}
+                                    />
+                                )}
+                                {isMounted && isLogged && !isAdmin && (
+                                    <Button
+                                        className={style.mobileFooterButtonConnexion}
+                                        text="Mon espace"
+                                        link="/dashboard"
                                         variant="primary"
                                         leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}
                                         rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="" width={16} height={16} />}

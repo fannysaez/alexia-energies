@@ -1,13 +1,15 @@
 // Modèle représentant un utilisateur
 model User {
-    id              String   @id @default(cuid()) // Unique identifier // Identifiant unique
-    email           String   @unique // Unique email of the user // Email unique de l'utilisateur
-    firstname       String // Prénom de l'utilisateur
-    password        String // Hashed password // Mot de passe hashé
-    dateInscription DateTime @default(now())
-    role            String   @default("user") // Rôle de l'utilisateur (user par défaut)
-    resetToken      String? // Token de réinitialisation
+    id               String    @id @default(cuid()) // Unique identifier // Identifiant unique
+    email            String    @unique // Unique email of the user // Email unique de l'utilisateur
+    firstname        String // Prénom de l'utilisateur
+    password         String // Hashed password // Mot de passe hashé
+    dateInscription  DateTime  @default(now())
+    role             String    @default("user") // Rôle de l'utilisateur (user par défaut)
+    resetToken       String? // Token de réinitialisation
     resetTokenExpiry DateTime? // Expiration du token
+
+    favorites        Favorite[]  // 👈 relation ajoutée
 
     @@map("users") // Table name in the database // Nom de la table dans la base de données
 }

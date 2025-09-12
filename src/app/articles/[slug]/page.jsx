@@ -279,7 +279,7 @@ export default function ArticlePage() {
             )}
 
             <div className={styles.metaSeparator2} />
-
+ 
             {/* Section Infos auteur/date */}
             <section className={styles.metaSection}>
                 <div className={styles.metaFlex}>

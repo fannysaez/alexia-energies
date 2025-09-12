@@ -159,17 +159,7 @@ export default function Header() {
                         rightVector={<Image src={StarBlack} alt="Icône étoile droite" width={16} height={16} />}
                         onClick={() => openServiceChoiceModal()}
                     />
-                    {/* Bouton Connexion/Profil visible selon session */}
-                    {isMounted && !isLogged && (
-                        <Button
-                            className={style.ButtonConnexionMonProfil}
-                            text="Connexion"
-                            link="/login"
-                            variant="primary"
-                            leftVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile gauche" width={16} height={16} />}
-                            rightVector={<Image src="/img/boutons/VectorStarWhite.svg" alt="Icône étoile droite" width={16} height={16} />}
-                        />
-                    )}
+                    {/* Bouton Connexion caché si non connecté, Mon espace ou Mon Profil selon le rôle */}
                     {isMounted && isLogged && isAdmin && (
                         <Button
                             className={style.ButtonConnexionMonProfil}

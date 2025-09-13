@@ -8,6 +8,10 @@ export default function FavoritesList() {
     const [favorites, setFavorites] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    
+    // Pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const FAVORITES_PER_PAGE = 3;
 
     useEffect(() => {
         fetchFavorites();
@@ -56,7 +60,14 @@ export default function FavoritesList() {
 
             if (response.ok) {
                 // Mettre à jour la liste en retirant l'article
-                setFavorites(favorites.filter(fav => fav.slug !== slug));
+                const updatedFavorites = favorites.filter(fav => fav.slug !== slug);
+                setFavorites(updatedFavorites);
+                
+                // Ajuster la page si nécessaire
+                const totalPages = Math.ceil(updatedFavorites.length / FAVORITES_PER_PAGE);
+                if (currentPage > totalPages && totalPages > 0) {
+                    setCurrentPage(totalPages);
+                }
             } else {
                 alert("Erreur lors de la suppression du favori");
             }
@@ -65,6 +76,12 @@ export default function FavoritesList() {
             alert("Erreur lors de la suppression du favori");
         }
     };
+
+    // Calculer les éléments à afficher pour la page actuelle
+    const totalPages = Math.ceil(favorites.length / FAVORITES_PER_PAGE);
+    const startIndex = (currentPage - 1) * FAVORITES_PER_PAGE;
+    const endIndex = startIndex + FAVORITES_PER_PAGE;
+    const currentFavorites = favorites.slice(startIndex, endIndex);
 
     if (loading) {
         return (
@@ -97,7 +114,7 @@ export default function FavoritesList() {
     return (
         <div className={styles.favoritesContainer}>
             <div className={styles.favoritesGrid}>
-                {favorites.map((article) => (
+                {currentFavorites.map((article) => (
                     <div key={article.id} className={styles.favoriteCard}>
                         {article.image && (
                             <div className={styles.cardImageContainer}>
@@ -148,6 +165,39 @@ export default function FavoritesList() {
                     </div>
                 ))}
             </div>
+            
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+                <div className={styles.paginationContainer}>
+                    <button
+                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                        disabled={currentPage === 1}
+                        className={styles.paginationButton}
+                        style={{ 
+                            opacity: currentPage === 1 ? 0.5 : 1,
+                            cursor: currentPage === 1 ? 'not-allowed' : 'pointer'
+                        }}
+                    >
+                        Précédent
+                    </button>
+                    
+                    <span className={styles.paginationInfo}>
+                        Page {currentPage} / {totalPages}
+                    </span>
+                    
+                    <button
+                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                        disabled={currentPage === totalPages}
+                        className={styles.paginationButton}
+                        style={{ 
+                            opacity: currentPage === totalPages ? 0.5 : 1,
+                            cursor: currentPage === totalPages ? 'not-allowed' : 'pointer'
+                        }}
+                    >
+                        Suivant
+                    </button>
+                </div>
+            )}
         </div>
     );
 }

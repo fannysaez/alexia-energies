@@ -34,14 +34,14 @@
 }
 
 .heartFilled {
-    color: #ff4757;
+    color: #e6c490;
     font-size: 20px;
     transition: all 0.3s ease;
     animation: heartBeat 0.6s ease-in-out;
 }
 
 .favorite .heartFilled {
-    color: #ff4757;
+    color: #e6c490;
 }
 
 .spinner {

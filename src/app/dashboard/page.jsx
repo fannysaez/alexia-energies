@@ -3,6 +3,7 @@ import styles from "./dashboard.module.css";
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Button from "@/app/components/button/button";
+import FavoritesList from "@/app/components/dashboard/FavoritesList";
 
 function DashboardContent() {
     const router = useRouter();
@@ -162,17 +163,14 @@ function DashboardContent() {
                             <div style={{ color: '#FFD9A0', textAlign: 'center' }}>Utilisateur non connecté.</div>
                         )}
                     </div>
-                ) : (
+                ) : selectedSection === "favorites" ? (
                     <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
                         <h1 style={{ color: "var(--primary-color)", fontFamily: "'SortsMillGoudy-Regular', serif", fontSize: "2rem", marginBottom: 18 }}>
                             Mes Favoris
                         </h1>
-                        {/* Ici tu pourras afficher la liste des favoris de l'utilisateur */}
-                        <div style={{ background: "rgba(44,34,23,0.85)", border: "2px solid #FFD9A0", borderRadius: 16, boxShadow: "0 2px 16px #0002", padding: "32px 28px", minWidth: 320, maxWidth: 700 }}>
-                            <p>Aucun favori pour le moment.</p>
-                        </div>
+                        <FavoritesList />
                     </div>
-                )}
+                ) : null}
             </main>
         </div>
     );

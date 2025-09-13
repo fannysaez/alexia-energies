@@ -100,7 +100,7 @@ export default function ArticlePage() {
                 }}
             >
                 {/* Bouton Favoris - cœur en haut à droite de l'image de couverture */}
-                <FavoriteButton slug={slug} />
+                <FavoriteButton slug={slug} articleId={article.id} />
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>{article.titre}</h1>
                     <nav className={styles.heroBreadcrumb}>

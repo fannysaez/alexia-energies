@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { isLoggedIn } from "@/lib/auth";
 import styles from "./FavoriteButton.module.css";
 
-export default function FavoriteButton({ slug }) {
+export default function FavoriteButton({ slug, articleId }) {
     const [isFavorite, setIsFavorite] = useState(false);
     const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,10 +23,17 @@ export default function FavoriteButton({ slug }) {
 
         const fetchFavoriteStatus = async () => {
             try {
-                const response = await fetch(`/api/favorites?slug=${slug}`);
+                const token = localStorage.getItem('token');
+                const response = await fetch(`/api/favorites?slug=${slug}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 if (response.ok) {
                     const data = await response.json();
                     setIsFavorite(data.isFavorite);
+                } else {
+                    console.error("Erreur lors de la récupération du statut favori:", response.status);
                 }
             } catch (error) {
                 console.error("Erreur lors de la récupération du statut favori:", error);
@@ -46,11 +53,13 @@ export default function FavoriteButton({ slug }) {
 
         setLoading(true);
         try {
+            const token = localStorage.getItem('token');
             const method = isFavorite ? "DELETE" : "POST";
             const response = await fetch("/api/favorites", {
                 method,
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({ slug }),
             });
@@ -61,12 +70,12 @@ export default function FavoriteButton({ slug }) {
                 console.log(data.message);
             } else {
                 const errorData = await response.json();
-                console.error("Erreur:", errorData.error);
-                alert("Erreur lors de la mise à jour des favoris");
+                console.error("Erreur:", errorData.error || response.statusText);
+                alert(`Erreur lors de la mise à jour des favoris: ${errorData.error || response.statusText}`);
             }
         } catch (error) {
             console.error("Erreur lors de la mise à jour des favoris:", error);
-            alert("Erreur lors de la mise à jour des favoris");
+            alert("Erreur de connexion lors de la mise à jour des favoris");
         } finally {
             setLoading(false);
         }

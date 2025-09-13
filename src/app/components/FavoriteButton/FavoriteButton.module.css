@@ -1,19 +1,21 @@
 .favoriteButton {
-    position: fixed;
-    top: 120px;
-    right: 30px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     z-index: 1000;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background: none;
-    border: none;
-    box-shadow: none;
+    background: rgba(44, 37, 32, 0.8);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     padding: 0;
-    transition: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
 }
 
 .favoriteButton:hover {
@@ -27,13 +29,13 @@
 
 .heartEmpty {
     color: var(--primary-color);
-    font-size: 40px;
+    font-size: 20px;
     transition: all 0.3s ease;
 }
 
 .heartFilled {
     color: #ff4757;
-    font-size: 40px;
+    font-size: 20px;
     transition: all 0.3s ease;
     animation: heartBeat 0.6s ease-in-out;
 }
@@ -78,28 +80,28 @@
 /* Responsive */
 @media (max-width: 768px) {
     .favoriteButton {
-        top: 100px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-    }
-
-    .heartEmpty,
-    .heartFilled {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .favoriteButton {
-        top: 80px;
+        bottom: 15px;
         right: 15px;
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
     }
 
     .heartEmpty,
     .heartFilled {
         font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .favoriteButton {
+        bottom: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .heartEmpty,
+    .heartFilled {
+        font-size: 16px;
     }
 }

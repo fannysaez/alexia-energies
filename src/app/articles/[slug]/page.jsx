@@ -90,8 +90,6 @@ export default function ArticlePage() {
 
     return (
         <div className={styles.container}>
-            {/* Bouton Favoris - cœur en haut à droite */}
-            <FavoriteButton slug={slug} />
             {/* Section Hero */}
             <section
                 className={styles.heroSection}
@@ -101,6 +99,8 @@ export default function ArticlePage() {
                         : undefined,
                 }}
             >
+                {/* Bouton Favoris - cœur en haut à droite de l'image de couverture */}
+                <FavoriteButton slug={slug} />
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>{article.titre}</h1>
                     <nav className={styles.heroBreadcrumb}>

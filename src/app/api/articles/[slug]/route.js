@@ -1,3 +1,4 @@
+//src/app/api/articles/[slug]/route.js
 import prisma from '@/lib/prisma';
 import { verifyJWT } from '../../middleware/route';
 

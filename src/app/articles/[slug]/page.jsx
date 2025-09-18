@@ -1,5 +1,7 @@
+//src/app/articles/[slug]/page.jsx
 "use client";
 import React, { useEffect, useState } from "react";
+import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
 import { MdCheck } from "react-icons/md";
 import { useParams } from "next/navigation";
 import Image from "next/image";
@@ -97,6 +99,8 @@ export default function ArticlePage() {
                         : undefined,
                 }}
             >
+                {/* Bouton Favoris - cœur en haut à droite de l'image de couverture */}
+                <FavoriteButton slug={slug} articleId={article.id} />
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>{article.titre}</h1>
                     <nav className={styles.heroBreadcrumb}>

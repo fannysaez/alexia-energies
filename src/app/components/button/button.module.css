@@ -40,10 +40,10 @@
      font-size: 14px;
      font-weight: 600;
      letter-spacing: 1px;
-     padding: 12px 14px;
+     padding: 12px 12px;
      display: flex;
      align-items: center;
      justify-content: center;
-     gap: 10px;
+     gap: 6px;
      white-space: nowrap;
  }

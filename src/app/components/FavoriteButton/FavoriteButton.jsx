@@ -1,22 +1,22 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { isLoggedIn } from "@/lib/auth";
+import { isUser } from "@/lib/auth";
 import styles from "./FavoriteButton.module.css";
 
 export default function FavoriteButton({ slug, articleId }) {
     const [isFavorite, setIsFavorite] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isNormalUser, setIsNormalUser] = useState(false);
 
-    // Vérifier si l'utilisateur est connecté
+    // Vérifier si l'utilisateur est un utilisateur connecté (pas admin)
     useEffect(() => {
-        setIsAuthenticated(isLoggedIn());
+        setIsNormalUser(isUser());
     }, []);
 
     // Récupérer le statut favori de l'article
     useEffect(() => {
-        if (!isAuthenticated || !slug) {
+        if (!isNormalUser || !slug) {
             setLoading(false);
             return;
         }
@@ -29,9 +29,14 @@ export default function FavoriteButton({ slug, articleId }) {
                         'Authorization': `Bearer ${token}`
                     }
                 });
+                
                 if (response.ok) {
                     const data = await response.json();
                     setIsFavorite(data.isFavorite);
+                } else if (response.status === 404) {
+                    // Utilisateur non trouvé - probablement un token obsolète
+                    console.warn("Utilisateur non trouvé - token peut-être obsolète");
+                    setIsFavorite(false);
                 } else {
                     console.error("Erreur lors de la récupération du statut favori:", response.status);
                 }
@@ -43,11 +48,11 @@ export default function FavoriteButton({ slug, articleId }) {
         };
 
         fetchFavoriteStatus();
-    }, [slug, isAuthenticated]);
+    }, [slug, isNormalUser]);
 
     const handleToggleFavorite = async () => {
-        if (!isAuthenticated) {
-            alert("Vous devez être connecté pour ajouter des favoris");
+        if (!isNormalUser) {
+            alert("Vous devez être connecté en tant qu'utilisateur pour ajouter des favoris");
             return;
         }
 
@@ -81,8 +86,8 @@ export default function FavoriteButton({ slug, articleId }) {
         }
     };
 
-    // Ne pas afficher le bouton si l'utilisateur n'est pas connecté
-    if (!isAuthenticated) {
+    // Ne pas afficher le bouton si ce n'est pas un utilisateur connecté
+    if (!isNormalUser) {
         return null;
     }
 

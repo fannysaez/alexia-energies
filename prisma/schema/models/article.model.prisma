@@ -19,6 +19,7 @@ model Article {
     contentBlocks    ContentBlock[] // Blocs de contenu liés / Related content blocks
     paragraphs       Paragraph[] // Paragraphes liés / Related paragraphs
     category         Category?      @relation(fields: [categoryId], references: [id]) // Relation avec la catégorie (optionnelle)
+    favorites        Favorite[]     // 👈 relation ajoutée
 
     @@map("articles") // Nom de la table en base de données / Table name in database
 }

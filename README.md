@@ -12,9 +12,18 @@ Il s'agit d'un projet [Next.js](https://nextjs.org) initialisé avec [`create-ne
 
 Plateforme dédiée au bien-être, proposant :
 
-- Un site vitrine (magnétisme, sophrologie, human design)
+- Un site dynamique (magnétisme, sophrologie, human design)
 - Prise de rendez-vous via Calendly (présentiel/distanciel)
 - Interface d’administration (gestion utilisateurs, articles, newsletter)
+
+---
+
+### 📱 QR Code - Accès rapide
+
+<div align="center">
+  <img src="./assets/img/qrCode.png" alt="QR Code du projet" width="200" height="200">
+  <p><em>Scannez pour accéder à l'App web & web mobile</em></p>
+</div>
 
 ---
 
@@ -43,7 +52,7 @@ Plateforme dédiée au bien-être, proposant :
 
 ---
 
-## Vocabulaire / Définitions
+<!-- ## Vocabulaire / Définitions
 
 - **Framework** : Ensemble d’outils et de conventions facilitant le développement d’applications (ex : Next.js).
 - **Next.js** : Framework basé sur React pour créer des applications web performantes, avec rendu côté serveur, génération statique, routage simplifié, etc.
@@ -73,7 +82,7 @@ En résumé, les hooks sont essentiels pour gérer l’état, les effets seconda
 
 ## Qu’est-ce que la logique métier ?
 
-La **logique métier** (ou « business logic ») désigne l’ensemble des règles, traitements et processus propres au fonctionnement d’une application, indépendamment de l’interface utilisateur ou de la gestion des données. Elle définit comment les données sont manipulées, validées et comment les fonctionnalités principales répondent aux besoins spécifiques du domaine (ex : gestion des réservations, calculs de tarifs, validation d’accès à une formation). Séparer la logique métier du reste du code permet d’avoir une application plus claire, maintenable et évolutive.
+La **logique métier** (ou « business logic ») désigne l’ensemble des règles, traitements et processus propres au fonctionnement d’une application, indépendamment de l’interface utilisateur ou de la gestion des données. Elle définit comment les données sont manipulées, validées et comment les fonctionnalités principales répondent aux besoins spécifiques du domaine (ex : gestion des réservations, calculs de tarifs, validation d’accès à une formation). Séparer la logique métier du reste du code permet d’avoir une application plus claire, maintenable et évolutive. -->
 
 ---
 
@@ -86,7 +95,7 @@ Résumé : développement d’une application web de bien-être avec site vitri
 ## Limites / Non réalisé
 
 - L’espace formation en ligne, le paiement Stripe et la gestion des chapitres n’ont pas pu être réalisés par manque de temps.
-- Seules les parties site vitrine, prise de rendez-vous, articles, FAQ, contact et administration de base sont fonctionnelles.
+- Seules les parties de l'app web et web mobile, prise de rendez-vous, articles, FAQ, contact et administration de base sont fonctionnelles.
 
 ---
 
@@ -138,6 +147,3 @@ Vous pouvez également consulter [le dépôt GitHub de Next.js](https://github.c
 Le moyen le plus simple de déployer votre application Next.js est d'utiliser la [plateforme Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) créée par les auteurs de Next.js.
 
 Consultez notre [documentation sur le déploiement Next.js](https://nextjs.org/docs/app/building-your-application/deploying) pour plus de détails.
-
----
-

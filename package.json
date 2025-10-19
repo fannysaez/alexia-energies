@@ -5,11 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
+    "vercel-build": "npm install --legacy-peer-deps && prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": ">=8.0.0"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

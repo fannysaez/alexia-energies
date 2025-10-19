@@ -1,12 +1,5 @@
 {
-  "buildCommand": "npm install --legacy-peer-deps && npm run build",
-  "framework": "nextjs",
-  "functions": {
-    "app/api/**/*.js": {
-      "maxDuration": 30
-    }
-  },
-  "env": {
-    "NODE_OPTIONS": "--max-old-space-size=4096"
-  }
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "npm run build",
+  "framework": "nextjs"
 }

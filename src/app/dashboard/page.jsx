@@ -100,6 +100,7 @@ function DashboardContent() {
 
     return (
         <div className={styles["dashboard-layout"]}>
+            
             <aside className={styles["dashboard-sidebar"]}>
                 <h2>{user && user.firstName ? `Bienvenue, ${user.firstName}` : "Bienvenue"}</h2>
                 <nav className={styles["dashboard-nav"]}>
@@ -136,6 +137,7 @@ function DashboardContent() {
                     variant="primary"
                 />
             </aside>
+
             <main className={styles["dashboard-main"]}>
                 {selectedSection === "home" ? (
                     <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "60vh" }}>

@@ -237,6 +237,7 @@ function DashboardContent() {
                                 onClick={() => setArticleTab('delete')}
                             >Supprimer</button>
                         </div>
+                        
                         {/* Contenu selon l'onglet */}
                         {articleTab === 'add' && (
                             <>

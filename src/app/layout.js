@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
+import CookieBanner from "./components/cookie-banner/cookie-banner";
 
 export const metadataOpenGraph = {
   title: "AstroNex - Bien-être, relaxation et accompagnement personnalisé",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

@@ -93,6 +93,12 @@ export async function GET(req) {
 
 // POST : Ajouter un article
 export async function POST(req) {
+    // Vérification JWT obligatoire pour la création d'articles
+    const authResult = await verifyJWT(req);
+    if (!authResult.isValid) {
+        return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
+    }
+
     try {
         const { titre, slug, auteur, description, image, contenu, categoryId, contentBlocks = [], paragraphs = [], dateCreation, datePublication } = await req.json();
 

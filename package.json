@@ -22,7 +22,7 @@
     "cloudinary": "^2.7.0",
     "embla-carousel-react": "^8.6.0",
     "jsonwebtoken": "^9.0.2",
-    "next": "^15.5.3",
+    "next": "15.5.9",
     "react": "^19.0.0",
     "react-calendly": "^4.4.0",
     "react-dom": "^19.0.0",

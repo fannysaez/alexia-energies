@@ -21,7 +21,7 @@ import Button from "@/app/components/button/button";
 import Link from "next/link";
 import styles from "./a-propos.module.css";
 import About from "@/app/components/accueil/about/section2";
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg";
+// ...existing code...
 
 export default function AproposPage() {
     return (
@@ -85,8 +85,8 @@ export default function AproposPage() {
                                 text="Services"
                                 link="/services/magnetisme"
                                 variant="secondary"
-                                leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                                leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                                rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                                 style={{ whiteSpace: 'nowrap' }}
                             />
                         </div>

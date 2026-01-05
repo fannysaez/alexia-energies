@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./article.module.css";
 import Button from "../../components/button/button";
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg";
+// ...existing code...
 
 export default function ArticlePage() {
     const { slug } = useParams();
@@ -76,8 +76,8 @@ export default function ArticlePage() {
                     text="Retour aux articles"
                     link="/articles"
                     variant="secondary"
-                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                    leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                    rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                 />
             </div>
         </div>
@@ -310,8 +310,8 @@ export default function ArticlePage() {
                         text="Retour"
                         link="/articles"
                         variant="secondary"
-                        leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                        rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                        leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                        rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                         style={{ whiteSpace: 'nowrap' }}
                     />
                 </div>

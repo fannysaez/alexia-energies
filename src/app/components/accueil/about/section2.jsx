@@ -2,9 +2,11 @@
 import React from "react"; // Importation de React
 import Style from "../about/style.module.css"; // Styles CSS modulaires
 import Image from "next/image"; // Composant Image optimisé de Next.js
-import Vector from "/public/img/accueil/about/ImageAbout.svg"; // Image centrale décorative
-import VectorLeftTop from "/public/img/accueil/about/ImageLeftTopAbout.svg"; // Image décorative coin haut-gauche
-import VectorRightbottom from "/public/img/accueil/about/ImageRightBottomAbout.svg"; // Image décorative coin bas-droite
+// Import des SVG décoratifs depuis le dossier public
+const VectorLeftTop = "/img/accueil/about/ImageLeftTopAbout.svg";
+const Vector = "/img/accueil/about/ImageAbout.svg";
+const VectorRightbottom = "/img/accueil/about/ImageRightBottomAbout.svg";
+// ...existing code...
 
 // Composant principal About
 export default function About() {

@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import Button from "@/app/components/button/button"; // Composant bouton personnalisé
 import Image from "next/image"; // Composant Next.js pour l'optimisation des images
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire
+// ...existing code...
 
 
 export default function AuthForm({
@@ -184,8 +184,8 @@ export default function AuthForm({
                     type="submit"
                     disabled={loading}
                     variant="secondary"
-                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                    leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                    rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                     className={styles["form-btn"]}
                 />
             </form>

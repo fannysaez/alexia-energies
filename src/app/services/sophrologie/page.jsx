@@ -6,7 +6,7 @@ import ServiceSidebar from "@/app/components/services-sidebar/serviceSidebar";
 import Modal from "@/app/components/modal/modal";
 import Link from "next/link";
 import styles from "../style.module.css";
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire
+// ...existing code...
 
 
 export default function SophrologiePage() {
@@ -228,8 +228,8 @@ export default function SophrologiePage() {
                             articles={articles}
                             buttonText="Réservez"
                             onReserveClick={() => openModal("sophrologie")} isReserveButton={true}
-                            leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                            rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                            leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                            rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                             style={{ whiteSpace: 'nowrap' }}
                         />
                         <>

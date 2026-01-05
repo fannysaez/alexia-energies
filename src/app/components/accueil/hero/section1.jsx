@@ -3,12 +3,13 @@ import React from "react";
 import style from "./style.module.css"; // Import des styles CSS modules
 import Button from "@/app/components/button/button"; // Composant bouton personnalisé
 import Image from "next/image"; // Composant Next.js pour l'optimisation des images
-import fleche from "/public/img/accueil/HeroSection/VectorFlecheAccueil.svg"; // SVG décoratif
-import StarWhite from "/public/img/boutons/VectorStarWhite.svg"; // Icône étoile blanche
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire
+const fleche = "/img/accueil/HeroSection/VectorFlecheAccueil.svg";
+const StarWhite = "/img/boutons/VectorStarWhite.svg";
+// ...existing code...
 
 // Composant Section1 pour la section d'accueil
 // Ce composant affiche un titre, une description, une ligne décorative et deux boutons pour naviguer vers les services et le contact.
+// Remplacement des SVG importés par des balises <img src="..." />
 export default function HeroSection() {
     // Vérification : la classe "buttons" existe-t-elle dans le fichier style.module.css ?
     // Si elle n'existe pas, les boutons n'auront pas de style ou seront invisibles selon le CSS global.
@@ -45,8 +46,8 @@ export default function HeroSection() {
                         text="Contactez-moi"
                         link="/contact"
                         variant="secondary"
-                        leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                        rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                        leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                        rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                     />
                 </div>
             </div>

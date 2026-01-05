@@ -3,8 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/components/button/button";
-import fleche from "/public/img/accueil/HeroSection/VectorFlecheAccueil.svg";
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg";
+// ...existing code...
 import styles from "../services-sidebar/serviceSidebar.module.css";
 
 const ServiceSidebar = ({
@@ -59,8 +58,8 @@ const ServiceSidebar = ({
                         text={buttonText}
                         variant="secondary"
                         isReserveButton={true}
-                        leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                        rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                        leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                        rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                         onClick={onReserveClick}
                         style={{ whiteSpace: 'nowrap' }}
                         size="small"

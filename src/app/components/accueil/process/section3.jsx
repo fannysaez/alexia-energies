@@ -2,10 +2,10 @@
 import React, { useState } from "react"; // Hook React pour la gestion d'état
 import Style from "./style.module.css"; // Styles CSS du composant
 import Image from "next/image"; // Composant d'image optimisé Next.js
+const fleche = "/img/accueil/HeroSection/VectorFlecheAccueil.svg"; // Déclaration de la constante fleche
 import Button from "@/app/components/button/button"; // Composant bouton personnalisé
 import Modal from "@/app/components/modal/modal"; // Composant modal de réservation
-import fleche from "/public/img/accueil/HeroSection/VectorFlecheAccueil.svg"; // Icône flèche décorative
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile pour les boutons
+// ...existing code...
 
 export default function Process() {
     // État pour gérer l'ouverture/fermeture de la modal et ses données
@@ -108,8 +108,8 @@ export default function Process() {
                                             text="voir plus"
                                             link={service.link}
                                             variant="secondary"
-                                            leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                            rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                                            leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                                            rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                                             style={{ whiteSpace: 'nowrap' }}
                                         />
                                         <Button
@@ -117,8 +117,8 @@ export default function Process() {
                                             onClick={() => openReservationModal(service)}
                                             variant="secondary"
                                             isReserveButton={true}
-                                            leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                            rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                                            leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                                            rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                                             style={{ whiteSpace: 'nowrap' }}
                                         />
                                     </div>

@@ -1,7 +1,7 @@
 "use client";
 import AuthForm from "../components/authForm/AuthForm";
 import Button from "../components/button/button";
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg";
+// ...existing code...
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -29,7 +29,7 @@ export default function LoginPage() {
             linkText="S'inscrire"
             linkHref="/register"
             linkLabel="Pas de compte ?"
-            leftVector={<StarBlack />}
+            leftVector={<img src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
             logoutMessage={undefined}
         />
     );

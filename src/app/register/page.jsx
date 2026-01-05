@@ -1,6 +1,6 @@
 "use client";
 import AuthForm from "../components/authForm/AuthForm";
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg";
+// ...existing code...
 
 export default function RegisterPage() {
     // La redirection est gérée dans AuthForm selon le rôle
@@ -12,7 +12,7 @@ export default function RegisterPage() {
             linkText="Se connecter"
             linkHref="/login"
             linkLabel="Déjà inscrit ?"
-            leftVector={<StarBlack />}
+            leftVector={<img src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
         />
     );
 }

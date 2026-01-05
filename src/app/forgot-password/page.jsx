@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "../components/authForm/form.module.css";
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg";
+// ...existing code...
 import Button from "../components/button/button";
 import Image from "next/image";
 

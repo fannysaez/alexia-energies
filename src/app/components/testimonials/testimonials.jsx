@@ -2,11 +2,12 @@
 
 import { useCallback, useEffect, useState } from 'react'; // Hooks React pour état et effets
 import useEmblaCarousel from 'embla-carousel-react'; // Hook pour carousel Embla
-import Image from 'next/image'; // Composant Image optimisé de Next.js
+import Image from 'next/image'; // Composant Image optimisé de Next.js    
+const fleche = "/img/accueil/HeroSection/VectorFlecheAccueil.svg";
+const VectorRightTopAttrapesreves = "/img/accueil/testimonials/VectorRightTop-Attrapes-reves.svg";
 import styles from './testimonials.module.css'; // Styles CSS modules
-import fleche from "/public/img/accueil/HeroSection/VectorFlecheAccueil.svg"; // SVG décoratif
-import VectorRightTopAttrapesreves from "/public/img/accueil/testimonials/VectorRightTop-Attrapes-reves.svg"; // Image décorative en haut à droite    
-import VectorLeftBottomAttrapesreves from "/public/img/accueil/testimonials/VectorLeftBottom-Attrapes-reves.svg"; // Image décorative en bas à gauche 
+const VectorLeftBottomAttrapesreves = "/img/accueil/testimonials/VectorLeftBottom-Attrapes-reves.svg";
+// ...existing code...
 // Données des témoignages statiques
 const testimonialsData = [
     {

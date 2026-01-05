@@ -6,7 +6,7 @@ import ServiceSidebar from "@/app/components/services-sidebar/serviceSidebar";
 import Modal from "@/app/components/modal/modal";
 import Link from "next/link";
 import styles from "../style.module.css";
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire
+// ...existing code...
 
 export default function MagnetismePage() {
     const serviceType = "magnétisme";

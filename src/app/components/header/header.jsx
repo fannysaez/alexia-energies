@@ -7,7 +7,7 @@ import style from "./header.module.css"; // Styles CSS modules pour le header
 import Button from "@/app/components/button/button"; // Composant bouton personnalisé
 import Modal from "../modal/modal";
 import ServiceChoiceModal from "../modal/forms/serviceChoiceModal";
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire pour les boutons
+// ...existing code...
 import { FaChevronRight, FaUser } from "react-icons/fa";
 import { HiChevronRight } from "react-icons/hi";
 import { RxTriangleRight } from "react-icons/rx";
@@ -155,8 +155,8 @@ export default function Header() {
                         className={style.ButtonRdv}
                         text="Prendre rdv"
                         variant="secondary"
-                        leftVector={<Image src={StarBlack} alt="Icône étoile gauche" width={16} height={16} />}
-                        rightVector={<Image src={StarBlack} alt="Icône étoile droite" width={16} height={16} />}
+                        leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Icône étoile gauche" width={16} height={16} />}
+                        rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Icône étoile droite" width={16} height={16} />}
                         onClick={() => openServiceChoiceModal()}
                     />
                     {/* Bouton Connexion caché si non connecté, Mon espace ou Mon Profil selon le rôle */}
@@ -287,8 +287,8 @@ export default function Header() {
                                     className={style.mobileFooterButtonRdv}
                                     text="Prendre rdv"
                                     variant="secondary"
-                                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                                    leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                                    rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                                     onClick={() => { openServiceChoiceModal(); closeMenu(); }}
                                 />
                                 {isMounted && !isLogged && (
@@ -329,8 +329,8 @@ export default function Header() {
                                     text="Contactez-moi"
                                     link="/contact"
                                     variant="secondary"
-                                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                                    leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                                    rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                                     onClick={closeMenu}
                                 />
                             </div>

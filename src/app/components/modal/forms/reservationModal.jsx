@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'; // Hooks React pour 
 import Style from './reservationModal.module.css'; // Styles CSS du modal
 import Button from '@/app/components/button/button'; // Composant bouton personnalisé
 import Image from 'next/image'; // Composant image optimisé Next.js
-import StarBlack from "/public/img/boutons/VectorStarBlack.svg"; // Icône étoile noire
+// ...existing code...
 import { HiOutlineCheck } from 'react-icons/hi'; // Icône de validation
 
 export default function ReservationModal({ service, onClose, onBackToServices = null }) {
@@ -157,8 +157,8 @@ export default function ReservationModal({ service, onClose, onBackToServices = 
                         text="Retour aux services"
                         onClick={onBackToServices}
                         variant="secondary"
-                        leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                        rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                        leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                        rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                         className={Style.backToServicesBtn}
                     />
                 )}
@@ -219,8 +219,8 @@ export default function ReservationModal({ service, onClose, onBackToServices = 
                     text="Retour"
                     onClick={goBack}
                     variant="secondary"
-                    leftVector={<Image src={StarBlack} alt="" width={16} height={16} />}
-                    rightVector={<Image src={StarBlack} alt="" width={16} height={16} />}
+                    leftVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
+                    rightVector={<Image src="/img/boutons/VectorStarBlack.svg" alt="Étoile noire" width={16} height={16} />}
                 />
                 <h3>
                     {selectedOption === 'distance' ? 'Consultation à distance' : 'Consultation en présentiel'}
